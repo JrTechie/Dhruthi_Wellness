@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dhruthi Wellness — Akhila Konakalla | Expert Customized & Lifestyle Coaching</title>
+  <meta name="description" content="Customized lifestyle diet plans designed by Akhila Konakalla, MSc. Food Nutrition and Dietetics.">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- --- Header / Navigation --- -->
+  <header id="header">
+    <div class="container nav-wrapper">
+      <a href="#" class="logo" id="nav-logo" style="display: inline-flex; align-items: center; gap: 8px;">
+        <i data-lucide="sparkles" class="logo-icon" style="color: var(--primary); width: 24px; height: 24px;"></i>
+        Dhruthi Wellness
+      </a>
+      
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#booking">Packages</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme" style="outline: none; margin-right: 10px; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: none; background: rgba(209, 18, 103, 0.05); color: var(--primary); cursor: pointer;"><i data-lucide="moon" style="width: 18px; height: 18px;"></i></button></li>
+        <li><a href="#booking" class="nav-cta-btn">Book Consultation</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- --- Hero Section --- -->
+  <section class="hero" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag" style="text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Nourish — Balance — Transform</div>
+        <h1 class="hero-title">Customized Nutrition by <span>Dr. Akhila Konakalla</span></h1>
+        <p class="hero-desc">Specialized medical nutrition therapy for Diabetes, Thyroid, PCOS/PCOD, Fertility, and Overall Wellness. Revitalize your metabolic health with evidence-based, customized diet protocols.</p>
+        <div class="hero-ctas">
+          <a href="#booking" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+            <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
+            Book Consultation
+          </a>
+          <a href="#booking" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+            <i data-lucide="award" style="width: 18px; height: 18px;"></i>
+            View Packages
+          </a>
+        </div>
+        
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num">500+</span>
+            <span class="stat-label">Clients Guided</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">5+ Yrs</span>
+            <span class="stat-label">Experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Custom Plans</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-visual" style="display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+        <!-- Beautiful Recipe Widget Frame -->
+        <div style="width: 100%; max-width: 380px; border-radius: var(--radius-lg); border: 2.5px solid rgba(209, 18, 103, 0.15); overflow: hidden; background: var(--bg-surface); box-shadow: var(--shadow-lg); transition: var(--transition-smooth); position: relative;">
+          <img src="healthy_food.png" alt="Nutritious Avocado and Seed Bowl" style="width: 100%; display: block; height: 380px; object-fit: cover;">
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%); padding: 24px 20px; text-align: left; color: white;">
+            <span style="font-size: 0.65rem; font-weight: 700; background: var(--primary); color: white; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; margin-bottom: 8px; display: inline-block; letter-spacing: 0.5px;">Custom Recipe of the Day</span>
+            <h3 style="font-size: 1.2rem; font-family: var(--font-heading); margin-bottom: 4px; color: white; font-weight: 600;">Superfood Quinoa & Avocado Bowl</h3>
+            <p style="font-size: 0.75rem; opacity: 0.85; margin-bottom: 0;">Balanced macro breakdown: 420 kcal • 45g Carbs • 18g Protein • 20g Fats</p>
+          </div>
+        </div>
+        
+        <!-- Floating Active Status Widget -->
+        <div style="position: absolute; top: -10px; left: -10px; background: var(--bg-surface); border: 1.5px solid rgba(209, 18, 103, 0.15); border-radius: 12px; padding: 10px 14px; display: inline-flex; align-items: center; gap: 10px; box-shadow: var(--shadow-md); z-index: 2;">
+          <div style="background: rgba(209, 18, 103, 0.08); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary);">
+            <i data-lucide="check" style="width: 16px; height: 16px;"></i>
+          </div>
+          <div style="text-align: left;">
+            <div style="font-size: 0.72rem; font-weight: 800; color: var(--text-primary);">100% Customized</div>
+            <div style="font-size: 0.62rem; color: var(--text-secondary);">Tailored to your biomarkers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- Animated Ticker Banner --- -->
+  <div class="ticker-section">
+    <div class="ticker-wrapper">
+      <span class="ticker-item">Nourish — Balance — Transform</span>
+      <span class="ticker-item">Customized Diet Specialist</span>
+      <span class="ticker-item">100% Customized Meal Plans</span>
+      <span class="ticker-item">Hormonal Balance Protocols</span>
+      <span class="ticker-item">Certified Consultation Practice</span>
+      <span class="ticker-item">Diabetes & Thyroid Resets</span>
+      <!-- Duplicate items for infinite marquee effect -->
+      <span class="ticker-item">Nourish — Balance — Transform</span>
+      <span class="ticker-item">Customized Diet Specialist</span>
+      <span class="ticker-item">100% Customized Meal Plans</span>
+      <span class="ticker-item">Hormonal Balance Protocols</span>
+      <span class="ticker-item">Certified Consultation Practice</span>
+      <span class="ticker-item">Diabetes & Thyroid Resets</span>
+    </div>
+  </div>
+
+  <!-- --- About Section --- -->
+  <section class="about-section" id="about">
+    <div class="container about-grid">
+      <div class="about-image-wrapper">
+        <div class="about-image-frame" style="border: 2px solid rgba(209, 18, 103, 0.15); overflow: hidden; border-radius: var(--radius-lg);">
+          <img src="akhila.jpg" alt="Dr. Akhila Konakalla Dietitian" style="width: 100%; height: 480px; object-fit: cover; object-position: center 10%; display: block;">
+        </div>
+      </div>
+      
+      <div class="about-content">
+        <span class="section-tag">About Founder</span>
+        <h2 class="section-title">Hormonal Balance & <em>Metabolic Wellness Specialist</em></h2>
+        <p class="hero-desc">Dr. Akhila Konakalla holds an MSc. in Food Nutrition and Dietetics from Andhra University. She specializes in customized, hormone-balancing dietary programs, helping clients manage Diabetes, Thyroid function, PCOS/PCOD, and Fertility concerns naturally through evidence-based nutrition.</p>
+        
+        <div class="about-credentials">
+          <div class="cred-card" style="display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px;">
+            <div class="cred-icon" style="background: var(--primary-glow); color: var(--primary); padding: 12px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <i data-lucide="graduation-cap" style="width: 24px; height: 24px;"></i>
+            </div>
+            <div class="cred-text">
+              <h4>MSc. Food Nutrition & Dietetics</h4>
+              <p>Professional Degree from Andhra University</p>
+            </div>
+          </div>
+
+          <div class="cred-card" style="display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px;">
+            <div class="cred-icon" style="background: var(--primary-glow); color: var(--primary); padding: 12px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <i data-lucide="stethoscope" style="width: 24px; height: 24px;"></i>
+            </div>
+            <div class="cred-text">
+              <h4>Endocrine & Metabolic Focus</h4>
+              <p>Specializing in Diabetes, Thyroid, and PCOS/PCOD</p>
+            </div>
+          </div>
+
+          <div class="cred-card" style="display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px;">
+            <div class="cred-icon" style="background: var(--primary-glow); color: var(--primary); padding: 12px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <i data-lucide="heart" style="width: 24px; height: 24px;"></i>
+            </div>
+            <div class="cred-text">
+              <h4>Fertility & Overall Wellness</h4>
+              <p>Natural prenatal diet charts and sustainable lifetime energy plans</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- Core Philosophy Section --- -->
+  <section id="philosophy" class="why-section" style="background: var(--bg-main);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Core Philosophy</span>
+        <h2 class="section-title">Nourishing Lives, <em>Empowering Health</em></h2>
+        <p class="section-subtitle">We believe that better nutrition is the foundation of a vibrant, fulfilling life. Here is what guides our practice.</p>
+      </div>
+
+      <div class="philosophy-grid">
+        <!-- Card 1: Mission -->
+        <div class="philosophy-card">
+          <span class="philosophy-badge badge-mission">Our Mission</span>
+          <h3>Nutritional Excellence</h3>
+          <p>Delivering science-backed dietary guidance to reverse metabolic conditions, regulate key health markers, and help you regain control over your body's health.</p>
+        </div>
+
+        <!-- Card 2: Approach -->
+        <div class="philosophy-card">
+          <span class="philosophy-badge badge-approach">Our Approach</span>
+          <h3>Root-Cause Therapy</h3>
+          <p>We target the root causes of metabolic and endocrine imbalances through customized glycemic portioning, natural food therapy, and hormone-stabilizing lifestyle habits.</p>
+        </div>
+
+        <!-- Card 3: Vision -->
+        <div class="philosophy-card">
+          <span class="philosophy-badge badge-vision">Our Vision</span>
+          <h3>Sustainable Vitality</h3>
+          <p>Empowering individuals with simple, accessible, and structured nutritional strategies that eliminate chronic symptoms and foster lifetime health and longevity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Customized Specialties</span>
+        <h2 class="section-title">Specialized Nutritional <em>Programs</em></h2>
+        <p class="section-subtitle">Targeted customized nutrition therapies designed by Dr. Akhila Konakalla to regulate hormones, stabilize markers, and reset your health.</p>
+      </div>
+      
+      <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <!-- Service 1: Diabetes Control -->
+        <div class="service-card" style="border: 1px solid rgba(209, 18, 103, 0.08); background: var(--bg-surface); padding: 32px 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-md); transition: var(--transition-smooth);">
+          <div class="service-icon" style="color: var(--primary); margin-bottom: 16px;">
+            <i data-lucide="activity" style="width: 32px; height: 32px;"></i>
+          </div>
+          <h3 class="service-title" style="font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 12px; color: var(--text-primary);">Diabetes Control</h3>
+          <p class="service-desc" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">Therapeutic nutrition plans targeting blood sugar stability, insulin sensitivity improvement, HbA1c reduction, and glycemic load balance.</p>
+          <a href="#booking" class="service-link" style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Book Program &rarr;</a>
+        </div>
+
+        <!-- Service 2: Fertility Nutrition -->
+        <div class="service-card" style="border: 1px solid rgba(209, 18, 103, 0.08); background: var(--bg-surface); padding: 32px 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-md); transition: var(--transition-smooth);">
+          <div class="service-icon" style="color: var(--primary); margin-bottom: 16px;">
+            <i data-lucide="heart" style="width: 32px; height: 32px;"></i>
+          </div>
+          <h3 class="service-title" style="font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 12px; color: var(--text-primary);">Fertility Nutrition</h3>
+          <p class="service-desc" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">Nutrient-dense, customized diet charts designed to optimize reproductive health, balance prenatal hormone pathways, and support successful pregnancy preparation.</p>
+          <a href="#booking" class="service-link" style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Book Program &rarr;</a>
+        </div>
+
+        <!-- Service 3: PCOS/PCOD Balance -->
+        <div class="service-card" style="border: 1px solid rgba(209, 18, 103, 0.08); background: var(--bg-surface); padding: 32px 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-md); transition: var(--transition-smooth);">
+          <div class="service-icon" style="color: var(--primary); margin-bottom: 16px;">
+            <i data-lucide="sparkles" style="width: 32px; height: 32px;"></i>
+          </div>
+          <h3 class="service-title" style="font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 12px; color: var(--text-primary);">PCOS/PCOD Management</h3>
+          <p class="service-desc" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">Anti-inflammatory and low-insulin spike diet charts to regulate cycle regularity, combat acne/hirsutism, and curb insulin resistance naturally.</p>
+          <a href="#booking" class="service-link" style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Book Program &rarr;</a>
+        </div>
+
+        <!-- Service 4: Thyroid Regulation -->
+        <div class="service-card" style="border: 1px solid rgba(209, 18, 103, 0.08); background: var(--bg-surface); padding: 32px 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-md); transition: var(--transition-smooth);">
+          <div class="service-icon" style="color: var(--primary); margin-bottom: 16px;">
+            <i data-lucide="shield-check" style="width: 32px; height: 32px;"></i>
+          </div>
+          <h3 class="service-title" style="font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 12px; color: var(--text-primary);">Thyroid Regulation</h3>
+          <p class="service-desc" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">Nutritional thyroid protocols focused on zinc, selenium, and goitrogen management to optimize T3/T4 conversion and reset thyroid-sluggish metabolism.</p>
+          <a href="#booking" class="service-link" style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Book Program &rarr;</a>
+        </div>
+
+        <!-- Service 5: Overall Health & Wellness -->
+        <div class="service-card" style="border: 1px solid rgba(209, 18, 103, 0.08); background: var(--bg-surface); padding: 32px 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-md); transition: var(--transition-smooth);">
+          <div class="service-icon" style="color: var(--primary); margin-bottom: 16px;">
+            <i data-lucide="apple" style="width: 32px; height: 32px;"></i>
+          </div>
+          <h3 class="service-title" style="font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 12px; color: var(--text-primary);">Overall Wellness</h3>
+          <p class="service-desc" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">Long-term lifestyle meal schedules designed to boost immunity, restore natural energy, manage sustainable weight, and maintain vibrant daily health.</p>
+          <a href="#booking" class="service-link" style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Book Program &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- How It Works Section (Contrasting Theme) --- -->
+  <section class="how-section" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" style="background: rgba(255,255,255,0.06); color: #ffffff;">The Journey</span>
+        <h2 class="section-title">How the Program <em>Works</em></h2>
+        <p class="section-subtitle">Achieve your health results in three clear, structured phases.</p>
+      </div>
+
+      <div class="how-steps">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3 class="step-title">1-on-1 Consultation</h3>
+          <p class="step-desc">Schedule your online assessment. We will audit your blood panels, medical history, symptoms, and daily wellness habits.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3 class="step-title">Diet Plan Formulation</h3>
+          <p class="step-desc">Dr. Akhila designs your highly personalized, nutrient-dense diet chart calculated for your specific hormone and metabolic markers.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3 class="step-title">Fortnightly Adjustments</h3>
+          <p class="step-desc">Receive bi-weekly reviews, track progress markers, and enjoy direct WhatsApp Q&A support to easily adapt your meals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- Why Choose Us Section --- -->
+  <section class="why-section" id="why-us">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Key Values</span>
+        <h2 class="section-title">Customized Guidance, <em>Real Results</em></h2>
+        <p class="section-subtitle">Why clients trust Akhila Konakalla for metabolic resets and lifestyle improvements.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-card-icon"><i data-lucide="check-circle" style="width: 20px; height: 20px;"></i></div>
+          <div class="why-card-text">
+            <h4>100% Customized Ratios</h4>
+            <p>We do not use boilerplate charts. Every macro breakdown is computed directly for your metabolic footprint.</p>
+          </div>
+        </div>
+
+        <div class="why-card">
+          <div class="why-card-icon"><i data-lucide="slash" style="width: 20px; height: 20px;"></i></div>
+          <div class="why-card-text">
+            <h4>Zero Starvation Diets</h4>
+            <p>Our focus is on sustainable eating habits that keep your hormone levels and daily energy stable.</p>
+          </div>
+        </div>
+
+        <div class="why-card">
+          <div class="why-card-icon"><i data-lucide="activity" style="width: 20px; height: 20px;"></i></div>
+          <div class="why-card-text">
+            <h4>Hormonal & Glycemic Audits</h4>
+            <p>We evaluate thyroid panels, blood sugar logs, and cycle histories to structure your customized nutritional plan.</p>
+          </div>
+        </div>
+
+        <div class="why-card">
+          <div class="why-card-icon"><i data-lucide="message-square" style="width: 20px; height: 20px;"></i></div>
+          <div class="why-card-text">
+            <h4>Direct Consult Support</h4>
+            <p>Receive WhatsApp text responses and direct check-ins from Akhila to resolve food choice questions instantly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- Booking Consultation Packages Section --- -->
+  <section id="booking">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Customized Programs</span>
+        <h2 class="section-title">Personalized Diet Consultations</h2>
+        <p class="section-subtitle">Select a program to book your consultation with Dr. Akhila. All consultations include customized diet charts.</p>
+      </div>
+
+      <div class="freelancers-grid" id="freelancers-container">
+        <!-- Package 1: Diabetes & Thyroid Reset -->
+        <div class="freelancer-card" data-specialty="diabetes thyroid">
+          <div class="freelancer-header">
+            <div style="display: flex; flex-direction: column; gap: 12px; text-align: left;">
+              <div style="color: var(--primary);">
+                <i data-lucide="activity" style="width: 28px; height: 28px;"></i>
+              </div>
+              <div class="freelancer-info">
+                <h3>Diabetes & Thyroid Reset</h3>
+                <p>Hormone & Metabolic Support</p>
+                <div class="rating-badge" style="background: rgba(209, 18, 103, 0.08); color: var(--primary); padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; width: fit-content; margin-top: 6px;">★ Key Program</div>
+              </div>
+            </div>
+            <div class="card-chip"></div>
+          </div>
+          <p class="freelancer-bio">Targeted nutritional therapy to stabilize blood sugar, manage insulin sensitivity, support T3/T4 thyroid conversion, and reset sluggish metabolisms through evidence-based dietary habits.</p>
+          <div class="freelancer-tags">
+            <span class="specialty-tag">HbA1c Stabilization</span>
+            <span class="specialty-tag">Goitrogen Guidance</span>
+            <span class="specialty-tag">T3/T4 Support</span>
+          </div>
+          <div class="freelancer-meta">
+            <div class="meta-item">
+              <span>Session Fee</span>
+              <strong>$60</strong>
+            </div>
+            <div class="meta-item">
+              <span>Follow-ups</span>
+              <strong>Includes 1 Check-in</strong>
+            </div>
+          </div>
+          <button class="btn btn-primary book-btn" data-expert="Dr. Akhila Konakalla - Diabetes & Thyroid Reset" data-image="akhila.jpg" data-title="Hormone & Metabolic Support">Book Reset Plan</button>
+        </div>
+
+        <!-- Package 2: PCOS/PCOD & Fertility Balance -->
+        <div class="freelancer-card" data-specialty="pcos pcod fertility">
+          <div class="freelancer-header">
+            <div style="display: flex; flex-direction: column; gap: 12px; text-align: left;">
+              <div style="color: var(--primary);">
+                <i data-lucide="heart" style="width: 28px; height: 28px;"></i>
+              </div>
+              <div class="freelancer-info">
+                <h3>PCOS & Fertility Balance</h3>
+                <p>Hormonal & Prenatal Health</p>
+                <div class="rating-badge" style="background: rgba(245, 158, 11, 0.15); color: var(--accent); padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; width: fit-content; margin-top: 6px;">★ Best Seller</div>
+              </div>
+            </div>
+            <div class="card-chip"></div>
+          </div>
+          <p class="freelancer-bio">Anti-inflammatory, low-glycemic dietary protocols to manage PCOS symptoms, regulate cycles naturally, reduce insulin spikes, and optimize the body for healthy pregnancy preparation.</p>
+          <div class="freelancer-tags">
+            <span class="specialty-tag">Cycle-Syncing Diet</span>
+            <span class="specialty-tag">Anti-inflammatory Meals</span>
+            <span class="specialty-tag">Prenatal Prep</span>
+          </div>
+          <div class="freelancer-meta">
+            <div class="meta-item">
+              <span>Session Fee</span>
+              <strong>$70</strong>
+            </div>
+            <div class="meta-item">
+              <span>Follow-ups</span>
+              <strong>Includes 1 Check-in</strong>
+            </div>
+          </div>
+          <button class="btn btn-primary book-btn" data-expert="Dr. Akhila Konakalla - PCOS & Fertility Balance" data-image="akhila.jpg" data-title="Hormonal & Prenatal Health">Book Balance Plan</button>
+        </div>
+
+        <!-- Package 3: Active Metabolic & Overall Wellness -->
+        <div class="freelancer-card" data-specialty="wellness weight">
+          <div class="freelancer-header">
+            <div style="display: flex; flex-direction: column; gap: 12px; text-align: left;">
+              <div style="color: var(--primary);">
+                <i data-lucide="sparkles" style="width: 28px; height: 28px;"></i>
+              </div>
+              <div class="freelancer-info">
+                <h3>Active Metabolic Wellness</h3>
+                <p>Lifestyle & Energy Optimization</p>
+                <div class="rating-badge" style="background: rgba(6, 182, 212, 0.15); color: var(--secondary); padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; width: fit-content; margin-top: 6px;">★ Sustainable Care</div>
+              </div>
+            </div>
+            <div class="card-chip"></div>
+          </div>
+          <p class="freelancer-bio">Long-term customized dietary coaching designed to enhance immune response, boost daily energy levels, manage sustainable weight, and maintain vibrant overall health.</p>
+          <div class="freelancer-tags">
+            <span class="specialty-tag">Energy Reset</span>
+            <span class="specialty-tag">Whole Food Diet</span>
+            <span class="specialty-tag">Sustainable Weight</span>
+          </div>
+          <div class="freelancer-meta">
+            <div class="meta-item">
+              <span>Session Fee</span>
+              <strong>$50</strong>
+            </div>
+            <div class="meta-item">
+              <span>Follow-ups</span>
+              <strong>Includes 1 Check-in</strong>
+            </div>
+          </div>
+          <button class="btn btn-primary book-btn" data-expert="Dr. Akhila Konakalla - Active Metabolic Wellness" data-image="akhila.jpg" data-title="Lifestyle & Energy Optimization">Book Wellness Plan</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- --- Testimonials Section --- -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Client Reviews</span>
+        <h2 class="section-title">Success Stories from <em>Clients</em></h2>
+        <p class="section-subtitle">Real feedback from clients who transformed their metabolism and resolved therapeutic dietary concerns with Akhila.</p>
+      </div>
+
+      <div class="testimonials-wrapper">
+        <!-- Testimonials List -->
+        <div class="testi-list-side" id="testimonials-list">
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">"Dr. Akhila's PCOS meal planning completely balanced my hormones, regulated my cycles, and helped me manage insulin resistance within 3 months. Her sustainable, zero-starvation approach changed my lifestyle!"</p>
+            <div class="testi-author">
+              <div class="testi-avatar">P</div>
+              <div>
+                <h4 class="testi-name">Priya R.</h4>
+                <p class="testi-info">PCOS Balance Client</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">"I successfully stabilized my HbA1c levels and managed my diabetes using Dr. Akhila's custom glycemic load diet. She is incredibly thorough with blood report audits and follow-up check-ins."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">K</div>
+              <div>
+                <h4 class="testi-name">Kiran K.</h4>
+                <p class="testi-info">Diabetes Control Client</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">"My sluggish hypothyroid metabolism completely reset! I gained back my natural energy levels and reversed weight gain through her zinc and selenium-rich nutritional protocols."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">S</div>
+              <div>
+                <h4 class="testi-name">Sneha S.</h4>
+                <p class="testi-info">Thyroid Regulation Client</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Review Form Card -->
+        <div class="testi-form-card">
+          <h3 style="margin-bottom: 8px;">Submit Your Review</h3>
+          <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 20px;">Tell us how we did — your rating helps others, and your message helps us improve.</p>
+          
+          <form id="review-form">
+            <div class="form-group">
+              <label>Select Rating</label>
+              <div class="star-rating" id="review-stars-container">
+                <button type="button" class="star-btn" data-rating="1">★</button>
+                <button type="button" class="star-btn" data-rating="2">★</button>
+                <button type="button" class="star-btn" data-rating="3">★</button>
+                <button type="button" class="star-btn" data-rating="4">★</button>
+                <button type="button" class="star-btn active" data-rating="5">★</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="review-name">Full Name</label>
+              <input type="text" id="review-name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="review-category">Client Category</label>
+              <input type="text" id="review-category" placeholder="e.g. PCOS Balance, Customized Diet" required>
+            </div>
+
+            <div class="form-group">
+              <label for="review-msg">Review Message</label>
+              <textarea id="review-msg" placeholder="Share your experience working with Akhila..." required></textarea>
+            </div>
+
+            <button type="submit" class="form-submit-btn" style="margin-top: 10px;">Submit Review</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- Healthy Living Blog Section --- -->
+  <section id="blog" class="why-section" style="background: var(--bg-main);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Healthy Living Blog</span>
+        <h2 class="section-title">Insights & Customized <em>Science</em></h2>
+        <p class="section-subtitle">Read the latest research-backed articles on managing blood sugar, balancing hormones, and optimizing thyroid pathways.</p>
+      </div>
+
+      <div class="blog-grid">
+        <!-- Blog Card 1 -->
+        <div class="blog-card">
+          <div class="blog-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&w=400&h=250&q=80" alt="Diabetes Control">
+          </div>
+          <div class="blog-content">
+            <span class="blog-category">Hormonal Endocrinology</span>
+            <h3 class="blog-title">Managing Diabetes: The Role of Glycemic Load</h3>
+            <p class="blog-excerpt">Blood sugar regulation isn't just about cutting out sugar. Learn how dietary fibers, portion timing, and glycemic load distribution stabilize HbA1c levels.</p>
+            <div class="blog-meta-footer">
+              <span class="blog-meta-info">5 min read • June 2026</span>
+              <button class="blog-read-btn" data-article="1">Read Article &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog Card 2 -->
+        <div class="blog-card">
+          <div class="blog-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&h=250&q=80" alt="PCOS Management">
+          </div>
+          <div class="blog-content">
+            <span class="blog-category">Hormonal Health</span>
+            <h3 class="blog-title">Reversing PCOS/PCOD: Nutritional Interventions</h3>
+            <p class="blog-excerpt">Struggling with cycle irregularity or insulin spikes? Discover how anti-inflammatory meal planning and targeted insulin sensitizing foods combat androgen levels.</p>
+            <div class="blog-meta-footer">
+              <span class="blog-meta-info">6 min read • June 2026</span>
+              <button class="blog-read-btn" data-article="2">Read Article &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog Card 3 -->
+        <div class="blog-card">
+          <div class="blog-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=400&h=250&q=80" alt="Thyroid Support">
+          </div>
+          <div class="blog-content">
+            <span class="blog-category">Thyroid Support</span>
+            <h3 class="blog-title">Thyroid Wellness: Unlocking Your Metabolic Potential</h3>
+            <p class="blog-excerpt">Hypothyroidism slowing down your energy? Explore how selenium, zinc, and goitrogen management naturally optimize thyroid T3/T4 hormone conversion.</p>
+            <div class="blog-meta-footer">
+              <span class="blog-meta-info">4 min read • June 2026</span>
+              <button class="blog-read-btn" data-article="3">Read Article &rarr;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- Blog Reader Overlay Modal --- -->
+  <div class="blog-modal-overlay" id="blog-modal">
+    <div class="blog-modal-container">
+      <button class="blog-modal-close" id="blog-modal-close-btn">&times;</button>
+      <div class="blog-modal-header">
+        <span class="blog-category" id="blog-modal-category">Customized Nutrition</span>
+        <h2 class="blog-modal-title" id="blog-modal-title">Article Title</h2>
+        <div class="blog-modal-meta" style="display: flex; gap: 16px; font-size: 0.8rem; opacity: 0.85;">
+          <span><i data-lucide="calendar" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px; display: inline-block;"></i> <span id="blog-modal-date">June 27, 2026</span></span>
+          <span><i data-lucide="clock" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px; display: inline-block;"></i> <span id="blog-modal-read-time">5 min read</span></span>
+          <span><i data-lucide="user" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px; display: inline-block;"></i> By Dr. Akhila Konakalla</span>
+        </div>
+      </div>
+      <img class="blog-modal-img" id="blog-modal-img" src="" alt="Featured Image">
+      <div class="blog-modal-body" id="blog-modal-body">
+        <!-- Dynamically injected article content -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- --- Contact & WhatsApp Section --- -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Get in Touch</span>
+        <h2 class="section-title">Start Your Health <em>Journey</em></h2>
+        <p class="section-subtitle">Reach out directly via form, email, or text to set up your consultation appointment.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-icon" style="display: flex; align-items: center; justify-content: center; background: rgba(209, 18, 103, 0.05); color: var(--primary); width: 44px; height: 44px; border-radius: 50%;"><i data-lucide="mail" style="width: 20px; height: 20px;"></i></div>
+            <div class="contact-details">
+              <span>Send Email</span>
+              <a href="mailto:consult@dhruthiwellness.com">consult@dhruthiwellness.com</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon" style="display: flex; align-items: center; justify-content: center; background: rgba(209, 18, 103, 0.05); color: var(--primary); width: 44px; height: 44px; border-radius: 50%;"><i data-lucide="phone" style="width: 20px; height: 20px;"></i></div>
+            <div class="contact-details">
+              <span>Call Practice</span>
+              <strong>+91 98765 43210</strong>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon" style="display: flex; align-items: center; justify-content: center; background: rgba(209, 18, 103, 0.05); color: var(--primary); width: 44px; height: 44px; border-radius: 50%;"><i data-lucide="map-pin" style="width: 20px; height: 20px;"></i></div>
+            <div class="contact-details">
+              <span>Practice Location</span>
+              <strong>AU University Region, Vizag, AP</strong>
+            </div>
+          </div>
+
+          <!-- Direct WhatsApp Chat Link -->
+          <a href="https://wa.me/919876543210?text=Hi%20Akhila,%20I'd%20like%20to%20book%20a%20nutrition%20consultation." class="whatsapp-btn" target="_blank">
+            <span><i data-lucide="message-circle" style="width: 18px; height: 18px; vertical-align: middle; margin-right: 6px; display: inline-block;"></i> Chat on WhatsApp</span>
+          </a>
+        </div>
+
+        <div class="contact-form-card">
+          <h3>Send a Quick Message</h3>
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="contact-name">Full Name</label>
+              <input type="text" id="contact-name" placeholder="Enter your name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="contact-email">Email Address</label>
+              <input type="email" id="contact-email" placeholder="name@domain.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-msg">Your Health Concerns / Goals</label>
+              <textarea id="contact-msg" placeholder="e.g. PCOS management, Thyroid regulation, Diabetes control, Pregnancy prep..." required></textarea>
+            </div>
+
+            <button type="submit" class="form-submit-btn">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- Booking / Appointment Schedule Modal --- -->
+  <div class="modal-overlay" id="booking-modal">
+    <div class="modal-container">
+      <button class="modal-close" id="modal-close-btn">&times;</button>
+      
+      <h2 class="modal-title">Schedule <span>Consultation Call</span></h2>
+      
+      <div class="booking-expert-details">
+        <img class="booking-expert-img" id="booking-expert-avatar" src="" alt="Coach">
+        <div>
+          <div class="booking-expert-name" id="booking-expert-name">Coach Name</div>
+          <div class="booking-expert-title" id="booking-expert-title">Specialty Title</div>
+        </div>
+      </div>
+
+      <form id="booking-form">
+        <div class="scheduler-grid">
+          <div>
+            <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 10px; color: var(--text-secondary); text-transform: uppercase;">1. Select Date (June 2026)</label>
+            <div class="calendar-widget">
+              <div class="calendar-header">
+                <span class="calendar-month">June 2026</span>
+              </div>
+              <div class="calendar-days">
+                <span class="day-label">M</span>
+                <span class="day-label">T</span>
+                <span class="day-label">W</span>
+                <span class="day-label">T</span>
+                <span class="day-label">F</span>
+                <span class="day-label">S</span>
+                <span class="day-label">S</span>
+                
+                <!-- Date Grid: June 1st, 2026 is a Monday -->
+                <span class="cal-date active" data-date="1">1</span>
+                <span class="cal-date" data-date="2">2</span>
+                <span class="cal-date" data-date="3">3</span>
+                <span class="cal-date" data-date="4">4</span>
+                <span class="cal-date" data-date="5">5</span>
+                <span class="cal-date" data-date="6">6</span>
+                <span class="cal-date" data-date="7">7</span>
+                <span class="cal-date" data-date="8">8</span>
+                <span class="cal-date" data-date="9">9</span>
+                <span class="cal-date" data-date="10">10</span>
+                <span class="cal-date" data-date="11">11</span>
+                <span class="cal-date" data-date="12">12</span>
+                <span class="cal-date" data-date="13">13</span>
+                <span class="cal-date" data-date="14">14</span>
+                <span class="cal-date" data-date="15">15</span>
+                <span class="cal-date" data-date="16">16</span>
+                <span class="cal-date" data-date="17">17</span>
+                <span class="cal-date" data-date="18">18</span>
+                <span class="cal-date" data-date="19">19</span>
+                <span class="cal-date" data-date="20">20</span>
+                <span class="cal-date" data-date="21">21</span>
+                <span class="cal-date" data-date="22">22</span>
+                <span class="cal-date" data-date="23">23</span>
+                <span class="cal-date" data-date="24">24</span>
+                <span class="cal-date" data-date="25">25</span>
+                <span class="cal-date" data-date="26">26</span>
+                <span class="cal-date" data-date="27">27</span>
+                <span class="cal-date" data-date="28">28</span>
+                <span class="cal-date" data-date="29">29</span>
+                <span class="cal-date" data-date="30">30</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slots-widget">
+            <label class="slots-title" style="text-transform: uppercase;">2. Available Slots</label>
+            <div class="slots-list" id="slots-container">
+              <button type="button" class="slot-btn active" data-time="09:00 AM">09:00 AM (IST)</button>
+              <button type="button" class="slot-btn" data-time="11:30 AM">11:30 AM (IST)</button>
+              <button type="button" class="slot-btn" data-time="02:00 PM">02:00 PM (IST)</button>
+              <button type="button" class="slot-btn" data-time="04:30 PM">04:30 PM (IST)</button>
+              <button type="button" class="slot-btn" data-time="07:00 PM">07:00 PM (IST)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group" style="margin-bottom: 24px;">
+          <label for="booking-email">Your Email Address</label>
+          <input type="email" id="booking-email" placeholder="name@domain.com" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Confirm Appointment & Pay</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- --- Toast Notification Popups --- -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- --- Footer --- -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h2 style="display: inline-flex; align-items: center; gap: 8px;"><i data-lucide="sparkles" style="color: var(--primary); width: 22px; height: 22px;"></i> Dhruthi Wellness</h2>
+        <p>Customized lifestyle diet guides designed by Dr. Akhila Konakalla, MSc. Food Nutrition and Dietetics.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon">𝕏</a>
+          <a href="#" class="social-icon">📸</a>
+          <a href="#" class="social-icon">👔</a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h3>Quick Navigation</h3>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About Coach</a></li>
+          <li><a href="#services">Practice Services</a></li>
+          <li><a href="#booking">Consultation Packages</a></li>
+          <li><a href="#booking">Book Session</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h3>Contact & Support</h3>
+        <ul>
+          <li><a href="#contact">Support Hub</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#booking">Consultation Rates</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Dhruthi Wellness Inc. All rights reserved. Designed with passion for fitness & customized dietetics.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
