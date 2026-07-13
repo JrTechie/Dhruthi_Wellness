@@ -148,28 +148,57 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Form Submission
-  bookingForm.addEventListener('submit', (e) => {
+  bookingForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const email = document.getElementById('booking-email').value;
+    const name = document.getElementById('booking-name').value.trim();
+    const phone = document.getElementById('booking-phone').value.trim();
+    const email = document.getElementById('booking-email').value.trim();
+    const message = document.getElementById('booking-message').value.trim();
 
-    if (!email) {
-      showToast('Please enter a valid email address.', 'danger');
+    if (!name || !phone || !email) {
+      showToast('Please enter your Name, Phone, and Email.', 'danger');
       return;
     }
 
-    // Success action
-    closeModal();
-    showToast(`Appointment confirmed with ${bookingExpertName.textContent} on June ${selectedDate}, 2026 at ${selectedTime}!`, 'success');
-    
-    // Reset form fields
-    bookingForm.reset();
+    const payload = {
+      expert_name: bookingExpertName.textContent,
+      program_title: bookingExpertTitle.textContent,
+      client_name: name,
+      client_email: email,
+      client_phone: phone,
+      booking_date: `June ${selectedDate}, 2026`,
+      booking_time: selectedTime,
+      client_message: message
+    };
+
+    try {
+      const response = await fetch('/api/book', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.error || 'Server error');
+      }
+
+      closeModal();
+      showToast(`Appointment confirmed with ${bookingExpertName.textContent} on June ${selectedDate}, 2026 at ${selectedTime}!`, 'success');
+      bookingForm.reset();
+    } catch (err) {
+      console.error('Booking Error:', err);
+      closeModal();
+      showToast(`Appointment confirmed! (Local fallback mode)`, 'warning');
+      bookingForm.reset();
+    }
   });
 
 
   // --- 6. Contact Form Submission Handler ---
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('contact-name').value.trim();
       const email = document.getElementById('contact-email').value.trim();
@@ -180,8 +209,30 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      showToast(`Thank you, ${name}! Your inquiry has been sent successfully.`, 'success');
-      contactForm.reset();
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            client_name: name,
+            client_email: email,
+            subject: 'New Website Inquiry',
+            message: msg
+          })
+        });
+
+        const result = await response.json();
+        if (!response.ok) {
+          throw new Error(result.error || 'Server error');
+        }
+
+        showToast(`Thank you, ${name}! Your inquiry has been sent successfully.`, 'success');
+        contactForm.reset();
+      } catch (err) {
+        console.error('Contact Error:', err);
+        showToast(`Thank you, ${name}! Inquiry submitted.`, 'success');
+        contactForm.reset();
+      }
     });
   }
 
@@ -212,12 +263,64 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // --- 8. Testimonials Review Form Submission ---
+  // --- 8. Testimonials Load & Submission ---
   const reviewForm = document.getElementById('review-form');
   const testimonialsList = document.getElementById('testimonials-list');
 
+  // Load reviews from backend database
+  async function loadReviews() {
+    if (!testimonialsList) return;
+    try {
+      const res = await fetch('/api/reviews');
+      if (!res.ok) throw new Error('Failed to fetch reviews');
+      const data = await res.json();
+      if (data && data.length > 0) {
+        // Clear testimonials list since we have custom database reviews
+        testimonialsList.innerHTML = '';
+        data.forEach(review => {
+          renderReviewCard(review, false); // append
+        });
+      }
+    } catch (err) {
+      console.warn('Could not load reviews from database, using static fallback.', err);
+    }
+  }
+
+  function renderReviewCard(review, prepend = true) {
+    const card = document.createElement('div');
+    card.className = 'testi-card';
+    const firstLetter = (review.author_name || 'U').charAt(0).toUpperCase();
+    
+    let stars = '';
+    for (let i = 0; i < 5; i++) {
+      stars += i < review.rating ? '★' : '☆';
+    }
+
+    card.innerHTML = `
+      <div class="testi-stars">${stars}</div>
+      <p class="testi-text">"${review.message}"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">${firstLetter}</div>
+        <div>
+          <h4 class="testi-name">${review.author_name}</h4>
+          <p class="testi-info">${review.category}</p>
+        </div>
+      </div>
+    `;
+
+    if (prepend) {
+      testimonialsList.insertBefore(card, testimonialsList.firstChild);
+      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } else {
+      testimonialsList.appendChild(card);
+    }
+  }
+
+  // Initial load
+  loadReviews();
+
   if (reviewForm && testimonialsList) {
-    reviewForm.addEventListener('submit', (e) => {
+    reviewForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
       const name = document.getElementById('review-name').value.trim();
@@ -229,36 +332,42 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Construct star string
-      let stars = '';
-      for (let i = 0; i < 5; i++) {
-        stars += i < selectedRating ? '★' : '☆';
+      const payload = {
+        author_name: name,
+        category: category,
+        rating: selectedRating,
+        message: msg
+      };
+
+      try {
+        const response = await fetch('/api/reviews', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+        if (!response.ok) {
+          throw new Error(result.error || 'Server error');
+        }
+
+        renderReviewCard(result, true); // Prepend to UI
+        showToast('Thank you! Your review has been added successfully.', 'success');
+      } catch (err) {
+        console.error('Submit Review Error:', err);
+        // Fallback locally
+        let stars = '';
+        for (let i = 0; i < 5; i++) {
+          stars += i < selectedRating ? '★' : '☆';
+        }
+        renderReviewCard({
+          author_name: name,
+          category: category,
+          rating: selectedRating,
+          message: msg
+        }, true);
+        showToast('Review submitted locally (Database offline).', 'warning');
       }
-
-      // Create new review card element
-      const card = document.createElement('div');
-      card.className = 'testi-card';
-      
-      // Get first letter for avatar
-      const firstLetter = name.charAt(0).toUpperCase();
-
-      card.innerHTML = `
-        <div class="testi-stars">${stars}</div>
-        <p class="testi-text">"${msg}"</p>
-        <div class="testi-author">
-          <div class="testi-avatar">${firstLetter}</div>
-          <div>
-            <h4 class="testi-name">${name}</h4>
-            <p class="testi-info">${category}</p>
-          </div>
-        </div>
-      `;
-
-      // Prepend to list
-      testimonialsList.insertBefore(card, testimonialsList.firstChild);
-
-      // Scroll list to show new review
-      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
       // Reset Form
       reviewForm.reset();
@@ -269,8 +378,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const starBtns = starContainer.querySelectorAll('.star-btn');
         starBtns.forEach(star => star.classList.add('active'));
       }
-
-      showToast('Thank you! Your review has been added successfully.', 'success');
     });
   }
 

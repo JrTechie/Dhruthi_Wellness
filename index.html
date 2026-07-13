@@ -768,9 +768,25 @@
           </div>
         </div>
 
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; margin-top: 20px;">
+          <div class="input-group">
+            <label for="booking-name" style="display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 6px;">Full Name</label>
+            <input type="text" id="booking-name" placeholder="Your Name" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-light); background: var(--bg-surface); color: var(--text-primary); outline: none;">
+          </div>
+          <div class="input-group">
+            <label for="booking-phone" style="display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 6px;">Phone Number</label>
+            <input type="tel" id="booking-phone" placeholder="e.g. +91 9876543210" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-light); background: var(--bg-surface); color: var(--text-primary); outline: none;">
+          </div>
+        </div>
+
+        <div class="input-group" style="margin-bottom: 16px;">
+          <label for="booking-email" style="display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 6px;">Your Email Address</label>
+          <input type="email" id="booking-email" placeholder="name@domain.com" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-light); background: var(--bg-surface); color: var(--text-primary); outline: none;">
+        </div>
+
         <div class="input-group" style="margin-bottom: 24px;">
-          <label for="booking-email">Your Email Address</label>
-          <input type="email" id="booking-email" placeholder="name@domain.com" required>
+          <label for="booking-message" style="display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 6px;">Additional Notes (Optional)</label>
+          <textarea id="booking-message" placeholder="Describe any symptoms, requirements, or health targets..." style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-light); background: var(--bg-surface); color: var(--text-primary); outline: none; resize: vertical; min-height: 80px;"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary" style="width: 100%;">Confirm Appointment & Pay</button>
