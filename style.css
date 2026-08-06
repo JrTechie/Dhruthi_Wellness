@@ -3158,7 +3158,12 @@ body.dark-theme .glass-card:hover {
   .feedback-grid,
   .nutrition-grid-1to1,
   .expert-profile-grid,
-  .packages-grid {
+  .packages-grid,
+  .philosophy-grid,
+  .blog-grid,
+  .about-credentials,
+  .contact-grid,
+  .why-grid {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
@@ -3182,7 +3187,12 @@ body.dark-theme .glass-card:hover {
   .feedback-grid > *,
   .nutrition-grid-1to1 > *,
   .expert-profile-grid > *,
-  .packages-grid > * {
+  .packages-grid > *,
+  .philosophy-grid > *,
+  .blog-grid > *,
+  .about-credentials > *,
+  .contact-grid > *,
+  .why-grid > * {
     flex: 0 0 85% !important;
     min-width: 275px;
     max-width: 85%;
@@ -3201,7 +3211,12 @@ body.dark-theme .glass-card:hover {
   .feedback-grid::-webkit-scrollbar,
   .nutrition-grid-1to1::-webkit-scrollbar,
   .expert-profile-grid::-webkit-scrollbar,
-  .packages-grid::-webkit-scrollbar {
+  .packages-grid::-webkit-scrollbar,
+  .philosophy-grid::-webkit-scrollbar,
+  .blog-grid::-webkit-scrollbar,
+  .about-credentials::-webkit-scrollbar,
+  .contact-grid::-webkit-scrollbar,
+  .why-grid::-webkit-scrollbar {
     height: 5px;
   }
 
@@ -3215,7 +3230,12 @@ body.dark-theme .glass-card:hover {
   .feedback-grid::-webkit-scrollbar-thumb,
   .nutrition-grid-1to1::-webkit-scrollbar-thumb,
   .expert-profile-grid::-webkit-scrollbar-thumb,
-  .packages-grid::-webkit-scrollbar-thumb {
+  .packages-grid::-webkit-scrollbar-thumb,
+  .philosophy-grid::-webkit-scrollbar-thumb,
+  .blog-grid::-webkit-scrollbar-thumb,
+  .about-credentials::-webkit-scrollbar-thumb,
+  .contact-grid::-webkit-scrollbar-thumb,
+  .why-grid::-webkit-scrollbar-thumb {
     background: var(--primary);
     border-radius: 4px;
   }
