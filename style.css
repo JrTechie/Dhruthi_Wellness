@@ -10,61 +10,61 @@
   --font-heading: 'Playfair Display', serif;
   --font-body: 'DM Sans', sans-serif;
 
-  /* Color Palette - Wellness Mode */
-  --bg-main: #fffcfd;         /* Crisp Minty Canvas */
+  /* Color Palette - Sage Green Wellness Mode */
+  --bg-main: #f5f8f5;         /* Soft Serene Sage Canvas */
   --bg-surface: #ffffff;      /* Card Backgrounds */
-  --bg-surface-hover: #fdf4f8;
-  --bg-surface-accent: #f0fdf4;
+  --bg-surface-hover: #eaf0eb;
+  --bg-surface-accent: #e1eae3;
   
-  --bg-dark-section: #0f172a; /* Slate 900 for dark sections */
-  --bg-dark-surface: #1e293b; /* Slate 800 for dark section cards */
+  --bg-dark-section: #0d1a12; /* Deep Forest Sage for dark sections */
+  --bg-dark-surface: #15261b; /* Deep Sage Slate for dark section cards */
   
-  --primary: #d11267;         /* Emerald Green */
-  --primary-hover: #be0b5b;
-  --primary-glow: rgba(209, 18, 103, 0.08);
-  --primary-glow-strong: rgba(209, 18, 103, 0.15);
+  --primary: #3b6e4c;         /* Premium Sage Green */
+  --primary-hover: #2d563b;
+  --primary-glow: rgba(59, 110, 76, 0.08);
+  --primary-glow-strong: rgba(59, 110, 76, 0.16);
   
-  --secondary: #9c27b0;       /* Sky Blue */
-  --secondary-glow: rgba(156, 39, 176, 0.08);
+  --secondary: #588157;       /* Eucalyptus Sage */
+  --secondary-glow: rgba(88, 129, 87, 0.08);
   
-  --accent: #e91e63;          /* Warm Honey Amber */
-  --accent-glow: rgba(233, 30, 99, 0.08);
+  --accent: #d4a373;          /* Warm Earthy Gold */
+  --accent-glow: rgba(212, 163, 115, 0.08);
   
   --danger: #ef4444;
   --success: #10b981;
   
-  --text-primary: #0f172a;    /* Slate 900 for body text */
-  --text-secondary: #475569;  /* Slate 600 */
-  --text-muted: #94a3b8;      /* Slate 400 */
-  --text-light: #f8fafc;
+  --text-primary: #0f1c14;    /* Slate Forest 900 for body text */
+  --text-secondary: #3d5245;  /* Muted Sage Slate */
+  --text-muted: #7c9485;      /* Soft Botanical Slate */
+  --text-light: #f4f7f4;
   
-  --border-light: rgba(15, 23, 42, 0.08);
-  --border-glow: rgba(209, 18, 103, 0.2);
+  --border-light: rgba(15, 28, 20, 0.08);
+  --border-glow: rgba(59, 110, 76, 0.2);
   
   --radius-lg: 24px;
   --radius-md: 16px;
   --radius-sm: 8px;
   
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
-  --shadow-lg: 0 20px 40px -15px rgba(15, 23, 42, 0.12);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 10px 30px -10px rgba(15, 28, 20, 0.08);
+  --shadow-lg: 0 20px 40px -15px rgba(15, 28, 20, 0.12);
   --glass-backdrop: blur(12px);
 }
 
 /* --- Dark Theme Variable Overrides --- */
 body.dark-theme {
-  --bg-main: #0b1329;         /* Midnight Navy Canvas */
-  --bg-surface: #111e38;      /* Deep Card Surface */
-  --bg-surface-hover: #172747;
-  --bg-surface-accent: rgba(209, 18, 103, 0.15);
+  --bg-main: #0c1710;         /* Deep Botanical Sage Canvas */
+  --bg-surface: #142419;      /* Deep Sage Card Surface */
+  --bg-surface-hover: #1c3123;
+  --bg-surface-accent: rgba(59, 110, 76, 0.2);
   
-  --bg-dark-section: #050a14;
-  --bg-dark-surface: #0e172a;
+  --bg-dark-section: #070e0a;
+  --bg-dark-surface: #0e1a12;
   
-  --text-primary: #f8fafc;    /* Crisp Off-White */
-  --text-secondary: #94a3b8;  /* Slate 400 */
-  --text-muted: #64748b;      /* Slate 500 */
+  --text-primary: #f4f8f5;    /* Soft Off-White */
+  --text-secondary: #9cb3a4;  /* Muted Sage */
+  --text-muted: #6b8273;      /* Darker Botanical Slate */
   
   --border-light: rgba(255, 255, 255, 0.08);
   --shadow-md: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
