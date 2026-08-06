@@ -92,7 +92,7 @@ def create_og_image():
     
     # 5. Specialty Chips / Tags at bottom
     chips_y = founder_y + 62
-    chips = ["PCOS & PCOD", "Fertility Care", "Pregnancy", "Weight Loss", "Diabetes"]
+    chips = ["PCOD & PCOS", "Fertility Care", "Pregnancy", "Weight Loss", "Diabetes"]
     chip_x = text_start_x
     
     for chip in chips:
