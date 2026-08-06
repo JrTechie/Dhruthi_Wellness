@@ -4,10 +4,13 @@
   "description": "Customized wellness and metabolic diet therapy by Dr. Akhila Konakalla",
   "main": "index.html",
   "scripts": {
-    "dev": "vercel dev"
+    "start": "node server.js",
+    "dev": "node server.js",
+    "vercel-dev": "vercel dev"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.48.0",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "express": "^5.2.1"
   }
 }

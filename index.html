@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dhruthi Wellness — Akhila Konakalla | Expert Customized & Lifestyle Coaching</title>
-  <meta name="description" content="Customized lifestyle diet plans designed by Akhila Konakalla, MSc. Food Nutrition and Dietetics.">
+  <title>Dhruthi Wellness — Dt. Akhila Konakalla | Expert Clinical Nutrition & Lifestyle Coaching</title>
+  <meta name="description" content="Customized clinical diet protocols for Diabetes, Thyroid, PCOS/PCOD, Fertility, and Lifestyle Wellness by Dt. Akhila Konakalla, MSc. Food Nutrition and Dietetics.">
   <link rel="stylesheet" href="style.css">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -13,9 +13,9 @@
   <!-- --- Header / Navigation --- -->
   <header id="header">
     <div class="container nav-wrapper">
-      <a href="#" class="logo" id="nav-logo" style="display: inline-flex; align-items: center; gap: 8px;">
-        <i data-lucide="sparkles" class="logo-icon" style="color: var(--primary); width: 24px; height: 24px;"></i>
-        Dhruthi Wellness
+      <a href="index.html" class="logo" id="nav-logo" style="display: inline-flex; align-items: center; gap: 10px;">
+        <img src="Images/Logo_D.png" alt="Dhruthi Wellness Logo" style="height: 40px; width: auto;" onerror="this.style.display='none'">
+        <span style="font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; letter-spacing: -0.5px;">Dhruthi Wellness</span>
       </a>
       
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">
@@ -28,11 +28,14 @@
         <li><a href="#hero" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#booking">Packages</a></li>
+        <li><a href="#pricing">Price Plans</a></li>
+        <li><a href="#gallery">Nutrition Guide</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
         <li><a href="#blog">Blog</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme" style="outline: none; margin-right: 10px; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: none; background: rgba(209, 18, 103, 0.05); color: var(--primary); cursor: pointer;"><i data-lucide="moon" style="width: 18px; height: 18px;"></i></button></li>
-        <li><a href="#booking" class="nav-cta-btn">Book Consultation</a></li>
+        <li><a href="payment_portal.html" style="color: var(--primary); font-weight: 700; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;"><i data-lucide="receipt" style="width: 14px; height: 14px;"></i> Receipts</a></li>
+        <li><button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme" style="outline: none; margin-right: 6px; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: none; background: rgba(209, 18, 103, 0.05); color: var(--primary); cursor: pointer;"><i data-lucide="moon" style="width: 18px; height: 18px;"></i></button></li>
+        <li><a href="#booking" class="nav-cta-btn" style="white-space: nowrap;">Book Consultation</a></li>
       </ul>
     </div>
   </header>
@@ -41,17 +44,18 @@
   <section class="hero" id="hero">
     <div class="container hero-grid">
       <div class="hero-content">
-        <div class="hero-tag" style="text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Nourish — Balance — Transform</div>
-        <h1 class="hero-title">Customized Nutrition by <span>Dr. Akhila Konakalla</span></h1>
-        <p class="hero-desc">Specialized medical nutrition therapy for Diabetes, Thyroid, PCOS/PCOD, Fertility, and Overall Wellness. Revitalize your metabolic health with evidence-based, customized diet protocols.</p>
+        <div class="hero-tag" style="text-transform: uppercase; font-weight: 700; letter-spacing: 1.2px;">Nourish — Balance — Transform</div>
+        <h1 class="hero-title">Precision Clinical Nutrition & Metabolic Therapy by <span>Dt. Akhila Konakalla</span></h1>
+        <p class="hero-desc">Specialized medical nutrition therapy for Diabetes Control, Hypothyroid Regulation, PCOS/PCOD Balance, Fertility Preparation, and Metabolic Longevity. Revitalize your body with evidence-based, 100% customized diet charts.</p>
+        
         <div class="hero-ctas">
           <a href="#booking" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
             <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
             Book Consultation
           </a>
-          <a href="#booking" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+          <a href="#pricing" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
             <i data-lucide="award" style="width: 18px; height: 18px;"></i>
-            View Packages
+            Explore Price Plans
           </a>
         </div>
         
@@ -61,35 +65,20 @@
             <span class="stat-label">Clients Guided</span>
           </div>
           <div class="stat-item">
-            <span class="stat-num">5+ Yrs</span>
-            <span class="stat-label">Experience</span>
-          </div>
-          <div class="stat-item">
             <span class="stat-num">100%</span>
-            <span class="stat-label">Custom Plans</span>
+            <span class="stat-label">Customized Diets</span>
           </div>
         </div>
       </div>
       
       <div class="hero-visual" style="display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
-        <!-- Beautiful Recipe Widget Frame -->
-        <div style="width: 100%; max-width: 380px; border-radius: var(--radius-lg); border: 2.5px solid rgba(209, 18, 103, 0.15); overflow: hidden; background: var(--bg-surface); box-shadow: var(--shadow-lg); transition: var(--transition-smooth); position: relative;">
-          <img src="healthy_food.png" alt="Nutritious Avocado and Seed Bowl" style="width: 100%; display: block; height: 380px; object-fit: cover;">
-          <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%); padding: 24px 20px; text-align: left; color: white;">
-            <span style="font-size: 0.65rem; font-weight: 700; background: var(--primary); color: white; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; margin-bottom: 8px; display: inline-block; letter-spacing: 0.5px;">Custom Recipe of the Day</span>
-            <h3 style="font-size: 1.2rem; font-family: var(--font-heading); margin-bottom: 4px; color: white; font-weight: 600;">Superfood Quinoa & Avocado Bowl</h3>
-            <p style="font-size: 0.75rem; opacity: 0.85; margin-bottom: 0;">Balanced macro breakdown: 420 kcal • 45g Carbs • 18g Protein • 20g Fats</p>
-          </div>
-        </div>
-        
-        <!-- Floating Active Status Widget -->
-        <div style="position: absolute; top: -10px; left: -10px; background: var(--bg-surface); border: 1.5px solid rgba(209, 18, 103, 0.15); border-radius: 12px; padding: 10px 14px; display: inline-flex; align-items: center; gap: 10px; box-shadow: var(--shadow-md); z-index: 2;">
-          <div style="background: rgba(209, 18, 103, 0.08); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary);">
-            <i data-lucide="check" style="width: 16px; height: 16px;"></i>
-          </div>
-          <div style="text-align: left;">
-            <div style="font-size: 0.72rem; font-weight: 800; color: var(--text-primary);">100% Customized</div>
-            <div style="font-size: 0.62rem; color: var(--text-secondary);">Tailored to your biomarkers</div>
+        <!-- Glassmorphism Visual Showcase Frame -->
+        <div class="glass-hero-frame" style="width: 100%; max-width: 400px; border-radius: var(--radius-lg); overflow: hidden; position: relative; box-shadow: var(--shadow-lg);">
+          <img src="Images/clinical_wellness_hero.png" alt="Clinical Nutrition Showcase" style="width: 100%; display: block; height: 400px; object-fit: cover; filter: brightness(0.95);">
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0) 100%); padding: 24px 20px; text-align: left; color: white;">
+            <span style="font-size: 0.68rem; font-weight: 700; background: var(--primary); color: white; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; margin-bottom: 8px; display: inline-block; letter-spacing: 0.6px;">Evidence-Based Therapy</span>
+            <h3 style="font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 4px; color: white; font-weight: 600;">Metabolic Wellness & Precision Dietetics</h3>
+            <p style="font-size: 0.78rem; opacity: 0.9; margin-bottom: 0;">Tailored therapeutic protocols for lasting metabolic balance.</p>
           </div>
         </div>
       </div>
@@ -103,15 +92,17 @@
       <span class="ticker-item">Customized Diet Specialist</span>
       <span class="ticker-item">100% Customized Meal Plans</span>
       <span class="ticker-item">Hormonal Balance Protocols</span>
-      <span class="ticker-item">Certified Consultation Practice</span>
+      <span class="ticker-item">Certified Clinical Practice</span>
       <span class="ticker-item">Diabetes & Thyroid Resets</span>
-      <!-- Duplicate items for infinite marquee effect -->
+      <span class="ticker-item">Zero Starvation Diets</span>
+      <!-- Duplicate items for infinite scrolling loop -->
       <span class="ticker-item">Nourish — Balance — Transform</span>
       <span class="ticker-item">Customized Diet Specialist</span>
       <span class="ticker-item">100% Customized Meal Plans</span>
       <span class="ticker-item">Hormonal Balance Protocols</span>
-      <span class="ticker-item">Certified Consultation Practice</span>
+      <span class="ticker-item">Certified Clinical Practice</span>
       <span class="ticker-item">Diabetes & Thyroid Resets</span>
+      <span class="ticker-item">Zero Starvation Diets</span>
     </div>
   </div>
 
@@ -119,15 +110,15 @@
   <section class="about-section" id="about">
     <div class="container about-grid">
       <div class="about-image-wrapper">
-        <div class="about-image-frame" style="border: 2px solid rgba(209, 18, 103, 0.15); overflow: hidden; border-radius: var(--radius-lg);">
-          <img src="akhila.jpg" alt="Dr. Akhila Konakalla Dietitian" style="width: 100%; height: 480px; object-fit: cover; object-position: center 10%; display: block;">
+        <div class="about-image-frame glass-card" style="overflow: hidden; border-radius: var(--radius-lg); position: relative; padding: 8px;">
+          <img src="Images/AK47-Transperant.png" alt="Dt. Akhila Konakalla Founder & CEO" style="width: 100%; height: 500px; object-fit: cover; object-position: center top; display: block; border-radius: 18px;" onerror="this.src='Images/Akhila.jpeg'">
         </div>
       </div>
       
       <div class="about-content">
-        <span class="section-tag">About Founder</span>
-        <h2 class="section-title">Hormonal Balance & <em>Metabolic Wellness Specialist</em></h2>
-        <p class="hero-desc">Dr. Akhila Konakalla holds an MSc. in Food Nutrition and Dietetics from Andhra University. She specializes in customized, hormone-balancing dietary programs, helping clients manage Diabetes, Thyroid function, PCOS/PCOD, and Fertility concerns naturally through evidence-based nutrition.</p>
+        <span class="section-tag" style="background: rgba(209, 18, 103, 0.1); color: var(--primary); padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.8px; text-transform: uppercase;">Founder & Chief Executive Officer</span>
+        <h2 class="section-title" style="margin-top: 10px;">Dt. Akhila Konakalla, MSc. — <em>Chief Clinical Dietitian & CEO</em></h2>
+        <p class="hero-desc">Dt. Akhila Konakalla holds an MSc. in Food Nutrition and Dietetics from Andhra University. As the Founder and Chief Executive Officer of Dhruthi Wellness, she leads therapeutic, hormone-balancing dietary protocols that empower clients to manage Diabetes, Hypothyroidism, PCOS/PCOD, and Fertility concerns naturally without extreme restrictions.</p>
         
         <div class="about-credentials">
           <div class="cred-card" style="display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px;">
@@ -136,7 +127,7 @@
             </div>
             <div class="cred-text">
               <h4>MSc. Food Nutrition & Dietetics</h4>
-              <p>Professional Degree from Andhra University</p>
+              <p>Postgraduate degree from Andhra University with clinical research focus</p>
             </div>
           </div>
 
@@ -145,8 +136,8 @@
               <i data-lucide="stethoscope" style="width: 24px; height: 24px;"></i>
             </div>
             <div class="cred-text">
-              <h4>Endocrine & Metabolic Focus</h4>
-              <p>Specializing in Diabetes, Thyroid, and PCOS/PCOD</p>
+              <h4>Endocrine & Metabolic Protocol Design</h4>
+              <p>Specializing in HbA1c reduction, T3/T4 thyroid support, and androgen control</p>
             </div>
           </div>
 
@@ -155,8 +146,8 @@
               <i data-lucide="heart" style="width: 24px; height: 24px;"></i>
             </div>
             <div class="cred-text">
-              <h4>Fertility & Overall Wellness</h4>
-              <p>Natural prenatal diet charts and sustainable lifetime energy plans</p>
+              <h4>Fertility & Prenatal Nutrition</h4>
+              <p>Natural prenatal prep, egg quality diet charts, and sustainable health habits</p>
             </div>
           </div>
         </div>
@@ -198,12 +189,13 @@
     </div>
   </section>
 
+  <!-- --- Services / Specialized Programs --- -->
   <section id="services">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Customized Specialties</span>
+        <span class="section-tag">Clinical Specialties</span>
         <h2 class="section-title">Specialized Nutritional <em>Programs</em></h2>
-        <p class="section-subtitle">Targeted customized nutrition therapies designed by Dr. Akhila Konakalla to regulate hormones, stabilize markers, and reset your health.</p>
+        <p class="section-subtitle">Targeted customized nutrition therapies designed by Dt. Akhila Konakalla to regulate hormones, stabilize markers, and reset your health.</p>
       </div>
       
       <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
@@ -214,7 +206,7 @@
           </div>
           <h3 class="service-title" style="font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 12px; color: var(--text-primary);">Diabetes Control</h3>
           <p class="service-desc" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">Therapeutic nutrition plans targeting blood sugar stability, insulin sensitivity improvement, HbA1c reduction, and glycemic load balance.</p>
-          <a href="#booking" class="service-link" style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Book Program &rarr;</a>
+          <a href="#booking" class="service-link book-btn" data-expert="Dt. Akhila Konakalla - Diabetes Control" data-image="Images/AK47-Transperant.png" data-title="HbA1c & Blood Sugar Management" style="font-size: 0.8rem; font-weight: 700; color: var(--primary); cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">Book Program &rarr;</a>
         </div>
 
         <!-- Service 2: Fertility Nutrition -->
@@ -224,17 +216,17 @@
           </div>
           <h3 class="service-title" style="font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 12px; color: var(--text-primary);">Fertility Nutrition</h3>
           <p class="service-desc" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">Nutrient-dense, customized diet charts designed to optimize reproductive health, balance prenatal hormone pathways, and support successful pregnancy preparation.</p>
-          <a href="#booking" class="service-link" style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Book Program &rarr;</a>
+          <a href="#booking" class="service-link book-btn" data-expert="Dt. Akhila Konakalla - Fertility Nutrition" data-image="Images/AK47-Transperant.png" data-title="Prenatal & Egg Quality Support" style="font-size: 0.8rem; font-weight: 700; color: var(--primary); cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">Book Program &rarr;</a>
         </div>
 
-        <!-- Service 3: PCOS/PCOD Balance -->
+        <!-- Service 3: PCOS/PCOD Management -->
         <div class="service-card" style="border: 1px solid rgba(209, 18, 103, 0.08); background: var(--bg-surface); padding: 32px 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-md); transition: var(--transition-smooth);">
           <div class="service-icon" style="color: var(--primary); margin-bottom: 16px;">
             <i data-lucide="sparkles" style="width: 32px; height: 32px;"></i>
           </div>
           <h3 class="service-title" style="font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 12px; color: var(--text-primary);">PCOS/PCOD Management</h3>
           <p class="service-desc" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">Anti-inflammatory and low-insulin spike diet charts to regulate cycle regularity, combat acne/hirsutism, and curb insulin resistance naturally.</p>
-          <a href="#booking" class="service-link" style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Book Program &rarr;</a>
+          <a href="#booking" class="service-link book-btn" data-expert="Dt. Akhila Konakalla - PCOS/PCOD Balance" data-image="Images/AK47-Transperant.png" data-title="Hormonal Cycle Regulation" style="font-size: 0.8rem; font-weight: 700; color: var(--primary); cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">Book Program &rarr;</a>
         </div>
 
         <!-- Service 4: Thyroid Regulation -->
@@ -244,7 +236,7 @@
           </div>
           <h3 class="service-title" style="font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 12px; color: var(--text-primary);">Thyroid Regulation</h3>
           <p class="service-desc" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">Nutritional thyroid protocols focused on zinc, selenium, and goitrogen management to optimize T3/T4 conversion and reset thyroid-sluggish metabolism.</p>
-          <a href="#booking" class="service-link" style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Book Program &rarr;</a>
+          <a href="#booking" class="service-link book-btn" data-expert="Dt. Akhila Konakalla - Thyroid Regulation" data-image="Images/AK47-Transperant.png" data-title="T3/T4 Metabolism Protocol" style="font-size: 0.8rem; font-weight: 700; color: var(--primary); cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">Book Program &rarr;</a>
         </div>
 
         <!-- Service 5: Overall Health & Wellness -->
@@ -254,287 +246,323 @@
           </div>
           <h3 class="service-title" style="font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 12px; color: var(--text-primary);">Overall Wellness</h3>
           <p class="service-desc" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">Long-term lifestyle meal schedules designed to boost immunity, restore natural energy, manage sustainable weight, and maintain vibrant daily health.</p>
-          <a href="#booking" class="service-link" style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Book Program &rarr;</a>
+          <a href="#booking" class="service-link book-btn" data-expert="Dt. Akhila Konakalla - Overall Wellness" data-image="Images/AK47-Transperant.png" data-title="Sustainable Lifestyle & Energy" style="font-size: 0.8rem; font-weight: 700; color: var(--primary); cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">Book Program &rarr;</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- --- How It Works Section (Contrasting Theme) --- -->
-  <section class="how-section" id="how-it-works">
+  <!-- --- Official Price Plans Section --- -->
+  <section id="pricing" style="background: var(--bg-main);">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag" style="background: rgba(255,255,255,0.06); color: #ffffff;">The Journey</span>
-        <h2 class="section-title">How the Program <em>Works</em></h2>
-        <p class="section-subtitle">Achieve your health results in three clear, structured phases.</p>
+        <span class="section-tag">Transparent Pricing</span>
+        <h2 class="section-title">Official Consultation <em>Price Plans</em></h2>
+        <p class="section-subtitle">Select your plan tier and duration. All plans include 100% customized diet charts designed by Dt. Akhila Konakalla.</p>
       </div>
 
-      <div class="how-steps">
-        <div class="step-card">
-          <div class="step-num">01</div>
-          <h3 class="step-title">1-on-1 Consultation</h3>
-          <p class="step-desc">Schedule your online assessment. We will audit your blood panels, medical history, symptoms, and daily wellness habits.</p>
-        </div>
-
-        <div class="step-card">
-          <div class="step-num">02</div>
-          <h3 class="step-title">Diet Plan Formulation</h3>
-          <p class="step-desc">Dr. Akhila designs your highly personalized, nutrient-dense diet chart calculated for your specific hormone and metabolic markers.</p>
-        </div>
-
-        <div class="step-card">
-          <div class="step-num">03</div>
-          <h3 class="step-title">Fortnightly Adjustments</h3>
-          <p class="step-desc">Receive bi-weekly reviews, track progress markers, and enjoy direct WhatsApp Q&A support to easily adapt your meals.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- --- Why Choose Us Section --- -->
-  <section class="why-section" id="why-us">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Key Values</span>
-        <h2 class="section-title">Customized Guidance, <em>Real Results</em></h2>
-        <p class="section-subtitle">Why clients trust Akhila Konakalla for metabolic resets and lifestyle improvements.</p>
+      <!-- Duration Switcher Tabs -->
+      <div class="plan-switcher-container">
+        <button class="plan-tab-btn active" data-duration="1">1 Month Plan</button>
+        <button class="plan-tab-btn" data-duration="3">3 Months Plan <span class="save-badge">POPULAR</span></button>
+        <button class="plan-tab-btn" data-duration="6">6 Months Plan <span class="save-badge">BEST VALUE</span></button>
       </div>
 
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-card-icon"><i data-lucide="check-circle" style="width: 20px; height: 20px;"></i></div>
-          <div class="why-card-text">
-            <h4>100% Customized Ratios</h4>
-            <p>We do not use boilerplate charts. Every macro breakdown is computed directly for your metabolic footprint.</p>
-          </div>
-        </div>
-
-        <div class="why-card">
-          <div class="why-card-icon"><i data-lucide="slash" style="width: 20px; height: 20px;"></i></div>
-          <div class="why-card-text">
-            <h4>Zero Starvation Diets</h4>
-            <p>Our focus is on sustainable eating habits that keep your hormone levels and daily energy stable.</p>
-          </div>
-        </div>
-
-        <div class="why-card">
-          <div class="why-card-icon"><i data-lucide="activity" style="width: 20px; height: 20px;"></i></div>
-          <div class="why-card-text">
-            <h4>Hormonal & Glycemic Audits</h4>
-            <p>We evaluate thyroid panels, blood sugar logs, and cycle histories to structure your customized nutritional plan.</p>
-          </div>
-        </div>
-
-        <div class="why-card">
-          <div class="why-card-icon"><i data-lucide="message-square" style="width: 20px; height: 20px;"></i></div>
-          <div class="why-card-text">
-            <h4>Direct Consult Support</h4>
-            <p>Receive WhatsApp text responses and direct check-ins from Akhila to resolve food choice questions instantly.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- --- Booking Consultation Packages Section --- -->
-  <section id="booking">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Customized Programs</span>
-        <h2 class="section-title">Personalized Diet Consultations</h2>
-        <p class="section-subtitle">Select a program to book your consultation with Dr. Akhila. All consultations include customized diet charts.</p>
-      </div>
-
-      <div class="freelancers-grid" id="freelancers-container">
-        <!-- Package 1: Diabetes & Thyroid Reset -->
-        <div class="freelancer-card" data-specialty="diabetes thyroid">
+      <div class="freelancers-grid">
+        <!-- Plan 1: Dhruthi Pro -->
+        <div class="freelancer-card glass-card">
           <div class="freelancer-header">
-            <div style="display: flex; flex-direction: column; gap: 12px; text-align: left;">
+            <div style="display: flex; flex-direction: column; gap: 8px; text-align: left;">
               <div style="color: var(--primary);">
-                <i data-lucide="activity" style="width: 28px; height: 28px;"></i>
+                <i data-lucide="leaf" style="width: 28px; height: 28px;"></i>
               </div>
               <div class="freelancer-info">
-                <h3>Diabetes & Thyroid Reset</h3>
-                <p>Hormone & Metabolic Support</p>
-                <div class="rating-badge" style="background: rgba(209, 18, 103, 0.08); color: var(--primary); padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; width: fit-content; margin-top: 6px;">★ Key Program</div>
+                <h3>DHRUTHI PRO</h3>
+                <p>No Medical Condition</p>
+                <div class="rating-badge" style="background: rgba(209, 18, 103, 0.08); color: var(--primary); padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; width: fit-content; margin-top: 6px;">Weight & Lifestyle Reset</div>
               </div>
             </div>
-            <div class="card-chip"></div>
           </div>
-          <p class="freelancer-bio">Targeted nutritional therapy to stabilize blood sugar, manage insulin sensitivity, support T3/T4 thyroid conversion, and reset sluggish metabolisms through evidence-based dietary habits.</p>
+          <p class="freelancer-bio">Ideal for individuals without underlying medical conditions. Customized calorie and macro breakdowns for weight loss, healthy weight gain, and active lifestyle management.</p>
           <div class="freelancer-tags">
-            <span class="specialty-tag">HbA1c Stabilization</span>
-            <span class="specialty-tag">Goitrogen Guidance</span>
-            <span class="specialty-tag">T3/T4 Support</span>
+            <span class="specialty-tag">Weight Loss</span>
+            <span class="specialty-tag">Weight Gain</span>
+            <span class="specialty-tag">Lifestyle Routine</span>
           </div>
           <div class="freelancer-meta">
             <div class="meta-item">
-              <span>Session Fee</span>
-              <strong>$60</strong>
+              <span>Original Rate</span>
+              <strong id="price-pro-strike" style="text-decoration: line-through; opacity: 0.6; font-size: 0.95rem;">₹2,599</strong>
             </div>
             <div class="meta-item">
-              <span>Follow-ups</span>
-              <strong>Includes 1 Check-in</strong>
+              <span>Offer Price</span>
+              <strong id="price-pro-promo" style="color: var(--primary); font-size: 1.3rem;">₹1,299</strong>
+              <span id="price-pro-badge" style="font-size: 0.65rem; color: #10b981; font-weight: 800;">50% OFF</span>
             </div>
           </div>
-          <button class="btn btn-primary book-btn" data-expert="Dr. Akhila Konakalla - Diabetes & Thyroid Reset" data-image="akhila.jpg" data-title="Hormone & Metabolic Support">Book Reset Plan</button>
+          <button class="btn btn-primary book-btn" data-expert="Dt. Akhila Konakalla - DHRUTHI PRO" data-image="Images/AK47-Transperant.png" data-title="Weight & Lifestyle Reset">Book Dhruthi Pro</button>
         </div>
 
-        <!-- Package 2: PCOS/PCOD & Fertility Balance -->
-        <div class="freelancer-card" data-specialty="pcos pcod fertility">
+        <!-- Plan 2: Dhruthi Elite -->
+        <div class="freelancer-card glass-card" style="border-color: var(--primary); box-shadow: var(--shadow-md);">
           <div class="freelancer-header">
-            <div style="display: flex; flex-direction: column; gap: 12px; text-align: left;">
+            <div style="display: flex; flex-direction: column; gap: 8px; text-align: left;">
               <div style="color: var(--primary);">
-                <i data-lucide="heart" style="width: 28px; height: 28px;"></i>
+                <i data-lucide="stethoscope" style="width: 28px; height: 28px;"></i>
               </div>
               <div class="freelancer-info">
-                <h3>PCOS & Fertility Balance</h3>
-                <p>Hormonal & Prenatal Health</p>
-                <div class="rating-badge" style="background: rgba(245, 158, 11, 0.15); color: var(--accent); padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; width: fit-content; margin-top: 6px;">★ Best Seller</div>
+                <h3>DHRUTHI ELITE</h3>
+                <p>Medical Condition Support</p>
+                <div class="rating-badge" style="background: rgba(245, 158, 11, 0.15); color: var(--accent); padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; width: fit-content; margin-top: 6px;">★ MOST POPULAR</div>
               </div>
             </div>
-            <div class="card-chip"></div>
           </div>
-          <p class="freelancer-bio">Anti-inflammatory, low-glycemic dietary protocols to manage PCOS symptoms, regulate cycles naturally, reduce insulin spikes, and optimize the body for healthy pregnancy preparation.</p>
+          <p class="freelancer-bio">Clinical diet therapy specifically formulated for managing Diabetes, Hypothyroidism, PCOS/PCOD, Hypertension, and metabolic marker correction.</p>
           <div class="freelancer-tags">
-            <span class="specialty-tag">Cycle-Syncing Diet</span>
-            <span class="specialty-tag">Anti-inflammatory Meals</span>
-            <span class="specialty-tag">Prenatal Prep</span>
+            <span class="specialty-tag">Diabetes Care</span>
+            <span class="specialty-tag">PCOS/PCOD Reset</span>
+            <span class="specialty-tag">Thyroid Support</span>
           </div>
           <div class="freelancer-meta">
             <div class="meta-item">
-              <span>Session Fee</span>
-              <strong>$70</strong>
+              <span>Original Rate</span>
+              <strong id="price-elite-strike" style="text-decoration: line-through; opacity: 0.6; font-size: 0.95rem;">₹3,399</strong>
             </div>
             <div class="meta-item">
-              <span>Follow-ups</span>
-              <strong>Includes 1 Check-in</strong>
+              <span>Offer Price</span>
+              <strong id="price-elite-promo" style="color: var(--primary); font-size: 1.3rem;">₹1,699</strong>
+              <span id="price-elite-badge" style="font-size: 0.65rem; color: #10b981; font-weight: 800;">50% OFF</span>
             </div>
           </div>
-          <button class="btn btn-primary book-btn" data-expert="Dr. Akhila Konakalla - PCOS & Fertility Balance" data-image="akhila.jpg" data-title="Hormonal & Prenatal Health">Book Balance Plan</button>
+          <button class="btn btn-primary book-btn" data-expert="Dt. Akhila Konakalla - DHRUTHI ELITE" data-image="Images/AK47-Transperant.png" data-title="Medical Condition Therapy">Book Dhruthi Elite</button>
         </div>
 
-        <!-- Package 3: Active Metabolic & Overall Wellness -->
-        <div class="freelancer-card" data-specialty="wellness weight">
+        <!-- Plan 3: Dhruthi Preconception -->
+        <div class="freelancer-card glass-card">
           <div class="freelancer-header">
-            <div style="display: flex; flex-direction: column; gap: 12px; text-align: left;">
+            <div style="display: flex; flex-direction: column; gap: 8px; text-align: left;">
               <div style="color: var(--primary);">
-                <i data-lucide="sparkles" style="width: 28px; height: 28px;"></i>
+                <i data-lucide="baby" style="width: 28px; height: 28px;"></i>
               </div>
               <div class="freelancer-info">
-                <h3>Active Metabolic Wellness</h3>
-                <p>Lifestyle & Energy Optimization</p>
-                <div class="rating-badge" style="background: rgba(6, 182, 212, 0.15); color: var(--secondary); padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; width: fit-content; margin-top: 6px;">★ Sustainable Care</div>
+                <h3>DHRUTHI PRECONCEPTION</h3>
+                <p>Fertility & Prenatal Protocol</p>
+                <div class="rating-badge" style="background: rgba(6, 182, 212, 0.15); color: var(--secondary); padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; width: fit-content; margin-top: 6px;">Specialized Fertility Care</div>
               </div>
             </div>
-            <div class="card-chip"></div>
           </div>
-          <p class="freelancer-bio">Long-term customized dietary coaching designed to enhance immune response, boost daily energy levels, manage sustainable weight, and maintain vibrant overall health.</p>
+          <p class="freelancer-bio">Specialized reproductive nutrition protocol to optimize egg quality, enhance uterine lining health, support IVF cycles, and prepare the body for healthy conception.</p>
           <div class="freelancer-tags">
-            <span class="specialty-tag">Energy Reset</span>
-            <span class="specialty-tag">Whole Food Diet</span>
-            <span class="specialty-tag">Sustainable Weight</span>
+            <span class="specialty-tag">Fertility Prep</span>
+            <span class="specialty-tag">Pregnancy Diet</span>
+            <span class="specialty-tag">IVF Support</span>
           </div>
           <div class="freelancer-meta">
             <div class="meta-item">
-              <span>Session Fee</span>
-              <strong>$50</strong>
+              <span>Original Rate</span>
+              <strong id="price-prec-strike" style="text-decoration: line-through; opacity: 0.6; font-size: 0.95rem;">₹3,999</strong>
             </div>
             <div class="meta-item">
-              <span>Follow-ups</span>
-              <strong>Includes 1 Check-in</strong>
+              <span>Offer Price</span>
+              <strong id="price-prec-promo" style="color: var(--primary); font-size: 1.3rem;">₹1,999</strong>
+              <span id="price-prec-badge" style="font-size: 0.65rem; color: #10b981; font-weight: 800;">50% OFF</span>
             </div>
           </div>
-          <button class="btn btn-primary book-btn" data-expert="Dr. Akhila Konakalla - Active Metabolic Wellness" data-image="akhila.jpg" data-title="Lifestyle & Energy Optimization">Book Wellness Plan</button>
+          <button class="btn btn-primary book-btn" data-expert="Dt. Akhila Konakalla - DHRUTHI PRECONCEPTION" data-image="Images/AK47-Transperant.png" data-title="Fertility & Prenatal Protocol">Book Preconception</button>
+        </div>
+      </div>
+
+      <!-- Inclusions Banner -->
+      <div style="margin-top: 48px; text-align: center; padding: 32px; border-radius: var(--radius-lg);" class="glass-card">
+        <h3 style="font-size: 1.15rem; font-family: var(--font-heading); margin-bottom: 20px; color: var(--primary); text-transform: uppercase; letter-spacing: 1px;">Every Consultation Plan Includes</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px;">
+          <div style="text-align: center;">
+            <i data-lucide="utensils" style="color: var(--primary); width: 24px; height: 24px; margin-bottom: 8px;"></i>
+            <h4 style="font-size: 0.85rem; margin-bottom: 4px;">Personalized Diet Chart</h4>
+            <p style="font-size: 0.72rem; color: var(--text-secondary);">Calculated for your exact macros</p>
+          </div>
+          <div style="text-align: center;">
+            <i data-lucide="sun" style="color: var(--primary); width: 24px; height: 24px; margin-bottom: 8px;"></i>
+            <h4 style="font-size: 0.85rem; margin-bottom: 4px;">Lifestyle Guidance</h4>
+            <p style="font-size: 0.72rem; color: var(--text-secondary);">Sleep, stress & hydration habits</p>
+          </div>
+          <div style="text-align: center;">
+            <i data-lucide="check-square" style="color: var(--primary); width: 24px; height: 24px; margin-bottom: 8px;"></i>
+            <h4 style="font-size: 0.85rem; margin-bottom: 4px;">Weekly Progress Review</h4>
+            <p style="font-size: 0.72rem; color: var(--text-secondary);">Regular check-ins & adjustments</p>
+          </div>
+          <div style="text-align: center;">
+            <i data-lucide="message-circle" style="color: var(--primary); width: 24px; height: 24px; margin-bottom: 8px;"></i>
+            <h4 style="font-size: 0.85rem; margin-bottom: 4px;">WhatsApp Q&A Support</h4>
+            <p style="font-size: 0.72rem; color: var(--text-secondary);">Direct text support from Dt. Akhila</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PDF Brochures Section -->
+      <div style="margin-top: 40px;">
+        <h3 style="font-size: 1.1rem; font-family: var(--font-heading); margin-bottom: 16px; color: var(--text-primary); text-align: center;">Official Program Brochures (PDF Downloads)</h3>
+        <div class="brochures-grid">
+          <div class="brochure-card glass-card">
+            <div>
+              <h4 style="font-size: 0.95rem; margin-bottom: 4px;">Dhruthi Pro Brochure</h4>
+              <p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 16px;">Complete guide for Weight & Lifestyle Reset</p>
+            </div>
+            <a href="Brochuers,plans/Dhruthi_Pro_Brochure.pdf" target="_blank" class="btn btn-secondary" style="font-size: 0.75rem; padding: 8px 12px; display: inline-flex; align-items: center; gap: 6px; justify-content: center;"><i data-lucide="download" style="width: 14px; height: 14px;"></i> Download PDF</a>
+          </div>
+
+          <div class="brochure-card glass-card">
+            <div>
+              <h4 style="font-size: 0.95rem; margin-bottom: 4px;">Dhruthi Elite Brochure</h4>
+              <p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 16px;">Medical Nutrition Therapy for Diabetes & PCOS</p>
+            </div>
+            <a href="Brochuers,plans/Dhruthi_Elite_Brochure.pdf" target="_blank" class="btn btn-secondary" style="font-size: 0.75rem; padding: 8px 12px; display: inline-flex; align-items: center; gap: 6px; justify-content: center;"><i data-lucide="download" style="width: 14px; height: 14px;"></i> Download PDF</a>
+          </div>
+
+          <div class="brochure-card glass-card">
+            <div>
+              <h4 style="font-size: 0.95rem; margin-bottom: 4px;">Dhruthi Preconception Brochure</h4>
+              <p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 16px;">Fertility & Prenatal Dietary Protocol</p>
+            </div>
+            <a href="Brochuers,plans/Dhruthi_Preconception_Brochure.pdf" target="_blank" class="btn btn-secondary" style="font-size: 0.75rem; padding: 8px 12px; display: inline-flex; align-items: center; gap: 6px; justify-content: center;"><i data-lucide="download" style="width: 14px; height: 14px;"></i> Download PDF</a>
+          </div>
+
+          <div class="brochure-card glass-card">
+            <div>
+              <h4 style="font-size: 0.95rem; margin-bottom: 4px;">Full Pricing Poster</h4>
+              <p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 16px;">Consolidated Price Sheet & Discount Matrix</p>
+            </div>
+            <a href="Brochuers,plans/Dhruthi_Price_Plans_new.pdf" target="_blank" class="btn btn-primary" style="font-size: 0.75rem; padding: 8px 12px; display: inline-flex; align-items: center; gap: 6px; justify-content: center;"><i data-lucide="download" style="width: 14px; height: 14px;"></i> Download Sheet</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- --- Visual Nutrition Guide Slideshow Carousel --- -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Visual Nutrition Guide</span>
+        <h2 class="section-title">Clinical Diet & <em>Dish Infographics</em></h2>
+        <p class="section-subtitle">Browse through our high-definition educational guides on portioning, food swaps, and metabolic nutrition.</p>
+      </div>
 
+      <div class="carousel-container glass-card" style="max-width: 640px; margin: 0 auto; position: relative; overflow: hidden; padding: 16px; border-radius: var(--radius-lg);">
+        <div class="carousel-slide-frame" style="position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 18px; overflow: hidden; background: transparent;">
+          <img id="carousel-main-img" src="Images/Good Food/slide 1.png" alt="Clinical Nutrition Guide Slide 1" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 16px;">
+          
+          <!-- Floating Left / Right Arrow Buttons -->
+          <button id="carousel-prev" class="carousel-nav-btn carousel-prev" aria-label="Previous Slide" style="position: absolute; top: 50%; left: 14px; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(255, 255, 255, 0.85); color: var(--text-primary); border: 1px solid var(--border-glow); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; z-index: 10; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); transition: var(--transition-smooth);">&larr;</button>
+          
+          <button id="carousel-next" class="carousel-nav-btn carousel-next" aria-label="Next Slide" style="position: absolute; top: 50%; right: 14px; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(255, 255, 255, 0.85); color: var(--text-primary); border: 1px solid var(--border-glow); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; z-index: 10; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); transition: var(--transition-smooth);">&rarr;</button>
+          
+          <!-- Slide Counter Badge -->
+          <div style="position: absolute; bottom: 14px; right: 14px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+            Slide <span id="carousel-counter">1</span> of 7
+          </div>
+        </div>
 
-  <!-- --- Testimonials Section --- -->
+        <!-- Thumbnails Strip -->
+        <div class="carousel-thumbs" style="display: flex; gap: 10px; justify-content: center; margin-top: 16px; overflow-x: auto; padding: 4px 0;">
+          <img class="carousel-thumb-img active" src="Images/Good Food/slide 1.png" alt="Thumb 1" style="width: 68px; height: 68px; border-radius: 12px; object-fit: cover; cursor: pointer; border: 2.5px solid var(--primary); transition: var(--transition-smooth);">
+          <img class="carousel-thumb-img" src="Images/Good Food/slide 2.png" alt="Thumb 2" style="width: 68px; height: 68px; border-radius: 12px; object-fit: cover; cursor: pointer; border: 2.5px solid transparent; opacity: 0.75; transition: var(--transition-smooth);">
+          <img class="carousel-thumb-img" src="Images/Good Food/slide 3.png" alt="Thumb 3" style="width: 68px; height: 68px; border-radius: 12px; object-fit: cover; cursor: pointer; border: 2.5px solid transparent; opacity: 0.75; transition: var(--transition-smooth);">
+          <img class="carousel-thumb-img" src="Images/Good Food/slide 4.png" alt="Thumb 4" style="width: 68px; height: 68px; border-radius: 12px; object-fit: cover; cursor: pointer; border: 2.5px solid transparent; opacity: 0.75; transition: var(--transition-smooth);">
+          <img class="carousel-thumb-img" src="Images/Good Food/slide 5.png" alt="Thumb 5" style="width: 68px; height: 68px; border-radius: 12px; object-fit: cover; cursor: pointer; border: 2.5px solid transparent; opacity: 0.75; transition: var(--transition-smooth);">
+          <img class="carousel-thumb-img" src="Images/Good Food/slide 6.png" alt="Thumb 6" style="width: 68px; height: 68px; border-radius: 12px; object-fit: cover; cursor: pointer; border: 2.5px solid transparent; opacity: 0.75; transition: var(--transition-smooth);">
+          <img class="carousel-thumb-img" src="Images/Good Food/slide 7.png" alt="Thumb 7" style="width: 68px; height: 68px; border-radius: 12px; object-fit: cover; cursor: pointer; border: 2.5px solid transparent; opacity: 0.75; transition: var(--transition-smooth);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- Testimonials & Quick Review Submission --- -->
   <section class="testimonials-section" id="testimonials">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Client Reviews</span>
         <h2 class="section-title">Success Stories from <em>Clients</em></h2>
-        <p class="section-subtitle">Real feedback from clients who transformed their metabolism and resolved therapeutic dietary concerns with Akhila.</p>
+        <p class="section-subtitle">Real feedback from clients who transformed their metabolism and resolved therapeutic dietary concerns with Dt. Akhila.</p>
       </div>
 
-      <div class="testimonials-wrapper">
-        <!-- Testimonials List -->
-        <div class="testi-list-side" id="testimonials-list">
-          <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
-            <p class="testi-text">"Dr. Akhila's PCOS meal planning completely balanced my hormones, regulated my cycles, and helped me manage insulin resistance within 3 months. Her sustainable, zero-starvation approach changed my lifestyle!"</p>
-            <div class="testi-author">
-              <div class="testi-avatar">P</div>
-              <div>
-                <h4 class="testi-name">Priya R.</h4>
-                <p class="testi-info">PCOS Balance Client</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
-            <p class="testi-text">"I successfully stabilized my HbA1c levels and managed my diabetes using Dr. Akhila's custom glycemic load diet. She is incredibly thorough with blood report audits and follow-up check-ins."</p>
-            <div class="testi-author">
-              <div class="testi-avatar">K</div>
-              <div>
-                <h4 class="testi-name">Kiran K.</h4>
-                <p class="testi-info">Diabetes Control Client</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
-            <p class="testi-text">"My sluggish hypothyroid metabolism completely reset! I gained back my natural energy levels and reversed weight gain through her zinc and selenium-rich nutritional protocols."</p>
-            <div class="testi-author">
-              <div class="testi-avatar">S</div>
-              <div>
-                <h4 class="testi-name">Sneha S.</h4>
-                <p class="testi-info">Thyroid Regulation Client</p>
-              </div>
+      <!-- Testimonials Glass Grid -->
+      <div class="testimonials-glass-grid" id="testimonials-list">
+        <div class="testi-card glass-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Dt. Akhila's PCOS meal planning completely balanced my hormones, regulated my cycles, and helped me manage insulin resistance within 3 months. Her sustainable, zero-starvation approach changed my lifestyle!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar">P</div>
+            <div>
+              <h4 class="testi-name">Priya R.</h4>
+              <p class="testi-info">PCOS Balance Client</p>
             </div>
           </div>
         </div>
 
-        <!-- Add Review Form Card -->
-        <div class="testi-form-card">
-          <h3 style="margin-bottom: 8px;">Submit Your Review</h3>
-          <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 20px;">Tell us how we did — your rating helps others, and your message helps us improve.</p>
-          
+        <div class="testi-card glass-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"I successfully stabilized my HbA1c levels and managed my diabetes using Dt. Akhila's custom glycemic load diet. She is incredibly thorough with blood report audits and follow-up check-ins."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">K</div>
+            <div>
+              <h4 class="testi-name">Kiran K.</h4>
+              <p class="testi-info">Diabetes Control Client</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card glass-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"My sluggish hypothyroid metabolism completely reset! I gained back my natural energy levels and reversed weight gain through her zinc and selenium-rich nutritional protocols."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">S</div>
+            <div>
+              <h4 class="testi-name">Sneha S.</h4>
+              <p class="testi-info">Thyroid Regulation Client</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Centered Quick Review Submission Form Card -->
+      <div class="review-form-centered-container" style="max-width: 680px; margin: 48px auto 0;">
+        <div class="glass-card" style="padding: 36px; border-radius: var(--radius-lg);">
+          <div style="text-align: center; margin-bottom: 24px;">
+            <span style="background: rgba(209, 18, 103, 0.08); color: var(--primary); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.8px;">Share Your Experience</span>
+            <h3 style="font-size: 1.4rem; font-family: var(--font-heading); margin-top: 8px; color: var(--text-primary);">Quick Review Submission</h3>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 4px;">Tell us how we did — your feedback empowers future clients!</p>
+          </div>
+
           <form id="review-form">
-            <div class="form-group">
-              <label>Select Rating</label>
-              <div class="star-rating" id="review-stars-container">
-                <button type="button" class="star-btn" data-rating="1">★</button>
-                <button type="button" class="star-btn" data-rating="2">★</button>
-                <button type="button" class="star-btn" data-rating="3">★</button>
-                <button type="button" class="star-btn" data-rating="4">★</button>
-                <button type="button" class="star-btn active" data-rating="5">★</button>
+            <div class="form-group" style="text-align: center; margin-bottom: 20px;">
+              <label style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); display: block; margin-bottom: 8px;">Select Rating</label>
+              <div class="star-rating" id="review-stars-container" style="display: flex; justify-content: center; gap: 8px; font-size: 1.5rem; color: #f59e0b; cursor: pointer;">
+                <button type="button" class="star-btn active" data-rating="1" style="background: none; border: none; font-size: 1.6rem; color: #f59e0b; cursor: pointer; outline: none;">★</button>
+                <button type="button" class="star-btn active" data-rating="2" style="background: none; border: none; font-size: 1.6rem; color: #f59e0b; cursor: pointer; outline: none;">★</button>
+                <button type="button" class="star-btn active" data-rating="3" style="background: none; border: none; font-size: 1.6rem; color: #f59e0b; cursor: pointer; outline: none;">★</button>
+                <button type="button" class="star-btn active" data-rating="4" style="background: none; border: none; font-size: 1.6rem; color: #f59e0b; cursor: pointer; outline: none;">★</button>
+                <button type="button" class="star-btn active" data-rating="5" style="background: none; border: none; font-size: 1.6rem; color: #f59e0b; cursor: pointer; outline: none;">★</button>
               </div>
             </div>
 
-            <div class="form-group">
-              <label for="review-name">Full Name</label>
-              <input type="text" id="review-name" placeholder="Enter your name" required>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+              <div class="form-group">
+                <label for="review-name" style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); display: block; margin-bottom: 6px;">Full Name</label>
+                <input type="text" id="review-name" placeholder="Enter your name" required style="width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border-light); background: var(--bg-surface); color: var(--text-primary); outline: none;">
+              </div>
+              <div class="form-group">
+                <label for="review-category" style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); display: block; margin-bottom: 6px;">Client Program</label>
+                <input type="text" id="review-category" placeholder="e.g. PCOS Reset, Diabetes Care" required style="width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border-light); background: var(--bg-surface); color: var(--text-primary); outline: none;">
+              </div>
             </div>
 
-            <div class="form-group">
-              <label for="review-category">Client Category</label>
-              <input type="text" id="review-category" placeholder="e.g. PCOS Balance, Customized Diet" required>
+            <div class="form-group" style="margin-bottom: 24px;">
+              <label for="review-msg" style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); display: block; margin-bottom: 6px;">Review Message</label>
+              <textarea id="review-msg" placeholder="Share your experience working with Dt. Akhila..." required style="width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border-light); background: var(--bg-surface); color: var(--text-primary); outline: none; resize: vertical; min-height: 90px;"></textarea>
             </div>
 
-            <div class="form-group">
-              <label for="review-msg">Review Message</label>
-              <textarea id="review-msg" placeholder="Share your experience working with Akhila..." required></textarea>
-            </div>
-
-            <button type="submit" class="form-submit-btn" style="margin-top: 10px;">Submit Review</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-weight: 700; font-size: 0.9rem; border-radius: 12px;">Submit Review &rarr;</button>
           </form>
         </div>
       </div>
@@ -546,7 +574,7 @@
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Healthy Living Blog</span>
-        <h2 class="section-title">Insights & Customized <em>Science</em></h2>
+        <h2 class="section-title">Insights & Clinical <em>Science</em></h2>
         <p class="section-subtitle">Read the latest research-backed articles on managing blood sugar, balancing hormones, and optimizing thyroid pathways.</p>
       </div>
 
@@ -612,7 +640,7 @@
         <div class="blog-modal-meta" style="display: flex; gap: 16px; font-size: 0.8rem; opacity: 0.85;">
           <span><i data-lucide="calendar" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px; display: inline-block;"></i> <span id="blog-modal-date">June 27, 2026</span></span>
           <span><i data-lucide="clock" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px; display: inline-block;"></i> <span id="blog-modal-read-time">5 min read</span></span>
-          <span><i data-lucide="user" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px; display: inline-block;"></i> By Dr. Akhila Konakalla</span>
+          <span><i data-lucide="user" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px; display: inline-block;"></i> By Dt. Akhila Konakalla</span>
         </div>
       </div>
       <img class="blog-modal-img" id="blog-modal-img" src="" alt="Featured Image">
@@ -622,8 +650,7 @@
     </div>
   </div>
 
-
-  <!-- --- Contact & WhatsApp Section --- -->
+  <!-- --- Contact Section --- -->
   <section class="contact-section" id="contact">
     <div class="container">
       <div class="section-header">
@@ -638,15 +665,15 @@
             <div class="contact-icon" style="display: flex; align-items: center; justify-content: center; background: rgba(209, 18, 103, 0.05); color: var(--primary); width: 44px; height: 44px; border-radius: 50%;"><i data-lucide="mail" style="width: 20px; height: 20px;"></i></div>
             <div class="contact-details">
               <span>Send Email</span>
-              <a href="mailto:consult@dhruthiwellness.com">consult@dhruthiwellness.com</a>
+              <a href="mailto:dhruthiwellness@gmail.com">dhruthiwellness@gmail.com</a>
             </div>
           </div>
 
           <div class="contact-card">
             <div class="contact-icon" style="display: flex; align-items: center; justify-content: center; background: rgba(209, 18, 103, 0.05); color: var(--primary); width: 44px; height: 44px; border-radius: 50%;"><i data-lucide="phone" style="width: 20px; height: 20px;"></i></div>
             <div class="contact-details">
-              <span>Call Practice</span>
-              <strong>+91 98765 43210</strong>
+              <span>Call / WhatsApp</span>
+              <strong>+91 86889 63230 / +91 90524 29208</strong>
             </div>
           </div>
 
@@ -654,12 +681,12 @@
             <div class="contact-icon" style="display: flex; align-items: center; justify-content: center; background: rgba(209, 18, 103, 0.05); color: var(--primary); width: 44px; height: 44px; border-radius: 50%;"><i data-lucide="map-pin" style="width: 20px; height: 20px;"></i></div>
             <div class="contact-details">
               <span>Practice Location</span>
-              <strong>AU University Region, Vizag, AP</strong>
+              <strong>Bd Colony Near Masjid, Eluru, Andhra Pradesh - 534005</strong>
             </div>
           </div>
 
           <!-- Direct WhatsApp Chat Link -->
-          <a href="https://wa.me/919876543210?text=Hi%20Akhila,%20I'd%20like%20to%20book%20a%20nutrition%20consultation." class="whatsapp-btn" target="_blank">
+          <a href="https://wa.me/918688963230?text=Hi%20Akhila,%20I'd%20like%20to%20book%20a%20nutrition%20consultation." class="whatsapp-btn" target="_blank">
             <span><i data-lucide="message-circle" style="width: 18px; height: 18px; vertical-align: middle; margin-right: 6px; display: inline-block;"></i> Chat on WhatsApp</span>
           </a>
         </div>
@@ -689,7 +716,7 @@
     </div>
   </section>
 
-  <!-- --- Booking / Appointment Schedule Modal --- -->
+  <!-- --- Appointment Booking Modal --- -->
   <div class="modal-overlay" id="booking-modal">
     <div class="modal-container">
       <button class="modal-close" id="modal-close-btn">&times;</button>
@@ -697,20 +724,20 @@
       <h2 class="modal-title">Schedule <span>Consultation Call</span></h2>
       
       <div class="booking-expert-details">
-        <img class="booking-expert-img" id="booking-expert-avatar" src="" alt="Coach">
+        <img class="booking-expert-img" id="booking-expert-avatar" src="Images/AK47-Transperant.png" alt="Coach">
         <div>
-          <div class="booking-expert-name" id="booking-expert-name">Coach Name</div>
-          <div class="booking-expert-title" id="booking-expert-title">Specialty Title</div>
+          <div class="booking-expert-name" id="booking-expert-name">Dt. Akhila Konakalla</div>
+          <div class="booking-expert-title" id="booking-expert-title">Clinical Nutritionist</div>
         </div>
       </div>
 
       <form id="booking-form">
         <div class="scheduler-grid">
           <div>
-            <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 10px; color: var(--text-secondary); text-transform: uppercase;">1. Select Date (June 2026)</label>
+            <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 10px; color: var(--text-secondary); text-transform: uppercase;">1. Select Date (August 2026)</label>
             <div class="calendar-widget">
               <div class="calendar-header">
-                <span class="calendar-month">June 2026</span>
+                <span class="calendar-month">August 2026</span>
               </div>
               <div class="calendar-days">
                 <span class="day-label">M</span>
@@ -721,7 +748,6 @@
                 <span class="day-label">S</span>
                 <span class="day-label">S</span>
                 
-                <!-- Date Grid: June 1st, 2026 is a Monday -->
                 <span class="cal-date active" data-date="1">1</span>
                 <span class="cal-date" data-date="2">2</span>
                 <span class="cal-date" data-date="3">3</span>
@@ -752,6 +778,7 @@
                 <span class="cal-date" data-date="28">28</span>
                 <span class="cal-date" data-date="29">29</span>
                 <span class="cal-date" data-date="30">30</span>
+                <span class="cal-date" data-date="31">31</span>
               </div>
             </div>
           </div>
@@ -786,7 +813,7 @@
 
         <div class="input-group" style="margin-bottom: 24px;">
           <label for="booking-message" style="display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 6px;">Additional Notes (Optional)</label>
-          <textarea id="booking-message" placeholder="Describe any symptoms, requirements, or health targets..." style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-light); background: var(--bg-surface); color: var(--text-primary); outline: none; resize: vertical; min-height: 80px;"></textarea>
+          <textarea id="booking-message" placeholder="Describe any symptoms, medical reports, or health targets..." style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-light); background: var(--bg-surface); color: var(--text-primary); outline: none; resize: vertical; min-height: 80px;"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary" style="width: 100%;">Confirm Appointment & Pay</button>
@@ -794,19 +821,23 @@
     </div>
   </div>
 
-  <!-- --- Toast Notification Popups --- -->
+  <!-- --- Toast Notification Engine --- -->
   <div class="toast-container" id="toast-container"></div>
+
+  <!-- --- Floating WhatsApp Quick Chat Button --- -->
+  <a href="https://wa.me/918688963230?text=Hi%20Akhila,%20I'd%20like%20to%20ask%20about%20your%20diet%20plans." class="whatsapp-float-btn" target="_blank" aria-label="Chat on WhatsApp">
+    <i data-lucide="message-circle" style="width: 28px; height: 28px;"></i>
+  </a>
 
   <!-- --- Footer --- -->
   <footer class="footer">
     <div class="container footer-grid">
       <div class="footer-brand">
         <h2 style="display: inline-flex; align-items: center; gap: 8px;"><i data-lucide="sparkles" style="color: var(--primary); width: 22px; height: 22px;"></i> Dhruthi Wellness</h2>
-        <p>Customized lifestyle diet guides designed by Dr. Akhila Konakalla, MSc. Food Nutrition and Dietetics.</p>
+        <p>Customized lifestyle diet guides designed by Dt. Akhila Konakalla, MSc. Food Nutrition and Dietetics.</p>
         <div class="footer-socials">
-          <a href="#" class="social-icon">𝕏</a>
-          <a href="#" class="social-icon">📸</a>
-          <a href="#" class="social-icon">👔</a>
+          <a href="https://www.instagram.com/dhruthi_wellness" class="social-icon" target="_blank">📸</a>
+          <a href="https://wa.me/918688963230" class="social-icon" target="_blank">💬</a>
         </div>
       </div>
 
@@ -814,20 +845,22 @@
         <h3>Quick Navigation</h3>
         <ul>
           <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About Coach</a></li>
-          <li><a href="#services">Practice Services</a></li>
-          <li><a href="#booking">Consultation Packages</a></li>
-          <li><a href="#booking">Book Session</a></li>
+          <li><a href="#about">About Dt. Akhila</a></li>
+          <li><a href="#services">Clinical Programs</a></li>
+          <li><a href="#pricing">Consultation Price Plans</a></li>
+          <li><a href="#gallery">Nutrition Guide</a></li>
+          <li><a href="#testimonials">Client Reviews</a></li>
+          <li><a href="#booking">Book Appointment</a></li>
         </ul>
       </div>
 
       <div class="footer-links">
-        <h3>Contact & Support</h3>
+        <h3>Contact & Legal</h3>
         <ul>
           <li><a href="#contact">Support Hub</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#booking">Consultation Rates</a></li>
+          <li><a href="payment_portal.html">Payment & Receipt Portal</a></li>
+          <li><a href="docs/Dhruthi_Wellness_Terms_and_Conditions_DhruthiTheme.pdf" target="_blank">Terms of Service (PDF)</a></li>
+          <li><a href="#pricing">Price Matrix</a></li>
         </ul>
       </div>
     </div>

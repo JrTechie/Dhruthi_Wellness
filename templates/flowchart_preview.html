@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dhruthi Wellness — Master Editorial Flow Chart Reel Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --bg-dark: #0F1412;
+      --cream: #FAF6F0;
+      --charcoal: #222222;
+      --rose-pink: #E98A9B;
+      --sage: #88A08D;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      color: #FFFFFF;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow-x: hidden;
+    }
+
+    .app-container {
+      display: flex;
+      flex-direction: row;
+      gap: 48px;
+      max-width: 1280px;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .info-panel {
+      flex: 1;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      background: rgba(233, 138, 155, 0.15);
+      border: 1px solid rgba(233, 138, 155, 0.35);
+      border-radius: 999px;
+      color: var(--rose-pink);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .title-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #FFFFFF;
+    }
+
+    .title-heading span {
+      color: var(--rose-pink);
+    }
+
+    .subtitle-desc {
+      color: #A3B18A;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .scene-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .scene-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 12px 14px;
+      color: #E2E8F0;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .scene-btn:hover {
+      background: rgba(233, 138, 155, 0.20);
+      border-color: var(--rose-pink);
+      transform: translateY(-2px);
+    }
+
+    .scene-btn.active {
+      background: linear-gradient(135deg, rgba(233, 138, 155, 0.35), rgba(136, 160, 141, 0.30));
+      border-color: var(--rose-pink);
+      box-shadow: 0 6px 20px rgba(233, 138, 155, 0.25);
+    }
+
+    .scene-btn .scene-time {
+      font-size: 11px;
+      color: var(--rose-pink);
+      font-weight: 700;
+    }
+
+    .scene-btn .scene-name {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* Device Mockup */
+    .device-container {
+      position: relative;
+      width: 390px;
+      height: 690px;
+      background: #000000;
+      border-radius: 44px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 0 12px #1E2522, 0 0 0 14px rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .reel-viewport {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background-color: var(--cream);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 18px;
+    }
+
+    .bg-image-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.92) contrast(1.10) saturate(1.05) blur(2.5px);
+      transition: opacity 0.6s ease;
+    }
+
+    .radial-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0) 75%);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .reel-header {
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .reel-brand-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: rgba(255, 255, 255, 0.20);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .reel-brand-pill span {
+      color: #222222;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .slide-counter-badge {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--rose-pink);
+      background: rgba(255, 255, 255, 0.20);
+      backdrop-filter: blur(16px);
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    /* Master Glassmorphism Card Spec */
+    .master-glass-card {
+      background: rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1.5px solid rgba(255, 255, 255, 0.32);
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      padding: 12px 14px;
+      width: 100%;
+    }
+
+    .flowchart-stage {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 30;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    .card-title-serif {
+      font-family: 'Cormorant Garamond', serif;
+      color: #222222;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .card-title-serif span {
+      color: var(--rose-pink);
+    }
+
+    .grid-2x2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .icon-box {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background: rgba(233, 138, 155, 0.15);
+      border: 1px solid rgba(233, 138, 155, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--rose-pink);
+    }
+
+    .player-controls {
+      margin-top: 16px;
+      width: 390px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 3px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, var(--sage), var(--rose-pink));
+      transition: width 0.1s linear;
+    }
+
+    .control-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .play-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--rose-pink);
+      border: none;
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .play-btn:hover {
+      transform: scale(1.08);
+    }
+
+    .time-display {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--rose-pink);
+      font-mono: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Left Details Panel -->
+    <div class="info-panel">
+      <div class="brand-badge">
+        <i data-lucide="sparkles" style="width:16px; height:16px;"></i>
+        Dhruthi Wellness • Master Editorial
+      </div>
+
+      <h1 class="title-heading">
+        Breast Milk is <span>Mostly Water</span>
+      </h1>
+
+      <p class="subtitle-desc">
+        Canva Pro / Apple Health senior editorial standards. Strict reading flow hierarchy: Brand Logo + Slide Counter → Category Badge → Main Heading → Description → Hero Card → 2x2 Grid → Bottom CTA.
+      </p>
+
+      <div class="scene-grid">
+        <div class="scene-btn active" onclick="jumpToTime(0)">
+          <span class="scene-time">0.0s – 9.0s</span>
+          <span class="scene-name">Slide 01: Mostly Water 💧</span>
+        </div>
+        <div class="scene-btn" onclick="jumpToTime(9.0)">
+          <span class="scene-time">9.0s – 18.0s</span>
+          <span class="scene-name">Slide 02: Fluid Targets 🎯</span>
+        </div>
+        <div class="scene-btn" onclick="jumpToTime(18.0)">
+          <span class="scene-time">18.0s – 27.0s</span>
+          <span class="scene-name">Slide 03: Benefits ✨</span>
+        </div>
+        <div class="scene-btn" onclick="jumpToTime(27.0)">
+          <span class="scene-time">27.0s – 36.0s</span>
+          <span class="scene-name">Slide 04: Daily Habits 🥤</span>
+        </div>
+        <div class="scene-btn" onclick="jumpToTime(36.0)">
+          <span class="scene-time">36.0s – 45.0s</span>
+          <span class="scene-name">Slide 05: Warning Signs ⚠️</span>
+        </div>
+        <div class="scene-btn" onclick="jumpToTime(45.0)">
+          <span class="scene-time">45.0s – 53.3s</span>
+          <span class="scene-name">Slide 06: Final Takeaway 🤱</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Reel Simulator -->
+    <div>
+      <div class="device-container">
+        <div class="reel-viewport">
+          <img id="bgImg" class="bg-image-layer" src="remotion-video/public/assets/fc_bg_scene1.png" alt="Background photography">
+          <div class="radial-overlay"></div>
+
+          <!-- Reel Top Header: Brand Logo + Slide Counter -->
+          <div class="reel-header">
+            <div class="reel-brand-pill">
+              <span>Dhruthi Wellness 🌿</span>
+            </div>
+            <div id="slideCounter" class="slide-counter-badge">01 / 06</div>
+          </div>
+
+          <!-- Flowchart Stage -->
+          <div id="flowchartStage" class="flowchart-stage">
+            <!-- Dynamic elements loaded via JS -->
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Controls Below Phone -->
+      <div class="player-controls">
+        <div class="progress-bar-container" onclick="seek(event)">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+
+        <div class="control-row">
+          <button id="playBtn" class="play-btn" onclick="togglePlay()">
+            <i data-lucide="play" style="width:22px; height:22px;"></i>
+          </button>
+          <div id="timeDisplay" class="time-display">00:00 / 00:53</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    let currentTime = 0;
+    const duration = 53.33;
+    let isPlaying = false;
+    let timer = null;
+
+    const scenes = [
+      {
+        start: 0,
+        end: 9.0,
+        slide: '01 / 06',
+        img: 'remotion-video/public/assets/fc_bg_scene1.png',
+        html: `
+          <div style="text-align:center; width:100%;">
+            <span style="font-size:10px; font-weight:700; letter-spacing:1px; color:#E98A9B; text-transform:uppercase; background:rgba(255,255,255,0.2); padding:3px 10px; border-radius:999px;">Maternal Nutrition Guide</span>
+            <h2 class="card-title-serif" style="font-size:25px; margin-top:6px;">Breast Milk is <span>Mostly Water 💧</span></h2>
+            <div style="color:#333; font-size:12px; margin-top:4px;">Understanding milk composition for optimal energy.</div>
+          </div>
+          <div class="master-glass-card" style="display:flex; align-items:center; gap:10px;">
+            <div class="icon-box"><i data-lucide="heart" style="width:18px; height:18px;"></i></div>
+            <div>
+              <div style="font-weight:700; color:#222; font-size:13px;">Optimal Hydration Baseline</div>
+              <div style="color:#444; font-size:11px; margin-top:2px;">Breastfeeding increases daily fluid needs.</div>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px; width:100%;">
+            <div class="master-glass-card" style="display:flex; align-items:center; justify-between; padding:8px 12px;">
+              <div style="font-weight:700; color:#222; font-size:12px;">Breastfeeding 🤱</div>
+              <div style="color:#555; font-size:11px;">High turnover</div>
+            </div>
+            <div class="master-glass-card" style="display:flex; align-items:center; justify-between; padding:8px 12px;">
+              <div style="font-weight:700; color:#222; font-size:12px;">Breast Milk 🥛</div>
+              <div style="color:#555; font-size:11px;">Nutrient matrix</div>
+            </div>
+            <div class="master-glass-card" style="display:flex; align-items:center; justify-between; padding:8px 12px; border:1.5px solid #E98A9B;">
+              <div style="font-weight:700; color:#222; font-size:12px;">Mostly Water 💧</div>
+              <span style="font-size:10px; background:#E98A9B; color:#fff; padding:2px 8px; border-radius:999px; font-weight:700;">~87-90% Water</span>
+            </div>
+          </div>
+          <div style="font-size:11px; color:#333; font-weight:600; text-align:center;">🌿 Priority: Replenish fluids consistently throughout the day.</div>
+        `
+      },
+      {
+        start: 9.0,
+        end: 18.0,
+        slide: '02 / 06',
+        img: 'remotion-video/public/assets/fc_bg_scene2.png',
+        html: `
+          <div style="text-align:center; width:100%;">
+            <span style="font-size:10px; font-weight:700; letter-spacing:1px; color:#E98A9B; text-transform:uppercase; background:rgba(255,255,255,0.2); padding:3px 10px; border-radius:999px;">Hydration Protocol</span>
+            <h2 class="card-title-serif" style="font-size:24px; margin-top:6px;">Daily Fluid <span>Targets & Sources 🎯</span></h2>
+            <div style="color:#333; font-size:12px; margin-top:4px;">Aim for 2.5 to 3.5 liters daily across healthy sources.</div>
+          </div>
+          <div class="master-glass-card" style="display:flex; align-items:center; gap:10px;">
+            <div class="icon-box"><i data-lucide="target" style="width:18px; height:18px;"></i></div>
+            <div>
+              <div style="font-weight:700; color:#222; font-size:13px;">2.5–3.5 Liters Daily</div>
+              <div style="color:#444; font-size:11px; margin-top:2px;">Target intake for nursing mothers.</div>
+            </div>
+          </div>
+          <div class="grid-2x2">
+            <div class="master-glass-card">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div class="icon-box"><i data-lucide="sun" style="width:16px; height:16px;"></i></div>
+                <span>🥥</span>
+              </div>
+              <div style="font-weight:700; color:#222; font-size:12px; margin-top:4px;">Coconut Water</div>
+              <div style="color:#555; font-size:10px;">Electrolytes</div>
+            </div>
+            <div class="master-glass-card">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div class="icon-box"><i data-lucide="coffee" style="width:16px; height:16px;"></i></div>
+                <span>🥛</span>
+              </div>
+              <div style="font-weight:700; color:#222; font-size:12px; margin-top:4px;">Buttermilk</div>
+              <div style="color:#555; font-size:10px;">Probiotics</div>
+            </div>
+            <div class="master-glass-card">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div class="icon-box"><i data-lucide="soup" style="width:16px; height:16px;"></i></div>
+                <span>🍲</span>
+              </div>
+              <div style="font-weight:700; color:#222; font-size:12px; margin-top:4px;">Clear Soups</div>
+              <div style="color:#555; font-size:10px;">Nourishing broths</div>
+            </div>
+            <div class="master-glass-card">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div class="icon-box"><i data-lucide="citrus" style="width:16px; height:16px;"></i></div>
+                <span>🍋</span>
+              </div>
+              <div style="font-weight:700; color:#222; font-size:12px; margin-top:4px;">Lemon Water</div>
+              <div style="color:#555; font-size:10px;">Vitamin C</div>
+            </div>
+          </div>
+          <div style="font-size:11px; color:#333; font-weight:600; text-align:center;">🌿 Variety boosts adherence and minerals.</div>
+        `
+      },
+      {
+        start: 18.0,
+        end: 27.0,
+        slide: '03 / 06',
+        img: 'remotion-video/public/assets/fc_bg_scene3.png',
+        html: `
+          <div style="text-align:center; width:100%;">
+            <span style="font-size:10px; font-weight:700; letter-spacing:1px; color:#E98A9B; text-transform:uppercase; background:rgba(255,255,255,0.2); padding:3px 10px; border-radius:999px;">Health & Vitality</span>
+            <h2 class="card-title-serif" style="font-size:24px; margin-top:6px;">Benefits of <span>Being Hydrated ✨</span></h2>
+            <div style="color:#333; font-size:12px; margin-top:4px;">Hydration boosts energy, mood, and maternal care.</div>
+          </div>
+          <div class="master-glass-card" style="display:flex; align-items:center; gap:10px;">
+            <div class="icon-box"><i data-lucide="zap" style="width:18px; height:18px;"></i></div>
+            <div>
+              <div style="font-weight:700; color:#222; font-size:13px;">Optimal Physiological Baseline</div>
+              <div style="color:#444; font-size:11px; margin-top:2px;">Reduces cellular fatigue naturally.</div>
+            </div>
+          </div>
+          <div class="grid-2x2">
+            <div class="master-glass-card">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div class="icon-box"><i data-lucide="zap" style="width:16px; height:16px;"></i></div>
+                <span>😊</span>
+              </div>
+              <div style="font-weight:700; color:#222; font-size:12px; margin-top:4px;">Sustained Energy</div>
+              <div style="color:#555; font-size:10px;">Prevents fatigue</div>
+            </div>
+            <div class="master-glass-card">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div class="icon-box"><i data-lucide="sparkles" style="width:16px; height:16px;"></i></div>
+                <span>✨</span>
+              </div>
+              <div style="font-weight:700; color:#222; font-size:12px; margin-top:4px;">Mental Focus</div>
+              <div style="color:#555; font-size:10px;">Keeps refreshed</div>
+            </div>
+            <div class="master-glass-card">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div class="icon-box"><i data-lucide="droplets" style="width:16px; height:16px;"></i></div>
+                <span>💧</span>
+              </div>
+              <div style="font-weight:700; color:#222; font-size:12px; margin-top:4px;">Milk Volume</div>
+              <div style="color:#555; font-size:10px;">Maintains supply</div>
+            </div>
+            <div class="master-glass-card">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div class="icon-box"><i data-lucide="baby" style="width:16px; height:16px;"></i></div>
+                <span>👶</span>
+              </div>
+              <div style="font-weight:700; color:#222; font-size:12px; margin-top:4px;">Caring for Baby</div>
+              <div style="color:#555; font-size:10px;">Powers maternal care</div>
+            </div>
+          </div>
+          <div style="font-size:11px; color:#333; font-weight:600; text-align:center;">🌿 Hydrated moms experience serenity during feeds.</div>
+        `
+      },
+      {
+        start: 27.0,
+        end: 36.0,
+        slide: '04 / 06',
+        img: 'remotion-video/public/assets/fc_bg_scene4.png',
+        html: `
+          <div style="text-align:center; width:100%;">
+            <span style="font-size:10px; font-weight:700; letter-spacing:1px; color:#E98A9B; text-transform:uppercase; background:rgba(255,255,255,0.2); padding:3px 10px; border-radius:999px;">Actionable Routines</span>
+            <h2 class="card-title-serif" style="font-size:24px; margin-top:6px;">Everyday <span>Hydration Habits 🥤</span></h2>
+            <div style="color:#333; font-size:12px; margin-top:4px;">Anchor fluid intake to your daily nursing sessions.</div>
+          </div>
+          <div class="master-glass-card" style="display:flex; align-items:center; gap:10px;">
+            <div class="icon-box"><i data-lucide="container" style="width:18px; height:18px;"></i></div>
+            <div>
+              <div style="font-weight:700; color:#222; font-size:13px;">Proactive Hydration Station</div>
+              <div style="color:#444; font-size:11px; margin-top:2px;">Keep a water bottle nearby at all times.</div>
+            </div>
+          </div>
+          <div class="grid-2x2">
+            <div class="master-glass-card">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div class="icon-box"><i data-lucide="container" style="width:16px; height:16px;"></i></div>
+                <span>🥤</span>
+              </div>
+              <div style="font-weight:700; color:#222; font-size:12px; margin-top:4px;">Water Bottle</div>
+              <div style="color:#555; font-size:10px;">Nursing station</div>
+            </div>
+            <div class="master-glass-card">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div class="icon-box"><i data-lucide="baby" style="width:16px; height:16px;"></i></div>
+                <span>🤱</span>
+              </div>
+              <div style="font-weight:700; color:#222; font-size:12px; margin-top:4px;">Sip Every Feed</div>
+              <div style="color:#555; font-size:10px;">1 glass each feed</div>
+            </div>
+            <div class="master-glass-card">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div class="icon-box"><i data-lucide="alert-triangle" style="width:16px; height:16px;"></i></div>
+                <span>⚠️</span>
+              </div>
+              <div style="font-weight:700; color:#222; font-size:12px; margin-top:4px;">Don't Wait</div>
+              <div style="color:#555; font-size:10px;">Proactive routine</div>
+            </div>
+            <div class="master-glass-card">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div class="icon-box"><i data-lucide="sparkles" style="width:16px; height:16px;"></i></div>
+                <span>🌿</span>
+              </div>
+              <div style="font-weight:700; color:#222; font-size:12px; margin-top:4px;">Daily Habit</div>
+              <div style="color:#555; font-size:10px;">Effortless rhythm</div>
+            </div>
+          </div>
+          <div style="font-size:11px; color:#333; font-weight:600; text-align:center;">🌿 Small habits make meeting targets automatic.</div>
+        `
+      },
+      {
+        start: 36.0,
+        end: 45.0,
+        slide: '05 / 06',
+        img: 'remotion-video/public/assets/fc_bg_scene5.png',
+        html: `
+          <div style="text-align:center; width:100%;">
+            <span style="font-size:10px; font-weight:700; letter-spacing:1px; color:#E98A9B; text-transform:uppercase; background:rgba(255,255,255,0.2); padding:3px 10px; border-radius:999px;">Early Warning Signals</span>
+            <h2 class="card-title-serif" style="font-size:24px; margin-top:6px;">Recognizing <span>Dehydration Signs ⚠️</span></h2>
+            <div style="color:#333; font-size:12px; margin-top:4px;">Watch out for early physiological signals.</div>
+          </div>
+          <div class="master-glass-card" style="display:flex; align-items:center; gap:10px;">
+            <div class="icon-box"><i data-lucide="alert-triangle" style="width:18px; height:18px;"></i></div>
+            <div>
+              <div style="font-weight:700; color:#222; font-size:13px;">Body Signal Awareness</div>
+              <div style="color:#444; font-size:11px; margin-top:2px;">Increase fluids immediately upon early signs.</div>
+            </div>
+          </div>
+          <div class="grid-2x2">
+            <div class="master-glass-card">
+              <div class="icon-box"><i data-lucide="droplet-off" style="width:16px; height:16px;"></i></div>
+              <div style="font-weight:700; color:#222; font-size:12px; margin-top:4px;">Dry Mouth</div>
+              <div style="color:#555; font-size:10px;">Parched lips</div>
+            </div>
+            <div class="master-glass-card">
+              <div class="icon-box"><i data-lucide="droplet" style="width:16px; height:16px;"></i></div>
+              <div style="font-weight:700; color:#222; font-size:12px; margin-top:4px;">Dark Urine</div>
+              <div style="color:#555; font-size:10px;">Amber color</div>
+            </div>
+            <div class="master-glass-card">
+              <div class="icon-box"><i data-lucide="activity" style="width:16px; height:16px;"></i></div>
+              <div style="font-weight:700; color:#222; font-size:12px; margin-top:4px;">Headaches</div>
+              <div style="color:#555; font-size:10px;">Dull throbbing</div>
+            </div>
+            <div class="master-glass-card">
+              <div class="icon-box"><i data-lucide="moon" style="width:16px; height:16px;"></i></div>
+              <div style="font-weight:700; color:#222; font-size:12px; margin-top:4px;">Fatigue</div>
+              <div style="color:#555; font-size:10px;">Feed lethargy</div>
+            </div>
+          </div>
+          <div style="font-size:11px; color:#333; font-weight:600; text-align:center;">⚠️ Action: Drink 1-2 glasses of water immediately.</div>
+        `
+      },
+      {
+        start: 45.0,
+        end: 53.33,
+        slide: '06 / 06',
+        img: 'remotion-video/public/assets/fc_bg_scene6.png',
+        html: `
+          <div style="text-align:center; width:100%;">
+            <span style="font-size:10px; font-weight:700; letter-spacing:1px; color:#E98A9B; text-transform:uppercase; background:rgba(255,255,255,0.2); padding:3px 10px; border-radius:999px;">Maternal Wellbeing</span>
+            <h2 class="card-title-serif" style="font-size:22px; margin-top:6px;">Hydrated Mom = <span>Happy Journey 🤱</span></h2>
+            <div style="color:#333; font-size:12px; margin-top:4px;">Prioritizing self-care builds a thriving nursing foundation.</div>
+          </div>
+          <div class="master-glass-card">
+            <div style="font-style:italic; font-family:'Cormorant Garamond', serif; font-size:18px; color:#222; text-align:center;">
+              "Taking care of yourself is part of taking care of your baby." ❤️
+            </div>
+          </div>
+          <div class="grid-2x2">
+            <div class="master-glass-card">
+              <div style="font-weight:700; color:#222; font-size:12px;">Self-Care First ❤️</div>
+              <div style="color:#555; font-size:10px;">Nourish yourself</div>
+            </div>
+            <div class="master-glass-card">
+              <div style="font-weight:700; color:#222; font-size:12px;">Thriving Baby 👶</div>
+              <div style="color:#555; font-size:10px;">Nourished with love</div>
+            </div>
+          </div>
+          <div class="master-glass-card" style="display:flex; align-items:center; justify-content:space-between; padding:10px 14px;">
+            <span style="font-weight:700; color:#222; font-size:12px;">Dhruthi Wellness</span>
+            <span style="background:#E98A9B; color:#fff; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700;">Book Consultation 🌿</span>
+          </div>
+        `
+      }
+    ];
+
+    function updateUI() {
+      const fill = (currentTime / duration) * 100;
+      document.getElementById('progressFill').style.width = fill + '%';
+      
+      const sec = Math.floor(currentTime).toString().padStart(2, '0');
+      document.getElementById('timeDisplay').innerText = `00:${sec} / 00:53`;
+
+      const activeIndex = scenes.findIndex(s => currentTime >= s.start && currentTime < s.end);
+      const activeScene = scenes[activeIndex !== -1 ? activeIndex : scenes.length - 1];
+
+      document.getElementById('bgImg').src = activeScene.img;
+      document.getElementById('slideCounter').innerText = activeScene.slide;
+      document.getElementById('flowchartStage').innerHTML = activeScene.html;
+      lucide.createIcons();
+
+      const btns = document.querySelectorAll('.scene-btn');
+      btns.forEach((btn, idx) => {
+        if (idx === activeIndex) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    function togglePlay() {
+      isPlaying = !isPlaying;
+      const playIcon = document.getElementById('playBtn');
+      if (isPlaying) {
+        playIcon.innerHTML = '<i data-lucide="pause" style="width:22px; height:22px;"></i>';
+        lucide.createIcons();
+        timer = setInterval(() => {
+          currentTime += 0.1;
+          if (currentTime >= duration) {
+            currentTime = 0;
+          }
+          updateUI();
+        }, 100);
+      } else {
+        playIcon.innerHTML = '<i data-lucide="play" style="width:22px; height:22px;"></i>';
+        lucide.createIcons();
+        clearInterval(timer);
+      }
+    }
+
+    function jumpToTime(time) {
+      currentTime = time;
+      updateUI();
+    }
+
+    function seek(e) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      currentTime = (clickX / rect.width) * duration;
+      updateUI();
+    }
+
+    updateUI();
+  </script>
+</body>
+</html>

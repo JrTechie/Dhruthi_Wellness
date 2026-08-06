@@ -1,0 +1,47 @@
+{
+  "name": "remotion-video",
+  "version": "1.0.0",
+  "description": "My Remotion video",
+  "repository": {},
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@remotion/cli": "4.0.496",
+    "@remotion/google-fonts": "4.0.496",
+    "@remotion/tailwind-v4": "4.0.496",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.496",
+    "tailwindcss": "4.0.0"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.496",
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "eslint": "9.19.0",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion bundle",
+    "render": "remotion render src/index.ts Main \"../Reels finalised/Main.mp4\"",
+    "render:eating": "remotion render src/index.ts Eating \"../Reels finalised/eating_remotion.mp4\"",
+    "render:hype": "remotion render src/index.ts HypeReel \"../Reels finalised/dhruthi_wellness_reel.mp4\"",
+    "render:editorial": "remotion render src/index.ts EditorialReel \"../Reels finalised/dhruthi_wellness_reel.mp4\"",
+    "render:weightloss": "remotion render src/index.ts WeightLossReel \"../Reels finalised/dhruthi_weight_loss_reel.mp4\"",
+    "render:pcos": "remotion render src/index.ts PCOSReel \"../Reels finalised/dhruthi_pcos_reel.mp4\"",
+    "render:stress": "remotion render src/index.ts Stress \"../Reels finalised/stress_reel.mp4\"",
+    "render:metabolism": "remotion render src/index.ts Metabolism \"../Reels finalised/dhruthi_metabolism_reel.mp4\"",
+    "render:morningdrinks": "remotion render src/index.ts MorningDrinks \"../Reels finalised/dhruthi_morning_drinks_reel.mp4\"",
+    "render:balancedplate": "remotion render src/index.ts BalancedPlate \"../Reels finalised/dhruthi_balanced_plate_reel.mp4\"",
+    "render:breastfeeding": "remotion render src/index.ts BreastfeedingReel \"../Reels finalised/dhruthi_breastfeeding_reel.mp4\"",
+    "render:breastfeeding-hydration": "remotion render src/index.ts BreastfeedingWithHydration \"../Reels finalised/breastfeeding_with_hydration_reel.mp4\"",
+    "render:flowchart": "remotion render src/index.ts FlowchartReel \"../Reels finalised/flowchart_breastfeeding_reel.mp4\"",
+    "upgrade": "remotion upgrade",
+    "lint": "eslint src && tsc"
+  },
+  "sideEffects": [
+    "*.css"
+  ]
+}

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dhruthi Wellness - Minimal Fertility Roadmap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(180deg, #E6F3EE 0%, #EEF6F2 40%, #FAF6F0 100%);
+      --dhruthi-primary: #1C352D;
+      --dhruthi-pink: #D11267;
+      --dhruthi-gold: #D4AF37;
+      --card-bg: #FFFFFF;
+      --text-main: #1E293B;
+      --text-sub: #475569;
+      --border-card: #E2E8F0;
+      --outcome-green: #22C55E;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #F1F5F9;
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 24px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Utility Print Bar */
+    .utility-bar {
+      width: 100%;
+      max-width: 680px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .brand-meta {
+      font-weight: 700;
+      color: var(--dhruthi-primary);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-print {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      background: var(--dhruthi-primary);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(28, 53, 45, 0.15);
+      transition: all 0.2s ease;
+    }
+
+    .btn-print:hover {
+      background: #2C4E43;
+      transform: translateY(-1px);
+    }
+
+    /* Poster Container (Exact Reference Dimensions & Proportions) */
+    .poster-card {
+      width: 100%;
+      max-width: 680px;
+      background: var(--bg-gradient);
+      border-radius: 20px;
+      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
+      border: 1px solid #CBD5E1;
+      padding: 32px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Header Row */
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .header-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: #0F172A;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-logo-img {
+      height: 75px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* Flow Layout (2 Columns matching reference) */
+    .flow-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 26px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Start Circle Node */
+    .start-circle {
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      background: #1C352D;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.2;
+      box-shadow: 0 6px 18px rgba(28, 53, 45, 0.2);
+      position: relative;
+      z-index: 3;
+    }
+
+    /* Minimal Card Base */
+    .card-box {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 20px 22px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+      border: 1.5px solid var(--border-card);
+      position: relative;
+      z-index: 3;
+    }
+
+    .card-title {
+      font-size: 17.5px;
+      font-weight: 800;
+      color: #1E293B;
+      margin-bottom: 10px;
+    }
+
+    .card-title span {
+      font-weight: 600;
+      color: #64748B;
+    }
+
+    .pink-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--dhruthi-pink);
+      margin-top: 10px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .item-block {
+      margin-bottom: 10px;
+    }
+
+    .item-heading {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #0F172A;
+    }
+
+    .item-subtext {
+      font-size: 12px;
+      color: #64748B;
+      margin-left: 24px;
+      line-height: 1.35;
+      font-weight: 500;
+    }
+
+    .desc-text {
+      font-size: 12.5px;
+      color: #475569;
+      line-height: 1.4;
+    }
+
+    /* Phase 3 Tall Card Right Column */
+    .phase-3-tall {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .bullet-list {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    .bullet-list li {
+      font-size: 12.5px;
+      color: #334155;
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 14px;
+      line-height: 1.35;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #475569;
+      font-weight: bold;
+    }
+
+    .bullet-subtext {
+      font-size: 11.5px;
+      color: #64748B;
+      display: block;
+      margin-top: 1px;
+    }
+
+    /* Bottom Outcome Oval Badge */
+    .outcome-container {
+      grid-column: 2;
+      display: flex;
+      justify-content: center;
+      margin-top: 6px;
+      z-index: 3;
+    }
+
+    .outcome-badge {
+      background: linear-gradient(135deg, #1C352D 0%, #2A5445 100%);
+      color: #FFFFFF;
+      padding: 18px 24px;
+      border-radius: 40px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.35;
+      box-shadow: 0 8px 20px rgba(28, 53, 45, 0.25);
+      border: 1.5px solid var(--dhruthi-gold);
+      width: 100%;
+      max-width: 280px;
+    }
+
+    /* Connecting Line Pipeline SVG (Exact Reference Path) */
+    .pipeline-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    @media (max-width: 640px) {
+      .poster-card {
+        padding: 24px 18px;
+      }
+      .header-title {
+        font-size: 28px;
+      }
+      .brand-logo-img {
+        height: 55px;
+      }
+      .flow-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .phase-3-tall {
+        grid-column: 1;
+        grid-row: auto;
+        margin-top: 0;
+      }
+      .outcome-container {
+        grid-column: 1;
+      }
+      .pipeline-svg {
+        display: none;
+      }
+    }
+
+    @media print {
+      body {
+        background: #FFFFFF;
+        padding: 0;
+      }
+      .utility-bar {
+        display: none;
+      }
+      .poster-card {
+        box-shadow: none;
+        border: none;
+        max-width: 100%;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="utility-bar">
+    <div class="brand-meta">
+      <i data-lucide="flower-2" style="color: var(--dhruthi-pink);"></i> Dhruthi Wellness Clinical Protocol
+    </div>
+    <button class="btn-print" onclick="window.print()">
+      <i data-lucide="printer"></i> Print / Export PDF
+    </button>
+  </div>
+
+  <!-- Main Minimal Poster Frame -->
+  <div class="poster-card">
+
+    <!-- Connecting Magenta Line Pipeline SVG -->
+    <svg class="pipeline-svg" viewBox="0 0 680 840" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Path 1: From Circle to Phase 1 (Box 1) -->
+      <path d="M 138 120 H 240 V 162" stroke="#D11267" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      
+      <!-- Path 2: From Phase 1 (Box 1) bottom to Phase 2 (Box 2) top -->
+      <path d="M 240 330 V 365" stroke="#D11267" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      
+      <!-- Path 3: S-Loop from Phase 2 (Box 2) bottom over to Phase 3 (Box 3) top -->
+      <path d="M 240 705 V 730 H 480 V 190 H 500" stroke="#D11267" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      
+      <!-- Path 4: From Phase 3 (Box 3) bottom to Outcome Oval -->
+      <path d="M 480 665 V 705" stroke="#D11267" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <!-- Header Row -->
+    <header class="header-row">
+      <h1 class="header-title">Fertility Roadmap</h1>
+      <img src="Images/Logo_D.png" alt="Dhruthi Wellness Logo" class="brand-logo-img">
+    </header>
+
+    <!-- Flow Grid -->
+    <main class="flow-grid">
+
+      <!-- START CIRCLE NODE -->
+      <div style="grid-column: 1;">
+        <div class="start-circle">
+          You are<br>here now
+        </div>
+      </div>
+
+      <!-- PHASE 1 CARD (Box 1: Left Top) -->
+      <article class="card-box" style="grid-column: 1; grid-row: 2;">
+        <h2 class="card-title">Phase 1: Get Started <span>(Week 0-4)</span></h2>
+
+        <div class="pink-label">WHAT YOU GET:</div>
+
+        <div class="item-block">
+          <div class="item-heading"><span>🥗</span> Beginner-friendly Fertility Diet Plan</div>
+          <div class="item-subtext">Personalized whole-food nutrition framework</div>
+        </div>
+
+        <div class="item-block">
+          <div class="item-heading"><span>📅</span> Meal Tracking & Routine Building</div>
+          <div class="item-subtext">Consistent daily habit tracking loop</div>
+        </div>
+
+        <div class="pink-label">WHY THIS PHASE:</div>
+        <p class="desc-text">To build consistency, discipline, and ease into a healthy lifestyle.</p>
+      </article>
+
+      <!-- PHASE 2 CARD (Box 2: Left Bottom) -->
+      <article class="card-box" style="grid-column: 1; grid-row: 3;">
+        <h2 class="card-title">Phase 2: Detox & Healing <span>(Month 2-3)</span></h2>
+
+        <div class="item-block" style="margin-top: 6px;">
+          <div class="item-heading"><span>🧪</span> <strong style="color: var(--dhruthi-pink);">Detox Phase</strong></div>
+          <div class="item-subtext">Flushes out toxins and inflammation</div>
+        </div>
+
+        <div class="item-block">
+          <div class="item-heading"><span>🥗</span> <strong style="color: #10B981;">Gut Reset Diet</strong></div>
+          <div class="item-subtext">Enhances digestion and nutrient absorption</div>
+        </div>
+
+        <div class="item-block">
+          <div class="item-heading"><span>🌼</span> <strong style="color: #D97706;">Egg Quality Nutrition</strong></div>
+          <div class="item-subtext">CoQ10 antioxidants for oocyte health</div>
+        </div>
+
+        <div class="pink-label" style="margin-top: 14px;">✨ VISIBLE RESULTS</div>
+        <div class="desc-text" style="font-weight: 700; color: #1E293B;">Weight Improvement</div>
+        <div class="item-subtext" style="margin-left: 0;">Noticeable metabolic and body optimization</div>
+      </article>
+
+      <!-- PHASE 3 CARD (Box 3: Right Column Tall Card) -->
+      <article class="card-box phase-3-tall">
+        <div>
+          <h2 class="card-title">Phase 3: Hormonal Balance <span>(Month 4-6)</span></h2>
+
+          <div class="pink-label" style="margin-top: 6px;">♦ Cycle-based Diet Plan</div>
+          <p class="desc-text">
+            Nutritional strategies aligned to follicular & luteal phases Focus on protein, healthy fats, complex carbs, and micronutrients
+          </p>
+          <div class="item-subtext" style="margin-left: 0; margin-top: 3px; margin-bottom: 12px;">Phase-matched nutrition for hormonal balance</div>
+
+          <div class="pink-label">? Why This Phase</div>
+          <p class="desc-text">
+            Supports hormone regulation, Improves ovulation quality, and balances cycles
+          </p>
+          <div class="item-subtext" style="margin-left: 0; margin-top: 3px; margin-bottom: 14px;">Optimizes ovulation and regulates cycles</div>
+        </div>
+
+        <div>
+          <div class="pink-label">✨ VISIBLE RESULTS</div>
+          <ul class="bullet-list">
+            <li>
+              <strong>Cycles become regular</strong>
+              <span class="bullet-subtext">Predictable monthly menstrual flow rhythm</span>
+            </li>
+            <li>
+              <strong>Hormonal acne & PMS reduce</strong>
+              <span class="bullet-subtext">Clearer skin and reduced cramping</span>
+            </li>
+            <li>
+              <strong>AMH improvement</strong>
+              <span class="bullet-subtext">Optimized ovarian reserve bio-markers</span>
+            </li>
+            <li>
+              <strong>Mood and energy stabilize</strong>
+              <span class="bullet-subtext">Balanced daily vitality and mood</span>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- BOTTOM OUTCOME OVAL BADGE -->
+      <div class="outcome-container">
+        <div class="outcome-badge">
+          Improved Fertility & Higher Chances of Natural Conception
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dhruthi Wellness - Creative Brand Poster</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --forest-green: #1C352D;
+      --deep-emerald: #12241E;
+      --gold-primary: #D4AF37;
+      --gold-light: #F7E9B8;
+      --rose-pink: #E98A9B;
+      --mint-cream: #EEF6F1;
+      --soft-white: #FAF6F0;
+      --card-bg: #FFFFFF;
+      --text-dark: #111E1A;
+      --text-muted: #4A635A;
+      --shadow-luxury: 0 24px 60px rgba(18, 36, 30, 0.18);
+      --radius-xl: 32px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(135deg, #12241E 0%, #1C352D 50%, #2A483E 100%);
+      color: var(--soft-white);
+      min-height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Top Utility Navigation */
+    .action-bar {
+      width: 100%;
+      max-width: 1000px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .badge-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 30px;
+      color: var(--gold-primary);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .btn-print {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--gold-primary) 0%, #B8860B 100%);
+      color: #12241E;
+      border: none;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .btn-print:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(212, 175, 55, 0.45);
+    }
+
+    /* Poster Frame Canvas */
+    .poster-canvas {
+      width: 100%;
+      max-width: 1000px;
+      background: var(--soft-white);
+      color: var(--text-dark);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-luxury);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      border: 2px solid rgba(212, 175, 55, 0.3);
+      position: relative;
+    }
+
+    /* Left Art Showcase Column */
+    .art-column {
+      background: var(--deep-emerald);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 40px;
+    }
+
+    .art-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.88;
+      transition: transform 0.6s ease;
+    }
+
+    .art-column:hover .art-image {
+      transform: scale(1.03);
+    }
+
+    .art-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(18, 36, 30, 0.4) 0%, rgba(18, 36, 30, 0.75) 100%);
+      pointer-events: none;
+    }
+
+    .art-header-badge {
+      position: relative;
+      z-index: 2;
+      background: rgba(18, 36, 30, 0.65);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      padding: 12px 20px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold-primary);
+      width: fit-content;
+    }
+
+    .art-header-badge span {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .art-bottom-tag {
+      position: relative;
+      z-index: 2;
+      background: rgba(18, 36, 30, 0.85);
+      backdrop-filter: blur(16px);
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .art-bottom-tag h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+    }
+
+    .art-bottom-tag p {
+      font-size: 13px;
+      color: #E2ECE7;
+      line-height: 1.5;
+    }
+
+    /* Right Copy & Details Column */
+    .copy-column {
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(180deg, #FFFFFF 0%, #FAF6F0 100%);
+    }
+
+    .brand-header {
+      margin-bottom: 28px;
+    }
+
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--forest-green);
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-name i {
+      color: var(--gold-primary);
+    }
+
+    .brand-subtitle {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .tagline-banner {
+      background: var(--mint-cream);
+      border-left: 4px solid var(--gold-primary);
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--forest-green);
+      margin-bottom: 30px;
+      line-height: 1.4;
+    }
+
+    /* Pillars Grid */
+    .pillars-title {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .pillar-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(28, 53, 45, 0.1);
+      border-radius: 16px;
+      padding: 16px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(28, 53, 45, 0.04);
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold-primary);
+      box-shadow: 0 10px 24px rgba(212, 175, 55, 0.15);
+    }
+
+    .pillar-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--mint-cream);
+      color: var(--forest-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .pillar-card h5 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--forest-green);
+      margin-bottom: 4px;
+    }
+
+    .pillar-card p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* CTA Section */
+    .cta-box {
+      background: linear-gradient(135deg, var(--forest-green) 0%, var(--deep-emerald) 100%);
+      color: #FFFFFF;
+      padding: 24px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border: 1px solid var(--gold-primary);
+      box-shadow: 0 12px 30px rgba(28, 53, 45, 0.2);
+    }
+
+    .cta-box h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cta-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .cta-chip {
+      background: rgba(255, 255, 255, 0.12);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      color: #E2ECE7;
+      font-weight: 600;
+    }
+
+    .cta-contact {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--gold-primary);
+      font-weight: 700;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Responsive */
+    @media (max-width: 850px) {
+      .poster-canvas {
+        grid-template-columns: 1fr;
+      }
+      .art-column {
+        min-height: 380px;
+      }
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+      }
+      .action-bar {
+        display: none;
+      }
+      .poster-canvas {
+        box-shadow: none;
+        border: none;
+        max-width: 100%;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Action Bar -->
+  <div class="action-bar">
+    <div class="badge-label">
+      <i data-lucide="sparkles"></i> Dhruthi Wellness Official Brand Artifact
+    </div>
+    <button class="btn-print" onclick="window.print()">
+      <i data-lucide="printer"></i> Print / Save High-Res Poster
+    </button>
+  </div>
+
+  <!-- Main Poster Frame -->
+  <div class="poster-canvas">
+
+    <!-- Left Art Column -->
+    <div class="art-column">
+      <img src="dhruthi_poster_art.png" alt="Dhruthi Wellness Creative Poster Art" class="art-image">
+      <div class="art-overlay"></div>
+
+      <div class="art-header-badge">
+        <i data-lucide="flower-2"></i>
+        <span>Clinical Excellence</span>
+      </div>
+
+      <div class="art-bottom-tag">
+        <h4>Empowering Women's Health</h4>
+        <p>A personalized clinical journey connecting cellular nutrition, hormonal harmony, and preconception vitality.</p>
+      </div>
+    </div>
+
+    <!-- Right Copy & Clinical Content Column -->
+    <div class="copy-column">
+
+      <div class="brand-header">
+        <div class="brand-name">
+          <i data-lucide="flower-2"></i> Dhruthi Wellness
+        </div>
+        <div class="brand-subtitle">Clinical Nutrition & Preconception Care</div>
+      </div>
+
+      <div class="tagline-banner">
+        "Nourish Your Body • Align Your Hormones • Welcome Life"
+      </div>
+
+      <div>
+        <div class="pillars-title">Clinical Care Pillars</div>
+
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <i data-lucide="sprout"></i>
+            </div>
+            <h5>Preconception Diet</h5>
+            <p>Targeted anti-inflammatory meal protocols built for optimum metabolic state.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <h5>Cellular Gut Reset</h5>
+            <p>Microbiome repair to maximize micronutrient absorption and flush toxins.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <i data-lucide="sparkles"></i>
+            </div>
+            <h5>Egg Quality Stack</h5>
+            <p>Mitochondrial nutrition with CoQ10, Active Folate & Antioxidant stacks.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <i data-lucide="refresh-cw"></i>
+            </div>
+            <h5>Cycle Syncing</h5>
+            <p>Hormone-aligned phase nutrition to optimize ovulation & uterine lining.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-box">
+        <h4>
+          <i data-lucide="calendar-heart"></i> Start Your Personalized Wellness Journey
+        </h4>
+        <div class="cta-features">
+          <span class="cta-chip">✓ 1-on-1 Consultation</span>
+          <span class="cta-chip">✓ Custom Meal Plans</span>
+          <span class="cta-chip">✓ Hormone Tracking</span>
+        </div>
+        <div class="cta-contact">
+          <span>📍 Dhruthi Wellness Clinic</span>
+          <span>🌐 www.dhruthiwellness.com</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

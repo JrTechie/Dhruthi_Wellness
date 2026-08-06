@@ -237,34 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // --- 7. Star Rating Interaction Logic ---
-  const starContainer = document.getElementById('review-stars-container');
-  let selectedRating = 5; // Default rating
-
-  if (starContainer) {
-    const starBtns = starContainer.querySelectorAll('.star-btn');
-    
-    starBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const rating = parseInt(btn.getAttribute('data-rating'));
-        selectedRating = rating;
-        
-        // Update visual stars state
-        starBtns.forEach(star => {
-          const starVal = parseInt(star.getAttribute('data-rating'));
-          if (starVal <= rating) {
-            star.classList.add('active');
-          } else {
-            star.classList.remove('active');
-          }
-        });
-      });
-    });
-  }
-
-
-  // --- 8. Testimonials Load & Submission ---
-  const reviewForm = document.getElementById('review-form');
+  // --- 8. Testimonials Load & Render ---
   const testimonialsList = document.getElementById('testimonials-list');
 
   // Load reviews from backend database
@@ -288,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderReviewCard(review, prepend = true) {
     const card = document.createElement('div');
-    card.className = 'testi-card';
+    card.className = 'testi-card glass-card';
     const firstLetter = (review.author_name || 'U').charAt(0).toUpperCase();
     
     let stars = '';
@@ -310,7 +283,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (prepend) {
       testimonialsList.insertBefore(card, testimonialsList.firstChild);
-      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } else {
       testimonialsList.appendChild(card);
     }
@@ -318,68 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial load
   loadReviews();
-
-  if (reviewForm && testimonialsList) {
-    reviewForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const name = document.getElementById('review-name').value.trim();
-      const category = document.getElementById('review-category').value.trim();
-      const msg = document.getElementById('review-msg').value.trim();
-
-      if (!name || !category || !msg) {
-        showToast('Please fill out all review form fields.', 'danger');
-        return;
-      }
-
-      const payload = {
-        author_name: name,
-        category: category,
-        rating: selectedRating,
-        message: msg
-      };
-
-      try {
-        const response = await fetch('/api/reviews', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        const result = await response.json();
-        if (!response.ok) {
-          throw new Error(result.error || 'Server error');
-        }
-
-        renderReviewCard(result, true); // Prepend to UI
-        showToast('Thank you! Your review has been added successfully.', 'success');
-      } catch (err) {
-        console.error('Submit Review Error:', err);
-        // Fallback locally
-        let stars = '';
-        for (let i = 0; i < 5; i++) {
-          stars += i < selectedRating ? '★' : '☆';
-        }
-        renderReviewCard({
-          author_name: name,
-          category: category,
-          rating: selectedRating,
-          message: msg
-        }, true);
-        showToast('Review submitted locally (Database offline).', 'warning');
-      }
-
-      // Reset Form
-      reviewForm.reset();
-      
-      // Reset Stars to 5
-      selectedRating = 5;
-      if (starContainer) {
-        const starBtns = starContainer.querySelectorAll('.star-btn');
-        starBtns.forEach(star => star.classList.add('active'));
-      }
-    });
-  }
 
 
   // --- 9. Healthy Living Blog Articles & Modal Logic ---
@@ -483,14 +393,184 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // --- 10. Feedback Toast Notification Engine ---
+  // --- 10. Pricing Plan Duration Tab Switcher ---
+  const planTabBtns = document.querySelectorAll('.plan-tab-btn');
+  const planPrices = {
+    '1': {
+      pro: { strike: '₹2,599', promo: '₹1,299', discount: '50% OFF' },
+      elite: { strike: '₹3,399', promo: '₹1,699', discount: '50% OFF' },
+      preconception: { strike: '₹3,999', promo: '₹1,999', discount: '50% OFF' }
+    },
+    '3': {
+      pro: { strike: '₹7,799', promo: '₹3,699', discount: '53% OFF' },
+      elite: { strike: '₹10,194', promo: '₹4,899', discount: '52% OFF' },
+      preconception: { strike: '₹11,994', promo: '₹5,799', discount: '52% OFF' }
+    },
+    '6': {
+      pro: { strike: '₹15,999', promo: '₹6,499', discount: '59% OFF' },
+      elite: { strike: '₹20,999', promo: '₹8,499', discount: '60% OFF' },
+      preconception: { strike: '₹23,999', promo: '₹9,999', discount: '58% OFF' }
+    }
+  };
+
+  planTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      planTabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const duration = btn.getAttribute('data-duration');
+      const data = planPrices[duration];
+      if (!data) return;
+
+      // Update Pro card
+      const proStrike = document.getElementById('price-pro-strike');
+      const proPromo = document.getElementById('price-pro-promo');
+      const proBadge = document.getElementById('price-pro-badge');
+      if (proStrike && proPromo && proBadge) {
+        proStrike.textContent = data.pro.strike;
+        proPromo.textContent = data.pro.promo;
+        proBadge.textContent = data.pro.discount;
+      }
+
+      // Update Elite card
+      const eliteStrike = document.getElementById('price-elite-strike');
+      const elitePromo = document.getElementById('price-elite-promo');
+      const eliteBadge = document.getElementById('price-elite-badge');
+      if (eliteStrike && elitePromo && eliteBadge) {
+        eliteStrike.textContent = data.elite.strike;
+        elitePromo.textContent = data.elite.promo;
+        eliteBadge.textContent = data.elite.discount;
+      }
+
+      // Update Preconception card
+      const precStrike = document.getElementById('price-prec-strike');
+      const precPromo = document.getElementById('price-prec-promo');
+      const precBadge = document.getElementById('price-prec-badge');
+      if (precStrike && precPromo && precBadge) {
+        precStrike.textContent = data.preconception.strike;
+        precPromo.textContent = data.preconception.promo;
+        precBadge.textContent = data.preconception.discount;
+      }
+    });
+  });
+
+
+  // --- 11. Visual Guide Carousel Slider ---
+  const carouselImg = document.getElementById('carousel-main-img');
+  const carouselPrev = document.getElementById('carousel-prev');
+  const carouselNext = document.getElementById('carousel-next');
+  const carouselCounter = document.getElementById('carousel-counter');
+  const carouselThumbs = document.querySelectorAll('.carousel-thumb-img');
+
+  if (carouselImg && carouselThumbs.length > 0) {
+    let currentIndex = 0;
+    const slides = Array.from(carouselThumbs).map(t => t.getAttribute('src'));
+
+    function updateCarousel(index) {
+      currentIndex = (index + slides.length) % slides.length;
+      carouselImg.src = slides[currentIndex];
+      if (carouselCounter) {
+        carouselCounter.textContent = (currentIndex + 1).toString();
+      }
+
+      carouselThumbs.forEach((thumb, i) => {
+        if (i === currentIndex) {
+          thumb.style.borderColor = 'var(--primary)';
+          thumb.style.opacity = '1';
+          thumb.classList.add('active');
+        } else {
+          thumb.style.borderColor = 'transparent';
+          thumb.style.opacity = '0.75';
+          thumb.classList.remove('active');
+        }
+      });
+    }
+
+    if (carouselPrev) {
+      carouselPrev.addEventListener('click', () => updateCarousel(currentIndex - 1));
+    }
+    if (carouselNext) {
+      carouselNext.addEventListener('click', () => updateCarousel(currentIndex + 1));
+    }
+
+    carouselThumbs.forEach((thumb, i) => {
+      thumb.addEventListener('click', () => updateCarousel(i));
+    });
+  }
+
+
+  // --- 12. Star Rating & Review Submission Handler ---
+  const starContainer = document.getElementById('review-stars-container');
+  let selectedRating = 5;
+
+  if (starContainer) {
+    const starBtns = starContainer.querySelectorAll('.star-btn');
+    starBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const rating = parseInt(btn.getAttribute('data-rating'));
+        selectedRating = rating;
+        starBtns.forEach(star => {
+          const starVal = parseInt(star.getAttribute('data-rating'));
+          if (starVal <= rating) {
+            star.style.color = '#f59e0b';
+            star.classList.add('active');
+          } else {
+            star.style.color = '#cbd5e1';
+            star.classList.remove('active');
+          }
+        });
+      });
+    });
+  }
+
+  const reviewForm = document.getElementById('review-form');
+  if (reviewForm) {
+    reviewForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('review-name').value.trim();
+      const category = document.getElementById('review-category').value.trim();
+      const msg = document.getElementById('review-msg').value.trim();
+
+      if (!name || !category || !msg) {
+        showToast('Please fill out all review form fields.', 'danger');
+        return;
+      }
+
+      const payload = {
+        author_name: name,
+        category: category,
+        rating: selectedRating,
+        message: msg
+      };
+
+      try {
+        const response = await fetch('/api/reviews', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+        renderReviewCard(response.ok ? result : payload, true);
+        showToast('Thank you! Your review has been published.', 'success');
+      } catch (err) {
+        console.warn('Submit review offline fallback:', err);
+        renderReviewCard(payload, true);
+        showToast('Review submitted successfully!', 'success');
+      }
+
+      reviewForm.reset();
+    });
+  }
+
+
+  // --- 13. Toast Notification Engine ---
   function showToast(message, type = 'success') {
     const container = document.getElementById('toast-container');
+    if (!container) return;
     
     const toast = document.createElement('div');
     toast.className = `toast ${type === 'danger' ? 'danger-toast' : ''}`;
     
-    // Custom style for errors if any
     if (type === 'danger') {
       toast.style.borderColor = '#ef4444';
     }
@@ -504,12 +584,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     container.appendChild(toast);
 
-    // Fade in
     setTimeout(() => {
       toast.classList.add('active');
     }, 10);
 
-    // Fade out and remove
     setTimeout(() => {
       toast.classList.remove('active');
       setTimeout(() => {
@@ -519,3 +597,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+
+
