@@ -3143,3 +3143,124 @@ body.dark-theme .glass-card:hover {
 }
 
 
+/* =============================================================
+   MOBILE HORIZONTAL GRID LAYOUT SYSTEM (@media max-width: 768px)
+   Converts vertical grid stacks into smooth horizontal swipe rows on mobile
+============================================================= */
+@media (max-width: 768px) {
+  .plans-grid,
+  .services-grid,
+  .features-grid,
+  .testimonials-grid,
+  .testimonials-glass-grid,
+  .brochures-grid,
+  .transformations-grid,
+  .feedback-grid,
+  .nutrition-grid-1to1,
+  .expert-profile-grid,
+  .packages-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 16px;
+    padding-left: 4px;
+    padding-right: 4px;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .plans-grid > *,
+  .services-grid > *,
+  .features-grid > *,
+  .testimonials-grid > *,
+  .testimonials-glass-grid > *,
+  .brochures-grid > *,
+  .transformations-grid > *,
+  .feedback-grid > *,
+  .nutrition-grid-1to1 > *,
+  .expert-profile-grid > *,
+  .packages-grid > * {
+    flex: 0 0 85% !important;
+    min-width: 275px;
+    max-width: 85%;
+    scroll-snap-align: start;
+    margin-bottom: 0 !important;
+  }
+
+  /* Custom subtle scrollbar for mobile horizontal swipe grids */
+  .plans-grid::-webkit-scrollbar,
+  .services-grid::-webkit-scrollbar,
+  .features-grid::-webkit-scrollbar,
+  .testimonials-grid::-webkit-scrollbar,
+  .testimonials-glass-grid::-webkit-scrollbar,
+  .brochures-grid::-webkit-scrollbar,
+  .transformations-grid::-webkit-scrollbar,
+  .feedback-grid::-webkit-scrollbar,
+  .nutrition-grid-1to1::-webkit-scrollbar,
+  .expert-profile-grid::-webkit-scrollbar,
+  .packages-grid::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  .plans-grid::-webkit-scrollbar-thumb,
+  .services-grid::-webkit-scrollbar-thumb,
+  .features-grid::-webkit-scrollbar-thumb,
+  .testimonials-grid::-webkit-scrollbar-thumb,
+  .testimonials-glass-grid::-webkit-scrollbar-thumb,
+  .brochures-grid::-webkit-scrollbar-thumb,
+  .transformations-grid::-webkit-scrollbar-thumb,
+  .feedback-grid::-webkit-scrollbar-thumb,
+  .nutrition-grid-1to1::-webkit-scrollbar-thumb,
+  .expert-profile-grid::-webkit-scrollbar-thumb,
+  .packages-grid::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+  }
+}
+
+
+/* =============================================================
+   LIGHT & DARK MODE ADVANCED OPTIMIZATIONS (PC & MOBILE)
+============================================================= */
+body.dark-theme header {
+  background: rgba(12, 23, 16, 0.92) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-theme .nav-links {
+  background: rgba(12, 23, 16, 0.98);
+}
+
+body.dark-theme input,
+body.dark-theme select,
+body.dark-theme textarea {
+  background-color: #142419 !important;
+  color: #f4f8f5 !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+body.dark-theme .modal-content,
+body.dark-theme .feedback-card,
+body.dark-theme .brochure-card,
+body.dark-theme .calculator-card,
+body.dark-theme .google-form-card {
+  background: #142419 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #f4f8f5 !important;
+}
+
+body.dark-theme .card-badge {
+  background: rgba(59, 110, 76, 0.3) !important;
+  color: #a8e6bc !important;
+}
+
+body.dark-theme .section-subtitle,
+body.dark-theme .text-muted {
+  color: #9cb3a4 !important;
+}
+
+
+

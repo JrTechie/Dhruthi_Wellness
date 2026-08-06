@@ -6,8 +6,8 @@
   <title>Client Feedback & Reviews — Dhruthi Wellness | Dt. Akhila Konakalla</title>
   <meta name="description" content="Submit client feedback, generate shareable review links, and view verified transformation stories for Dhruthi Wellness customized diet plans.">
   
-  <!-- Favicon Icons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="Images/Logo_D_bright.png">
+  <!-- Favicon Icons (Circular) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -300,6 +300,23 @@
 
   <!-- --- Main Feedback Portal Grid --- -->
   <div class="feedback-container">
+    
+    <!-- Google Form Review Collector Card -->
+    <div class="google-form-card" style="background: var(--bg-surface); border: 1.5px solid var(--primary); border-radius: var(--radius-lg); padding: 24px 32px; margin-top: 24px; box-shadow: var(--shadow-md); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;">
+      <div style="flex: 1; min-width: 280px;">
+        <span class="card-badge" style="background: rgba(59, 110, 76, 0.12); color: var(--primary);"><i data-lucide="file-spreadsheet" style="width: 14px; height: 14px;"></i> Google Form Integration</span>
+        <h3 style="font-size: 1.25rem; margin-top: 4px; color: var(--text-primary);">Prefer submitting via Google Form?</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 2px;">
+          All reviews collected via Google Forms are automatically stored and synced directly to your private Google Sheets spreadsheet.
+        </p>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer" class="btn" style="background: var(--primary); color: white; border-radius: 12px; padding: 12px 20px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+          <i data-lucide="external-link" style="width: 16px; height: 16px;"></i> Submit via Google Form
+        </a>
+      </div>
+    </div>
+
     <div class="feedback-grid">
 
       <!-- Column 1: Client Review Submission Form -->

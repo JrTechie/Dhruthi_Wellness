@@ -114,19 +114,38 @@ def create_og_image():
     canvas.convert('RGB').save(og_output_path, 'PNG', quality=95)
     print(f"Successfully generated OpenGraph image: {og_output_path}")
 
+def make_circular(image):
+    w, h = image.size
+    size = min(w, h)
+    left = (w - size) // 2
+    top = (h - size) // 2
+    cropped = image.crop((left, top, left + size, top + size))
+    
+    scale = 4
+    mask_size = size * scale
+    mask = Image.new('L', (mask_size, mask_size), 0)
+    draw = ImageDraw.Draw(mask)
+    draw.ellipse((0, 0, mask_size, mask_size), fill=255)
+    mask = mask.resize((size, size), Image.Resampling.LANCZOS)
+    
+    output = Image.new('RGBA', (size, size), (0, 0, 0, 0))
+    output.paste(cropped, (0, 0), mask)
+    return output
+
 def create_favicons():
     logo_path = r'l:\Developer\nutriflow\Images\Logo_D_bright.png'
     if os.path.exists(logo_path):
         img = Image.open(logo_path).convert('RGBA')
+        circular_img = make_circular(img)
         
-        # Save root favicon.png
-        img.resize((192, 192), Image.Resampling.LANCZOS).save(r'l:\Developer\nutriflow\favicon.png', 'PNG')
-        img.resize((32, 32), Image.Resampling.LANCZOS).save(r'l:\Developer\nutriflow\favicon.ico', format='ICO')
+        # Save root favicon.png and favicon.ico (circular shape only for favicons)
+        circular_img.resize((192, 192), Image.Resampling.LANCZOS).save(r'l:\Developer\nutriflow\favicon.png', 'PNG')
+        circular_img.resize((32, 32), Image.Resampling.LANCZOS).save(r'l:\Developer\nutriflow\favicon.ico', format='ICO')
         
         # Save inside Images/
-        img.resize((192, 192), Image.Resampling.LANCZOS).save(r'l:\Developer\nutriflow\Images\favicon.png', 'PNG')
-        img.resize((180, 180), Image.Resampling.LANCZOS).save(r'l:\Developer\nutriflow\Images\apple-touch-icon.png', 'PNG')
-        print("Successfully generated favicon files.")
+        circular_img.resize((192, 192), Image.Resampling.LANCZOS).save(r'l:\Developer\nutriflow\Images\favicon.png', 'PNG')
+        circular_img.resize((180, 180), Image.Resampling.LANCZOS).save(r'l:\Developer\nutriflow\Images\apple-touch-icon.png', 'PNG')
+        print("Successfully generated circular favicon files.")
 
 if __name__ == '__main__':
     create_og_image()
