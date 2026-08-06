@@ -248,10 +248,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!res.ok) throw new Error('Failed to fetch reviews');
       const data = await res.json();
       if (data && data.length > 0) {
-        // Clear testimonials list since we have custom database reviews
-        testimonialsList.innerHTML = '';
         data.forEach(review => {
-          renderReviewCard(review, false); // append
+          renderReviewCard(review, true); // prepend database reviews
         });
       }
     } catch (err) {
@@ -261,7 +259,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderReviewCard(review, prepend = true) {
     const card = document.createElement('div');
-    card.className = 'testi-card glass-card';
+    const catSlug = (review.category || 'lifestyle').toLowerCase().replace(/[^a-z0-9]/g, '-');
+    card.className = 'testi-card glass-card story-item';
+    card.setAttribute('data-category', catSlug);
     const firstLetter = (review.author_name || 'U').charAt(0).toUpperCase();
     
     let stars = '';
@@ -270,13 +270,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     card.innerHTML = `
-      <div class="testi-stars">${stars}</div>
+      <div class="testi-header">
+        <div class="testi-stars">${stars}</div>
+        <div class="testi-badges">
+          <span class="source-badge">Verified Review</span>
+          <span class="cat-badge">${review.category || 'Client Care'}</span>
+        </div>
+      </div>
       <p class="testi-text">"${review.message}"</p>
       <div class="testi-author">
         <div class="testi-avatar">${firstLetter}</div>
         <div>
           <h4 class="testi-name">${review.author_name}</h4>
-          <p class="testi-info">${review.category}</p>
+          <p class="testi-info">${review.category || 'Nutrition Client'}</p>
         </div>
       </div>
     `;
@@ -290,6 +296,105 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial load
   loadReviews();
+
+  // --- Category Filter Chips Handler ---
+  const filterChips = document.querySelectorAll('#story-filter-chips .filter-chip');
+
+  if (filterChips.length > 0) {
+    filterChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        filterChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+
+        const cat = chip.getAttribute('data-category');
+        const storyItems = document.querySelectorAll('.story-item');
+
+        storyItems.forEach(item => {
+          const itemCat = item.getAttribute('data-category') || '';
+          if (cat === 'all' || itemCat.includes(cat)) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // --- Lightbox Modal Logic for Proof Screenshots ---
+  const proofCards = document.querySelectorAll('.proof-card');
+  const lightboxModal = document.getElementById('proof-lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxClose = document.getElementById('lightbox-close-btn');
+  const lightboxPrev = document.getElementById('lightbox-prev-btn');
+  const lightboxNext = document.getElementById('lightbox-next-btn');
+
+  let currentProofIndex = 0;
+  const visibleProofs = [];
+
+  function updateVisibleProofs() {
+    visibleProofs.length = 0;
+    document.querySelectorAll('.proof-card').forEach((card) => {
+      if (card.style.display !== 'none') {
+        visibleProofs.push(card);
+      }
+    });
+  }
+
+  function openLightbox(index) {
+    updateVisibleProofs();
+    if (visibleProofs.length === 0) return;
+    currentProofIndex = (index + visibleProofs.length) % visibleProofs.length;
+
+    const targetCard = visibleProofs[currentProofIndex];
+    if (lightboxImg) lightboxImg.src = targetCard.getAttribute('data-src');
+    if (lightboxCaption) lightboxCaption.textContent = targetCard.getAttribute('data-caption') || '';
+    if (lightboxModal) lightboxModal.classList.add('active');
+  }
+
+  function closeLightbox() {
+    if (lightboxModal) lightboxModal.classList.remove('active');
+  }
+
+  if (proofCards.length > 0 && lightboxModal) {
+    proofCards.forEach((card) => {
+      card.addEventListener('click', () => {
+        updateVisibleProofs();
+        const activeIdx = visibleProofs.indexOf(card);
+        openLightbox(activeIdx >= 0 ? activeIdx : 0);
+      });
+    });
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+
+    if (lightboxPrev) {
+      lightboxPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openLightbox(currentProofIndex - 1);
+      });
+    }
+
+    if (lightboxNext) {
+      lightboxNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openLightbox(currentProofIndex + 1);
+      });
+    }
+
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal || e.target.classList.contains('lightbox-content')) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightboxModal.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') openLightbox(currentProofIndex - 1);
+      if (e.key === 'ArrowRight') openLightbox(currentProofIndex + 1);
+    });
+  }
 
 
   // --- 9. Healthy Living Blog Articles & Modal Logic ---
