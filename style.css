@@ -2644,9 +2644,17 @@ body.dark-theme .blog-modal-close:hover {
     padding: 85px 0 36px 0;
   }
 
+  .container {
+    padding: 0 16px;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 0;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
   }
 
   .hero-visual {
@@ -2658,6 +2666,7 @@ body.dark-theme .blog-modal-close:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
+    box-sizing: border-box;
   }
 
   .glass-hero-frame {
@@ -2666,7 +2675,7 @@ body.dark-theme .blog-modal-close:hover {
     height: auto;
     aspect-ratio: auto;
     border-radius: var(--radius-lg);
-    overflow: hidden;
+    overflow: visible;
     margin: 0 auto;
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--border-glow);
@@ -2675,14 +2684,17 @@ body.dark-theme .blog-modal-close:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
   }
 
   .glass-hero-frame img {
     width: 100%;
+    max-width: 100%;
     height: auto;
     object-fit: contain;
     display: block;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: var(--radius-lg);
   }
 
@@ -2707,6 +2719,8 @@ body.dark-theme .blog-modal-close:hover {
     margin-bottom: 20px;
     text-align: center;
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-desc {
@@ -2725,17 +2739,18 @@ body.dark-theme .blog-modal-close:hover {
     width: 100%;
     flex-wrap: wrap;
     gap: 12px;
+    text-align: center;
   }
 
   .hero-stats {
     justify-content: center;
     width: 100%;
+    text-align: center;
   }
 
   .blog-grid, .philosophy-grid, .services-grid, .how-steps, .testi-grid, .why-grid {
     grid-template-columns: 1fr;
   }
-}
 
   .nav-links {
     display: none;
@@ -2758,14 +2773,6 @@ body.dark-theme .blog-modal-close:hover {
 
   .nav-toggle {
     display: flex;
-  }
-
-  .hero-grid {
-    text-align: center;
-  }
-
-  .hero-ctas, .hero-stats {
-    justify-content: center;
   }
 
   .section-title {
