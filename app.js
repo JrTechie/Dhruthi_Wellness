@@ -455,6 +455,27 @@ document.addEventListener('DOMContentLoaded', () => {
         </ul>
         <p>Unlock your energy and optimize thyroid function by booking a specialized consultation with Dr. Akhila!</p>
       `
+    },
+    '4': {
+      title: 'Optimizing Fertility: Evidence-Based Nutrition for Conception',
+      category: 'Fertility Nutrition',
+      readTime: '5 min read',
+      date: 'August 7, 2026',
+      img: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&h=350&q=80',
+      body: `
+        <p>Conception and reproductive wellness are deeply connected to cellular nutrition, hormonal balance, and metabolic health. Whether you are planning a pregnancy naturally or preparing for assisted reproductive treatments (IVF/IUI), tailored dietary interventions build a strong foundation for fertility.</p>
+        <h3>Key Nutritional Pillars for Fertility Optimization</h3>
+        <p>Nutrient-dense foods help regulate egg quality, optimize endometrial thickness, and balance reproductive hormone pathways:</p>
+        <ul>
+          <li><strong>Antioxidant-Rich Foods:</strong> Berries, leafy greens, nuts, and seeds fight oxidative stress in reproductive cells and support mitochondrial energy in eggs.</li>
+          <li><strong>Healthy Essential Fats:</strong> Omega-3 fatty acids from walnuts, flaxseeds, and clean sources support pelvic blood flow and reduce systemic inflammation.</li>
+          <li><strong>Micronutrient Synergies:</strong> Folate (B9), Vitamin D, Zinc, and Selenium play essential roles in hormone synthesis, ovulation regularity, and early embryonic development.</li>
+          <li><strong>Blood Sugar Regulation:</strong> Preventing glucose and insulin spikes balances LH/FSH ratios and supports predictable ovulation cycles.</li>
+        </ul>
+        <h3>Personalized Preconception Care</h3>
+        <p>Every fertility journey is unique. A tailored meal protocol addresses your specific blood biomarkers, cycle patterns, and nutritional needs.</p>
+        <p>To prepare your body for a healthy conception journey, book a specialized Fertility Consultation with Dt. Akhila Konakalla today!</p>
+      `
     }
   };
 
