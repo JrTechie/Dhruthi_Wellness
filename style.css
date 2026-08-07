@@ -2204,19 +2204,11 @@ section {
   width: fit-content;
 }
 
-.badge-mission {
+.badge-mission,
+.badge-approach,
+.badge-vision {
   background: var(--primary-glow);
   color: var(--primary);
-}
-
-.badge-approach {
-  background: var(--secondary-glow);
-  color: var(--secondary);
-}
-
-.badge-vision {
-  background: var(--accent-glow);
-  color: var(--accent);
 }
 
 .philosophy-card h3 {
