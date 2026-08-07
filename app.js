@@ -420,22 +420,22 @@ document.addEventListener('DOMContentLoaded', () => {
       `
     },
     '2': {
-      title: 'Reversing PCOS/PCOD: Nutritional Interventions',
+      title: 'Reversing PCOD/PCOS: Nutritional Interventions',
       category: 'Hormonal Health',
       readTime: '6 min read',
       date: 'June 27, 2026',
       img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&h=350&q=80',
       body: `
-        <p>Polycystic Ovary Syndrome (PCOS/PCOD) is primarily an endocrine disorder, closely linked to insulin resistance and chronic low-grade inflammation. While lifestyle modifications are the first-line therapy, nutritional interventions play a key role in regulating ovulation, cycles, and weight.</p>
+        <p>Polycystic Ovary Syndrome (PCOD/PCOS) is primarily an endocrine disorder, closely linked to insulin resistance and chronic low-grade inflammation. While lifestyle modifications are the first-line therapy, nutritional interventions play a key role in regulating ovulation, cycles, and weight.</p>
         <h3>The Insulin Connection</h3>
-        <p>Up to 70% of women with PCOS have insulin resistance. When insulin levels are chronically elevated, it signals the ovaries to produce excess androgens (like testosterone), leading to symptoms like hirsutism, acne, and irregular periods. Designing a low-insulin-spike customized diet is crucial to breaking this cycle.</p>
-        <h3>Our PCOS Nutritional Protocol</h3>
+        <p>Up to 70% of women with PCOD/PCOS have insulin resistance. When insulin levels are chronically elevated, it signals the ovaries to produce excess androgens (like testosterone), leading to symptoms like hirsutism, acne, and irregular periods. Designing a low-insulin-spike customized diet is crucial to breaking this cycle.</p>
+        <h3>Our PCOD/PCOS Nutritional Protocol</h3>
         <ul>
           <li><strong>Anti-inflammatory Foods:</strong> Incorporating omega-3 fats, colorful vegetables, and antioxidant-rich seeds to curb chronic inflammation.</li>
           <li><strong>Low Glycemic Load Complex Carbs:</strong> High-fiber grains (like millets and oats) paired with high-quality plant and dairy proteins.</li>
           <li><strong>Targeted Micronutrient Supplementation:</strong> Calibrating Vitamin D, Inositol, and Magnesium intake to improve insulin sensitivity.</li>
         </ul>
-        <p>To reverse your PCOS symptoms naturally, schedule a customized consultation with Dr. Akhila Konakalla today!</p>
+        <p>To reverse your PCOD/PCOS symptoms naturally, schedule a customized consultation with Dr. Akhila Konakalla today!</p>
       `
     },
     '3': {

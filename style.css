@@ -2519,11 +2519,32 @@ body.dark-theme .blog-modal-close:hover {
     grid-template-columns: 1fr;
     gap: 40px;
   }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-tag {
+    margin-left: auto;
+    margin-right: auto;
+  }
   .hero-desc {
     max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
   .hero-visual {
     order: -1; /* visual on top for mobile */
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .glass-hero-frame {
+    margin: 0 auto;
   }
   .about-image-wrapper {
     order: -1;
