@@ -2515,9 +2515,6 @@ body.dark-theme .blog-modal-close:hover {
   .testi-form-card {
     position: static;
   }
-  .blog-grid, .philosophy-grid {
-    grid-template-columns: 1fr 1fr;
-  }
   .hero-grid, .about-grid, .calculator-wrapper, .dashboard-grid, .contact-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -2530,13 +2527,19 @@ body.dark-theme .blog-modal-close:hover {
   }
   .about-image-wrapper {
     order: -1;
-    height: 480px;
+    height: auto;
     max-width: 100%;
   }
   .about-image-frame {
     position: relative;
-    height: 100%;
+    height: auto;
     width: 100%;
+  }
+  .about-image-frame img {
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+    display: block;
   }
   .services-grid, .how-steps, .testi-grid {
     grid-template-columns: 1fr 1fr;
@@ -2547,6 +2550,10 @@ body.dark-theme .blog-modal-close:hover {
 }
 
 @media (max-width: 768px) {
+  .blog-grid, .philosophy-grid, .services-grid, .how-steps, .testi-grid, .why-grid {
+    grid-template-columns: 1fr;
+  }
+
   .nav-links {
     display: none;
     position: absolute;
@@ -2580,10 +2587,6 @@ body.dark-theme .blog-modal-close:hover {
 
   .section-title {
     font-size: 1.8rem;
-  }
-
-  .services-grid, .how-steps, .testi-grid, .why-grid {
-    grid-template-columns: 1fr;
   }
   
   .footer-grid {
