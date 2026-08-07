@@ -327,8 +327,8 @@ body.dark-theme .toast {
 }
 
 .hero-tag::before {
-  content: '✦';
-  font-size: 0.7rem;
+  content: '';
+  display: none;
 }
 
 .hero-title {
