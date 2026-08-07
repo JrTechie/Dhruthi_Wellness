@@ -419,7 +419,18 @@ body.dark-theme .toast {
   flex-direction: column;
   gap: 20px;
   align-items: center;
+  justify-content: center;
   width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.glass-hero-frame {
+  margin: 0 auto;
+  align-self: center;
+  width: 100%;
+  max-width: 480px;
+  display: block;
 }
 
 .hero-card {
