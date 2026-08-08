@@ -2597,19 +2597,53 @@ body.dark-theme .blog-modal-close:hover {
     text-align: center;
   }
   .founder-name-title {
-    white-space: nowrap;
-    font-size: clamp(1.1rem, 5.2vw, 2.2rem);
+    white-space: normal;
+    font-size: clamp(1.3rem, 5.5vw, 2.2rem);
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+    max-width: 680px;
   }
   .about-content .hero-desc {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    max-width: 100%;
+    max-width: 680px;
   }
+  
+  /* Credential / Qualification cards layout on mobile/tablet */
+  .about-credentials {
+    width: 100%;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cred-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    text-align: left;
+    width: 100%;
+  }
+  .cred-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+  }
+  .cred-text {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+  }
+  .cred-text h4 {
+    text-align: left;
+    margin-bottom: 4px;
+  }
+  .cred-text p {
+    text-align: left;
+  }
+
   .about-image-wrapper {
     order: -1;
     height: auto;
@@ -2640,6 +2674,10 @@ body.dark-theme .blog-modal-close:hover {
 }
 
 @media (max-width: 768px) {
+  section {
+    padding: 60px 0;
+  }
+
   .hero {
     padding: 85px 0 36px 0;
   }
@@ -2748,7 +2786,25 @@ body.dark-theme .blog-modal-close:hover {
     text-align: center;
   }
 
-  .blog-grid, .philosophy-grid, .services-grid, .how-steps, .testi-grid, .why-grid {
+  /* Core Philosophy Section Mobile Grid & Card Styling */
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .philosophy-card {
+    padding: 28px 24px;
+    text-align: left;
+    width: 100%;
+  }
+  .philosophy-card h3,
+  .philosophy-card p {
+    text-align: left;
+  }
+  #philosophy .section-header {
+    margin-bottom: 36px;
+  }
+
+  .blog-grid, .services-grid, .how-steps, .testi-grid, .why-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2775,13 +2831,112 @@ body.dark-theme .blog-modal-close:hover {
     display: flex;
   }
 
+  .section-header {
+    margin-bottom: 36px;
+  }
+
   .section-title {
-    font-size: 1.8rem;
+    font-size: clamp(1.6rem, 5.8vw, 2.1rem);
+    line-height: 1.25;
+  }
+
+  /* Testimonial Filter Chips Wrapping */
+  .testimonial-filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 10px;
+    margin: 24px 0 32px;
+    padding: 0 8px;
+  }
+  .filter-chip {
+    padding: 8px 16px;
+    font-size: 0.82rem;
+    white-space: nowrap;
   }
   
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+  footer {
+    padding-bottom: 72px;
+  }
+
+  /* Floating WhatsApp Chat Button Safe Positioning */
+  .whatsapp-float-btn {
+    bottom: 20px;
+    right: 16px;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+  }
+  .whatsapp-float-btn i,
+  .whatsapp-float-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 48px 0;
+  }
+
+  .container {
+    padding: 0 14px;
+  }
+
+  .hero {
+    padding: 78px 0 28px 0;
+  }
+
+  .section-header {
+    margin-bottom: 28px;
+  }
+
+  .section-title {
+    font-size: clamp(1.45rem, 5.5vw, 1.85rem);
+    line-height: 1.25;
+  }
+
+  .hero-title {
+    font-size: clamp(1.55rem, 6.2vw, 2.1rem);
+    line-height: 1.2;
+  }
+
+  .hero-desc {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+
+  .cred-card {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .cred-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .cred-text h4 {
+    font-size: 0.9rem;
+  }
+
+  .cred-text p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .philosophy-card {
+    padding: 22px 18px;
+  }
+
+  .filter-chip {
+    padding: 7px 14px;
+    font-size: 0.78rem;
   }
 }
 
