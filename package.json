@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "node server.js",
+    "start:test": "node test-dhruthiwellness/server.js",
     "dev": "node server.js",
     "vercel-dev": "vercel dev"
   },
