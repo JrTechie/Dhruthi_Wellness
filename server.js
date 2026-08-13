@@ -3,7 +3,7 @@ const path = require('path');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // Body parser middleware
 app.use(express.json());
@@ -33,7 +33,7 @@ app.use((req, res) => {
 
 app.listen(PORT, () => {
   console.log(`===================================================`);
-  console.log(`Dhruthi Wellness local server running!`);
-  console.log(`Website URL: http://localhost:${PORT}`);
+  console.log(`🚀 Dhruthi Wellness local server running!`);
+  console.log(`🌐 Website URL: http://localhost:${PORT}`);
   console.log(`===================================================`);
 });
