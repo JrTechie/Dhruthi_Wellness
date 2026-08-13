@@ -432,6 +432,15 @@ body.dark-theme .toast {
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border-glow);
   margin: 0 auto;
+  animation: none !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.glass-hero-frame:hover,
+.glass-hero-frame:hover img {
+  transform: none !important;
+  animation: none !important;
 }
 
 .glass-hero-frame img {
@@ -439,6 +448,9 @@ body.dark-theme .toast {
   height: auto;
   display: block;
   object-fit: cover;
+  animation: none !important;
+  transform: none !important;
+  transition: none !important;
 }
 
 .hero-card {
@@ -612,6 +624,15 @@ section {
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border-light);
   padding: 6px;
+  animation: none !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.about-image-frame:hover,
+.about-image-frame:hover img {
+  transform: none !important;
+  animation: none !important;
 }
 
 .about-image-frame img {
@@ -621,6 +642,9 @@ section {
   object-fit: cover;
   object-position: center top;
   border-radius: 14px;
+  animation: none !important;
+  transform: none !important;
+  transition: none !important;
 }
 
 .about-credentials {
