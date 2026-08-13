@@ -33,7 +33,7 @@ app.use((req, res) => {
 
 app.listen(PORT, () => {
   console.log(`===================================================`);
-  console.log(`🚀 Dhruthi Wellness local server running!`);
-  console.log(`🌐 Website URL: http://localhost:${PORT}`);
+  console.log(`Dhruthi Wellness local server running!`);
+  console.log(`Website URL: http://localhost:${PORT}`);
   console.log(`===================================================`);
 });
