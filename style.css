@@ -2133,25 +2133,44 @@ section {
 
 .footer-socials {
   display: flex;
-  gap: 12px;
+  gap: 14px;
+  align-items: center;
 }
 
 .social-icon {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-muted);
-  transition: var(--transition-smooth);
+  color: #ffffff !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.social-icon svg {
+  width: 20px !important;
+  height: 20px !important;
+  stroke: #ffffff !important;
+  stroke-width: 2px !important;
+  fill: none !important;
+  transition: transform 0.3s ease;
 }
 
 .social-icon:hover {
-  background: var(--primary);
-  color: #ffffff;
-  transform: translateY(-2px);
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #ffffff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(59, 110, 76, 0.45);
+}
+
+.social-icon:hover svg {
+  transform: scale(1.12);
+  stroke: #ffffff !important;
 }
 
 .footer-links h3 {
