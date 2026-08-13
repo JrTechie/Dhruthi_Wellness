@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Feedback & Reviews — Dhruthi Wellness | Dt. Akhila Konakalla</title>
+  <meta name="description" content="Submit client feedback, generate shareable review links, and view verified transformation stories for Dhruthi Wellness customized diet plans.">
+  
+  <!-- Favicon Icons (Circular) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- OpenGraph Social Preview Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dhruthi-wellness.vercel.app/feedback.html">
+  <meta property="og:site_name" content="Dhruthi Wellness">
+  <meta property="og:title" content="Dhruthi Wellness — Clinical & Fertility Nutrition">
+  <meta property="og:description" content="Founded by Dt. Akhila Konakalla, M.Sc. Food, Nutrition & Dietetics">
+  <meta property="og:image" content="https://dhruthi-wellness.vercel.app/Images/Logo_D_bright.png">
+  <meta property="og:image:secure_url" content="https://dhruthi-wellness.vercel.app/Images/Logo_D_bright.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1254">
+  <meta property="og:image:height" content="1254">
+
+  <!-- Styling & Lucide Icons -->
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    .feedback-hero {
+      padding: 60px 0 40px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--primary-glow) 0%, transparent 100%);
+    }
+
+    .feedback-container {
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+    }
+
+    .feedback-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 900px) {
+      .feedback-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feedback-card {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-smooth);
+    }
+
+    .feedback-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border-glow);
+    }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: var(--primary-glow);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .star-rating-group {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+      cursor: pointer;
+    }
+
+    .star-icon {
+      width: 24px;
+      height: 24px;
+      color: #cbd5e1;
+      transition: transform 0.2s, color 0.2s;
+    }
+
+    .star-icon.filled, .star-icon:hover {
+      color: #f59e0b;
+      fill: #f59e0b;
+    }
+
+    .rating-item {
+      margin-bottom: 18px;
+    }
+
+    .rating-item label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .rating-score {
+      font-size: 0.8rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      background: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+
+    .link-generator-box {
+      background: var(--bg-main);
+      border: 1.5px dashed var(--primary);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-top: 20px;
+    }
+
+    .link-display {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .link-display input {
+      flex: 1;
+      font-family: monospace;
+      font-size: 0.85rem;
+      background: var(--bg-surface);
+    }
+
+    .review-card-stream {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .review-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .review-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary-glow);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .verified-tag {
+      font-size: 0.7rem;
+      color: var(--success);
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-weight: 700;
+    }
+
+    /* Toast styling */
+    .toast-container {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+    }
+
+    .toast-msg {
+      background: var(--bg-dark-section);
+      color: white;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- --- Header / Navigation --- -->
+  <header id="header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo" id="nav-logo" style="display: inline-flex; align-items: center; gap: 8px;">
+        <i data-lucide="sparkles" class="logo-icon" style="color: var(--primary); width: 24px; height: 24px;"></i>
+        Dhruthi Wellness
+      </a>
+      
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#hero">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#booking">Packages</a></li>
+        <li><a href="feedback.html" class="active" style="color: var(--secondary); font-weight: 700; display: inline-flex; align-items: center; gap: 4px;"><i data-lucide="star" style="width: 14px; height: 14px;"></i> Feedback</a></li>
+        <li><button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme" style="outline: none; margin-right: 10px; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: none; background: rgba(59, 110, 76, 0.08); color: var(--primary); cursor: pointer;"><i data-lucide="moon" style="width: 18px; height: 18px;"></i></button></li>
+        <li><a href="index.html#booking" class="nav-cta-btn">Book Consultation</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- --- Hero Section --- -->
+  <section class="feedback-hero">
+    <div class="container">
+      <span class="card-badge"><i data-lucide="heart" style="width: 14px; height: 14px;"></i> Client Care & Feedback</span>
+      <h1 style="font-size: 2.5rem; margin-top: 6px;">We Value Your <span>Transformation Story</span></h1>
+      <p style="color: var(--text-secondary); max-width: 680px; margin: 10px auto 0; font-size: 1.05rem;">
+        Your journey matters to us. Share your feedback on Dr. Akhila Konakalla’s customized clinical diet therapy or generate a shareable review link for clients.
+      </p>
+    </div>
+  </section>
+
+  <!-- --- Main Feedback Portal Grid --- -->
+  <div class="feedback-container">
+    
+    <!-- Google Form Review Collector Card -->
+    <div class="google-form-card" style="background: var(--bg-surface); border: 1.5px solid var(--primary); border-radius: var(--radius-lg); padding: 24px 32px; margin-top: 24px; box-shadow: var(--shadow-md); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;">
+      <div style="flex: 1; min-width: 280px;">
+        <span class="card-badge" style="background: rgba(59, 110, 76, 0.12); color: var(--primary);"><i data-lucide="file-spreadsheet" style="width: 14px; height: 14px;"></i> Google Form Integration</span>
+        <h3 style="font-size: 1.25rem; margin-top: 4px; color: var(--text-primary);">Prefer submitting via Google Form?</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 2px;">
+          All reviews collected via Google Forms are automatically stored and synced directly to your private Google Sheets spreadsheet.
+        </p>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer" class="btn" style="background: var(--primary); color: white; border-radius: 12px; padding: 12px 20px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+          <i data-lucide="external-link" style="width: 16px; height: 16px;"></i> Submit via Google Form
+        </a>
+      </div>
+    </div>
+
+    <div class="feedback-grid">
+
+      <!-- Column 1: Client Review Submission Form -->
+      <div class="feedback-card">
+        <div class="card-badge"><i data-lucide="message-square" style="width: 14px; height: 14px;"></i> Submit Review</div>
+        <h2 style="font-size: 1.5rem; margin-bottom: 4px;">Leave Your Feedback</h2>
+        <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 24px;">Please rate your experience and results with your Dhruthi Wellness plan.</p>
+
+        <form id="client-feedback-form">
+          <div class="form-group">
+            <label for="client-name">Your Full Name *</label>
+            <input type="text" id="client-name" class="form-control" placeholder="e.g. Priya Sharma" required>
+          </div>
+
+          <div class="form-group">
+            <label for="client-contact">Email or Phone Number *</label>
+            <input type="text" id="client-contact" class="form-control" placeholder="e.g. priya@gmail.com or +91 9876543210" required>
+          </div>
+
+          <div class="form-group">
+            <label for="client-program">Consultation / Diet Protocol *</label>
+            <select id="client-program" class="form-control" required>
+              <option value="PCOD / PCOS Reversal Protocol">PCOD / PCOS Reversal Protocol</option>
+              <option value="Weight & Fat Loss Management">Weight & Fat Loss Management</option>
+              <option value="Diabetes & Metabolic Health">Diabetes & Metabolic Health Therapy</option>
+              <option value="Fertility & Pre-Conception Plan">Fertility & Pre-Conception Nutrition</option>
+              <option value="Thyroid Management Protocol">Thyroid Management Protocol</option>
+              <option value="General Wellness & Detox">General Wellness & Detox Therapy</option>
+            </select>
+          </div>
+
+          <!-- Rating Stars Breakdown -->
+          <div style="background: var(--bg-main); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 18px; margin-bottom: 20px;">
+            <div class="rating-item">
+              <label>Overall Experience <span class="rating-score" id="score-overall">5 / 5</span></label>
+              <div class="star-rating-group" data-rating-type="overall">
+                <i data-lucide="star" class="star-icon filled" data-val="1"></i>
+                <i data-lucide="star" class="star-icon filled" data-val="2"></i>
+                <i data-lucide="star" class="star-icon filled" data-val="3"></i>
+                <i data-lucide="star" class="star-icon filled" data-val="4"></i>
+                <i data-lucide="star" class="star-icon filled" data-val="5"></i>
+              </div>
+            </div>
+
+            <div class="rating-item">
+              <label>Diet Personalization & Recipes <span class="rating-score" id="score-diet">5 / 5</span></label>
+              <div class="star-rating-group" data-rating-type="diet">
+                <i data-lucide="star" class="star-icon filled" data-val="1"></i>
+                <i data-lucide="star" class="star-icon filled" data-val="2"></i>
+                <i data-lucide="star" class="star-icon filled" data-val="3"></i>
+                <i data-lucide="star" class="star-icon filled" data-val="4"></i>
+                <i data-lucide="star" class="star-icon filled" data-val="5"></i>
+              </div>
+            </div>
+
+            <div class="rating-item" style="margin-bottom: 0;">
+              <label>Health Results & Energy Levels <span class="rating-score" id="score-results">5 / 5</span></label>
+              <div class="star-rating-group" data-rating-type="results">
+                <i data-lucide="star" class="star-icon filled" data-val="1"></i>
+                <i data-lucide="star" class="star-icon filled" data-val="2"></i>
+                <i data-lucide="star" class="star-icon filled" data-val="3"></i>
+                <i data-lucide="star" class="star-icon filled" data-val="4"></i>
+                <i data-lucide="star" class="star-icon filled" data-val="5"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="client-review">Your Story & Detailed Feedback *</label>
+            <textarea id="client-review" class="form-control" rows="4" placeholder="How did the diet plan make you feel? Mention key improvements in energy, weight loss, cycle regularity, or lab blood parameters..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="client-photo">Transformation / Avatar Photo (Optional)</label>
+            <input type="file" id="client-photo" class="form-control" accept="image/*">
+            <div id="photo-preview-box" style="display: none; margin-top: 10px; text-align: center;">
+              <img id="photo-preview-img" style="max-width: 100px; max-height: 100px; border-radius: 50%; border: 2px solid var(--primary); object-fit: cover;">
+            </div>
+          </div>
+
+          <div style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 8px;">
+            <input type="checkbox" id="consent-publish" checked style="margin-top: 4px;">
+            <label for="consent-publish" style="font-size: 0.82rem; color: var(--text-secondary); cursor: pointer;">
+              I allow Dhruthi Wellness to display my testimonial on their official website & social media.
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px;">
+            <i data-lucide="send" style="width: 18px; height: 18px;"></i>
+            Submit Feedback & Review
+          </button>
+        </form>
+      </div>
+
+      <!-- Column 2: Shareable Link Generator & Official Review Links Hub -->
+      <div class="feedback-card">
+        <div class="card-badge"><i data-lucide="share-2" style="width: 14px; height: 14px;"></i> Feedback Link Generator</div>
+        <h2 style="font-size: 1.5rem; margin-bottom: 4px;">Generate & Share Feedback Links</h2>
+        <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 20px;">Use this tool to create personalized feedback links for clients or send via WhatsApp.</p>
+
+        <!-- Generator Controls -->
+        <div class="form-group">
+          <label for="gen-client-name">Target Client Name (Optional)</label>
+          <input type="text" id="gen-client-name" class="form-control" placeholder="e.g. Ananya Roy">
+        </div>
+
+        <div class="form-group">
+          <label for="gen-program">Target Diet Program</label>
+          <select id="gen-program" class="form-control">
+            <option value="PCOS Protocol">PCOD / PCOS Reversal</option>
+            <option value="Weight Loss Plan">Weight & Fat Loss</option>
+            <option value="Diabetes Therapy">Diabetes & Metabolic Health</option>
+            <option value="Fertility Plan">Fertility & Pre-Conception</option>
+            <option value="Thyroid Protocol">Thyroid Care</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="gen-domain-type">Link Format / Domain</label>
+          <select id="gen-domain-type" class="form-control">
+            <option value="public">Live Website Domain (https://dhruthiwellness.com)</option>
+            <option value="local">Current Browser Environment</option>
+          </select>
+        </div>
+
+        <div class="link-generator-box">
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-transform: uppercase; display: block; margin-bottom: 6px;">Your Shareable Client Feedback Link</span>
+          <div class="link-display">
+            <input type="text" id="share-link-input" class="form-control" readonly>
+            <button id="copy-link-btn" class="btn btn-secondary" style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
+              <i data-lucide="copy" style="width: 16px; height: 16px;"></i> Copy Link
+            </button>
+          </div>
+
+          <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
+            <a id="whatsapp-share-btn" href="#" target="_blank" class="btn" style="background: #25D366; color: white; border: none; display: inline-flex; align-items: center; gap: 6px; flex: 1; justify-content: center; text-decoration: none; font-weight: 600; padding: 10px 14px; border-radius: var(--radius-sm);">
+              <i data-lucide="message-circle" style="width: 16px; height: 16px;"></i> Send on WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Google Review Hub Card -->
+        <div style="margin-top: 30px; background: var(--bg-main); border: 1.5px solid var(--border-light); border-radius: var(--radius-md); padding: 24px; text-align: center;">
+          <div style="display: inline-flex; align-items: center; gap: 6px; color: #4285F4; font-weight: 700; font-size: 0.9rem; margin-bottom: 8px;">
+            <i data-lucide="globe" style="width: 18px; height: 18px;"></i> Official Google Reviews
+          </div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 6px;">Love Dhruthi Wellness?</h3>
+          <p style="font-size: 0.84rem; color: var(--text-secondary); margin-bottom: 16px;">Help others discover personalized nutrition therapy by leaving a 5-star review on Google Business.</p>
+          
+          <a href="https://g.page/r/dhruthiwellness/review" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem;">
+            <i data-lucide="external-link" style="width: 16px; height: 16px;"></i> Leave Review on Google
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- --- Section 3: Verified Client Testimonials & Live Reviews --- -->
+    <div style="margin-top: 70px;">
+      <div style="text-align: center; margin-bottom: 35px;">
+        <span class="card-badge"><i data-lucide="award" style="width: 14px; height: 14px;"></i> Verified Client Stories</span>
+        <h2 style="font-size: 2.2rem; margin-top: 6px;">What Our Clients <span>Say About Us</span></h2>
+        <p style="color: var(--text-secondary); max-width: 600px; margin: 8px auto 0;">Real transformation journeys from clients following Dr. Akhila Konakalla’s customized diet plans.</p>
+      </div>
+
+      <div id="reviews-container" class="review-card-stream">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- --- Footer --- -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h2 style="display: inline-flex; align-items: center; gap: 8px;"><i data-lucide="sparkles" style="color: var(--primary); width: 22px; height: 22px;"></i> Dhruthi Wellness</h2>
+        <p>Customized lifestyle diet guides designed by Dr. Akhila Konakalla, MSc. Food Nutrition and Dietetics.</p>
+      </div>
+
+      <div class="footer-links">
+        <h3>Quick Navigation</h3>
+        <ul>
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="index.html#about">About Coach</a></li>
+          <li><a href="index.html#services">Practice Services</a></li>
+          <li><a href="index.html#booking">Consultation Packages</a></li>
+          <li><a href="feedback.html">Client Feedback & Reviews</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h3>Contact & Support</h3>
+        <ul>
+          <li><a href="docs/Dhruthi_Wellness_Terms_and_Conditions (2).pdf" target="_blank">Terms of Service (PDF)</a></li>
+          <li><a href="index.html#contact">Support Hub</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Dhruthi Wellness Inc. All rights reserved. Designed with passion for fitness & customized dietetics.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // State for star ratings
+    const currentRatings = {
+      overall: 5,
+      diet: 5,
+      results: 5
+    };
+
+    // Pre-loaded verified reviews
+    const defaultReviews = [
+      {
+        name: "Sneha Reddy",
+        program: "PCOD / PCOS Reversal Protocol",
+        rating: 5,
+        review: "Dr. Akhila’s customized meal plan completely regulated my cycles within 3 months! No crash diets, just wholesome Indian food adapted to my daily routine.",
+        date: "July 2026",
+        avatar: "SR"
+      },
+      {
+        name: "Vikram Teja",
+        program: "Weight & Fat Loss Management",
+        rating: 5,
+        review: "Lost 9.5 kg in 12 weeks while maintaining high muscle mass and energy levels. The recipes are so delicious and easy to prepare at home.",
+        date: "June 2026",
+        avatar: "VT"
+      },
+      {
+        name: "Kavitha M.",
+        program: "Fertility & Pre-Conception Nutrition",
+        rating: 5,
+        review: "We were trying to conceive for 1.5 years. Dr. Akhila’s metabolic improvement protocol boosted our hormonal balance and lab results tremendously. Highly recommend Dhruthi Wellness!",
+        date: "May 2026",
+        avatar: "KM"
+      }
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+
+      // Theme toggle setup
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        if (themeToggleBtn) themeToggleBtn.innerHTML = '<i data-lucide="sun" style="width: 18px; height: 18px;"></i>';
+      }
+
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          const isDark = document.body.classList.toggle('dark-theme');
+          themeToggleBtn.innerHTML = `<i data-lucide="${isDark ? 'sun' : 'moon'}" style="width: 18px; height: 18px;"></i>`;
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+          lucide.createIcons();
+        });
+      }
+
+      // Star rating click handlers
+      document.querySelectorAll('.star-rating-group').forEach(group => {
+        const ratingType = group.getAttribute('data-rating-type');
+        const stars = group.querySelectorAll('.star-icon');
+
+        stars.forEach(star => {
+          star.addEventListener('click', () => {
+            const val = parseInt(star.getAttribute('data-val'));
+            currentRatings[ratingType] = val;
+
+            // Update UI stars
+            stars.forEach((s, idx) => {
+              if (idx < val) {
+                s.classList.add('filled');
+              } else {
+                s.classList.remove('filled');
+              }
+            });
+
+            // Update score text
+            const scoreLabel = document.getElementById(`score-${ratingType}`);
+            if (scoreLabel) scoreLabel.textContent = `${val} / 5`;
+          });
+        });
+      });
+
+      // Photo Upload Preview
+      const photoInput = document.getElementById('client-photo');
+      const photoPreviewBox = document.getElementById('photo-preview-box');
+      const photoPreviewImg = document.getElementById('photo-preview-img');
+      let uploadedPhotoData = null;
+
+      if (photoInput) {
+        photoInput.addEventListener('change', (e) => {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+              uploadedPhotoData = event.target.result;
+              photoPreviewImg.src = uploadedPhotoData;
+              photoPreviewBox.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+      }
+
+      // Form submission handler
+      const feedbackForm = document.getElementById('client-feedback-form');
+      if (feedbackForm) {
+        feedbackForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const newReview = {
+            name: document.getElementById('client-name').value.trim(),
+            contact: document.getElementById('client-contact').value.trim(),
+            program: document.getElementById('client-program').value,
+            rating: currentRatings.overall,
+            review: document.getElementById('client-review').value.trim(),
+            date: "Just now",
+            avatar: document.getElementById('client-name').value.trim().substring(0, 2).toUpperCase(),
+            photo: uploadedPhotoData
+          };
+
+          // Save to LocalStorage
+          const storedReviews = JSON.parse(localStorage.getItem('dhruthi_reviews') || '[]');
+          storedReviews.unshift(newReview);
+          localStorage.setItem('dhruthi_reviews', JSON.stringify(storedReviews));
+
+          // Reset form & reload reviews
+          feedbackForm.reset();
+          if (photoPreviewBox) photoPreviewBox.style.display = 'none';
+          uploadedPhotoData = null;
+          renderReviews();
+
+          showToast("Thank you! Your feedback has been submitted successfully.");
+        });
+      }
+
+      // Shareable Link Generator Logic
+      const genClientInput = document.getElementById('gen-client-name');
+      const genProgramInput = document.getElementById('gen-program');
+      const genDomainSelect = document.getElementById('gen-domain-type');
+      const shareLinkInput = document.getElementById('share-link-input');
+      const whatsappBtn = document.getElementById('whatsapp-share-btn');
+      const copyBtn = document.getElementById('copy-link-btn');
+
+      function updateShareableLink() {
+        const domainType = genDomainSelect ? genDomainSelect.value : 'public';
+        let baseUrl = 'https://dhruthiwellness.com/feedback.html';
+        if (domainType === 'local' && window.location.protocol !== 'file:') {
+          baseUrl = window.location.origin + window.location.pathname;
+        } else if (domainType === 'local') {
+          baseUrl = 'feedback.html';
+        }
+
+        const clientVal = encodeURIComponent(genClientInput.value.trim());
+        const planVal = encodeURIComponent(genProgramInput.value);
+        
+        let finalUrl = baseUrl;
+        if (genClientInput.value.trim() || genProgramInput.value) {
+          finalUrl += `?client=${clientVal}&plan=${planVal}`;
+        }
+
+        shareLinkInput.value = finalUrl;
+
+        // WhatsApp message text
+        const clientNameStr = genClientInput.value.trim() ? ` ${genClientInput.value.trim()}` : '';
+        const msgText = `Hi${clientNameStr}! Thank you for choosing Dhruthi Wellness. We'd love to hear about your experience with your ${genProgramInput.value}. Please take 1 minute to leave your feedback here: ${finalUrl}`;
+        whatsappBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(msgText)}`;
+      }
+
+      if (genClientInput) genClientInput.addEventListener('input', updateShareableLink);
+      if (genProgramInput) genProgramInput.addEventListener('change', updateShareableLink);
+      if (genDomainSelect) genDomainSelect.addEventListener('change', updateShareableLink);
+      updateShareableLink();
+
+      // Parse incoming URL parameters if client opened pre-filled link
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('client')) {
+        document.getElementById('client-name').value = urlParams.get('client');
+      }
+      if (urlParams.has('plan')) {
+        const planParam = urlParams.get('plan');
+        const planSelect = document.getElementById('client-program');
+        for (let i = 0; i < planSelect.options.length; i++) {
+          if (planSelect.options[i].text.toLowerCase().includes(planParam.toLowerCase())) {
+            planSelect.selectedIndex = i;
+            break;
+          }
+        }
+      }
+
+      // 1-Click Copy Link
+      if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+          shareLinkInput.select();
+          navigator.clipboard.writeText(shareLinkInput.value);
+          showToast("Feedback link copied to clipboard!");
+        });
+      }
+
+      // Render Reviews Stream
+      renderReviews();
+    });
+
+    function renderReviews() {
+      const container = document.getElementById('reviews-container');
+      if (!container) return;
+
+      const storedReviews = JSON.parse(localStorage.getItem('dhruthi_reviews') || '[]');
+      const allReviews = [...storedReviews, ...defaultReviews];
+
+      container.innerHTML = allReviews.map(r => `
+        <div class="review-card">
+          <div class="review-author">
+            <div class="author-avatar">
+              ${r.photo ? `<img src="${r.photo}" alt="${r.name}">` : r.avatar}
+            </div>
+            <div>
+              <h4 style="font-size: 1.05rem; margin-bottom: 2px;">${r.name}</h4>
+              <div class="verified-tag"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verified Client • ${r.date}</div>
+            </div>
+          </div>
+          
+          <div style="display: flex; align-items: center; gap: 4px; color: #f59e0b; margin-bottom: 8px;">
+            ${'<i data-lucide="star" style="width: 16px; height: 16px; fill: #f59e0b;"></i>'.repeat(r.rating || 5)}
+          </div>
+
+          <div style="font-size: 0.78rem; font-weight: 700; color: var(--primary); background: var(--primary-glow); padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 10px;">
+            ${r.program}
+          </div>
+
+          <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+            "${r.review}"
+          </p>
+        </div>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    function showToast(msg) {
+      const toastContainer = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'toast-msg';
+      toast.innerHTML = `<i data-lucide="check-circle" style="color: var(--success); width: 18px; height: 18px;"></i> ${msg}`;
+      toastContainer.appendChild(toast);
+      lucide.createIcons();
+
+      setTimeout(() => {
+        toast.remove();
+      }, 4000);
+    }
+  </script>
+</body>
+</html>

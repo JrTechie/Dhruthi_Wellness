@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Proof Verification & PDF Receipt Generator — Dhruthi Wellness</title>
+  <meta name="description" content="Automated Payment Verification and Instant PDF Receipt Generator for Dhruthi Wellness clients and administration.">
+  
+  <!-- Favicon Icons (Circular) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Styling & Icons -->
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- jsPDF & html2canvas for client-side PDF receipt generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    .portal-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .portal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 868px) {
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .portal-card {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-smooth);
+    }
+
+    .upload-dropzone {
+      border: 2px dashed var(--primary);
+      border-radius: var(--radius-md);
+      background: var(--primary-glow);
+      padding: 30px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .upload-dropzone:hover, .upload-dropzone.dragover {
+      background: var(--primary-glow-strong);
+      border-color: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .upload-preview-img {
+      max-width: 100%;
+      max-height: 220px;
+      border-radius: var(--radius-sm);
+      margin-top: 15px;
+      box-shadow: var(--shadow-sm);
+      display: none;
+      object-fit: contain;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+      background: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* PDF Receipt Layout Container */
+    #receipt-template {
+      background: #FFFFFF;
+      color: #1C2B1A;
+      padding: 35px 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      font-family: 'DM Sans', sans-serif;
+      border: 1px solid #E2E8E0;
+    }
+
+    .receipt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #3B5336;
+      padding-bottom: 18px;
+      margin-bottom: 20px;
+    }
+
+    .brand-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #3B5336;
+      margin: 0;
+    }
+
+    .brand-tagline {
+      font-size: 11px;
+      color: #5A6E58;
+      margin-top: 4px;
+    }
+
+    .badge-paid {
+      background: #E8F5E9;
+      color: #2E7D32;
+      border: 1px solid #2E7D32;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      display: inline-block;
+    }
+
+    .receipt-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      background: #F8F9F6;
+      border: 1px solid #E2E8E0;
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 20px;
+      font-size: 12px;
+    }
+
+    .receipt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      font-size: 13px;
+    }
+
+    .receipt-table th {
+      background: #3B5336;
+      color: #FFFFFF;
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .receipt-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #E2E8E0;
+    }
+
+    .total-row {
+      background: #F8F9F6;
+      font-weight: 700;
+      color: #3B5336;
+      font-size: 14px;
+    }
+
+    .receipt-footer {
+      font-size: 10px;
+      color: #5A6E58;
+      text-align: center;
+      border-top: 1px solid #E2E8E0;
+      padding-top: 12px;
+      margin-top: 25px;
+    }
+
+    .action-btn-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header id="header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo" style="display: inline-flex; align-items: center; gap: 8px;">
+        <i data-lucide="sparkles" style="color: var(--primary);"></i>
+        Dhruthi Wellness
+      </a>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <a href="feedback.html" class="btn btn-secondary" style="font-size: 0.85rem; padding: 6px 14px; display: inline-flex; align-items: center; gap: 4px; border-color: var(--secondary); color: var(--secondary);"><i data-lucide="star" style="width: 14px; height: 14px;"></i> Leave Feedback</a>
+        <a href="index.html" class="btn btn-secondary" style="font-size: 0.85rem; padding: 6px 14px;">← Back to Website</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="portal-container">
+    <div style="text-align: center; margin-bottom: 25px;">
+      <span style="background: var(--primary-glow); color: var(--primary); font-size: 0.8rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; text-transform: uppercase;">Payment Automation Tool</span>
+      <h1 style="font-family: var(--font-heading); font-size: 2.2rem; margin-top: 8px; color: var(--text-primary);">Payment Verification & PDF Receipt Generator</h1>
+      <p style="color: var(--text-secondary); max-width: 650px; margin: 6px auto 0;">Upload client payment proof (GPay, PhonePe, Paytm screenshot), verify transaction details, and generate an official PDF receipt instantly.</p>
+    </div>
+
+    <div class="portal-grid">
+      <!-- Left Column: Payment Proof Upload & Details Entry -->
+      <div class="portal-card">
+        <h3 style="font-size: 1.2rem; font-family: var(--font-heading); color: var(--text-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="upload-cloud" style="color: var(--primary);"></i>
+          1. Upload Payment Proof
+        </h3>
+
+        <div class="upload-dropzone" id="dropzone" onclick="document.getElementById('proofInput').click()">
+          <i data-lucide="image" style="width: 40px; height: 40px; color: var(--primary); margin-bottom: 8px;"></i>
+          <div style="font-weight: 600; color: var(--text-primary);">Drag & drop payment screenshot here</div>
+          <div style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 4px;">Supports JPG, PNG, WEBP screenshots (GPay, PhonePe, Paytm, Bank Transfer)</div>
+          <input type="file" id="proofInput" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
+          <img id="proofPreview" class="upload-preview-img" alt="Payment Proof Screenshot">
+        </div>
+
+        <h3 style="font-size: 1.2rem; font-family: var(--font-heading); color: var(--text-primary); margin-top: 24px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="check-square" style="color: var(--primary);"></i>
+          2. Client & Transaction Details
+        </h3>
+
+        <form id="paymentForm" onsubmit="generateReceipt(event)">
+          <div class="form-group">
+            <label for="clientName">Client Full Name *</label>
+            <input type="text" id="clientName" class="form-control" placeholder="e.g. Ananya Sharma" required value="Ananya Sharma">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="clientPhone">WhatsApp / Phone *</label>
+              <input type="tel" id="clientPhone" class="form-control" placeholder="+91 98765 43210" required value="+91 98765 43210">
+            </div>
+            <div class="form-group">
+              <label for="clientEmail">Client Email</label>
+              <input type="email" id="clientEmail" class="form-control" placeholder="client@example.com" value="client@example.com">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="planName">Selected Plan / Service *</label>
+            <select id="planName" class="form-control" required onchange="autoUpdateAmount()">
+              <option value="Dhruthi Pro — 1 Month (Weight Loss / Gain / Lifestyle)">Dhruthi Pro — 1 Month (Weight Loss / Gain / Lifestyle) — INR 1,299</option>
+              <option value="Dhruthi Pro — 3 Months (Weight Loss / Gain / Lifestyle)">Dhruthi Pro — 3 Months (Weight Loss / Gain / Lifestyle) — INR 3,699</option>
+              <option value="Dhruthi Pro — 6 Months (Weight Loss / Gain / Lifestyle)">Dhruthi Pro — 6 Months (Weight Loss / Gain / Lifestyle) — INR 6,499</option>
+              <option value="Dhruthi Elite — 1 Month (Diabetes / PCOS / Thyroid)">Dhruthi Elite — 1 Month (Diabetes / PCOS / Thyroid) — INR 1,699</option>
+              <option value="Dhruthi Elite — 3 Months (Diabetes / PCOS / Thyroid)" selected>Dhruthi Elite — 3 Months (Diabetes / PCOS / Thyroid) — INR 4,899</option>
+              <option value="Dhruthi Elite — 6 Months (Diabetes / PCOS / Thyroid)">Dhruthi Elite — 6 Months (Diabetes / PCOS / Thyroid) — INR 8,499</option>
+              <option value="Dhruthi Preconception — 1 Month (Fertility / Pregnancy / IVF)">Dhruthi Preconception — 1 Month (Fertility / Pregnancy / IVF) — INR 1,999</option>
+              <option value="Dhruthi Preconception — 3 Months (Fertility / Pregnancy / IVF)">Dhruthi Preconception — 3 Months (Fertility / Pregnancy / IVF) — INR 5,799</option>
+              <option value="Dhruthi Preconception — 6 Months (Fertility / Pregnancy / IVF)">Dhruthi Preconception — 6 Months (Fertility / Pregnancy / IVF) — INR 9,999</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="amountPaid">Amount Paid (INR) *</label>
+              <input type="number" id="amountPaid" class="form-control" placeholder="4899" required value="4899">
+            </div>
+            <div class="form-group">
+              <label for="paymentMethod">Payment App / Mode *</label>
+              <select id="paymentMethod" class="form-control" required>
+                <option value="UPI (Google Pay)" selected>UPI (Google Pay)</option>
+                <option value="UPI (PhonePe)">UPI (PhonePe)</option>
+                <option value="UPI (Paytm)">UPI (Paytm)</option>
+                <option value="Direct Bank Transfer (NEFT/IMPS)">Direct Bank Transfer (NEFT/IMPS)</option>
+                <option value="Credit/Debit Card">Credit/Debit Card</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="txnId">Transaction Reference ID *</label>
+              <input type="text" id="txnId" class="form-control" placeholder="e.g. GPay987654321" required value="TXN9876543210">
+            </div>
+            <div class="form-group">
+              <label for="paymentDate">Payment Date *</label>
+              <input type="date" id="paymentDate" class="form-control" required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px; font-size: 1rem; padding: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+            <i data-lucide="file-check"></i> Generate Official PDF Receipt
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Column: Live PDF Receipt Preview & Action Toolbar -->
+      <div class="portal-card">
+        <h3 style="font-size: 1.2rem; font-family: var(--font-heading); color: var(--text-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="file-text" style="color: var(--primary);"></i>
+          Live PDF Receipt Preview
+        </h3>
+
+        <!-- Printable Receipt Template Card -->
+        <div id="receipt-template">
+          <div class="receipt-header">
+            <div>
+              <h2 class="brand-title">DHRUTHI WELLNESS</h2>
+              <div class="brand-tagline" style="font-weight: 600; color: #3B5336;">Nourish. Balance. Thrive.</div>
+              <div class="brand-tagline">Email: dhruthiwellness@gmail.com</div>
+              <div class="brand-tagline">Phone / WhatsApp: +91 86889 63230 | +91 90524 29208</div>
+              <div class="brand-tagline">Address: BD Colony Near Masjid, Eluru, Andhra Pradesh - 534005</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 16px; font-weight: 700; color: #3B5336;">PAYMENT RECEIPT</div>
+              <div style="font-size: 11px; color: #5A6E58; margin-top: 2px;"><b>Receipt No:</b> <span id="r-no">DW-2026-001</span></div>
+              <div style="font-size: 11px; color: #5A6E58;"><b>Date:</b> <span id="r-date">04 Aug, 2026</span></div>
+              <div style="margin-top: 6px;"><span class="badge-paid">✓ PAYMENT SUCCESSFUL</span></div>
+            </div>
+          </div>
+
+          <div class="receipt-info-grid">
+            <div>
+              <div style="font-size: 10px; font-weight: 700; color: #5A6E58; text-transform: uppercase;">RECEIVED FROM</div>
+              <div style="font-weight: 700; color: #1C2B1A; font-size: 13px; margin-top: 2px;" id="r-client-name">Ananya Sharma</div>
+              <div style="color: #475569;" id="r-client-phone">+91 98765 43210</div>
+              <div style="color: #475569;" id="r-client-email">client@example.com</div>
+            </div>
+            <div>
+              <div style="font-size: 10px; font-weight: 700; color: #5A6E58; text-transform: uppercase;">PAYMENT DETAILS</div>
+              <div style="color: #475569;"><b>Mode:</b> <span id="r-mode">UPI (Google Pay)</span></div>
+              <div style="color: #475569;"><b>Txn ID:</b> <span id="r-txnid">TXN9876543210</span></div>
+              <div style="color: #475569;"><b>Status:</b> Completed & Verified</div>
+            </div>
+          </div>
+
+          <table class="receipt-table">
+            <thead>
+              <tr>
+                <th style="width: 10%;">S.No</th>
+                <th style="width: 65%;">Package / Service Description</th>
+                <th style="width: 25%; text-align: right;">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>
+                  <strong id="r-plan-title">Dhruthi Elite — 3 Months (Diabetes / PCOS / Thyroid)</strong><br>
+                  <span style="font-size: 11px; color: #5A6E58;">Includes personalized diet consultation, progress tracking, and weekly check-ins.</span>
+                </td>
+                <td style="text-align: right; font-weight: 700; color: #3B5336;" id="r-plan-amount">INR 4,899.00</td>
+              </tr>
+              <tr class="total-row">
+                <td colspan="2" style="text-align: right;">Total Amount Paid</td>
+                <td style="text-align: right; color: #3B5336;" id="r-total-amount">INR 4,899.00</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 15px;">
+            <div style="font-size: 11px; color: #5A6E58; max-width: 260px;">
+              <b>Note:</b> Payment proof verified. Thank you for choosing Dhruthi Wellness!
+            </div>
+            <div style="text-align: right; margin-left: auto;">
+              <div style="font-size: 11px; font-weight: 700; color: #3B5336; margin-bottom: 6px;">For Dhruthi Wellness</div>
+              <img src="Images/akhi_sign_transparent.png" alt="Authorized Signature" style="width: 115px; height: auto; display: block; margin-left: auto; margin-right: 0; margin-top: 6px; margin-bottom: 14px;">
+              <div style="font-size: 10px; font-style: italic; color: #5A6E58;">Authorized Signatory</div>
+            </div>
+          </div>
+
+          <div class="receipt-footer">
+            This is an official computer-generated receipt issued by Dhruthi Wellness.
+          </div>
+        </div>
+
+        <!-- Action Toolbar -->
+        <div class="action-btn-group">
+          <button type="button" class="btn btn-primary" style="flex: 1; padding: 10px 14px; font-size: 0.9rem; display: inline-flex; align-items: center; justify-content: center; gap: 6px;" onclick="downloadPDFReceipt()">
+            <i data-lucide="download"></i> Download PDF Receipt
+          </button>
+          
+          <a href="docs/Dhruthi_Wellness_Receipt_Template.docx" download class="btn btn-secondary" style="flex: 1; padding: 10px 14px; font-size: 0.9rem; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+            <i data-lucide="file-edit"></i> Download Word (.DOCX)
+          </a>
+
+          <button type="button" class="btn btn-secondary" style="flex: 1; padding: 10px 14px; font-size: 0.9rem; display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: #25D366; color: white; border-color: #25D366;" onclick="shareOnWhatsApp()">
+            <i data-lucide="message-circle"></i> Send on WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize icons & date
+    lucide.createIcons();
+    document.getElementById('paymentDate').valueAsDate = new Date();
+
+    // Handle drag & drop / image selection preview
+    function handleFileSelect(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.getElementById('proofPreview');
+          img.src = e.target.result;
+          img.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // Drag & drop handlers
+    const dropzone = document.getElementById('dropzone');
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); }, false);
+    });
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); }, false);
+    });
+    dropzone.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      if (files.length > 0) {
+        document.getElementById('proofInput').files = files;
+        handleFileSelect({ target: { files: files } });
+      }
+    });
+
+    // Update receipt preview live
+    function generateReceipt(e) {
+      if (e) e.preventDefault();
+
+      const name = document.getElementById('clientName').value;
+      const phone = document.getElementById('clientPhone').value;
+      const email = document.getElementById('clientEmail').value;
+      const plan = document.getElementById('planName').value;
+      const amount = parseFloat(document.getElementById('amountPaid').value || 0).toLocaleString('en-IN', { minimumFractionDigits: 2 });
+      const method = document.getElementById('paymentMethod').value;
+      const txnid = document.getElementById('txnId').value;
+      const dateVal = new Date(document.getElementById('paymentDate').value);
+      
+      const formattedDate = dateVal.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+      const receiptNo = 'DW-' + dateVal.getFullYear() + (dateVal.getMonth()+1).toString().padStart(2,'0') + '-' + Math.floor(1000 + Math.random() * 9000);
+
+      document.getElementById('r-client-name').innerText = name;
+      document.getElementById('r-client-phone').innerText = phone;
+      document.getElementById('r-client-email').innerText = email;
+      document.getElementById('r-plan-title').innerText = plan;
+      document.getElementById('r-plan-amount').innerText = 'INR ' + amount;
+      document.getElementById('r-total-amount').innerText = 'INR ' + amount;
+      document.getElementById('r-mode').innerText = method;
+      document.getElementById('r-txnid').innerText = txnid;
+      document.getElementById('r-date').innerText = formattedDate;
+      document.getElementById('r-no').innerText = receiptNo;
+    }
+
+    // Download PDF function using html2canvas & jsPDF
+    function downloadPDFReceipt() {
+      const element = document.getElementById('receipt-template');
+      const clientName = document.getElementById('clientName').value.replace(/\s+/g, '_');
+      const receiptNo = document.getElementById('r-no').innerText;
+
+      html2canvas(element, { scale: 2 }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const imgWidth = 190;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        
+        pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+        pdf.save(`Dhruthi_Wellness_Receipt_${clientName}_${receiptNo}.pdf`);
+      });
+    }
+
+    // Share via WhatsApp with pre-filled message
+    function shareOnWhatsApp() {
+      const name = document.getElementById('clientName').value;
+      const phone = document.getElementById('clientPhone').value.replace(/[^\d]/g, '');
+      const plan = document.getElementById('planName').value;
+      const amount = document.getElementById('r-total-amount').innerText;
+      const receiptNo = document.getElementById('r-no').innerText;
+
+      const message = `Hello ${name}! 🌿\n\nThank you for choosing *Dhruthi Wellness*!\n\nWe have verified your payment for *${plan}* (${amount}).\n\n📄 *Receipt No:* ${receiptNo}\n\nYour official PDF receipt is ready. Welcome aboard your health journey! 💖`;
+      
+      const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+  </script>
+</body>
+</html>
