@@ -23,6 +23,32 @@ app.all('/api/contact', vercelHandlerAdapter('./api/contact'));
 app.all('/api/payment-receipt', vercelHandlerAdapter('./api/payment-receipt'));
 app.all('/api/reviews', vercelHandlerAdapter('./api/reviews'));
 
+// Export leads as Excel CSV file
+app.get('/api/export-leads', (req, res) => {
+  const fs = require('fs');
+  const csvPath = path.join(__dirname, 'leads.csv');
+  if (fs.existsSync(csvPath)) {
+    res.setHeader('Content-Type', 'text/csv');
+    res.setHeader('Content-Disposition', 'attachment; filename="dhruthi_wellness_leads.csv"');
+    return res.sendFile(csvPath);
+  } else {
+    return res.status(404).send('No leads recorded yet.');
+  }
+});
+
+// Export submitted reviews as Excel CSV file
+app.get('/api/export-reviews', (req, res) => {
+  const fs = require('fs');
+  const csvPath = path.join(__dirname, 'reviews.csv');
+  if (fs.existsSync(csvPath)) {
+    res.setHeader('Content-Type', 'text/csv');
+    res.setHeader('Content-Disposition', 'attachment; filename="dhruthi_wellness_reviews.csv"');
+    return res.sendFile(csvPath);
+  } else {
+    return res.status(404).send('No reviews submitted yet.');
+  }
+});
+
 // Serve static files from root directory
 app.use(express.static(__dirname));
 

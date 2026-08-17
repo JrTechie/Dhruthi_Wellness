@@ -99,32 +99,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Handle booking click for package cards and hero card
   document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('book-btn')) {
-      const btn = e.target;
-      const expertName = btn.getAttribute('data-expert');
-      const expertImg = btn.getAttribute('data-image');
-      const expertTitle = btn.getAttribute('data-title');
+    const btn = e.target.closest('.book-btn');
+    if (btn) {
+      e.preventDefault();
+      const expertName = btn.getAttribute('data-expert') || 'Dt. Akhila Konakalla - Consultation';
+      const expertImg = btn.getAttribute('data-image') || 'Images/coverimage.png';
+      const expertTitle = btn.getAttribute('data-title') || 'Personalized Nutrition Consultation';
 
       // Setup Modal data
-      bookingExpertName.textContent = expertName;
-      bookingExpertAvatar.src = expertImg;
-      bookingExpertAvatar.alt = expertName;
-      bookingExpertTitle.textContent = expertTitle;
+      if (bookingExpertName) bookingExpertName.textContent = expertName;
+      if (bookingExpertAvatar) {
+        bookingExpertAvatar.src = expertImg;
+        bookingExpertAvatar.alt = expertName;
+      }
+      if (bookingExpertTitle) bookingExpertTitle.textContent = expertTitle;
 
       // Open Modal
-      bookingModal.classList.add('active');
-      document.body.style.overflow = 'hidden'; // stop scroll under
+      if (bookingModal) {
+        bookingModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // stop scroll under
+      }
     }
   });
 
   // Close modal click handler
-  closeBtn.addEventListener('click', closeModal);
-  bookingModal.addEventListener('click', (e) => {
-    if (e.target === bookingModal) closeModal();
-  });
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (bookingModal) {
+    bookingModal.addEventListener('click', (e) => {
+      if (e.target === bookingModal) closeModal();
+    });
+  }
 
   function closeModal() {
-    bookingModal.classList.remove('active');
+    if (bookingModal) bookingModal.classList.remove('active');
     document.body.style.overflow = 'auto'; // restore scroll
   }
 
@@ -147,52 +154,105 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Form Submission
-  bookingForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const name = document.getElementById('booking-name').value.trim();
-    const phone = document.getElementById('booking-phone').value.trim();
-    const email = document.getElementById('booking-email').value.trim();
-    const message = document.getElementById('booking-message').value.trim();
-
-    if (!name || !phone || !email) {
-      showToast('Please enter your Name, Phone, and Email.', 'danger');
+  // Helper function to export leads to Excel (CSV)
+  window.exportDhruthiLeads = function() {
+    const leads = JSON.parse(localStorage.getItem('dhruthi_leads') || '[]');
+    if (leads.length === 0) {
+      showToast('No inquiries/leads recorded in browser storage yet.', 'warning');
       return;
     }
+    let csvContent = "data:text/csv;charset=utf-8,Timestamp,Client Name,Phone,Email,Program,Date,Time,Notes\n";
+    leads.forEach(l => {
+      csvContent += `"${l.timestamp}","${l.name}","${l.phone}","${l.email}","${l.program}","${l.date}","${l.time}","${(l.message || '').replace(/"/g, '""')}"\n`;
+    });
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `Dhruthi_Wellness_Leads_${new Date().toISOString().slice(0,10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
-    const payload = {
-      expert_name: bookingExpertName.textContent,
-      program_title: bookingExpertTitle.textContent,
-      client_name: name,
-      client_email: email,
-      client_phone: phone,
-      booking_date: `June ${selectedDate}, 2026`,
-      booking_time: selectedTime,
-      client_message: message
-    };
+  // Form Submission — Connects to WhatsApp & Excel Leads Storage
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('booking-name').value.trim();
+      const phone = document.getElementById('booking-phone').value.trim();
+      const email = document.getElementById('booking-email').value.trim();
+      const message = document.getElementById('booking-message').value.trim();
 
-    try {
-      const response = await fetch('/api/book', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
+      if (!name || !phone || !email) {
+        showToast('Please enter your Name, Phone, and Email.', 'danger');
+        return;
+      }
 
-      const result = await response.json();
-      if (!response.ok) {
-        throw new Error(result.error || 'Server error');
+      const programName = bookingExpertName ? bookingExpertName.textContent : 'Consultation';
+      const programTitle = bookingExpertTitle ? bookingExpertTitle.textContent : 'Personalized Nutrition';
+      const bookingDateStr = `August ${selectedDate}, 2026`;
+
+      // 1. Store lead in Local Storage (Excel exportable via window.exportDhruthiLeads())
+      const leadEntry = {
+        timestamp: new Date().toLocaleString(),
+        name,
+        phone,
+        email,
+        program: `${programName} - ${programTitle}`,
+        date: bookingDateStr,
+        time: selectedTime,
+        message
+      };
+      const existingLeads = JSON.parse(localStorage.getItem('dhruthi_leads') || '[]');
+      existingLeads.push(leadEntry);
+      localStorage.setItem('dhruthi_leads', JSON.stringify(existingLeads));
+
+      // 2. Prepare WhatsApp direct inquiry link
+      const waNumber = '918688963230';
+      const waMsg = `*New Consultation Inquiry — Dhruthi Wellness*\n\n` +
+        `👤 *Name:* ${name}\n` +
+        `📞 *Phone:* ${phone}\n` +
+        `✉️ *Email:* ${email}\n` +
+        `🌿 *Program:* ${programName} (${programTitle})\n` +
+        `📅 *Date:* ${bookingDateStr}\n` +
+        `⏰ *Preferred Slot:* ${selectedTime}\n` +
+        (message ? `📝 *Notes:* ${message}\n` : '') +
+        `\n_Hi Dt. Akhila, I have submitted my booking request on the website. Please confirm my appointment & payment details!_`;
+
+      const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMsg)}`;
+
+      // 3. Send payload to Backend API
+      const payload = {
+        expert_name: programName,
+        program_title: programTitle,
+        client_name: name,
+        client_email: email,
+        client_phone: phone,
+        booking_date: bookingDateStr,
+        booking_time: selectedTime,
+        client_message: message
+      };
+
+      try {
+        await fetch('/api/book', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.warn('Backend API note:', err);
       }
 
       closeModal();
-      showToast(`Appointment confirmed with ${bookingExpertName.textContent} on June ${selectedDate}, 2026 at ${selectedTime}!`, 'success');
+      showToast(`Appointment inquiry submitted! Opening WhatsApp to connect directly...`, 'success');
       bookingForm.reset();
-    } catch (err) {
-      console.error('Booking Error:', err);
-      closeModal();
-      showToast(`Appointment confirmed! (Local fallback mode)`, 'warning');
-      bookingForm.reset();
-    }
-  });
+
+      // Open WhatsApp chat with prefilled details
+      setTimeout(() => {
+        window.open(waUrl, '_blank');
+      }, 600);
+    });
+  }
 
 
   // --- 6. Contact Form Submission Handler ---
@@ -209,30 +269,53 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      // 1. Store lead in Local Storage (Excel exportable)
+      const leadEntry = {
+        timestamp: new Date().toLocaleString(),
+        name,
+        phone: 'N/A',
+        email,
+        program: 'Quick Message Inquiry',
+        date: 'N/A',
+        time: 'N/A',
+        message: msg
+      };
+      const existingLeads = JSON.parse(localStorage.getItem('dhruthi_leads') || '[]');
+      existingLeads.push(leadEntry);
+      localStorage.setItem('dhruthi_leads', JSON.stringify(existingLeads));
+
+      // 2. Prepare WhatsApp direct message link
+      const waNumber = '918688963230';
+      const waMsg = `*New Website Inquiry — Dhruthi Wellness*\n\n` +
+        `👤 *Name:* ${name}\n` +
+        `✉️ *Email:* ${email}\n` +
+        `📝 *Health Concerns / Goals:* ${msg}\n\n` +
+        `_Hi Dt. Akhila, I submitted a quick message inquiry on your website. Please connect with me!_`;
+
+      const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMsg)}`;
+
+      // 3. Send payload to Backend API
       try {
-        const response = await fetch('/api/contact', {
+        await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             client_name: name,
             client_email: email,
-            subject: 'New Website Inquiry',
+            subject: 'Quick Message Inquiry',
             message: msg
           })
         });
-
-        const result = await response.json();
-        if (!response.ok) {
-          throw new Error(result.error || 'Server error');
-        }
-
-        showToast(`Thank you, ${name}! Your inquiry has been sent successfully.`, 'success');
-        contactForm.reset();
       } catch (err) {
-        console.error('Contact Error:', err);
-        showToast(`Thank you, ${name}! Inquiry submitted.`, 'success');
-        contactForm.reset();
+        console.warn('Contact API note:', err);
       }
+
+      showToast(`Thank you, ${name}! Opening WhatsApp to send your inquiry directly...`, 'success');
+      contactForm.reset();
+
+      setTimeout(() => {
+        window.open(waUrl, '_blank');
+      }, 600);
     });
   }
 
@@ -648,6 +731,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Helper function to export reviews to Excel (CSV)
+  window.exportDhruthiReviews = function() {
+    const reviews = JSON.parse(localStorage.getItem('dhruthi_reviews') || '[]');
+    if (reviews.length === 0) {
+      showToast('No reviews recorded in browser storage yet.', 'warning');
+      return;
+    }
+    let csvContent = "data:text/csv;charset=utf-8,Timestamp,Author Name,Program Category,Rating,Message\n";
+    reviews.forEach(r => {
+      csvContent += `"${r.timestamp}","${r.author_name}","${r.category}","${r.rating}","${(r.message || '').replace(/"/g, '""')}"\n`;
+    });
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `Dhruthi_Wellness_Reviews_${new Date().toISOString().slice(0,10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const reviewForm = document.getElementById('review-form');
   if (reviewForm) {
     reviewForm.addEventListener('submit', async (e) => {
@@ -662,28 +765,31 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const payload = {
+        timestamp: new Date().toLocaleString(),
         author_name: name,
         category: category,
         rating: selectedRating,
         message: msg
       };
 
+      // 1. Store in Local Storage for Excel CSV download
+      const existingReviews = JSON.parse(localStorage.getItem('dhruthi_reviews') || '[]');
+      existingReviews.push(payload);
+      localStorage.setItem('dhruthi_reviews', JSON.stringify(existingReviews));
+
+      // 2. Send payload to Backend API (logs to reviews.csv & Supabase)
       try {
-        const response = await fetch('/api/reviews', {
+        await fetch('/api/reviews', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-
-        const result = await response.json();
-        renderReviewCard(response.ok ? result : payload, true);
-        showToast('Thank you! Your review has been published.', 'success');
       } catch (err) {
-        console.warn('Submit review offline fallback:', err);
-        renderReviewCard(payload, true);
-        showToast('Review submitted successfully!', 'success');
+        console.warn('Submit review offline note:', err);
       }
 
+      // Private saving (NOT rendering live on website layout)
+      showToast('Thank you! Your feedback has been saved to your Excel reviews sheet.', 'success');
       reviewForm.reset();
     });
   }

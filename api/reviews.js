@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 require('dotenv').config();
 
@@ -9,6 +11,21 @@ if (supabaseUrl && supabaseAnonKey) {
   supabase = createClient(supabaseUrl, supabaseAnonKey);
 }
 
+// Function to log reviews to CSV file for Excel export
+function logReviewToCSV(rev) {
+  try {
+    const csvPath = path.join(process.cwd(), 'reviews.csv');
+    const header = 'Timestamp,Author Name,Program Category,Rating,Message\n';
+    if (!fs.existsSync(csvPath)) {
+      fs.writeFileSync(csvPath, header);
+    }
+    const row = `"${new Date().toISOString()}","${(rev.author_name || '').replace(/"/g, '""')}","${(rev.category || '').replace(/"/g, '""')}","${rev.rating}","${(rev.message || '').replace(/"/g, '""')}"\n`;
+    fs.appendFileSync(csvPath, row);
+  } catch (e) {
+    console.error('Error writing review to CSV file:', e);
+  }
+}
+
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -18,19 +35,19 @@ module.exports = async (req, res) => {
     return res.status(200).end();
   }
 
-  if (!supabase) {
-    return res.status(500).json({ error: 'Database environment variables are missing. Please define SUPABASE_URL and SUPABASE_ANON_KEY.' });
-  }
-
   try {
     if (req.method === 'GET') {
-      const { data, error } = await supabase
-        .from('reviews')
-        .select('*')
-        .order('id', { ascending: false });
+      if (supabase) {
+        const { data, error } = await supabase
+          .from('reviews')
+          .select('*')
+          .order('id', { ascending: false });
 
-      if (error) throw error;
-      return res.status(200).json(data || []);
+        if (!error && data) {
+          return res.status(200).json(data);
+        }
+      }
+      return res.status(200).json([]);
     }
 
     if (req.method === 'POST') {
@@ -40,13 +57,21 @@ module.exports = async (req, res) => {
         return res.status(400).json({ error: 'Missing required fields: author_name, category, rating, message.' });
       }
 
-      const { data, error } = await supabase
-        .from('reviews')
-        .insert([{ author_name, category, rating, message }])
-        .select();
+      // Always save to local CSV sheet
+      logReviewToCSV({ author_name, category, rating, message });
 
-      if (error) throw error;
-      return res.status(201).json(data[0]);
+      if (supabase) {
+        const { data, error } = await supabase
+          .from('reviews')
+          .insert([{ author_name, category, rating, message }])
+          .select();
+
+        if (!error && data) {
+          return res.status(201).json(data[0]);
+        }
+      }
+
+      return res.status(201).json({ author_name, category, rating, message });
     }
 
     return res.status(405).json({ error: 'Method not allowed.' });

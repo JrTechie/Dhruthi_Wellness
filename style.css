@@ -1897,6 +1897,8 @@ section {
   opacity: 0;
   pointer-events: none;
   transition: var(--transition-smooth);
+  padding: 20px;
+  overflow-y: auto;
 }
 
 .modal-overlay.active {
@@ -1909,12 +1911,29 @@ section {
   border: 1px solid var(--border-light);
   width: 90%;
   max-width: 620px;
+  max-height: 85vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) rgba(59, 110, 76, 0.08);
   border-radius: var(--radius-lg);
-  padding: 36px;
+  padding: 32px 28px;
   position: relative;
   transform: translateY(20px);
   transition: var(--transition-smooth);
   box-shadow: var(--shadow-lg);
+}
+
+/* Custom Scrollbar for Modal Container */
+.modal-container::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-container::-webkit-scrollbar-track {
+  background: rgba(59, 110, 76, 0.06);
+  border-radius: 8px;
+}
+.modal-container::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 8px;
 }
 
 .modal-overlay.active .modal-container {
@@ -2055,11 +2074,10 @@ section {
 }
 
 .slots-list {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
-  max-height: 180px;
-  overflow-y: auto;
+  width: 100%;
 }
 
 .slot-btn {
