@@ -1,13 +1,4 @@
-const { createClient } = require('@supabase/supabase-js');
-require('dotenv').config();
-
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
-
-let supabase = null;
-if (supabaseUrl && supabaseAnonKey) {
-  supabase = createClient(supabaseUrl, supabaseAnonKey);
-}
+const db = require('../db');
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -29,38 +20,24 @@ module.exports = async (req, res) => {
       return res.status(400).json({ error: 'Missing required payment verification fields.' });
     }
 
-    const receipt_no = `DW-${new Date().getFullYear()}${String(new Date().getMonth() + 1).padStart(2, '0')}-${Math.floor(1000 + Math.random() * 9000)}`;
-
-    let record = null;
-    if (supabase) {
-      const { data, error } = await supabase
-        .from('payment_proofs')
-        .insert([{
-          receipt_no,
-          client_name,
-          client_phone,
-          client_email,
-          plan_name,
-          amount_paid,
-          payment_method,
-          transaction_id,
-          payment_date: payment_date || new Date().toISOString(),
-          status: 'verified',
-          notes
-        }])
-        .select();
-
-      if (!error && data) {
-        record = data[0];
-      }
-    }
+    const record = db.insertPaymentProof({
+      client_name,
+      client_phone,
+      client_email,
+      plan_name,
+      amount_paid,
+      payment_method,
+      transaction_id,
+      payment_date,
+      notes
+    });
 
     return res.status(200).json({
       success: true,
-      receipt_no,
-      client_name,
-      amount_paid,
-      transaction_id,
+      receipt_no: record.receipt_no,
+      client_name: record.client_name,
+      amount_paid: record.amount_paid,
+      transaction_id: record.transaction_id,
       record
     });
   } catch (error) {

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dhruthi Wellness — Dietitian CRM & Client OS</title>
+  <!-- Google Fonts & Remix Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="/crm/crm-styles.css">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <!-- Side Navigation Bar -->
+  <aside class="sidebar">
+    <div class="brand-header">
+      <div class="brand-logo">DW</div>
+      <div>
+        <div class="brand-title">Dhruthi Wellness</div>
+        <div class="brand-subtitle">Dietitian CRM OS</div>
+      </div>
+    </div>
+
+    <nav class="nav-menu">
+      <div class="nav-section-title">Core Operations</div>
+      <a class="nav-item active" data-target="dashboard">
+        <i class="ri-dashboard-line"></i> Dashboard
+      </a>
+      <a class="nav-item" data-target="leads">
+        <i class="ri-user-follow-line"></i> Leads
+        <span class="badge" id="nav-hot-badge">0</span>
+      </a>
+      <a class="nav-item" data-target="clients">
+        <i class="ri-heart-pulse-line"></i> Clients 360°
+      </a>
+      <a class="nav-item" data-target="today">
+        <i class="ri-calendar-check-line"></i> Today & Follow-ups
+      </a>
+
+      <div class="nav-section-title">Clinical & Care</div>
+      <a class="nav-item" data-target="consultations">
+        <i class="ri-stethoscope-line"></i> Consultations
+      </a>
+      <a class="nav-item" data-target="diet-plans">
+        <i class="ri-restaurant-line"></i> Diet Plans
+      </a>
+      <a class="nav-item" data-target="payments">
+        <i class="ri-bank-card-line"></i> Payments & Renewals
+      </a>
+      <a class="nav-item" data-target="communication">
+        <i class="ri-whatsapp-line"></i> WhatsApp & Calls
+      </a>
+      <a class="nav-item" data-target="files">
+        <i class="ri-file-pdf-line"></i> Files & Attachments
+      </a>
+
+      <div class="nav-section-title">Growth & Automation</div>
+      <a class="nav-item" data-target="imports">
+        <i class="ri-file-excel-line"></i> Excel / Sheets Import
+      </a>
+      <a class="nav-item" data-target="analytics">
+        <i class="ri-bar-chart-box-line"></i> Analytics & ROI
+      </a>
+      <a class="nav-item" data-target="automations">
+        <i class="ri-flow-chart"></i> Automations
+      </a>
+      <a class="nav-item" data-target="templates">
+        <i class="ri-message-2-line"></i> Message Templates
+      </a>
+      <a class="nav-item" data-target="settings">
+        <i class="ri-settings-4-line"></i> Settings & Team
+      </a>
+    </nav>
+
+    <div class="user-profile-widget">
+      <div class="avatar">AK</div>
+      <div>
+        <div style="font-weight:700; font-size:0.88rem;">Dr. Akhila Konakalla</div>
+        <div style="font-size:0.75rem; color:var(--text-muted);">Lead Dietitian / Admin</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Application Wrapper -->
+  <main class="main-wrapper">
+    
+    <!-- Top Header Bar -->
+    <header class="top-header">
+      <div class="search-trigger" onclick="toggleSearchModal(true)">
+        <i class="ri-search-line"></i>
+        <span>Search leads, clients, notes (Cmd + K)</span>
+        <span class="shortcut-kbd">⌘K</span>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn btn-outline btn-sm" onclick="openImportModal()">
+          <i class="ri-upload-2-line"></i> Import Excel/CSV
+        </button>
+        <button class="btn btn-primary btn-sm" onclick="openLeadModal()">
+          <i class="ri-user-add-line"></i> + New Lead
+        </button>
+        <button class="btn btn-outline btn-sm" onclick="toggleDarkMode()">
+          <i class="ri-moon-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Page Content Container -->
+    <div class="content-container">
+
+      <!-- 1. DASHBOARD VIEW -->
+      <section id="page-dashboard" class="page-view active">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Dietitian Command Center</h1>
+            <p class="page-description">Welcome back, Dr. Akhila. Here are today's priorities and clinical metrics.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openConsultationModal()">
+            <i class="ri-calendar-event-line"></i> Schedule Consultation
+          </button>
+        </div>
+
+        <!-- Smart Action Alert Card -->
+        <div class="smart-action-card">
+          <div class="smart-header">
+            <div class="smart-title">
+              <i class="ri-flashlight-fill" style="color:#fde047;"></i>
+              WHAT SHOULD I DO NOW? (Operational Priorities)
+            </div>
+            <span style="font-size:0.8rem; opacity:0.9;">Real-time automated ranking</span>
+          </div>
+          <div class="priority-list" id="dashboard-priority-list">
+            <div class="priority-item">
+              <div class="priority-text">🔥 3 Hot Fertility leads require immediate follow-up</div>
+              <button class="btn btn-sm btn-outline" style="color:white; border-color:white;" onclick="switchPage('leads')">View Leads</button>
+            </div>
+            <div class="priority-item">
+              <div class="priority-text">⏰ 2 Consultations scheduled today</div>
+              <button class="btn btn-sm btn-outline" style="color:white; border-color:white;" onclick="switchPage('consultations')">Schedule</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric Stat Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="ri-user-star-line"></i></div>
+            <div>
+              <div class="stat-value" id="stat-new-leads">0</div>
+              <div class="stat-label">New Leads Today</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#fee2e2; color:#dc2626;"><i class="ri-fire-line"></i></div>
+            <div>
+              <div class="stat-value" id="stat-hot-leads">0</div>
+              <div class="stat-label">Hot Leads (Score 80+)</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#fef3c7; color:#d97706;"><i class="ri-time-line"></i></div>
+            <div>
+              <div class="stat-value" id="stat-followups-due">0</div>
+              <div class="stat-label">Follow-ups Due Today</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#e0e7ff; color:#4338ca;"><i class="ri-heart-line"></i></div>
+            <div>
+              <div class="stat-value" id="stat-active-clients">0</div>
+              <div class="stat-label">Active Clients</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#ecfdf5; color:#047857;"><i class="ri-money-rupee-circle-line"></i></div>
+            <div>
+              <div class="stat-value" id="stat-total-revenue">₹0</div>
+              <div class="stat-label">Total Revenue Verified</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Leads & Quick Actions -->
+        <div style="display:grid; grid-template-columns: 2fr 1fr; gap:1.5rem;">
+          <div class="table-card">
+            <div style="padding:1rem 1.25rem; border-bottom:1px solid var(--border-color); font-weight:700; display:flex; justify-content:space-between; align-items:center;">
+              <span>Recent Inquiries & Web Leads</span>
+              <button class="btn btn-outline btn-sm" onclick="switchPage('leads')">View All</button>
+            </div>
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Lead Name</th>
+                  <th>Goal</th>
+                  <th>Source</th>
+                  <th>Score</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="dashboard-recent-leads-body">
+                <!-- Dynamically Rendered -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-card" style="padding:1.25rem;">
+            <div style="font-weight:700; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+              <i class="ri-bolt-line" style="color:var(--primary);"></i> Quick Actions
+            </div>
+            <div style="display:flex; flex-direction:column; gap:0.6rem;">
+              <button class="btn btn-outline" style="justify-content:flex-start;" onclick="openLeadModal()">
+                <i class="ri-user-add-line"></i> Add New Lead
+              </button>
+              <button class="btn btn-outline" style="justify-content:flex-start;" onclick="openConsultationModal()">
+                <i class="ri-stethoscope-line"></i> Book Consultation
+              </button>
+              <button class="btn btn-outline" style="justify-content:flex-start;" onclick="openFollowupModal()">
+                <i class="ri-add-task-line"></i> Create Follow-up Task
+              </button>
+              <button class="btn btn-outline" style="justify-content:flex-start;" onclick="openImportModal()">
+                <i class="ri-file-excel-line"></i> Import Client Excel
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. LEADS MANAGEMENT VIEW -->
+      <section id="page-leads" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Lead Pipeline & Scoring</h1>
+            <p class="page-description">Track, score, and nurture inquiries into committed wellness clients.</p>
+          </div>
+          <div style="display:flex; gap:0.5rem;">
+            <button class="btn btn-outline" id="btn-view-kanban" onclick="setLeadViewMode('kanban')"><i class="ri-layout-grid-line"></i> Kanban</button>
+            <button class="btn btn-outline" id="btn-view-table" onclick="setLeadViewMode('table')"><i class="ri-list-check"></i> Table View</button>
+            <button class="btn btn-primary" onclick="openLeadModal()"><i class="ri-add-line"></i> New Lead</button>
+          </div>
+        </div>
+
+        <!-- Kanban Board View -->
+        <div class="kanban-board" id="leads-kanban-view">
+          <div class="kanban-col">
+            <div class="kanban-col-header">
+              <span>New Inquiry</span>
+              <span class="badge" style="background:var(--primary);" id="count-col-new">0</span>
+            </div>
+            <div class="kanban-cards" id="cards-col-new"></div>
+          </div>
+
+          <div class="kanban-col">
+            <div class="kanban-col-header">
+              <span>Contacted</span>
+              <span class="badge" style="background:#3b82f6;" id="count-col-contacted">0</span>
+            </div>
+            <div class="kanban-cards" id="cards-col-contacted"></div>
+          </div>
+
+          <div class="kanban-col">
+            <div class="kanban-col-header">
+              <span>Consultation Booked</span>
+              <span class="badge" style="background:#8b5cf6;" id="count-col-booked">0</span>
+            </div>
+            <div class="kanban-cards" id="cards-col-booked"></div>
+          </div>
+
+          <div class="kanban-col">
+            <div class="kanban-col-header">
+              <span>Payment Pending</span>
+              <span class="badge" style="background:#f59e0b;" id="count-col-pending">0</span>
+            </div>
+            <div class="kanban-cards" id="cards-col-pending"></div>
+          </div>
+
+          <div class="kanban-col">
+            <div class="kanban-col-header">
+              <span>Converted Client</span>
+              <span class="badge" style="background:#10b981;" id="count-col-converted">0</span>
+            </div>
+            <div class="kanban-cards" id="cards-col-converted"></div>
+          </div>
+        </div>
+
+        <!-- Table View -->
+        <div class="table-card" id="leads-table-view" style="display:none;">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Lead Name</th>
+                <th>Phone / Email</th>
+                <th>Goal</th>
+                <th>Source</th>
+                <th>Score</th>
+                <th>Temperature</th>
+                <th>Status</th>
+                <th>Next Action</th>
+              </tr>
+            </thead>
+            <tbody id="leads-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 3. CLIENTS 360 VIEW -->
+      <section id="page-clients" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Client 360° Profiles</h1>
+            <p class="page-description">Comprehensive medical history, body metrics, diet plans, consultations, and payment history.</p>
+          </div>
+          <button class="btn btn-outline" onclick="window.location.href='/api/export-clients'"><i class="ri-download-2-line"></i> Export Clients CSV</button>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 320px 1fr; gap:1.5rem;">
+          <!-- Client Roster Sidebar -->
+          <div class="table-card" style="padding:1rem;">
+            <input type="text" class="form-input" placeholder="Search client name or phone..." id="client-search-input" onkeyup="renderClientList()" style="margin-bottom:1rem;">
+            <div id="client-roster-list" style="display:flex; flex-direction:column; gap:0.5rem; max-height:calc(100vh - 260px); overflow-y:auto;">
+              <!-- Dynamically Populated -->
+            </div>
+          </div>
+
+          <!-- Client Detail Active Tab View -->
+          <div class="table-card" style="padding:1.5rem;" id="client-detail-pane">
+            <div style="text-align:center; padding:3rem; color:var(--text-muted);">
+              <i class="ri-user-heart-line" style="font-size:3rem; color:var(--primary);"></i>
+              <p style="margin-top:1rem; font-weight:600;">Select a client from the roster to view complete 360° clinical profile.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. TODAY & FOLLOW-UPS -->
+      <section id="page-today" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Today's Tasks & Follow-ups</h1>
+            <p class="page-description">Stay organized with timely follow-ups to ensure zero lost leads.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openFollowupModal()"><i class="ri-add-line"></i> Create Follow-up</button>
+        </div>
+
+        <div class="table-card" style="padding:1.25rem;">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Reason / Task</th>
+                <th>Lead / Client</th>
+                <th>Due Time</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="followups-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 5. CONSULTATIONS -->
+      <section id="page-consultations" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Consultation Schedule</h1>
+            <p class="page-description">Dietitian clinical appointments and scheduled intake reviews.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openConsultationModal()"><i class="ri-add-line"></i> Book Slot</button>
+        </div>
+        <div class="table-card" style="padding:1.25rem;">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Date & Time</th>
+                <th>Client / Lead</th>
+                <th>Type</th>
+                <th>Dietitian</th>
+                <th>Status</th>
+                <th>Notes / Recommendations</th>
+              </tr>
+            </thead>
+            <tbody id="consultations-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 6. DIET PLANS -->
+      <section id="page-diet-plans" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Diet Plan Builder & Versions</h1>
+            <p class="page-description">Create version-controlled, customized meal charts for clients.</p>
+          </div>
+        </div>
+        <div class="table-card" style="padding:1.5rem;">
+          <p style="color:var(--text-muted); font-size:0.9rem;">Select a client in <b>Clients 360°</b> to build or update personalized diet charts.</p>
+        </div>
+      </section>
+
+      <!-- 7. PAYMENTS & RENEWALS -->
+      <section id="page-payments" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Payments & Subscription Renewals</h1>
+            <p class="page-description">Immutable ledger of verified payments and upcoming package renewal dates.</p>
+          </div>
+        </div>
+        <div class="table-card" style="padding:1.25rem;">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Receipt No</th>
+                <th>Client Name</th>
+                <th>Package Plan</th>
+                <th>Amount</th>
+                <th>Method / TXN</th>
+                <th>Payment Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="payments-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 8. COMMUNICATION (WhatsApp & Calls) -->
+      <section id="page-communication" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">WhatsApp & Call Log Center</h1>
+            <p class="page-description">Official WhatsApp Business API integration layer and phone call history.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openCallModal()"><i class="ri-phone-line"></i> Log Phone Call</button>
+        </div>
+
+        <div class="table-card" style="padding:1.5rem; display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem;">
+          <div>
+            <h3 style="margin-bottom:1rem; font-weight:700;"><i class="ri-whatsapp-fill" style="color:#25d366;"></i> WhatsApp Quick Message</h3>
+            <div class="form-group">
+              <label class="form-label">Select Message Template</label>
+              <select class="form-select" id="wa-template-select" onchange="fillWaTemplateContent()">
+                <option value="">-- Custom Text Message --</option>
+                <option value="New Enquiry Acknowledgement">New Enquiry Acknowledgement</option>
+                <option value="Consultation Reminder">Consultation Reminder</option>
+                <option value="Diet Plan Ready Notification">Diet Plan Ready Notification</option>
+                <option value="Renewal Reminder">Renewal Reminder</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Recipient Phone Number</label>
+              <input type="text" class="form-input" id="wa-recipient-phone" placeholder="e.g. 9876543210">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Message Content</label>
+              <textarea class="form-textarea" id="wa-message-content" rows="4" placeholder="Type WhatsApp message..."></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="sendWhatsAppMessage()"><i class="ri-send-plane-fill"></i> Send WhatsApp Message</button>
+          </div>
+
+          <div>
+            <h3 style="margin-bottom:1rem; font-weight:700;"><i class="ri-history-line"></i> Telephony Provider Architecture</h3>
+            <div style="background:var(--bg-main); border:1px solid var(--border-color); padding:1rem; border-radius:var(--radius-sm); font-size:0.85rem;">
+              <p><b>Provider Adapter:</b> Click-to-call & webhook abstraction active.</p>
+              <p style="color:var(--text-muted); margin-top:0.5rem;">Logs calls directly to client timeline with outcome tags (Answered, No Answer, Consultation Booked).</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. FILES -->
+      <section id="page-files" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Client Files & Documents</h1>
+            <p class="page-description">Blood test reports, medical records, and exported diet PDFs.</p>
+          </div>
+        </div>
+        <div class="table-card" style="padding:1.5rem;">
+          <p style="color:var(--text-muted);">View attached files under individual client profiles in <b>Clients 360°</b>.</p>
+        </div>
+      </section>
+
+      <!-- 10. EXCEL / SHEETS IMPORT WIZARD -->
+      <section id="page-imports" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Spreadsheet Import Engine</h1>
+            <p class="page-description">Bulk import client data from Excel (.xlsx, .xls, .csv) or Google Sheets with column auto-mapping and duplicate detection.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openImportModal()"><i class="ri-file-excel-line"></i> Launch Import Wizard</button>
+        </div>
+
+        <div class="table-card" style="padding:1.5rem;">
+          <h3 style="font-weight:700; margin-bottom:0.5rem;">How Import Data Works</h3>
+          <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:1rem;">Upload any raw spreadsheet. The CRM will automatically map column headers like "Mobile", "Client Name", and "Goal", clean phone numbers, score the leads, and prevent duplicate insertions.</p>
+          
+          <div id="import-report-container" style="display:none; background:var(--primary-light); border:1px solid var(--primary-border); padding:1.25rem; border-radius:var(--radius-sm);">
+            <!-- Populated after upload -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. ANALYTICS -->
+      <section id="page-analytics" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Analytics & Marketing ROI</h1>
+            <p class="page-description">Lead conversion rates, marketing channel performance, and dietitian workload.</p>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="ri-pie-chart-line"></i></div>
+            <div>
+              <div class="stat-value">68%</div>
+              <div class="stat-label">Lead to Consultation Rate</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#ecfdf5; color:#047857;"><i class="ri-line-chart-line"></i></div>
+            <div>
+              <div class="stat-value">84%</div>
+              <div class="stat-label">Consultation to Payment Conversion</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12. AUTOMATIONS -->
+      <section id="page-automations" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Visual Automation Builder</h1>
+            <p class="page-description">Configure event-driven triggers, conditions, and automated workflows.</p>
+          </div>
+        </div>
+        <div class="table-card" style="padding:1.5rem;">
+          <div style="background:var(--bg-main); border:1px solid var(--border-color); padding:1rem; border-radius:var(--radius-sm); margin-bottom:1rem;">
+            <div style="font-weight:700; color:var(--primary);"><i class="ri-flashlight-line"></i> Active Automation: Fertility Hot Lead Auto-Assign</div>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.3rem;"><b>WHEN</b> Lead Created &nbsp;|&nbsp; <b>IF</b> Goal contains 'Fertility' & Score > 70 &nbsp;|&nbsp; <b>THEN</b> Assign to Dr. Akhila & Create High Priority Task.</p>
+          </div>
+          <div style="background:var(--bg-main); border:1px solid var(--border-color); padding:1rem; border-radius:var(--radius-sm);">
+            <div style="font-weight:700; color:var(--primary);"><i class="ri-flashlight-line"></i> Active Automation: 7-Day Renewal Reminder</div>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.3rem;"><b>WHEN</b> Renewal date in 7 days &nbsp;|&nbsp; <b>THEN</b> Create Renewal Task & Send WhatsApp Reminder Template.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 13. TEMPLATES -->
+      <section id="page-templates" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">WhatsApp & Email Templates</h1>
+            <p class="page-description">Standardized communication templates with dynamic variable placeholders.</p>
+          </div>
+        </div>
+        <div class="table-card" style="padding:1.5rem;" id="templates-list-container">
+          <!-- Dynamically Populated -->
+        </div>
+      </section>
+
+      <!-- 14. SETTINGS -->
+      <section id="page-settings" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">CRM Settings & Security</h1>
+            <p class="page-description">Manage team roles, lead scoring rules, and API keys.</p>
+          </div>
+        </div>
+        <div class="table-card" style="padding:1.5rem;">
+          <h3 style="font-weight:700; margin-bottom:1rem;">Lead Scoring Config</h3>
+          <p style="font-size:0.88rem; color:var(--text-muted);">Fertility Inquiries (+25 pts) | Referral Leads (+20 pts) | Direct WhatsApp (+15 pts)</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- MODALS -->
+
+  <!-- 1. Cmd + K Search Modal -->
+  <div class="modal-backdrop" id="modal-search">
+    <div class="modal-card" style="max-width:550px;">
+      <div style="display:flex; align-items:center; gap:0.5rem; border-bottom:1px solid var(--border-color); padding-bottom:0.75rem; margin-bottom:1rem;">
+        <i class="ri-search-line" style="font-size:1.2rem; color:var(--text-muted);"></i>
+        <input type="text" id="cmd-k-input" class="form-input" placeholder="Type to search leads or clients..." onkeyup="handleGlobalSearch(this.value)" style="border:none; font-size:1rem;">
+      </div>
+      <div id="cmd-k-results" style="max-height:300px; overflow-y:auto;">
+        <p style="color:var(--text-muted); font-size:0.85rem; text-align:center;">Type a name, phone number, or goal to search...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Create Lead Modal -->
+  <div class="modal-backdrop" id="modal-lead">
+    <div class="modal-card">
+      <h3 style="font-weight:700; margin-bottom:1rem;">Create New Lead</h3>
+      <form id="form-new-lead" onsubmit="handleCreateLeadSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Full Name *</label>
+          <input type="text" class="form-input" name="name" required placeholder="e.g. Anitha Reddy">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number *</label>
+          <input type="text" class="form-input" name="phone" required placeholder="e.g. 9876543210">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" name="email" placeholder="anitha@gmail.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Wellness Goal / Program *</label>
+          <select class="form-select" name="goal" required>
+            <option value="Fertility Nutrition & Preconception">Fertility Nutrition & Preconception</option>
+            <option value="PCOS / PCOD Management">PCOS / PCOD Management</option>
+            <option value="Weight Loss & Metabolic Care">Weight Loss & Metabolic Care</option>
+            <option value="Thyroid Care Diet">Thyroid Care Diet</option>
+            <option value="Diabetes Management">Diabetes Management</option>
+            <option value="Postpartum Recovery">Postpartum Recovery</option>
+            <option value="General Wellness">General Wellness</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Lead Source</label>
+          <select class="form-select" name="source">
+            <option value="Website">Website</option>
+            <option value="Instagram">Instagram</option>
+            <option value="WhatsApp">WhatsApp</option>
+            <option value="Referral">Referral</option>
+            <option value="Meta Lead Ads">Meta Lead Ads</option>
+            <option value="Walk-in">Walk-in</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Initial Notes</label>
+          <textarea class="form-textarea" name="notes" rows="2" placeholder="Specific notes or client comments..."></textarea>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:0.5rem; margin-top:1.5rem;">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-lead')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Lead</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Import Excel Modal -->
+  <div class="modal-backdrop" id="modal-import">
+    <div class="modal-card">
+      <h3 style="font-weight:700; margin-bottom:1rem;">Import Excel / CSV File</h3>
+      <form id="form-import-excel" onsubmit="handleImportSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Select Excel File (.xlsx, .xls, .csv)</label>
+          <input type="file" class="form-input" id="import-file-input" accept=".xlsx, .xls, .csv" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Duplicate Handling Strategy</label>
+          <select class="form-select" id="import-strategy-select">
+            <option value="skip">Skip duplicates (Keep existing CRM records)</option>
+            <option value="update">Update existing records with new data</option>
+            <option value="create">Create new record anyway</option>
+          </select>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:0.5rem; margin-top:1.5rem;">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-import')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Upload & Import</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Consultation Booking Modal -->
+  <div class="modal-backdrop" id="modal-consultation">
+    <div class="modal-card">
+      <h3 style="font-weight:700; margin-bottom:1rem;">Book Consultation Slot</h3>
+      <form id="form-new-consultation" onsubmit="handleConsultationSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Select Lead or Client Name *</label>
+          <input type="text" class="form-input" name="client_name" required placeholder="e.g. Sravanthi G">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Date & Time *</label>
+          <input type="datetime-local" class="form-input" name="appointment_at" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Consultation Type</label>
+          <select class="form-select" name="type">
+            <option value="Initial Clinical Assessment">Initial Clinical Assessment</option>
+            <option value="Weekly Follow-up Review">Weekly Follow-up Review</option>
+            <option value="Diet Plan Revision">Diet Plan Revision</option>
+          </select>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:0.5rem; margin-top:1.5rem;">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-consultation')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Appointment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 5. Follow-up Modal -->
+  <div class="modal-backdrop" id="modal-followup">
+    <div class="modal-card">
+      <h3 style="font-weight:700; margin-bottom:1rem;">Create Follow-up Task</h3>
+      <form id="form-new-followup" onsubmit="handleFollowupSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Task / Reason *</label>
+          <input type="text" class="form-input" name="reason" required placeholder="e.g. Call regarding blood report & diet compliance">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Due Date & Time *</label>
+          <input type="datetime-local" class="form-input" name="due_at" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Priority</label>
+          <select class="form-select" name="priority">
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:0.5rem; margin-top:1.5rem;">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-followup')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main JavaScript App Code -->
+  <script src="/crm/crm-app.js"></script>
+</body>
+</html>
