@@ -91,13 +91,11 @@
       </div>
 
       <div class="nav-item" data-target="plans" onclick="switchPage('plans')">
-        <i class="ri-folders-line"></i> Plans
-        <i class="ri-arrow-left-s-line nav-arrow"></i>
+        <i class="ri-folders-line"></i> NourishCraft Studio
       </div>
 
       <div class="nav-item" data-target="templates" onclick="switchPage('templates')">
-        <i class="ri-file-text-line"></i> Templates
-        <i class="ri-arrow-left-s-line nav-arrow"></i>
+        <i class="ri-file-text-line"></i> Message Templates
       </div>
 
       <!-- Clients Accordion -->
@@ -106,17 +104,15 @@
         <i class="ri-arrow-down-s-line nav-arrow"></i>
       </div>
       <div class="nav-sub-menu" id="sub-clients">
-        <div class="nav-sub-item" data-target="clients" onclick="switchPage('clients')">› List clients</div>
+        <div class="nav-sub-item" data-target="clients" onclick="switchPage('clients')">› Paid Clients List</div>
       </div>
 
       <div class="nav-item" data-target="reports" onclick="switchPage('reports')">
         <i class="ri-bar-chart-2-line"></i> Reports
-        <i class="ri-arrow-left-s-line nav-arrow"></i>
       </div>
 
       <div class="nav-item" data-target="payments" onclick="switchPage('payments')">
         <i class="ri-wallet-3-line"></i> Payments
-        <i class="ri-arrow-left-s-line nav-arrow"></i>
       </div>
 
       <!-- Interactions Accordion -->
@@ -125,16 +121,15 @@
         <i class="ri-arrow-down-s-line nav-arrow"></i>
       </div>
       <div class="nav-sub-menu" id="sub-interactions">
-        <div class="nav-sub-item" data-target="interactions-calls" onclick="switchPage('interactions-calls')">› Calls</div>
+        <div class="nav-sub-item" data-target="interactions-calls" onclick="switchPage('interactions-calls')">› Calls & Call Notes</div>
       </div>
 
       <div class="nav-item" data-target="testimonials" onclick="switchPage('testimonials')">
-        <i class="ri-star-smile-line"></i> Testimonials
+        <i class="ri-star-smile-line"></i> Testimonials & Reviews
       </div>
 
       <div class="nav-item" data-target="settings" onclick="switchPage('settings')">
         <i class="ri-settings-3-line"></i> Settings
-        <i class="ri-arrow-left-s-line nav-arrow"></i>
       </div>
     </nav>
   </aside>
@@ -234,8 +229,6 @@
 
       <!-- ================= PAGE 2: LEADS (LIST LEADS) ================= -->
       <section id="page-leads" class="page-view">
-        
-        <!-- Top Assign Bar -->
         <div class="table-card" style="padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
             <div style="display: flex; align-items: center; gap: 10px;">
@@ -254,20 +247,17 @@
           </div>
         </div>
 
-        <!-- Lead List Table Card (Fitness Club Removed completely) -->
         <div class="table-card">
           <div class="table-toolbar">
             <div class="table-toolbar-left">
               <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-right: 12px;">Lead List</div>
 
-              <!-- Filter Builder Button & Popover Trigger -->
               <div style="position: relative;">
                 <button class="btn btn-outline btn-sm" onclick="toggleFilterPopover()">
                   <i class="ri-filter-3-line"></i>
                   <span class="badge" style="background: #0284c7; margin-left: 2px;" id="filter-count-badge">1</span> FILTERS
                 </button>
 
-                <!-- Filter Popover Modal Box -->
                 <div class="filter-popover" id="filter-popover" style="display: none;">
                   <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
                     <span>ACTIVE FILTERS</span>
@@ -305,7 +295,6 @@
                 </div>
               </div>
 
-              <!-- Columns Visibility Toggle -->
               <button class="btn btn-outline btn-sm" onclick="toggleColumnsMenu()">
                 <i class="ri-layout-column-line"></i> COLUMNS
               </button>
@@ -316,7 +305,6 @@
             </div>
           </div>
 
-          <!-- Main Leads Table -->
           <div style="overflow-x: auto;">
             <table class="custom-table" id="leads-main-table">
               <thead>
@@ -352,7 +340,6 @@
             ← BACK
           </button>
           
-          <!-- Editable Toggle Controls -->
           <div style="display: flex; gap: 8px;">
             <button class="btn btn-primary btn-sm" id="btn-edit-toggle" onclick="toggleEditProfileMode()">
               <i class="ri-edit-box-line"></i> Edit Profile
@@ -366,7 +353,6 @@
           </div>
         </div>
 
-        <!-- Detail Header Summary Card (Plivo & Servetel Removed - Only WhatsApp remains) -->
         <div class="detail-header-card">
           <div class="detail-profile-top">
             <div class="detail-avatar-box">
@@ -379,22 +365,18 @@
               </div>
             </div>
 
-            <!-- Communication Action Pills -->
             <div style="display: flex; gap: 8px;">
               <button class="pill-action-btn pill-whatsapp" onclick="triggerWhatsAppChat()"><i class="ri-whatsapp-line"></i> WhatsApp Direct</button>
               <button class="btn btn-primary btn-sm" onclick="switchDetailSubTab('interaction')"><i class="ri-file-add-line"></i> + Log Call Note</button>
             </div>
           </div>
 
-          <!-- Metadata 2-Column Grid (Fitness Club Removed) -->
           <div class="detail-meta-grid" id="meta-grid-container">
-            <!-- Rendered Dynamically by crm-app.js -->
+            <!-- Rendered Dynamically -->
           </div>
         </div>
 
-        <!-- 360° Detail Inner Navigation & Sub-Tabs -->
         <div class="detail-layout-grid">
-          <!-- Left Inner Sub-Sidebar Menu -->
           <div class="detail-inner-sidebar">
             <div class="detail-sub-nav-item active" data-dtab="profile" onclick="switchDetailSubTab('profile')"><i class="ri-user-3-line"></i> Profile</div>
             <div class="detail-sub-nav-item" data-dtab="interaction" onclick="switchDetailSubTab('interaction')"><i class="ri-phone-line"></i> Interaction Notes</div>
@@ -407,12 +389,9 @@
             <div class="detail-sub-nav-item" data-dtab="pdf-report" onclick="switchDetailSubTab('pdf-report')"><i class="ri-file-pdf-line"></i> H&F Lab Reports</div>
           </div>
 
-          <!-- Main Content Card Pane -->
           <div class="detail-main-content-card">
             
-            <!-- SUB-TAB 1: PROFILE CONTENT -->
             <div id="dpan-profile" class="detail-pane-content" style="display: block;">
-              <!-- Horizontal Sub-Tabs -->
               <div class="profile-sub-tabs">
                 <div class="profile-tab-item active" onclick="switchProfileInfoTab('basic')">Basic Information</div>
                 <div class="profile-tab-item" onclick="switchProfileInfoTab('diet')">Diet Preference</div>
@@ -423,13 +402,11 @@
                 <div class="profile-tab-item" onclick="switchProfileInfoTab('other')">Other Information</div>
               </div>
 
-              <!-- Information Fields Grid -->
               <div class="info-fields-grid" id="profile-info-grid">
                 <!-- Dynamically Rendered -->
               </div>
             </div>
 
-            <!-- SUB-TAB 2: INTERACTION NOTES (User Requirement 4) -->
             <div id="dpan-interaction" class="detail-pane-content" style="display: none;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <div>
@@ -444,7 +421,6 @@
               </div>
             </div>
 
-            <!-- SUB-TAB 3: PROGRAMS CONTENT (User Requirement 5) -->
             <div id="dpan-programs" class="detail-pane-content" style="display: none;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <div>
@@ -472,13 +448,12 @@
                     </tr>
                   </thead>
                   <tbody id="client-programs-tbody">
-                    <!-- Dynamically Populated with Editable Dropdowns -->
+                    <!-- Dynamically Populated -->
                   </tbody>
                 </table>
               </div>
             </div>
 
-            <!-- SUB-TAB 4: PAYMENTS & PROOFS (User Requirement 6) -->
             <div id="dpan-payments" class="detail-pane-content" style="display: none;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <div>
@@ -519,7 +494,6 @@
               </div>
             </div>
 
-            <!-- SUB-TAB 5: CLINICAL NOTES -->
             <div id="dpan-notes" class="detail-pane-content" style="display: none;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <div style="font-weight: 700; font-size: 1rem;">Client Clinical Notes</div>
@@ -531,7 +505,6 @@
               </div>
             </div>
 
-            <!-- SUB-TAB 6: DIET PLAN PREP STUDIO (User Requirement 7) -->
             <div id="dpan-plans" class="detail-pane-content" style="display: none;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 8px;">
                 <div>
@@ -544,43 +517,34 @@
                 </div>
               </div>
 
-              <!-- Diet Plan Builder Card Grid -->
               <div class="diet-studio-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-                
                 <div class="table-card" style="padding: 1rem; margin: 0;">
                   <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary); margin-bottom: 8px;">🌅 Early Morning / Detox</div>
                   <textarea class="form-textarea" id="dp-early-morning" rows="3" placeholder="e.g., Warm water + 1/2 tsp cumin seeds, soaked overnight almonds (5 pcs)"></textarea>
                 </div>
-
                 <div class="table-card" style="padding: 1rem; margin: 0;">
                   <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary); margin-bottom: 8px;">🍳 Breakfast (8:30 AM)</div>
                   <textarea class="form-textarea" id="dp-breakfast" rows="3" placeholder="e.g., Oats Moong Dal Chilla (2 pcs) with Mint Chutney + 1 boiled egg white"></textarea>
                 </div>
-
                 <div class="table-card" style="padding: 1rem; margin: 0;">
                   <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary); margin-bottom: 8px;">🥗 Mid-Morning (11:00 AM)</div>
                   <textarea class="form-textarea" id="dp-mid-morning" rows="3" placeholder="e.g., 1 bowl fresh Guava / Pomegranate + 1 cup Buttermilk with roasted cumin powder"></textarea>
                 </div>
-
                 <div class="table-card" style="padding: 1rem; margin: 0;">
                   <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary); margin-bottom: 8px;">🍲 Lunch (1:00 PM)</div>
                   <textarea class="form-textarea" id="dp-lunch" rows="3" placeholder="e.g., 1 cup Brown Rice / Jowar Roti (2) + Palak Dal (1 bowl) + Cucumber Salad"></textarea>
                 </div>
-
                 <div class="table-card" style="padding: 1rem; margin: 0;">
                   <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary); margin-bottom: 8px;">☕ Evening Snack (4:30 PM)</div>
                   <textarea class="form-textarea" id="dp-evening" rows="3" placeholder="e.g., Green Tea / Herbal Tea + Roasted Makhana (1 small cup)"></textarea>
                 </div>
-
                 <div class="table-card" style="padding: 1rem; margin: 0;">
                   <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary); margin-bottom: 8px;">🍽️ Dinner (7:30 PM)</div>
                   <textarea class="form-textarea" id="dp-dinner" rows="3" placeholder="e.g., Grilled Tofu / Chicken Vegetable Soup + Vegetable Bowl (no heavy carbs)"></textarea>
                 </div>
-
               </div>
             </div>
 
-            <!-- SUB-TAB 7: PROGRESS & ARTIFACTS (User Requirement 8) -->
             <div id="dpan-progress" class="detail-pane-content" style="display: none;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <div>
@@ -590,7 +554,6 @@
                 <button class="btn btn-primary btn-sm" onclick="openAddProgressNoteModal()"><i class="ri-add-line"></i> + Log Progress Note</button>
               </div>
 
-              <!-- Progress Metrics Summary Box -->
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
                 <div class="table-card" style="padding: 1rem; margin: 0;">
                   <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Overall Progress</div>
@@ -608,14 +571,12 @@
                 </div>
               </div>
 
-              <!-- Progress Notes & Artifact Attachments List -->
               <div style="margin-bottom: 1rem; font-weight: 700;">Progress Reflections & Attached Artifacts</div>
               <div id="progress-notes-container" style="display: flex; flex-direction: column; gap: 12px;">
-                <!-- Dynamically Rendered -->
+                <!-- Rendered Dynamically -->
               </div>
             </div>
 
-            <!-- SUB-TAB 8: MEDICAL HISTORY & TABS TAKEN (User Requirement 9) -->
             <div id="dpan-history" class="detail-pane-content" style="display: none;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <div>
@@ -630,7 +591,6 @@
               </div>
             </div>
 
-            <!-- SUB-TAB 9: H&F LAB REPORTS (User Requirement 10) -->
             <div id="dpan-pdf-report" class="detail-pane-content" style="display: none;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <div>
@@ -667,12 +627,12 @@
         </div>
       </section>
 
-      <!-- ================= PAGE 4: INTERACTIONS > CALLS ================= -->
+      <!-- ================= PAGE 4: INTERACTIONS > CALLS (Editable - User Requirement 5) ================= -->
       <section id="page-interactions-calls" class="page-view">
         <div class="page-header">
           <div>
-            <h1 class="page-title">Interactions & Call Logs</h1>
-            <p class="page-description">Consultation notes, call duration analytics, and conversation outcomes.</p>
+            <h1 class="page-title">Interactions & Call Notes Log</h1>
+            <p class="page-description">Complete log of consultation notes, call category, duration, and client discussion records.</p>
           </div>
           <button class="btn btn-primary" onclick="openAddCallNoteModal()"><i class="ri-phone-line"></i> + Log Call Note</button>
         </div>
@@ -682,7 +642,6 @@
             <div class="table-toolbar-left">
               <button class="btn btn-outline btn-sm"><i class="ri-filter-3-line"></i> FILTERS</button>
               <button class="btn btn-outline btn-sm"><i class="ri-layout-column-line"></i> COLUMNS</button>
-              <button class="btn btn-outline btn-sm"><i class="ri-download-2-line"></i> EXPORT</button>
             </div>
           </div>
 
@@ -698,10 +657,11 @@
                   <th>Date/Time</th>
                   <th>Duration (mins)</th>
                   <th>Notes From Call About Client</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody id="calls-log-tbody">
-                <!-- Dynamically Rendered -->
+                <!-- Dynamically Rendered & Editable -->
               </tbody>
             </table>
           </div>
@@ -801,14 +761,219 @@
         </div>
       </section>
 
+      <!-- ================= PAGE 6: MY TASKS (User Requirement 1) ================= -->
+      <section id="page-my-tasks" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">My Tasks & Follow-up Reminders</h1>
+            <p class="page-description">Manage appointments, client check-ins, and follow-ups.</p>
+          </div>
+          
+          <!-- Dropdown Task Creation Button (User Requirement 1) -->
+          <div style="position: relative; display: inline-block;">
+            <button class="btn btn-primary" onclick="toggleTaskDropdown()">
+              <i class="ri-add-line"></i> + Create Task <i class="ri-arrow-down-s-line"></i>
+            </button>
+            <div id="task-create-dropdown" class="filter-popover" style="display: none; top: 100%; right: 0; left: auto; min-width: 200px; padding: 6px 0;">
+              <div style="padding: 8px 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px;" onclick="openTaskModal('Create Appointment')">
+                <i class="ri-calendar-event-line" style="color: #0284c7;"></i> Create Appointment
+              </div>
+              <div style="padding: 8px 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px;" onclick="openTaskModal('Create Check-in')">
+                <i class="ri-checkbox-circle-line" style="color: #16a34a;"></i> Create Check-in
+              </div>
+              <div style="padding: 8px 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px;" onclick="openTaskModal('Create Follow-up')">
+                <i class="ri-time-line" style="color: #ea580c;"></i> Create Follow-up
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div style="overflow-x: auto;">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Task Type</th>
+                  <th>Client / Lead Name</th>
+                  <th>Due Date & Time</th>
+                  <th>Priority</th>
+                  <th>Task Category</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="my-tasks-tbody">
+                <!-- Rendered Dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 7: NOURISHCRAFT DIET PREP STUDIO (User Requirement 2) ================= -->
+      <section id="page-plans" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">NourishCraft — Clinical Diet Prep Studio</h1>
+            <p class="page-description">Complete interactive diet chart preparation tool, recipe library, macro breakdown, and PDF exporter.</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-secondary" onclick="saveNourishCraftPlan()"><i class="ri-save-line"></i> Save Plan</button>
+            <button class="btn btn-primary" onclick="downloadNourishCraftPDF()"><i class="ri-file-download-line"></i> Download PDF</button>
+          </div>
+        </div>
+
+        <!-- NourishCraft Control Toolbar -->
+        <div class="table-card" style="padding: 1.25rem; margin-bottom: 1.25rem;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+            <div>
+              <label class="form-label">Select Client *</label>
+              <select class="form-select" id="nc-client-select" onchange="loadNourishCraftClient(this.value)">
+                <option value="DW-1">DW-1: Krupa Mathew</option>
+                <option value="DW-2">DW-2: Bhavani Neela</option>
+                <option value="DW-3">DW-3: Shailaja Enugurthi</option>
+                <option value="DW-4">DW-4: Kalpana Chinta</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Dietary Program *</label>
+              <select class="form-select" id="nc-program-select">
+                <option value="Fertility Nutrition & Preconception Program">Fertility Nutrition & Preconception Program</option>
+                <option value="PCOS / PCOD Management Program">PCOS / PCOD Management Program</option>
+                <option value="Weight Loss & Metabolic Care Program">Weight Loss & Metabolic Care Program</option>
+                <option value="Thyroid Care Diet Program">Thyroid Care Diet Program</option>
+                <option value="Diabetes Management Program">Diabetes Management Program</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Calorie Target</label>
+              <select class="form-select" id="nc-calorie-target">
+                <option value="1400 kcal">1400 kcal (Fat Loss)</option>
+                <option value="1600 kcal" selected>1600 kcal (Balanced Metabolic)</option>
+                <option value="1800 kcal">1800 kcal (Preconception Prep)</option>
+                <option value="2000 kcal">2000 kcal (Postpartum Lactation)</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Macro Ratio</label>
+              <input type="text" class="form-input" id="nc-macro-ratio" value="Carbs 50% / Protein 25% / Fat 25%">
+            </div>
+          </div>
+        </div>
+
+        <!-- Dhruthi Healthy Recipe Library Quick Insertion Bar -->
+        <div style="margin-bottom: 1.25rem;">
+          <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px;">DHRUTHI HEALTHY RECIPES LIBRARY (CLICK TO INSERT ITEM)</div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn btn-outline btn-sm" onclick="insertRecipeItem('breakfast', 'Oats Moong Dal Chilla (2 pcs) + Mint Chutney')">+ Oats Moong Chilla</button>
+            <button class="btn btn-outline btn-sm" onclick="insertRecipeItem('lunch', 'Jowar Roti (2 pcs) + Palak Dal + Salad')">+ Jowar Roti & Dal</button>
+            <button class="btn btn-outline btn-sm" onclick="insertRecipeItem('earlyMorning', 'Warm Cumin Seeds Water + 5 Soaked Almonds')">+ Detox Cumin Water</button>
+            <button class="btn btn-outline btn-sm" onclick="insertRecipeItem('evening', 'Green Tea + 1 cup Roasted Makhana')">+ Roasted Makhana</button>
+            <button class="btn btn-outline btn-sm" onclick="insertRecipeItem('dinner', 'Grilled Tofu / Paneer Tikka + Veg Soup')">+ Paneer / Tofu Bowl</button>
+          </div>
+        </div>
+
+        <!-- Meal Builder Grid Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+          <div class="table-card" style="padding: 1.25rem; margin: 0;">
+            <div style="font-weight: 700; font-size: 0.95rem; color: var(--primary); margin-bottom: 8px;">🌅 Early Morning / Detox (6:30 AM)</div>
+            <textarea class="form-textarea" id="nc-earlyMorning" rows="3" placeholder="Warm water + 1/2 tsp cumin seeds, soaked almonds (5 pcs)"></textarea>
+          </div>
+
+          <div class="table-card" style="padding: 1.25rem; margin: 0;">
+            <div style="font-weight: 700; font-size: 0.95rem; color: var(--primary); margin-bottom: 8px;">🍳 Breakfast (8:30 AM)</div>
+            <textarea class="form-textarea" id="nc-breakfast" rows="3" placeholder="Oats Moong Dal Chilla (2 pcs) with Mint Chutney + 1 egg white"></textarea>
+          </div>
+
+          <div class="table-card" style="padding: 1.25rem; margin: 0;">
+            <div style="font-weight: 700; font-size: 0.95rem; color: var(--primary); margin-bottom: 8px;">🥗 Mid-Morning Snack (11:00 AM)</div>
+            <textarea class="form-textarea" id="nc-midMorning" rows="3" placeholder="1 bowl Guava / Pomegranate + 1 cup Buttermilk with roasted cumin powder"></textarea>
+          </div>
+
+          <div class="table-card" style="padding: 1.25rem; margin: 0;">
+            <div style="font-weight: 700; font-size: 0.95rem; color: var(--primary); margin-bottom: 8px;">🍲 Lunch (1:00 PM)</div>
+            <textarea class="form-textarea" id="nc-lunch" rows="3" placeholder="1 cup Brown Rice / Jowar Roti (2) + Palak Dal (1 bowl) + Cucumber Salad"></textarea>
+          </div>
+
+          <div class="table-card" style="padding: 1.25rem; margin: 0;">
+            <div style="font-weight: 700; font-size: 0.95rem; color: var(--primary); margin-bottom: 8px;">☕ Evening Snack (4:30 PM)</div>
+            <textarea class="form-textarea" id="nc-evening" rows="3" placeholder="Green Tea / Herbal Tea + Roasted Makhana (1 small cup)"></textarea>
+          </div>
+
+          <div class="table-card" style="padding: 1.25rem; margin: 0;">
+            <div style="font-weight: 700; font-size: 0.95rem; color: var(--primary); margin-bottom: 8px;">🍽️ Dinner (7:30 PM)</div>
+            <textarea class="form-textarea" id="nc-dinner" rows="3" placeholder="Grilled Tofu / Chicken Vegetable Soup + Vegetable Bowl"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 8: MESSAGE TEMPLATES (User Requirement 3) ================= -->
+      <section id="page-templates" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Message Templates Library</h1>
+            <p class="page-description">Pre-written WhatsApp and Email templates for quick communication with clients.</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;" id="templates-cards-grid">
+          <!-- Dynamically Rendered Template Cards -->
+        </div>
+      </section>
+
+      <!-- ================= PAGE 9: PAID CLIENTS ROSTER (User Requirement 4) ================= -->
+      <section id="page-clients" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Paid Clients Roster</h1>
+            <p class="page-description">Editable roster of enrolled paid clients, active packages, start dates, and renewal tracking.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openLeadModal()"><i class="ri-user-add-line"></i> + Enroll Client</button>
+        </div>
+
+        <div class="table-card">
+          <div style="overflow-x: auto;">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Client ID</th>
+                  <th>Client Name</th>
+                  <th>Contact Number</th>
+                  <th>Email ID</th>
+                  <th>Active Program</th>
+                  <th>Package Paid</th>
+                  <th>Start Date</th>
+                  <th>Renewal Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="paid-clients-tbody">
+                <!-- Dynamically Rendered Editable Rows -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 10: TESTIMONIALS & REVIEWS (User Requirement 6) ================= -->
+      <section id="page-testimonials" class="page-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Verified Testimonials & Client Reviews</h1>
+            <p class="page-description">Connected with reviews dataset. Beautiful card notes to view client feedback.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openAddReviewModal()"><i class="ri-star-line"></i> + Add Client Review</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;" id="testimonials-grid-container">
+          <!-- Dynamically Rendered Review Note Cards -->
+        </div>
+      </section>
+
       <!-- Additional Page Views Placeholders -->
-      <section id="page-my-tasks" class="page-view"><div class="page-header"><h1 class="page-title">My Tasks</h1></div><div class="table-card" style="padding: 1.5rem;">Tasks and follow-up reminders.</div></section>
       <section id="page-appointments" class="page-view"><div class="page-header"><h1 class="page-title">Appointments</h1></div><div class="table-card" style="padding: 1.5rem;">Scheduled consultation slots.</div></section>
-      <section id="page-plans" class="page-view"><div class="page-header"><h1 class="page-title">Plans Library</h1></div><div class="table-card" style="padding: 1.5rem;">Nutrition & workout plans library.</div></section>
-      <section id="page-templates" class="page-view"><div class="page-header"><h1 class="page-title">Message Templates</h1></div><div class="table-card" style="padding: 1.5rem;">WhatsApp & Email Templates.</div></section>
-      <section id="page-clients" class="page-view"><div class="page-header"><h1 class="page-title">List Clients</h1></div><div class="table-card" style="padding: 1.5rem;">Active clients roster.</div></section>
       <section id="page-reports" class="page-view"><div class="page-header"><h1 class="page-title">Reports</h1></div><div class="table-card" style="padding: 1.5rem;">Analytics & Performance Reports.</div></section>
-      <section id="page-testimonials" class="page-view"><div class="page-header"><h1 class="page-title">Testimonials</h1></div><div class="table-card" style="padding: 1.5rem;">Verified Client Testimonials.</div></section>
       <section id="page-settings" class="page-view"><div class="page-header"><h1 class="page-title">Settings</h1></div><div class="table-card" style="padding: 1.5rem;">CRM Configurations.</div></section>
 
     </div>
@@ -816,7 +981,56 @@
 
   <!-- ================= MODALS & OVERLAYS ================= -->
 
-  <!-- Modal 1: Add Program Modal -->
+  <!-- Modal 1: Create Task Modal (User Requirement 1) -->
+  <div class="modal-backdrop" id="modal-task">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeModal('modal-task')">&times;</button>
+      <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;" id="task-modal-title">Create Task</h3>
+
+      <form id="form-new-task" onsubmit="handleCreateTaskSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Task Type</label>
+          <input type="text" class="form-input" id="task-input-type" readonly>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Client / Lead *</label>
+          <select class="form-select" id="task-input-client" required>
+            <option value="DW-1 Krupa Mathew">DW-1: Krupa Mathew</option>
+            <option value="DW-2 Bhavani Neela">DW-2: Bhavani Neela</option>
+            <option value="DW-3 Shailaja Enugurthi">DW-3: Shailaja Enugurthi</option>
+            <option value="DW-4 Kalpana Chinta">DW-4: Kalpana Chinta</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Due Date & Time *</label>
+          <input type="datetime-local" class="form-input" id="task-input-due" required value="2025-08-25T11:00">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Priority</label>
+          <select class="form-select" id="task-input-priority">
+            <option value="High">High</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="Normal">Normal</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Task Description / Instructions</label>
+          <textarea class="form-textarea" id="task-input-notes" rows="3" placeholder="Notes for consultation, check-in details..."></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-task')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: Add Program Modal -->
   <div class="modal-backdrop" id="modal-add-program">
     <div class="modal-card">
       <button class="modal-close-btn" onclick="closeModal('modal-add-program')">&times;</button>
@@ -878,7 +1092,7 @@
     </div>
   </div>
 
-  <!-- Modal 2: Add Call Note Modal -->
+  <!-- Modal 3: Add Call Note Modal -->
   <div class="modal-backdrop" id="modal-add-call-note">
     <div class="modal-card">
       <button class="modal-close-btn" onclick="closeModal('modal-add-call-note')">&times;</button>
@@ -913,26 +1127,45 @@
     </div>
   </div>
 
-  <!-- Modal 3: Add Note Modal -->
-  <div class="modal-backdrop" id="modal-add-note">
+  <!-- Modal 4: Add Review Modal (User Requirement 6) -->
+  <div class="modal-backdrop" id="modal-add-review">
     <div class="modal-card">
-      <button class="modal-close-btn" onclick="closeModal('modal-add-note')">&times;</button>
-      <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Add Clinical Note</h3>
+      <button class="modal-close-btn" onclick="closeModal('modal-add-review')">&times;</button>
+      <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Add Client Testimonial Review</h3>
 
-      <form id="form-add-note" onsubmit="handleAddNoteSubmit(event)">
+      <form id="form-add-review" onsubmit="handleAddReviewSubmit(event)">
         <div class="form-group">
-          <textarea class="form-textarea" id="note-textarea-content" rows="4" placeholder="Client prefers English dietitian, clinical guidance..." required></textarea>
+          <label class="form-label">Author Name *</label>
+          <input type="text" class="form-input" id="rev-author" placeholder="e.g. Kavitha R." required>
         </div>
 
-        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 1rem;">
-          <button type="button" class="btn btn-outline" onclick="closeModal('modal-add-note')">Cancel</button>
-          <button type="submit" class="btn btn-secondary">Save Note</button>
+        <div class="form-group">
+          <label class="form-label">Program Category *</label>
+          <input type="text" class="form-input" id="rev-category" placeholder="e.g. PCOS Cycle Balance, Fertility Nutrition" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Rating</label>
+          <select class="form-select" id="rev-rating">
+            <option value="5" selected>⭐⭐⭐⭐⭐ (5 Stars)</option>
+            <option value="4">⭐⭐⭐⭐ (4 Stars)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Testimonial Note *</label>
+          <textarea class="form-textarea" id="rev-message" rows="4" placeholder="Client review message..." required></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-add-review')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Testimonial</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Modal 4: Create Lead Modal -->
+  <!-- Modal 5: Create Lead Modal -->
   <div class="modal-backdrop" id="modal-lead">
     <div class="modal-card">
       <button class="modal-close-btn" onclick="closeModal('modal-lead')">&times;</button>

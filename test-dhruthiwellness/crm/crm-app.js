@@ -6,6 +6,104 @@ let state = {
   isEditingProfile: false,
   activeDetailSubTab: 'profile',
   activeProfileInfoTab: 'basic',
+  tasks: [
+    {
+      id: 'TSK-101',
+      type: 'Create Appointment',
+      client: 'DW-1 Krupa Mathew',
+      dueDate: '2025-08-25 11:00 AM',
+      priority: 'High',
+      category: 'Initial Consultation',
+      status: 'Pending',
+      notes: 'First fertility & preconception diet consultation call'
+    },
+    {
+      id: 'TSK-102',
+      type: 'Create Check-in',
+      client: 'DW-2 Bhavani Neela',
+      dueDate: '2025-08-22 03:00 PM',
+      priority: 'Medium',
+      category: 'Weekly Weight Check-in',
+      status: 'In Progress',
+      notes: 'PCOS meal plan adherence check-in'
+    },
+    {
+      id: 'TSK-103',
+      type: 'Create Follow-up',
+      client: 'DW-3 Shailaja Enugurthi',
+      dueDate: '2025-08-20 01:00 PM',
+      priority: 'Normal',
+      category: 'Lab Report Follow-up',
+      status: 'Completed',
+      notes: 'Review thyroid lab results with client'
+    }
+  ],
+  templates: [
+    {
+      title: 'New Consultation Enquiry Acknowledgement',
+      category: 'Lead Response',
+      text: `Namaste! Thank you for reaching out to Dhruthi Wellness. Dt. Akhila Konakalla, Clinical Nutritionist, will guide you on your health journey. When is a convenient time for a quick 10-minute consultation call?`
+    },
+    {
+      title: 'Free Consultation Slot Confirmation',
+      category: 'Appointment',
+      text: `Dear Client, your free consultation appointment with Dt. Akhila Konakalla is confirmed!\nDate & Slot: August 25, 2025 at 11:00 AM\nAddress: 4-94, Lunani Nagar, Eluru, Andhra Pradesh, 534005, India.\nLooking forward to speaking with you!`
+    },
+    {
+      title: 'NourishCraft Clinical Diet Plan Delivery',
+      category: 'Diet Plan',
+      text: `Namaste! Your customized clinical diet plan prepared by Dt. Akhila Konakalla for your program is ready. Please follow the meal timings and stay hydrated with 3L water daily. Let us know if you need any recipe substitutions!`
+    },
+    {
+      title: 'Weekly Progress & Weight Review',
+      category: 'Follow-up',
+      text: `Namaste! Time for our weekly progress review with Dt. Akhila. Please share your current weight reading today along with any observations regarding energy, digestion, or hunger levels.`
+    },
+    {
+      title: 'Payment Confirmation & Receipt',
+      category: 'Billing',
+      text: `Dear Client, thank you for your payment to Dhruthi Wellness! Your official payment receipt has been generated and verified. Welcome to your health transformation program!`
+    },
+    {
+      title: 'Google Review & Testimonial Request',
+      category: 'Feedback',
+      text: `Namaste! We hope you are loving your health transformation with Dt. Akhila Konakalla. Could you take 1 minute to share your feedback or review? Your story inspires many others on their health journey!`
+    }
+  ],
+  reviews: [
+    {
+      id: 'REV-1',
+      author: 'Kavitha R.',
+      category: 'PCOS / PCOD Management',
+      rating: 5,
+      date: '17 Aug 2025',
+      message: 'Dt. Akhila’s customized meal plan completely regulated my cycles within 3 months! No crash diets, just wholesome Indian food adapted to my daily routine.'
+    },
+    {
+      id: 'REV-2',
+      author: 'Siddharth V.',
+      category: 'Weight Loss & Metabolic Care',
+      rating: 5,
+      date: '15 Aug 2025',
+      message: 'Lost 9.5 kg in 12 weeks while maintaining high muscle mass and energy levels. The recipes in NourishCraft studio are so delicious and easy to prepare at home.'
+    },
+    {
+      id: 'REV-3',
+      author: 'Priya & Raj',
+      category: 'Fertility Nutrition & Preconception',
+      rating: 5,
+      date: '10 Aug 2025',
+      message: 'We were trying to conceive for 1.5 years. Dt. Akhila’s metabolic improvement protocol boosted our hormonal balance and lab results tremendously. Highly recommend Dhruthi Wellness!'
+    },
+    {
+      id: 'REV-4',
+      author: 'Satisfied Patient',
+      category: 'Metabolic Health & Diabetes Care',
+      rating: 5,
+      date: '18 Aug 2025',
+      message: 'Fantastic service, quick responses, and automated clinical guidance! My HbA1c dropped from 6.8 to 5.6.'
+    }
+  ],
   leads: [
     {
       id: 'DW-1',
@@ -42,6 +140,10 @@ let state = {
       sleepStress: '7 Hours Sleep, Moderate Stress',
       femaleInfo: '28-day Regular Cycle',
       otherInfo: 'Prefers Malayalam or English consultation',
+      paidAmount: '₹8,500',
+      startDate: '2025-08-25',
+      renewalDate: '2025-11-23',
+      clientStatus: 'Active',
       callNotes: [
         {
           id: 'CN-101',
@@ -147,6 +249,10 @@ let state = {
       state: 'Andhra Pradesh',
       country: 'India',
       pincode: '520001',
+      paidAmount: '₹11,700',
+      startDate: '2025-08-18',
+      renewalDate: '2025-11-16',
+      clientStatus: 'Active',
       dietPref: 'Non-Vegetarian (Chicken 2x/week)',
       workoutPref: 'Gym 3x/week',
       medicalAssessment: 'PCOS diagnosed 2023',
@@ -163,9 +269,9 @@ let state = {
           endDate: '2025-11-16',
           dealSize: '₹11,700',
           closeDate: '2025-08-18',
-          status: 'Pending',
-          payStatus: 'Pending',
-          remarks: 'Payment link sent'
+          status: 'Active',
+          payStatus: 'Paid',
+          remarks: 'Payment link completed'
         }
       ],
       payments: [],
@@ -177,19 +283,8 @@ let state = {
         evening: 'Chamomile Tea + Boiled Chana',
         dinner: 'Lauki Soup + Steamed Paneer'
       },
-      progress: {
-        status: 'Maintaining',
-        startWeight: '62 kg',
-        currentWeight: '62 kg',
-        targetWeight: '52 kg',
-        notes: []
-      },
-      medicalHistory: {
-        diagnoses: 'Irregular cycles, PCOS diagnosed 2023',
-        medications: 'Myo-Inositol (Daily)',
-        labSummary: 'LH/FSH ratio elevated (2.8)',
-        familyHistory: 'None'
-      },
+      progress: { status: 'Maintaining', startWeight: '62 kg', currentWeight: '62 kg', targetWeight: '52 kg', notes: [] },
+      medicalHistory: { diagnoses: 'Irregular cycles, PCOS diagnosed 2023', medications: 'Myo-Inositol (Daily)', labSummary: 'LH/FSH ratio elevated (2.8)', familyHistory: '-' },
       labReports: []
     },
     {
@@ -221,12 +316,10 @@ let state = {
       state: 'California',
       country: 'USA',
       pincode: '95112',
-      dietPref: 'High Protein Eggetarian',
-      workoutPref: 'Postpartum Rehab Exercises',
-      medicalAssessment: 'Post-delivery 6 months',
-      sleepStress: 'Interrupted Sleep (Lactating)',
-      femaleInfo: 'Lactating Mother',
-      otherInfo: 'Prefers US PST Time Zone Calls',
+      paidAmount: '$250',
+      startDate: '2025-05-15',
+      renewalDate: '2025-08-15',
+      clientStatus: 'Renewal Due',
       callNotes: [],
       programsList: [],
       payments: [],
@@ -264,12 +357,10 @@ let state = {
       state: 'Telangana',
       country: 'India',
       pincode: '500081',
-      dietPref: 'South Indian Veg',
-      workoutPref: 'Morning Yoga',
-      medicalAssessment: 'Trying to conceive 1 year',
-      sleepStress: '8 Hours Sleep',
-      femaleInfo: 'Normal Blood Reports',
-      otherInfo: 'Referred by Instagram Reel',
+      paidAmount: '₹18,805',
+      startDate: '2025-05-13',
+      renewalDate: '2025-11-13',
+      clientStatus: 'Active',
       callNotes: [],
       programsList: [],
       payments: [],
@@ -279,13 +370,7 @@ let state = {
       labReports: []
     }
   ],
-  notes: [
-    {
-      date: '18/08/2025 14:20',
-      author: 'Akhila',
-      text: 'client prefers - english dietitian, fitness coach'
-    }
-  ]
+  notes: []
 };
 
 const DHRUTHI_PROGRAMS = [
@@ -316,12 +401,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  const savedTasks = localStorage.getItem('dhruthi_crm_tasks');
+  if (savedTasks) {
+    try { state.tasks = JSON.parse(savedTasks); } catch (e) {}
+  }
+
+  const savedReviews = localStorage.getItem('dhruthi_crm_reviews');
+  if (savedReviews) {
+    try { state.reviews = JSON.parse(savedReviews); } catch (e) {}
+  }
+
   checkAuthStatus();
   setupSubmenuToggles();
   renderLeadsTable();
   renderDashboard();
   renderCallsLogTable();
+  renderMyTasksTable();
+  renderMessageTemplates();
+  renderPaidClientsTable();
+  renderTestimonialsGrid();
   renderClientDetail('DW-1');
+  loadNourishCraftClient('DW-1');
 });
 
 // Authentication Handling
@@ -421,10 +521,22 @@ function switchPage(pageId) {
       bcCurrent.textContent = `Client Detail > ${state.selectedLeadId}`;
     } else if (pageId === 'interactions-calls') {
       bcParent.textContent = 'Interactions';
-      bcCurrent.textContent = 'Calls';
-    } else if (pageId === 'payments') {
-      bcParent.textContent = 'Finance';
-      bcCurrent.textContent = 'Payments Ledger';
+      bcCurrent.textContent = 'Calls & Call Notes';
+    } else if (pageId === 'my-tasks') {
+      bcParent.textContent = 'Tasks';
+      bcCurrent.textContent = 'My Tasks & Reminders';
+    } else if (pageId === 'plans') {
+      bcParent.textContent = 'Clinical';
+      bcCurrent.textContent = 'NourishCraft Prep Studio';
+    } else if (pageId === 'templates') {
+      bcParent.textContent = 'Communications';
+      bcCurrent.textContent = 'Message Templates';
+    } else if (pageId === 'clients') {
+      bcParent.textContent = 'Clients';
+      bcCurrent.textContent = 'Paid Clients Roster';
+    } else if (pageId === 'testimonials') {
+      bcParent.textContent = 'Social Proof';
+      bcCurrent.textContent = 'Verified Testimonials';
     } else {
       bcParent.textContent = 'CRM';
       bcCurrent.textContent = pageId.toUpperCase();
@@ -432,7 +544,380 @@ function switchPage(pageId) {
   }
 }
 
-// Render Leads Data Table (Fitness Club Completely Removed)
+// 1. My Tasks Tab (User Requirement 1)
+function toggleTaskDropdown() {
+  const dropdown = document.getElementById('task-create-dropdown');
+  if (dropdown) {
+    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+  }
+}
+
+function openTaskModal(taskType) {
+  const dropdown = document.getElementById('task-create-dropdown');
+  if (dropdown) dropdown.style.display = 'none';
+
+  const typeInput = document.getElementById('task-input-type');
+  const title = document.getElementById('task-modal-title');
+  if (typeInput) typeInput.value = taskType;
+  if (title) title.textContent = taskType;
+
+  openModal('modal-task');
+}
+
+function handleCreateTaskSubmit(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  const taskType = document.getElementById('task-input-type').value;
+  const client = document.getElementById('task-input-client').value;
+  const due = document.getElementById('task-input-due').value;
+  const priority = document.getElementById('task-input-priority').value;
+  const notes = document.getElementById('task-input-notes').value;
+
+  const dueFormatted = due.replace('T', ' ');
+
+  state.tasks.unshift({
+    id: `TSK-${Date.now().toString().slice(-4)}`,
+    type: taskType,
+    client: client,
+    dueDate: dueFormatted,
+    priority: priority,
+    category: taskType.replace('Create ', ''),
+    status: 'Pending',
+    notes: notes || 'Clinical follow-up task'
+  });
+
+  localStorage.setItem('dhruthi_crm_tasks', JSON.stringify(state.tasks));
+  renderMyTasksTable();
+  closeModal('modal-task');
+  alert(`Task "${taskType}" created successfully!`);
+}
+
+function renderMyTasksTable() {
+  const tbody = document.getElementById('my-tasks-tbody');
+  if (!tbody) return;
+
+  if (state.tasks.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:1.5rem; color:var(--text-muted);">No active tasks found. Use <b>+ Create Task</b> to schedule an appointment, check-in, or follow-up.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = state.tasks.map((t, idx) => `
+    <tr>
+      <td>
+        <span class="stage-badge ${t.type.includes('Appointment') ? 'new' : t.type.includes('Check-in') ? 'connected' : 'warm'}">
+          ${t.type}
+        </span>
+      </td>
+      <td><b>${t.client}</b></td>
+      <td>${t.dueDate}</td>
+      <td><span class="stage-badge ${t.priority === 'High' ? 'cold' : 'new'}">${t.priority}</span></td>
+      <td>${t.category}</td>
+      <td>
+        <select class="form-select" style="font-size:0.78rem;" onchange="updateTaskStatus(${idx}, this.value)">
+          <option value="Pending" ${t.status === 'Pending' ? 'selected' : ''}>Pending</option>
+          <option value="In Progress" ${t.status === 'In Progress' ? 'selected' : ''}>In Progress</option>
+          <option value="Completed" ${t.status === 'Completed' ? 'selected' : ''}>Completed</option>
+        </select>
+      </td>
+      <td>
+        <button class="btn btn-outline btn-sm" onclick="deleteTask(${idx})" style="color:#dc2626;"><i class="ri-delete-bin-line"></i></button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function updateTaskStatus(idx, status) {
+  if (state.tasks[idx]) {
+    state.tasks[idx].status = status;
+    localStorage.setItem('dhruthi_crm_tasks', JSON.stringify(state.tasks));
+  }
+}
+
+function deleteTask(idx) {
+  if (confirm('Are you sure you want to delete this task?')) {
+    state.tasks.splice(idx, 1);
+    localStorage.setItem('dhruthi_crm_tasks', JSON.stringify(state.tasks));
+    renderMyTasksTable();
+  }
+}
+
+// 2. NourishCraft Clinical Diet Prep Studio (User Requirement 2)
+function loadNourishCraftClient(clientId) {
+  const lead = state.leads.find(l => l.id === clientId) || state.leads[0];
+  if (!lead) return;
+
+  const progSelect = document.getElementById('nc-program-select');
+  if (progSelect) progSelect.value = lead.program || 'Fertility Nutrition & Preconception Program';
+
+  const dp = lead.dietPlan || {};
+  if (document.getElementById('nc-earlyMorning')) document.getElementById('nc-earlyMorning').value = dp.earlyMorning || 'Warm water + 1/2 tsp cumin seeds, soaked almonds (5 pcs)';
+  if (document.getElementById('nc-breakfast')) document.getElementById('nc-breakfast').value = dp.breakfast || 'Oats Moong Dal Chilla (2 pcs) with Mint Chutney + 1 egg white';
+  if (document.getElementById('nc-midMorning')) document.getElementById('nc-midMorning').value = dp.midMorning || '1 bowl Guava / Pomegranate + 1 cup Buttermilk';
+  if (document.getElementById('nc-lunch')) document.getElementById('nc-lunch').value = dp.lunch || '1 cup Brown Rice / Jowar Roti (2) + Palak Dal + Cucumber Salad';
+  if (document.getElementById('nc-evening')) document.getElementById('nc-evening').value = dp.evening || 'Green Tea + Roasted Makhana (1 small cup)';
+  if (document.getElementById('nc-dinner')) document.getElementById('nc-dinner').value = dp.dinner || 'Grilled Tofu / Vegetable Soup + Sprouts salad';
+}
+
+function insertRecipeItem(mealKey, text) {
+  const field = document.getElementById(`nc-${mealKey}`);
+  if (field) {
+    field.value = field.value ? `${field.value} + ${text}` : text;
+  }
+}
+
+function saveNourishCraftPlan() {
+  const clientId = document.getElementById('nc-client-select').value;
+  const lead = state.leads.find(l => l.id === clientId);
+  if (!lead) return;
+
+  lead.program = document.getElementById('nc-program-select').value;
+  lead.dietPlan = {
+    earlyMorning: document.getElementById('nc-earlyMorning').value,
+    breakfast: document.getElementById('nc-breakfast').value,
+    midMorning: document.getElementById('nc-midMorning').value,
+    lunch: document.getElementById('nc-lunch').value,
+    evening: document.getElementById('nc-evening').value,
+    dinner: document.getElementById('nc-dinner').value
+  };
+
+  localStorage.setItem('dhruthi_crm_leads', JSON.stringify(state.leads));
+  alert(`NourishCraft Diet Plan saved successfully for ${lead.name} (${lead.id})!`);
+}
+
+function downloadNourishCraftPDF() {
+  const clientId = document.getElementById('nc-client-select').value;
+  const lead = state.leads.find(l => l.id === clientId) || state.leads[0];
+  const name = lead ? lead.name : 'Client';
+
+  const content = `=================================================\nDHRUTHI WELLNESS — NOURISHCRAFT CLINICAL DIET CHART\n=================================================\nClient Name: ${name}\nClient ID: ${lead.id}\nProgram: ${document.getElementById('nc-program-select').value}\nTarget Calories: ${document.getElementById('nc-calorie-target').value}\nMacro Ratio: ${document.getElementById('nc-macro-ratio').value}\nClinical Nutritionist: Dt. Akhila Konakalla, MSc Food Nutrition & Dietetics\nDate Generated: ${new Date().toLocaleDateString()}\n=================================================\n\n1. EARLY MORNING / DETOX (6:30 AM):\n   ${document.getElementById('nc-earlyMorning').value}\n\n2. BREAKFAST (8:30 AM):\n   ${document.getElementById('nc-breakfast').value}\n\n3. MID-MORNING SNACK (11:00 AM):\n   ${document.getElementById('nc-midMorning').value}\n\n4. LUNCH (1:00 PM):\n   ${document.getElementById('nc-lunch').value}\n\n5. EVENING SNACK (4:30 PM):\n   ${document.getElementById('nc-evening').value}\n\n6. DINNER (7:30 PM):\n   ${document.getElementById('nc-dinner').value}\n\n=================================================\nClinical Guidelines:\n- Maintain minimum 3 Liters water intake daily.\n- Sleep by 10:30 PM to optimize metabolic circadian rhythm.\n=================================================\n`;
+
+  const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = `NourishCraft_Diet_Plan_${name.replace(/\s+/g, '_')}.txt`;
+  link.click();
+}
+
+// 3. Message Templates Library (User Requirement 3)
+function renderMessageTemplates() {
+  const grid = document.getElementById('templates-cards-grid');
+  if (!grid) return;
+
+  grid.innerHTML = state.templates.map((tpl, idx) => `
+    <div class="table-card" style="padding:1.25rem; margin:0; display:flex; flex-direction:column; justify-space-between;">
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span class="stage-badge connected">${tpl.category}</span>
+          <i class="ri-whatsapp-line" style="color:#16a34a; font-size:1.2rem;"></i>
+        </div>
+        <div style="font-weight:700; font-size:0.95rem; color:var(--text-main); margin-bottom:8px;">${tpl.title}</div>
+        <div style="background:var(--bg-subtle); padding:10px; border-radius:var(--radius-sm); border:1px solid var(--border-color); font-size:0.82rem; color:var(--text-main); white-space:pre-line; margin-bottom:12px;">
+          ${tpl.text}
+        </div>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button class="btn btn-outline btn-sm" onclick="copyTemplateText(${idx})" style="flex:1;"><i class="ri-file-copy-line"></i> Copy Text</button>
+        <button class="btn btn-secondary btn-sm" onclick="sendTemplateWhatsApp(${idx})" style="flex:1;"><i class="ri-whatsapp-line"></i> Send WhatsApp</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function copyTemplateText(idx) {
+  const tpl = state.templates[idx];
+  if (!tpl) return;
+  navigator.clipboard.writeText(tpl.text);
+  alert(`Template "${tpl.title}" copied to clipboard!`);
+}
+
+function sendTemplateWhatsApp(idx) {
+  const tpl = state.templates[idx];
+  if (!tpl) return;
+  const lead = state.leads.find(l => l.id === state.selectedLeadId) || state.leads[0];
+  const phone = lead ? lead.phone.replace(/[^0-9]/g, '') : '918688963230';
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(tpl.text)}`;
+  window.open(url, '_blank');
+}
+
+// 4. Paid Clients Roster (User Requirement 4)
+function renderPaidClientsTable() {
+  const tbody = document.getElementById('paid-clients-tbody');
+  if (!tbody) return;
+
+  const paidList = state.leads;
+  tbody.innerHTML = paidList.map((c, idx) => `
+    <tr>
+      <td><b style="color:var(--primary); cursor:pointer;" onclick="openClientDetail('${c.id}')">${c.id}</b></td>
+      <td><b>${c.name}</b></td>
+      <td>${c.phone}</td>
+      <td>${c.email}</td>
+      <td>
+        <select class="form-select" style="font-size:0.82rem; width:220px;" onchange="updatePaidClientRow(${idx}, 'program', this.value)">
+          ${DHRUTHI_PROGRAMS.map(prog => `<option value="${prog}" ${c.program === prog ? 'selected' : ''}>${prog}</option>`).join('')}
+        </select>
+      </td>
+      <td><input type="text" class="form-input" style="width:90px;" value="${c.paidAmount || '₹8,500'}" onchange="updatePaidClientRow(${idx}, 'paidAmount', this.value)"></td>
+      <td><input type="date" class="form-input" style="width:125px;" value="${c.startDate || '2025-08-25'}" onchange="updatePaidClientRow(${idx}, 'startDate', this.value)"></td>
+      <td><input type="date" class="form-input" style="width:125px;" value="${c.renewalDate || '2025-11-23'}" onchange="updatePaidClientRow(${idx}, 'renewalDate', this.value)"></td>
+      <td>
+        <select class="form-select" style="font-size:0.78rem;" onchange="updatePaidClientRow(${idx}, 'clientStatus', this.value)">
+          <option value="Active" ${c.clientStatus === 'Active' ? 'selected' : ''}>Active</option>
+          <option value="Renewal Due" ${c.clientStatus === 'Renewal Due' ? 'selected' : ''}>Renewal Due</option>
+          <option value="Completed" ${c.clientStatus === 'Completed' ? 'selected' : ''}>Completed</option>
+        </select>
+      </td>
+      <td>
+        <div style="display:flex; gap:4px;">
+          <button class="btn btn-outline btn-sm" onclick="openClientDetail('${c.id}')" title="View 360 Detail"><i class="ri-user-search-line"></i></button>
+          <button class="btn btn-secondary btn-sm" onclick="savePaidClientRow(${idx})"><i class="ri-save-line"></i></button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function updatePaidClientRow(idx, field, value) {
+  if (state.leads[idx]) {
+    state.leads[idx][field] = value;
+  }
+}
+
+function savePaidClientRow(idx) {
+  localStorage.setItem('dhruthi_crm_leads', JSON.stringify(state.leads));
+  alert('Paid client details updated!');
+}
+
+// 5. Interactions & Calls Log Table (User Requirement 5 - Fully Editable)
+function renderCallsLogTable() {
+  const tbody = document.getElementById('calls-log-tbody');
+  if (!tbody) return;
+
+  let allNotes = [];
+  state.leads.forEach(l => {
+    if (l.callNotes) {
+      l.callNotes.forEach((cn, cnIdx) => {
+        allNotes.push({ ...cn, leadId: l.id, leadName: l.name, phone: l.phone, leadRef: l, cnIdx: cnIdx });
+      });
+    }
+  });
+
+  if (allNotes.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="9" style="text-align:center; padding:1.5rem; color:var(--text-muted);">No interaction call notes recorded yet. Click <b>+ Log Call Note</b> to record.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = allNotes.map((n, idx) => `
+    <tr>
+      <td><b style="color:var(--primary); cursor:pointer;" onclick="openClientDetail('${n.leadId}')">${n.leadId}</b></td>
+      <td><input type="text" class="form-input" style="width:130px;" value="${n.author || 'Akhila'}" onchange="updateCallNoteRow(${idx}, 'author', this.value)"></td>
+      <td><b>${n.leadName}</b></td>
+      <td>${n.phone}</td>
+      <td>
+        <select class="form-select" style="font-size:0.78rem; width:140px;" onchange="updateCallNoteRow(${idx}, 'category', this.value)">
+          <option value="First Consultation" ${n.category === 'First Consultation' ? 'selected' : ''}>First Consultation</option>
+          <option value="Weekly Follow-up" ${n.category === 'Weekly Follow-up' ? 'selected' : ''}>Weekly Follow-up</option>
+          <option value="Diet Chart Review" ${n.category === 'Diet Chart Review' ? 'selected' : ''}>Diet Chart Review</option>
+          <option value="Routine Check" ${n.category === 'Routine Check' ? 'selected' : ''}>Routine Check</option>
+        </select>
+      </td>
+      <td><input type="text" class="form-input" style="width:130px;" value="${n.date}" onchange="updateCallNoteRow(${idx}, 'date', this.value)"></td>
+      <td><input type="number" class="form-input" style="width:70px;" value="${n.duration}" onchange="updateCallNoteRow(${idx}, 'duration', this.value)"></td>
+      <td><input type="text" class="form-input" style="width:240px;" value="${n.note}" onchange="updateCallNoteRow(${idx}, 'note', this.value)"></td>
+      <td>
+        <button class="btn btn-secondary btn-sm" onclick="saveCallNoteRow(${idx})"><i class="ri-check-line"></i> Save</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function updateCallNoteRow(idx, field, value) {
+  let count = 0;
+  for (let l of state.leads) {
+    if (l.callNotes) {
+      for (let cn of l.callNotes) {
+        if (count === idx) {
+          cn[field] = value;
+          return;
+        }
+        count++;
+      }
+    }
+  }
+}
+
+function saveCallNoteRow(idx) {
+  localStorage.setItem('dhruthi_crm_leads', JSON.stringify(state.leads));
+  alert('Interaction call note updated!');
+}
+
+// 6. Testimonials & Reviews Grid (User Requirement 6)
+function renderTestimonialsGrid() {
+  const container = document.getElementById('testimonials-grid-container');
+  if (!container) return;
+
+  container.innerHTML = state.reviews.map(r => `
+    <div class="table-card" style="padding:1.25rem; margin:0; display:flex; flex-direction:column; justify-space-between;">
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="width:38px; height:38px; border-radius:50%; background:var(--primary-light); color:var(--primary); font-weight:700; display:flex; align-items:center; justify-content:center;">
+              ${r.author.charAt(0)}
+            </div>
+            <div>
+              <div style="font-weight:700; font-size:0.92rem; color:var(--text-main);">${r.author}</div>
+              <div style="font-size:0.75rem; color:var(--text-muted);">${r.category}</div>
+            </div>
+          </div>
+          <span class="stage-badge connected">Verified</span>
+        </div>
+
+        <div style="color:#f59e0b; margin-bottom:8px; font-size:0.9rem;">
+          ${'⭐'.repeat(r.rating || 5)}
+        </div>
+
+        <div style="background:var(--bg-subtle); padding:12px; border-radius:var(--radius-sm); border:1px solid var(--border-color); font-size:0.85rem; line-height:1.4; color:var(--text-main); font-style:italic;">
+          "${r.message}"
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; padding-top:8px; border-top:1px solid var(--border-color);">
+        <span style="font-size:0.75rem; color:var(--text-muted);">${r.date}</span>
+        <button class="btn btn-outline btn-sm" onclick="shareTestimonial('${r.author}', '${r.category}')"><i class="ri-share-forward-line"></i> Share Note</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openAddReviewModal() {
+  openModal('modal-add-review');
+}
+
+function handleAddReviewSubmit(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  const author = document.getElementById('rev-author').value;
+  const category = document.getElementById('rev-category').value;
+  const rating = Number(document.getElementById('rev-rating').value);
+  const message = document.getElementById('rev-message').value;
+
+  state.reviews.unshift({
+    id: `REV-${Date.now().toString().slice(-4)}`,
+    author: author,
+    category: category,
+    rating: rating,
+    date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
+    message: message
+  });
+
+  localStorage.setItem('dhruthi_crm_reviews', JSON.stringify(state.reviews));
+  renderTestimonialsGrid();
+  closeModal('modal-add-review');
+  alert('Client Testimonial added successfully!');
+}
+
+function shareTestimonial(author, category) {
+  alert(`Testimonial by ${author} (${category}) ready to share!`);
+}
+
+// Render Leads Data Table
 function renderLeadsTable(leadsList = state.leads) {
   const tbody = document.getElementById('leads-table-body');
   if (!tbody) return;
@@ -596,7 +1081,7 @@ function renderClientDetail(leadId) {
     document.getElementById('d-client-id-badge').textContent = lead.id;
   }
 
-  // Metadata 2-Column Grid (Fitness Club Completely Removed, Account Names Updated)
+  // Metadata 2-Column Grid
   const metaContainer = document.getElementById('meta-grid-container');
   if (metaContainer) {
     if (isEdit) {
@@ -803,6 +1288,7 @@ function saveClientProfileEdits() {
   state.isEditingProfile = false;
   renderClientDetail(state.selectedLeadId);
   renderLeadsTable();
+  renderPaidClientsTable();
   alert(`Profile changes for ${lead.name} (${lead.id}) saved successfully!`);
 }
 
@@ -828,7 +1314,7 @@ function switchProfileInfoTab(infoTab) {
   renderProfileInfoTab(infoTab, lead, state.isEditingProfile);
 }
 
-// 1. Interaction Notes (User Requirement 4)
+// Interaction Call Notes Detail View
 function renderCallNotes() {
   const container = document.getElementById('call-notes-timeline');
   if (!container) return;
@@ -892,39 +1378,6 @@ function handleAddCallNoteSubmit(e) {
   alert('Call note recorded successfully!');
 }
 
-function renderCallsLogTable() {
-  const tbody = document.getElementById('calls-log-tbody');
-  if (!tbody) return;
-
-  let allNotes = [];
-  state.leads.forEach(l => {
-    if (l.callNotes) {
-      l.callNotes.forEach(cn => {
-        allNotes.push({ ...cn, leadId: l.id, leadName: l.name, phone: l.phone });
-      });
-    }
-  });
-
-  if (allNotes.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding:1.5rem; color:var(--text-muted);">No interaction call notes recorded yet.</td></tr>`;
-    return;
-  }
-
-  tbody.innerHTML = allNotes.map(n => `
-    <tr>
-      <td><b style="color:var(--primary); cursor:pointer;" onclick="openClientDetail('${n.leadId}')">${n.leadId}</b></td>
-      <td>Dt. Akhila Konakalla</td>
-      <td><b>${n.leadName}</b></td>
-      <td>${n.phone}</td>
-      <td><span class="stage-badge connected">${n.category}</span></td>
-      <td>${n.date}</td>
-      <td>${n.duration}</td>
-      <td>${n.note}</td>
-    </tr>
-  `).join('');
-}
-
-// 2. Programs Tab — Editable Dropdown Layout of Dhruthi Plans (User Requirement 5)
 function renderClientPrograms() {
   const tbody = document.getElementById('client-programs-tbody');
   if (!tbody) return;
@@ -1020,7 +1473,6 @@ function handleAddProgramSubmit(e) {
   alert(`Program "${name}" assigned successfully!`);
 }
 
-// 3. Payments Tab — Upload Payment Proof & Download Receipts (User Requirement 6)
 function renderClientPayments() {
   const tbody = document.getElementById('client-payments-history-tbody');
   const previewBox = document.getElementById('payment-proof-preview-container');
@@ -1114,7 +1566,6 @@ function downloadClientReceipt(receiptId) {
   link.click();
 }
 
-// 4. Plans Tab — Diet Plan Prep Studio, Save & Download (User Requirement 7)
 function renderDietPlanStudio() {
   const lead = state.leads.find(l => l.id === state.selectedLeadId);
   const dp = (lead && lead.dietPlan) ? lead.dietPlan : {};
@@ -1158,7 +1609,6 @@ function downloadDietPlanPDF() {
   link.click();
 }
 
-// 5. Progress Tab — Client Progress & Required Artifacts (User Requirement 8)
 function renderClientProgress() {
   const lead = state.leads.find(l => l.id === state.selectedLeadId);
   const prg = (lead && lead.progress) ? lead.progress : {};
@@ -1215,7 +1665,6 @@ function openAddProgressNoteModal() {
   renderClientProgress();
 }
 
-// 6. History Tab — Medical History & Tabs Taken (User Requirement 9)
 function renderMedicalHistory() {
   const container = document.getElementById('medical-history-container');
   if (!container) return;
@@ -1263,7 +1712,6 @@ function openAddMedicalHistoryModal() {
   alert('Medical history updated successfully!');
 }
 
-// 7. H&F Report Tab — Download & Upload Lab Reports (User Requirement 10)
 function renderLabReports() {
   const tbody = document.getElementById('lab-reports-tbody');
   if (!tbody) return;
@@ -1322,7 +1770,6 @@ function downloadLabReport(reportName) {
   alert(`Downloading health report file: ${reportName}`);
 }
 
-// Clinical Notes (Sub-tab)
 function renderClientNotes() {
   const container = document.getElementById('client-notes-container');
   if (!container) return;
@@ -1358,7 +1805,6 @@ function handleAddNoteSubmit(e) {
   closeModal('modal-add-note');
 }
 
-// Lead Creation
 function openLeadModal() {
   openModal('modal-lead');
 }
@@ -1396,6 +1842,10 @@ function handleCreateLeadSubmit(e) {
     state: 'Andhra Pradesh',
     country: 'India',
     pincode: '534005',
+    paidAmount: '₹8,500',
+    startDate: '2025-08-18',
+    renewalDate: '2025-11-18',
+    clientStatus: 'Active',
     callNotes: [],
     programsList: [],
     payments: [],
@@ -1408,11 +1858,11 @@ function handleCreateLeadSubmit(e) {
   state.leads.unshift(newLead);
   localStorage.setItem('dhruthi_crm_leads', JSON.stringify(state.leads));
   renderLeadsTable();
+  renderPaidClientsTable();
   closeModal('modal-lead');
   alert(`Lead DW-${nextNum} created!`);
 }
 
-// Dashboard
 function renderDashboard() {
   const tbody = document.getElementById('dashboard-recent-tbody');
   if (!tbody) return;
@@ -1428,7 +1878,12 @@ function renderDashboard() {
   `).join('');
 }
 
-// Generic Modal Helpers
+function triggerWhatsAppChat() {
+  const lead = state.leads.find(l => l.id === state.selectedLeadId) || state.leads[0];
+  const phone = lead ? lead.phone.replace(/[^0-9]/g, '') : '918688963230';
+  window.open(`https://wa.me/${phone}?text=Hi%20${encodeURIComponent(lead.name)},%20this%20is%20Dt.%20Akhila%20Konakalla%20from%20Dhruthi%20Wellness.`, '_blank');
+}
+
 function openModal(modalId) {
   const backdrop = document.getElementById(modalId);
   if (backdrop) backdrop.classList.add('open');
