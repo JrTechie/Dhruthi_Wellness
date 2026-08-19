@@ -350,13 +350,13 @@ document.addEventListener('DOMContentLoaded', () => {
       // 3. Prepare WhatsApp direct enquiry link
       const waNumber = '918688963230';
       const waMsg = `*New Consultation Enquiry — Dhruthi Wellness*\n\n` +
-        `👤 *Name:* ${name}\n` +
-        `📞 *Phone:* ${phone}\n` +
-        `✉️ *Email:* ${email}\n` +
-        `🌿 *Program:* ${programName} (${programTitle})\n` +
-        `📅 *Date:* ${bookingDateStr}\n` +
-        `⏰ *Preferred Slot:* ${selectedTime}\n` +
-        (message ? `📝 *Notes:* ${message}\n` : '') +
+        `• *Name:* ${name}\n` +
+        `• *Phone:* ${phone}\n` +
+        `• *Email:* ${email}\n` +
+        `• *Program:* ${programName} (${programTitle})\n` +
+        `• *Date:* ${bookingDateStr}\n` +
+        `• *Preferred Slot:* ${selectedTime}\n` +
+        (message ? `• *Notes:* ${message}\n` : '') +
         `\n_Hi Dt. Akhila, I have submitted my booking request on the website. Please confirm my free consultation appointment!_`;
 
       const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMsg)}`;
