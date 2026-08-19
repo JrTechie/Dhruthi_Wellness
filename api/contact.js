@@ -23,14 +23,14 @@ module.exports = async (req, res) => {
     const newInquiry = db.insertContact({
       client_name,
       client_email,
-      subject: subject || 'New Website Inquiry',
+      subject: subject || 'New Website Enquiry',
       message
     });
 
     return res.status(201).json({
       success: true,
-      message: 'Inquiry recorded successfully in database',
-      inquiry: newInquiry
+      message: 'Enquiry recorded successfully in database',
+      enquiry: newInquiry
     });
   } catch (error) {
     console.error('Contact API Error:', error);

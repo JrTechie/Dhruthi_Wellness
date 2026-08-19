@@ -103,7 +103,7 @@ def create_receipt_docx(
 
     p_addr = cell_left.add_paragraph()
     p_addr.paragraph_format.space_after = Pt(0)
-    run_addr = p_addr.add_run("Address: BD Colony Near Masjid, Eluru, Andhra Pradesh - 534005")
+    run_addr = p_addr.add_run("Address: 4-94, Lunani Nagar, Eluru, Andhra Pradesh, 534005, India.")
     run_addr.font.size = Pt(9)
     run_addr.font.color.rgb = COLOR_MUTED
 

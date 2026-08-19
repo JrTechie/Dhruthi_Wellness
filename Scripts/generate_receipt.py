@@ -178,7 +178,7 @@ def create_receipt_pdf(
         Paragraph("Nourish. Balance. Thrive.", style_header_tagline),
         Paragraph("Email: dhruthiwellness@gmail.com", style_header_tagline),
         Paragraph("Phone / WhatsApp: +91 86889 63230 | +91 90524 29208", style_header_tagline),
-        Paragraph("Address: BD Colony Near Masjid, Eluru, Andhra Pradesh - 534005", style_header_tagline)
+        Paragraph("Address: 4-94, Lunani Nagar, Eluru, Andhra Pradesh, 534005, India.", style_header_tagline)
     ]
 
     header_right = [

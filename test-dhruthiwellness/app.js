@@ -88,111 +88,258 @@ document.addEventListener('DOMContentLoaded', () => {
   const bookingModal = document.getElementById('booking-modal');
   const closeBtn = document.getElementById('modal-close-btn');
   const bookingForm = document.getElementById('booking-form');
-  const calendarDates = document.querySelectorAll('.calendar-days .cal-date');
-  const slotBtns = document.querySelectorAll('.slots-list .slot-btn');
+  const calendarMonthHeading = document.getElementById('calendar-month-heading');
   const bookingExpertAvatar = document.getElementById('booking-expert-avatar');
   const bookingExpertName = document.getElementById('booking-expert-name');
   const bookingExpertTitle = document.getElementById('booking-expert-title');
 
-  let selectedDate = '1';
-  let selectedTime = '09:00 AM';
+  const todayObj = new Date();
+  const currentMonthName = todayObj.toLocaleString('default', { month: 'long' });
+  const currentYear = todayObj.getFullYear();
+  const currentDayNum = todayObj.getDate();
+
+  let selectedDate = String(currentDayNum);
+  let selectedTime = '11:00 AM';
+  let serverBookedSlots = [];
+
+  // Fetch booked slots from backend API
+  async function loadBookedSlots() {
+    try {
+      const res = await fetch('/api/booked-slots');
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.bookedSlots) {
+          serverBookedSlots = data.bookedSlots;
+        }
+      }
+    } catch (e) {
+      console.warn('Could not fetch booked slots from API, using local storage fallback.', e);
+    }
+    updateSlotsAvailability();
+  }
+
+  // Get combined booked slots (Server DB + LocalStorage)
+  function getAllBookedSlots() {
+    const localBooked = JSON.parse(localStorage.getItem('dhruthi_booked_slots') || '[]');
+    return [...serverBookedSlots, ...localBooked];
+  }
+
+  // Render & setup calendar dates
+  function initCalendar() {
+    if (calendarMonthHeading) {
+      calendarMonthHeading.textContent = `${currentMonthName} ${currentYear}`;
+    }
+    const calendarDates = document.querySelectorAll('.calendar-days .cal-date');
+    
+    calendarDates.forEach(dateElement => {
+      const dayVal = parseInt(dateElement.getAttribute('data-date'), 10);
+      if (isNaN(dayVal)) return;
+
+      dateElement.classList.remove('past', 'disabled', 'today');
+
+      if (dayVal < currentDayNum) {
+        // Disable past completed days
+        dateElement.classList.add('past', 'disabled');
+      } else if (dayVal === currentDayNum) {
+        dateElement.classList.add('today');
+      }
+
+      dateElement.addEventListener('click', () => {
+        if (dateElement.classList.contains('disabled') || dateElement.classList.contains('past') || dateElement.classList.contains('empty')) {
+          return;
+        }
+        document.querySelectorAll('.calendar-days .cal-date').forEach(d => d.classList.remove('active'));
+        dateElement.classList.add('active');
+        selectedDate = String(dayVal);
+        updateSlotsAvailability();
+      });
+    });
+
+    // Default select today if valid
+    const todayElem = document.querySelector(`.calendar-days .cal-date[data-date="${currentDayNum}"]`);
+    if (todayElem && !todayElem.classList.contains('disabled')) {
+      document.querySelectorAll('.calendar-days .cal-date').forEach(d => d.classList.remove('active'));
+      todayElem.classList.add('active');
+      selectedDate = String(currentDayNum);
+    }
+  }
+
+  // Helper to check if slot time has passed today
+  function isTimePassedToday(timeStr) {
+    const now = new Date();
+    const [timePart, modifier] = timeStr.split(' ');
+    let [hours, minutes] = timePart.split(':').map(Number);
+    if (modifier === 'PM' && hours < 12) hours += 12;
+    if (modifier === 'AM' && hours === 12) hours = 0;
+
+    const slotDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
+    return now >= slotDate;
+  }
+
+  // Update slot availability based on booked slots and present time
+  function updateSlotsAvailability() {
+    const slotBtns = document.querySelectorAll('.slots-list .slot-btn');
+    const allBooked = getAllBookedSlots();
+
+    let firstAvailableSlot = null;
+
+    slotBtns.forEach(slot => {
+      const timeVal = slot.getAttribute('data-time');
+      slot.classList.remove('disabled', 'booked', 'passed');
+      slot.style.pointerEvents = '';
+
+      // Check 1: Is slot booked for this date?
+      const isBooked = allBooked.some(b => {
+        const bd = (b.booking_date || b.date || '').toLowerCase();
+        const bt = (b.booking_time || b.time || '').toLowerCase();
+        return bd.includes(`${currentMonthName.toLowerCase()} ${selectedDate}`) && bt.includes(timeVal.toLowerCase());
+      });
+
+      // Check 2: Has slot passed today?
+      const isPassed = (parseInt(selectedDate, 10) === currentDayNum) && isTimePassedToday(timeVal);
+
+      if (isBooked) {
+        slot.classList.add('disabled', 'booked');
+        slot.textContent = `${timeVal} (Booked)`;
+      } else if (isPassed) {
+        slot.classList.add('disabled', 'passed');
+        slot.textContent = `${timeVal} (Passed)`;
+      } else {
+        slot.textContent = `${timeVal} (IST)`;
+        if (!firstAvailableSlot) {
+          firstAvailableSlot = timeVal;
+        }
+      }
+    });
+
+    // Auto-select first available slot if currently active slot is disabled
+    const activeSlotBtn = Array.from(slotBtns).find(s => s.getAttribute('data-time') === selectedTime);
+    if (!activeSlotBtn || activeSlotBtn.classList.contains('disabled')) {
+      slotBtns.forEach(s => s.classList.remove('active'));
+      if (firstAvailableSlot) {
+        selectedTime = firstAvailableSlot;
+        const newActiveBtn = Array.from(slotBtns).find(s => s.getAttribute('data-time') === firstAvailableSlot);
+        if (newActiveBtn) newActiveBtn.classList.add('active');
+      } else {
+        selectedTime = '';
+      }
+    }
+  }
+
+  // Setup Slot button click handlers
+  function initSlotButtons() {
+    const slotBtns = document.querySelectorAll('.slots-list .slot-btn');
+    slotBtns.forEach(slot => {
+      slot.addEventListener('click', () => {
+        if (slot.classList.contains('disabled')) return;
+        slotBtns.forEach(s => s.classList.remove('active'));
+        slot.classList.add('active');
+        selectedTime = slot.getAttribute('data-time');
+      });
+    });
+  }
+
+  initCalendar();
+  initSlotButtons();
+  loadBookedSlots();
 
   // Handle booking click for package cards and hero card
   document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('book-btn')) {
-      const btn = e.target;
-      const expertName = btn.getAttribute('data-expert');
-      const expertImg = btn.getAttribute('data-image');
-      const expertTitle = btn.getAttribute('data-title');
+    const btn = e.target.closest('.book-btn');
+    if (btn) {
+      e.preventDefault();
+      const expertName = btn.getAttribute('data-expert') || 'Dt. Akhila Konakalla - Consultation';
+      const expertImg = btn.getAttribute('data-image') || 'Images/coverimage.png';
+      const expertTitle = btn.getAttribute('data-title') || 'Personalized Nutrition Consultation';
 
       // Setup Modal data
-      bookingExpertName.textContent = expertName;
-      bookingExpertAvatar.src = expertImg;
-      bookingExpertAvatar.alt = expertName;
-      bookingExpertTitle.textContent = expertTitle;
+      if (bookingExpertName) bookingExpertName.textContent = expertName;
+      if (bookingExpertAvatar) {
+        bookingExpertAvatar.src = expertImg;
+        bookingExpertAvatar.alt = expertName;
+      }
+      if (bookingExpertTitle) bookingExpertTitle.textContent = expertTitle;
+
+      // Refresh slot state
+      loadBookedSlots();
 
       // Open Modal
-      bookingModal.classList.add('active');
-      document.body.style.overflow = 'hidden'; // stop scroll under
+      if (bookingModal) {
+        bookingModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
     }
   });
 
   // Close modal click handler
-  closeBtn.addEventListener('click', closeModal);
-  bookingModal.addEventListener('click', (e) => {
-    if (e.target === bookingModal) closeModal();
-  });
-
-  function closeModal() {
-    bookingModal.classList.remove('active');
-    document.body.style.overflow = 'auto'; // restore scroll
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (bookingModal) {
+    bookingModal.addEventListener('click', (e) => {
+      if (e.target === bookingModal) closeModal();
+    });
   }
 
-  // Calendar click handler
-  calendarDates.forEach(date => {
-    date.addEventListener('click', () => {
-      if (date.classList.contains('empty')) return;
-      calendarDates.forEach(d => d.classList.remove('active'));
-      date.classList.add('active');
-      selectedDate = date.getAttribute('data-date');
-    });
-  });
-
-  // Slots click handler
-  slotBtns.forEach(slot => {
-    slot.addEventListener('click', () => {
-      slotBtns.forEach(s => s.classList.remove('active'));
-      slot.classList.add('active');
-      selectedTime = slot.getAttribute('data-time');
-    });
-  });
+  function closeModal() {
+    if (bookingModal) bookingModal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
 
   // Form Submission
-  bookingForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const name = document.getElementById('booking-name').value.trim();
-    const phone = document.getElementById('booking-phone').value.trim();
-    const email = document.getElementById('booking-email').value.trim();
-    const message = document.getElementById('booking-message').value.trim();
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('booking-name').value.trim();
+      const phone = document.getElementById('booking-phone').value.trim();
+      const email = document.getElementById('booking-email').value.trim();
+      const message = document.getElementById('booking-message').value.trim();
 
-    if (!name || !phone || !email) {
-      showToast('Please enter your Name, Phone, and Email.', 'danger');
-      return;
-    }
+      if (!name || !phone || !email) {
+        showToast('Please enter your Name, Phone, and Email.', 'danger');
+        return;
+      }
 
-    const payload = {
-      expert_name: bookingExpertName.textContent,
-      program_title: bookingExpertTitle.textContent,
-      client_name: name,
-      client_email: email,
-      client_phone: phone,
-      booking_date: `June ${selectedDate}, 2026`,
-      booking_time: selectedTime,
-      client_message: message
-    };
+      if (!selectedTime) {
+        showToast('Selected date/time slot is no longer available. Please select another slot.', 'warning');
+        return;
+      }
 
-    try {
-      const response = await fetch('/api/book', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
+      const programName = bookingExpertName ? bookingExpertName.textContent : 'Consultation';
+      const programTitle = bookingExpertTitle ? bookingExpertTitle.textContent : 'Personalized Nutrition';
+      const bookingDateStr = `${currentMonthName} ${selectedDate}, ${currentYear}`;
 
-      const result = await response.json();
-      if (!response.ok) {
-        throw new Error(result.error || 'Server error');
+      // 1. Lock booked slot in Local Storage
+      const existingBooked = JSON.parse(localStorage.getItem('dhruthi_booked_slots') || '[]');
+      existingBooked.push({ date: bookingDateStr, time: selectedTime });
+      localStorage.setItem('dhruthi_booked_slots', JSON.stringify(existingBooked));
+
+      const payload = {
+        expert_name: programName,
+        program_title: programTitle,
+        client_name: name,
+        client_email: email,
+        client_phone: phone,
+        booking_date: bookingDateStr,
+        booking_time: selectedTime,
+        client_message: message
+      };
+
+      try {
+        await fetch('/api/book', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.warn('Booking API note:', err);
       }
 
       closeModal();
-      showToast(`Appointment confirmed with ${bookingExpertName.textContent} on June ${selectedDate}, 2026 at ${selectedTime}!`, 'success');
+      showToast(`Appointment enquiry submitted! Opening WhatsApp to connect directly...`, 'success');
       bookingForm.reset();
-    } catch (err) {
-      console.error('Booking Error:', err);
-      closeModal();
-      showToast(`Appointment confirmed! (Local fallback mode)`, 'warning');
-      bookingForm.reset();
-    }
-  });
+
+      loadBookedSlots();
+    });
+  }
 
 
   // --- 6. Contact Form Submission Handler ---

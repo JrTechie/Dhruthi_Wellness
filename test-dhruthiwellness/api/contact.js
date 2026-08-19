@@ -34,7 +34,7 @@ module.exports = async (req, res) => {
     }
 
     const { data, error } = await supabase
-      .from('contact_inquiries')
+      .from('contact_enquiries')
       .insert([{
         client_name,
         client_email,
@@ -44,7 +44,7 @@ module.exports = async (req, res) => {
       .select();
 
     if (error) throw error;
-    return res.status(201).json({ success: true, inquiry: data[0] });
+    return res.status(201).json({ success: true, enquiry: data[0] });
   } catch (error) {
     console.error('Contact API Error:', error);
     return res.status(500).json({ error: error.message || 'Internal Server Error' });

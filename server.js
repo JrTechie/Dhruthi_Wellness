@@ -47,6 +47,7 @@ app.get('/api/admin/payments', (req, res) => {
 
 // Core API Routes
 app.all('/api/book', vercelHandlerAdapter('./api/book'));
+app.all('/api/booked-slots', vercelHandlerAdapter('./api/booked-slots'));
 app.all('/api/contact', vercelHandlerAdapter('./api/contact'));
 app.all('/api/payment-receipt', vercelHandlerAdapter('./api/payment-receipt'));
 app.all('/api/reviews', vercelHandlerAdapter('./api/reviews'));
@@ -174,7 +175,7 @@ app.listen(PORT, () => {
   console.log(`===================================================`);
   console.log(`Dhruthi Wellness Server & CRM running!`);
   console.log(`Official Website: http://localhost:${PORT}`);
-  console.log(`Dietitian CRM:    http://localhost:${PORT}/crm`);
+  console.log(`CEO's CRM:        http://localhost:${PORT}/crm`);
   console.log(`Database status:   http://localhost:${PORT}/api/db-status`);
   console.log(`===================================================`);
 });

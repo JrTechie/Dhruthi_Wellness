@@ -706,7 +706,7 @@
             <div class="contact-icon" style="display: flex; align-items: center; justify-content: center; background: rgba(209, 18, 103, 0.05); color: var(--primary); width: 44px; height: 44px; border-radius: 50%;"><i data-lucide="map-pin" style="width: 20px; height: 20px;"></i></div>
             <div class="contact-details">
               <span>Practice Location</span>
-              <strong>Bd Colony Near Masjid, Eluru, Andhra Pradesh - 534005</strong>
+              <strong>4-94, Lunani Nagar, Eluru, Andhra Pradesh, 534005, India.</strong>
             </div>
           </div>
 
@@ -759,12 +759,12 @@
       <form id="booking-form">
         <div class="scheduler-grid">
           <div>
-            <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 10px; color: var(--text-secondary); text-transform: uppercase;">1. Select Date (August 2026)</label>
+            <label class="booking-date-label" style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 10px; color: var(--text-secondary); text-transform: uppercase;">1. Select Date</label>
             <div class="calendar-widget">
               <div class="calendar-header">
-                <span class="calendar-month">August 2026</span>
+                <span class="calendar-month" id="calendar-month-heading">August 2026</span>
               </div>
-              <div class="calendar-days">
+              <div class="calendar-days" id="calendar-days">
                 <span class="day-label">M</span>
                 <span class="day-label">T</span>
                 <span class="day-label">W</span>
@@ -773,7 +773,7 @@
                 <span class="day-label">S</span>
                 <span class="day-label">S</span>
                 
-                <span class="cal-date active" data-date="1">1</span>
+                <span class="cal-date" data-date="1">1</span>
                 <span class="cal-date" data-date="2">2</span>
                 <span class="cal-date" data-date="3">3</span>
                 <span class="cal-date" data-date="4">4</span>
@@ -791,7 +791,7 @@
                 <span class="cal-date" data-date="16">16</span>
                 <span class="cal-date" data-date="17">17</span>
                 <span class="cal-date" data-date="18">18</span>
-                <span class="cal-date" data-date="19">19</span>
+                <span class="cal-date active" data-date="19">19</span>
                 <span class="cal-date" data-date="20">20</span>
                 <span class="cal-date" data-date="21">21</span>
                 <span class="cal-date" data-date="22">22</span>
@@ -811,16 +811,17 @@
           <div class="slots-widget">
             <label class="slots-title" style="text-transform: uppercase;">2. Available Slots</label>
             <div class="slots-list" id="slots-container">
-              <button type="button" class="slot-btn active" data-time="09:00 AM">09:00 AM (IST)</button>
-              <button type="button" class="slot-btn" data-time="11:30 AM">11:30 AM (IST)</button>
-              <button type="button" class="slot-btn" data-time="02:00 PM">02:00 PM (IST)</button>
-              <button type="button" class="slot-btn" data-time="04:30 PM">04:30 PM (IST)</button>
-              <button type="button" class="slot-btn" data-time="05:30 PM">05:30 PM (IST)</button>
+              <button type="button" class="slot-btn active" data-time="11:00 AM">11:00 AM (IST)</button>
+              <button type="button" class="slot-btn" data-time="12:00 PM">12:00 PM (IST)</button>
+              <button type="button" class="slot-btn" data-time="01:00 PM">01:00 PM (IST)</button>
+              <button type="button" class="slot-btn" data-time="03:00 PM">03:00 PM (IST)</button>
+              <button type="button" class="slot-btn" data-time="04:00 PM">04:00 PM (IST)</button>
+              <button type="button" class="slot-btn" data-time="05:00 PM">05:00 PM (IST)</button>
             </div>
           </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; margin-top: 20px;">
+        <div class="booking-inputs-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; margin-top: 20px;">
           <div class="input-group">
             <label for="booking-name" style="display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 6px;">Full Name</label>
             <input type="text" id="booking-name" placeholder="Your Name" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-light); background: var(--bg-surface); color: var(--text-primary); outline: none;">
@@ -841,7 +842,7 @@
           <textarea id="booking-message" placeholder="Describe any symptoms, medical reports, or health targets..." style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-light); background: var(--bg-surface); color: var(--text-primary); outline: none; resize: vertical; min-height: 80px;"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 100%;">Confirm Appointment & Pay</button>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Book Your Free Consultation</button>
       </form>
     </div>
   </div>

@@ -2036,6 +2036,16 @@ section {
   border: 1px solid var(--primary);
 }
 
+.cal-date.disabled,
+.cal-date.past {
+  opacity: 0.35;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  background: transparent !important;
+  color: var(--text-muted) !important;
+  text-decoration: line-through;
+}
+
 /* Slots widget */
 .slots-widget {
   display: flex;
@@ -2076,6 +2086,17 @@ section {
   border-color: var(--primary);
   color: var(--primary);
   font-weight: 700;
+}
+
+.slot-btn.disabled,
+.slot-btn.booked {
+  opacity: 0.45;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: var(--text-muted) !important;
+  text-decoration: line-through;
 }
 
 /* --- Feedback Toasts --- */

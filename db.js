@@ -621,6 +621,17 @@ function getBookings() {
   return stmt.all();
 }
 
+function getBookedSlots(dateStr) {
+  if (!sqliteDb) return [];
+  if (dateStr) {
+    const stmt = sqliteDb.prepare('SELECT booking_date, booking_time FROM bookings WHERE booking_date = ?');
+    return stmt.all(dateStr);
+  } else {
+    const stmt = sqliteDb.prepare('SELECT booking_date, booking_time FROM bookings');
+    return stmt.all();
+  }
+}
+
 // 2. Contact Inquiries with CRM Sync
 function insertContact(contact) {
   logLeadToCSV({
@@ -1262,6 +1273,7 @@ module.exports = {
   initDatabase,
   insertBooking,
   getBookings,
+  getBookedSlots,
   insertContact,
   getContacts,
   insertPaymentProof,
