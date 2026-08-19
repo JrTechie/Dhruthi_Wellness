@@ -14,7 +14,7 @@
 </head>
 <body>
 
-  <!-- 1. Executive Sign In Overlay (Matching Reference Screenshots 14 & 17) -->
+  <!-- 1. Executive Sign In Overlay -->
   <div id="login-view" class="login-overlay">
     <div class="login-card">
       <div class="login-header-tag">
@@ -51,14 +51,14 @@
       </form>
     </div>
 
-    <!-- Top Right Incorrect Password Toast (Matching Reference Image 14) -->
+    <!-- Top Right Incorrect Password Toast -->
     <div id="login-alert-toast" class="login-alert-toast" style="display: none;">
       <i class="ri-error-warning-fill" style="font-size: 1.2rem;"></i>
       <span id="login-alert-text">Incorrect Password</span>
     </div>
   </div>
 
-  <!-- 2. Left Navigation Sidebar (Tree Menu) -->
+  <!-- 2. Left Navigation Sidebar -->
   <aside class="sidebar">
     <div class="brand-header">
       <img src="/Images/Logo_D_bright.png" alt="Dhruthi Wellness Logo" class="brand-logo-img" onerror="this.src='/crm/dt_akhila.png'">
@@ -159,7 +159,7 @@
         <span class="shortcut-kbd">⌘K</span>
       </div>
 
-      <!-- Right Meta & Profile (Matching User Requirement 2) -->
+      <!-- Right Meta & Profile -->
       <div class="header-right-meta">
         <div class="last-login-info">
           <span>Last Login</span>
@@ -235,7 +235,7 @@
       <!-- ================= PAGE 2: LEADS (LIST LEADS) ================= -->
       <section id="page-leads" class="page-view">
         
-        <!-- Top Assign Bar (Matching Reference Images 2 & 19) -->
+        <!-- Top Assign Bar -->
         <div class="table-card" style="padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
             <div style="display: flex; align-items: center; gap: 10px;">
@@ -254,7 +254,7 @@
           </div>
         </div>
 
-        <!-- Lead List Table Card (Matching Reference Images 2, 9, 12, 19) -->
+        <!-- Lead List Table Card (Fitness Club Removed completely) -->
         <div class="table-card">
           <div class="table-toolbar">
             <div class="table-toolbar-left">
@@ -345,7 +345,7 @@
         </div>
       </section>
 
-      <!-- ================= PAGE 3: CLIENT / LEAD 360° DETAIL VIEW (COMPLETELY EDITABLE - User Requirement 5) ================= -->
+      <!-- ================= PAGE 3: CLIENT / LEAD 360° DETAIL VIEW ================= -->
       <section id="page-client-detail" class="page-view">
         <div style="margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
           <button class="btn btn-outline btn-sm" onclick="switchPage('leads')">
@@ -366,7 +366,7 @@
           </div>
         </div>
 
-        <!-- Detail Header Summary Card -->
+        <!-- Detail Header Summary Card (Plivo & Servetel Removed - Only WhatsApp remains) -->
         <div class="detail-header-card">
           <div class="detail-profile-top">
             <div class="detail-avatar-box">
@@ -379,33 +379,16 @@
               </div>
             </div>
 
-            <!-- Call & Communication Action Pills -->
+            <!-- Communication Action Pills -->
             <div style="display: flex; gap: 8px;">
-              <button class="pill-action-btn pill-plivo" onclick="triggerCall('Plivo')">Plivo</button>
-              <button class="pill-action-btn pill-servetel" onclick="triggerCall('Servetel')">Servetel</button>
-              <button class="pill-action-btn pill-whatsapp" onclick="triggerWhatsAppChat()"><i class="ri-whatsapp-line"></i> WhatsApp</button>
+              <button class="pill-action-btn pill-whatsapp" onclick="triggerWhatsAppChat()"><i class="ri-whatsapp-line"></i> WhatsApp Direct</button>
+              <button class="btn btn-primary btn-sm" onclick="switchDetailSubTab('interaction')"><i class="ri-file-add-line"></i> + Log Call Note</button>
             </div>
           </div>
 
-          <!-- Metadata 2-Column Grid (Editable View Container) -->
+          <!-- Metadata 2-Column Grid (Fitness Club Removed) -->
           <div class="detail-meta-grid" id="meta-grid-container">
-            <div style="display: flex; flex-direction: column; gap: 6px;">
-              <div class="detail-meta-item"><span class="label">ID</span><span class="value" id="dm-id">DW-1</span></div>
-              <div class="detail-meta-item"><span class="label">Account Name</span><span class="value" id="dm-account">DW Insta Page</span></div>
-              <div class="detail-meta-item"><span class="label">Email ID</span><span class="value" id="dm-email">krupa.mathew777@gmail.com</span></div>
-              <div class="detail-meta-item"><span class="label">Phone No</span><span class="value" id="dm-phone">+918111851425</span></div>
-              <div class="detail-meta-item"><span class="label">Program</span><span class="value" id="dm-program">Fertility Nutrition & Preconception Program</span></div>
-              <div class="detail-meta-item"><span class="label">Fitness Club</span><span class="value" id="dm-fitness-club">-</span></div>
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: 6px;">
-              <div class="detail-meta-item"><span class="label">Stage</span><span class="value" id="dm-stage">Warm</span></div>
-              <div class="detail-meta-item"><span class="label">Disposition</span><span class="value" id="dm-disposition">Connected</span></div>
-              <div class="detail-meta-item"><span class="label">Sub Disposition</span><span class="value" id="dm-sub-disposition">Will Decide Later</span></div>
-              <div class="detail-meta-item"><span class="label">Created Date</span><span class="value" id="dm-created-date">30-08-2025</span></div>
-              <div class="detail-meta-item"><span class="label">Created By</span><span class="value" id="dm-created-by">-</span></div>
-              <div class="detail-meta-item"><span class="label">Nutritionist</span><span class="value" id="dm-nutritionist">Dt. Akhila Konakalla</span></div>
-            </div>
+            <!-- Rendered Dynamically by crm-app.js -->
           </div>
         </div>
 
@@ -414,14 +397,14 @@
           <!-- Left Inner Sub-Sidebar Menu -->
           <div class="detail-inner-sidebar">
             <div class="detail-sub-nav-item active" data-dtab="profile" onclick="switchDetailSubTab('profile')"><i class="ri-user-3-line"></i> Profile</div>
-            <div class="detail-sub-nav-item" data-dtab="interaction" onclick="switchDetailSubTab('interaction')"><i class="ri-phone-line"></i> Interaction</div>
+            <div class="detail-sub-nav-item" data-dtab="interaction" onclick="switchDetailSubTab('interaction')"><i class="ri-phone-line"></i> Interaction Notes</div>
             <div class="detail-sub-nav-item" data-dtab="programs" onclick="switchDetailSubTab('programs')"><i class="ri-folders-line"></i> Programs</div>
-            <div class="detail-sub-nav-item" data-dtab="payments" onclick="switchDetailSubTab('payments')"><i class="ri-bank-card-line"></i> Payments</div>
-            <div class="detail-sub-nav-item" data-dtab="notes" onclick="switchDetailSubTab('notes')"><i class="ri-file-text-line"></i> Notes</div>
-            <div class="detail-sub-nav-item" data-dtab="plans" onclick="switchDetailSubTab('plans')"><i class="ri-restaurant-line"></i> Plans</div>
-            <div class="detail-sub-nav-item" data-dtab="progress" onclick="switchDetailSubTab('progress')"><i class="ri-line-chart-line"></i> Progress</div>
-            <div class="detail-sub-nav-item" data-dtab="history" onclick="switchDetailSubTab('history')"><i class="ri-history-line"></i> History</div>
-            <div class="detail-sub-nav-item" data-dtab="pdf-report" onclick="switchDetailSubTab('pdf-report')"><i class="ri-file-pdf-line"></i> H&F Report</div>
+            <div class="detail-sub-nav-item" data-dtab="payments" onclick="switchDetailSubTab('payments')"><i class="ri-bank-card-line"></i> Payments & Proofs</div>
+            <div class="detail-sub-nav-item" data-dtab="notes" onclick="switchDetailSubTab('notes')"><i class="ri-file-text-line"></i> Clinical Notes</div>
+            <div class="detail-sub-nav-item" data-dtab="plans" onclick="switchDetailSubTab('plans')"><i class="ri-restaurant-line"></i> Diet Plan Studio</div>
+            <div class="detail-sub-nav-item" data-dtab="progress" onclick="switchDetailSubTab('progress')"><i class="ri-line-chart-line"></i> Progress & Artifacts</div>
+            <div class="detail-sub-nav-item" data-dtab="history" onclick="switchDetailSubTab('history')"><i class="ri-history-line"></i> Medical History</div>
+            <div class="detail-sub-nav-item" data-dtab="pdf-report" onclick="switchDetailSubTab('pdf-report')"><i class="ri-file-pdf-line"></i> H&F Lab Reports</div>
           </div>
 
           <!-- Main Content Card Pane -->
@@ -440,16 +423,34 @@
                 <div class="profile-tab-item" onclick="switchProfileInfoTab('other')">Other Information</div>
               </div>
 
-              <!-- Information Fields Grid (Completely Editable in Edit Mode) -->
+              <!-- Information Fields Grid -->
               <div class="info-fields-grid" id="profile-info-grid">
-                <!-- Dynamically Rendered by crm-app.js -->
+                <!-- Dynamically Rendered -->
               </div>
             </div>
 
-            <!-- SUB-TAB 2: PROGRAMS CONTENT -->
+            <!-- SUB-TAB 2: INTERACTION NOTES (User Requirement 4) -->
+            <div id="dpan-interaction" class="detail-pane-content" style="display: none;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <div>
+                  <h3 style="font-weight: 700; font-size: 1.05rem;">Notes from Call About Client</h3>
+                  <p style="font-size: 0.78rem; color: var(--text-muted);">Recorded call notes, discussion points, key advice, and consultation notes.</p>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openAddCallNoteModal()"><i class="ri-add-line"></i> + Log Call Note</button>
+              </div>
+
+              <div id="call-notes-timeline" style="display: flex; flex-direction: column; gap: 1rem;">
+                <!-- Rendered Dynamically -->
+              </div>
+            </div>
+
+            <!-- SUB-TAB 3: PROGRAMS CONTENT (User Requirement 5) -->
             <div id="dpan-programs" class="detail-pane-content" style="display: none;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                <div style="font-weight: 700; font-size: 1rem;">Client Programs</div>
+                <div>
+                  <h3 style="font-weight: 700; font-size: 1.05rem;">Assigned Programs & Editable Dhruthi Plans</h3>
+                  <p style="font-size: 0.78rem; color: var(--text-muted);">Select and customize Dhruthi Wellness plans directly using the editable layout.</p>
+                </div>
                 <button class="btn btn-secondary btn-sm" onclick="openAddProgramModal()"><i class="ri-add-line"></i> + Add Program</button>
               </div>
 
@@ -458,7 +459,7 @@
                   <thead>
                     <tr>
                       <th>S.No</th>
-                      <th>Program Name</th>
+                      <th>Select Dhruthi Program</th>
                       <th>Duration</th>
                       <th>Start Date</th>
                       <th>End Date</th>
@@ -466,18 +467,59 @@
                       <th>Deal Close Date</th>
                       <th>Program Status</th>
                       <th>Payment Status</th>
-                      <th>Seller</th>
                       <th>Remarks</th>
+                      <th>Save</th>
                     </tr>
                   </thead>
                   <tbody id="client-programs-tbody">
+                    <!-- Dynamically Populated with Editable Dropdowns -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- SUB-TAB 4: PAYMENTS & PROOFS (User Requirement 6) -->
+            <div id="dpan-payments" class="detail-pane-content" style="display: none;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <div>
+                  <h3 style="font-weight: 700; font-size: 1.05rem;">Payments, Receipts & Uploaded Proofs</h3>
+                  <p style="font-size: 0.78rem; color: var(--text-muted);">Upload client payment proofs, generate receipt PDFs, and track history.</p>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <label class="btn btn-outline btn-sm" style="cursor: pointer;">
+                    <i class="ri-upload-2-line"></i> Upload Payment Proof
+                    <input type="file" id="upload-payment-proof-input" accept="image/*,.pdf" style="display: none;" onchange="handlePaymentProofUpload(event)">
+                  </label>
+                  <button class="btn btn-primary btn-sm" onclick="downloadClientReceipt()"><i class="ri-file-download-line"></i> Generate Receipt</button>
+                </div>
+              </div>
+
+              <div id="payment-proof-preview-container" style="margin-bottom: 1.25rem;">
+                <!-- Payment Proof Attachment Box -->
+              </div>
+
+              <div style="overflow-x: auto;">
+                <table class="custom-table">
+                  <thead>
+                    <tr>
+                      <th>S.NO</th>
+                      <th>Date</th>
+                      <th>Program Details</th>
+                      <th>Amount Received</th>
+                      <th>Mode of Payment</th>
+                      <th>Payment Proof</th>
+                      <th>Receipt</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="client-payments-history-tbody">
                     <!-- Dynamically Populated -->
                   </tbody>
                 </table>
               </div>
             </div>
 
-            <!-- SUB-TAB 3: NOTES CONTENT -->
+            <!-- SUB-TAB 5: CLINICAL NOTES -->
             <div id="dpan-notes" class="detail-pane-content" style="display: none;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <div style="font-weight: 700; font-size: 1rem;">Client Clinical Notes</div>
@@ -486,6 +528,138 @@
 
               <div id="client-notes-container" style="display: flex; flex-direction: column; gap: 12px;">
                 <!-- Dynamically Populated -->
+              </div>
+            </div>
+
+            <!-- SUB-TAB 6: DIET PLAN PREP STUDIO (User Requirement 7) -->
+            <div id="dpan-plans" class="detail-pane-content" style="display: none;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 8px;">
+                <div>
+                  <h3 style="font-weight: 700; font-size: 1.05rem;">Diet Plan Prep Studio</h3>
+                  <p style="font-size: 0.78rem; color: var(--text-muted);">Design, edit, save, and download customized diet plans for the client.</p>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <button class="btn btn-secondary btn-sm" onclick="saveDietPlanStudio()"><i class="ri-save-line"></i> Save Diet Plan</button>
+                  <button class="btn btn-primary btn-sm" onclick="downloadDietPlanPDF()"><i class="ri-download-2-line"></i> Download Diet Plan (PDF)</button>
+                </div>
+              </div>
+
+              <!-- Diet Plan Builder Card Grid -->
+              <div class="diet-studio-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                
+                <div class="table-card" style="padding: 1rem; margin: 0;">
+                  <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary); margin-bottom: 8px;">🌅 Early Morning / Detox</div>
+                  <textarea class="form-textarea" id="dp-early-morning" rows="3" placeholder="e.g., Warm water + 1/2 tsp cumin seeds, soaked overnight almonds (5 pcs)"></textarea>
+                </div>
+
+                <div class="table-card" style="padding: 1rem; margin: 0;">
+                  <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary); margin-bottom: 8px;">🍳 Breakfast (8:30 AM)</div>
+                  <textarea class="form-textarea" id="dp-breakfast" rows="3" placeholder="e.g., Oats Moong Dal Chilla (2 pcs) with Mint Chutney + 1 boiled egg white"></textarea>
+                </div>
+
+                <div class="table-card" style="padding: 1rem; margin: 0;">
+                  <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary); margin-bottom: 8px;">🥗 Mid-Morning (11:00 AM)</div>
+                  <textarea class="form-textarea" id="dp-mid-morning" rows="3" placeholder="e.g., 1 bowl fresh Guava / Pomegranate + 1 cup Buttermilk with roasted cumin powder"></textarea>
+                </div>
+
+                <div class="table-card" style="padding: 1rem; margin: 0;">
+                  <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary); margin-bottom: 8px;">🍲 Lunch (1:00 PM)</div>
+                  <textarea class="form-textarea" id="dp-lunch" rows="3" placeholder="e.g., 1 cup Brown Rice / Jowar Roti (2) + Palak Dal (1 bowl) + Cucumber Salad"></textarea>
+                </div>
+
+                <div class="table-card" style="padding: 1rem; margin: 0;">
+                  <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary); margin-bottom: 8px;">☕ Evening Snack (4:30 PM)</div>
+                  <textarea class="form-textarea" id="dp-evening" rows="3" placeholder="e.g., Green Tea / Herbal Tea + Roasted Makhana (1 small cup)"></textarea>
+                </div>
+
+                <div class="table-card" style="padding: 1rem; margin: 0;">
+                  <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary); margin-bottom: 8px;">🍽️ Dinner (7:30 PM)</div>
+                  <textarea class="form-textarea" id="dp-dinner" rows="3" placeholder="e.g., Grilled Tofu / Chicken Vegetable Soup + Vegetable Bowl (no heavy carbs)"></textarea>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- SUB-TAB 7: PROGRESS & ARTIFACTS (User Requirement 8) -->
+            <div id="dpan-progress" class="detail-pane-content" style="display: none;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <div>
+                  <h3 style="font-weight: 700; font-size: 1.05rem;">Client Clinical Progress & Required Artifacts</h3>
+                  <p style="font-size: 0.78rem; color: var(--text-muted);">Track weight trends, goal achievements, progress notes, and media attachments.</p>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openAddProgressNoteModal()"><i class="ri-add-line"></i> + Log Progress Note</button>
+              </div>
+
+              <!-- Progress Metrics Summary Box -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+                <div class="table-card" style="padding: 1rem; margin: 0;">
+                  <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Overall Progress</div>
+                  <div style="font-size: 1.2rem; font-weight: 700; color: #16a34a; margin-top: 4px;" id="prg-status-badge">
+                    <span class="stage-badge connected">Improving</span>
+                  </div>
+                </div>
+                <div class="table-card" style="padding: 1rem; margin: 0;">
+                  <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Start Weight vs Current</div>
+                  <div style="font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-top: 4px;" id="prg-weight-val">58 kg ➔ 54 kg (-4 kg)</div>
+                </div>
+                <div class="table-card" style="padding: 1rem; margin: 0;">
+                  <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Target Goal Weight</div>
+                  <div style="font-size: 1.1rem; font-weight: 700; color: #0284c7; margin-top: 4px;" id="prg-target-val">45 kg (70% Target)</div>
+                </div>
+              </div>
+
+              <!-- Progress Notes & Artifact Attachments List -->
+              <div style="margin-bottom: 1rem; font-weight: 700;">Progress Reflections & Attached Artifacts</div>
+              <div id="progress-notes-container" style="display: flex; flex-direction: column; gap: 12px;">
+                <!-- Dynamically Rendered -->
+              </div>
+            </div>
+
+            <!-- SUB-TAB 8: MEDICAL HISTORY & TABS TAKEN (User Requirement 9) -->
+            <div id="dpan-history" class="detail-pane-content" style="display: none;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <div>
+                  <h3 style="font-weight: 700; font-size: 1.05rem;">Medical History & Medications Log</h3>
+                  <p style="font-size: 0.78rem; color: var(--text-muted);">Past medical conditions, diagnoses, tablets taken, and health timeline.</p>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openAddMedicalHistoryModal()"><i class="ri-edit-line"></i> + Update Medical History</button>
+              </div>
+
+              <div id="medical-history-container" style="display: flex; flex-direction: column; gap: 1rem;">
+                <!-- Rendered Dynamically -->
+              </div>
+            </div>
+
+            <!-- SUB-TAB 9: H&F LAB REPORTS (User Requirement 10) -->
+            <div id="dpan-pdf-report" class="detail-pane-content" style="display: none;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <div>
+                  <h3 style="font-weight: 700; font-size: 1.05rem;">H&F Diagnostic Lab Reports Hub</h3>
+                  <p style="font-size: 0.78rem; color: var(--text-muted);">Upload, view, and download clinical lab blood test reports and ultrasound PDFs.</p>
+                </div>
+                <label class="btn btn-primary btn-sm" style="cursor: pointer;">
+                  <i class="ri-upload-cloud-line"></i> Upload Lab Report (PDF/Image)
+                  <input type="file" accept="image/*,.pdf" style="display: none;" onchange="handleLabReportUpload(event)">
+                </label>
+              </div>
+
+              <div style="overflow-x: auto;">
+                <table class="custom-table">
+                  <thead>
+                    <tr>
+                      <th>S.NO</th>
+                      <th>Report Name / Type</th>
+                      <th>Diagnostic Lab</th>
+                      <th>Date Tested</th>
+                      <th>File Size</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="lab-reports-tbody">
+                    <!-- Rendered Dynamically -->
+                  </tbody>
+                </table>
               </div>
             </div>
 
@@ -498,9 +672,9 @@
         <div class="page-header">
           <div>
             <h1 class="page-title">Interactions & Call Logs</h1>
-            <p class="page-description">Telephony recording logs, call duration analytics, and notes.</p>
+            <p class="page-description">Consultation notes, call duration analytics, and conversation outcomes.</p>
           </div>
-          <button class="btn btn-primary" onclick="openCallModal()"><i class="ri-phone-line"></i> + Create Interaction</button>
+          <button class="btn btn-primary" onclick="openAddCallNoteModal()"><i class="ri-phone-line"></i> + Log Call Note</button>
         </div>
 
         <div class="table-card">
@@ -517,53 +691,17 @@
               <thead>
                 <tr>
                   <th>Lead ID</th>
-                  <th>Username</th>
+                  <th>Nutritionist</th>
                   <th>Client / Lead Name</th>
-                  <th>Client/lead Contact</th>
-                  <th>Lead/Client</th>
+                  <th>Contact Number</th>
+                  <th>Category</th>
                   <th>Date/Time</th>
-                  <th>Duration(mins)</th>
-                  <th>Call Notes</th>
-                  <th>Call Category</th>
-                  <th>Telephony</th>
-                  <th>Recording</th>
+                  <th>Duration (mins)</th>
+                  <th>Notes From Call About Client</th>
                 </tr>
               </thead>
               <tbody id="calls-log-tbody">
-                <tr>
-                  <td>DW-3</td>
-                  <td>Akhila</td>
-                  <td><b>Shailaja Enugurthi</b></td>
-                  <td>14085858409</td>
-                  <td><span class="stage-badge new">Lead</span></td>
-                  <td>13-05-2025</td>
-                  <td>13.5</td>
-                  <td><i class="ri-book-read-line" style="cursor: pointer; font-size: 1.1rem; color: var(--primary);" onclick="openAddNoteModal('Follow-up call completed. Client requested PCOS diet plan.')"></i></td>
-                  <td>First Call</td>
-                  <td>Plivo</td>
-                  <td>
-                    <div class="audio-player-compact">
-                      <i class="ri-play-fill" style="cursor: pointer; color: var(--primary);"></i> 0:00 🔊
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>DW-4</td>
-                  <td>Akhila</td>
-                  <td><b>Kalpana Chinta</b></td>
-                  <td>919985500568</td>
-                  <td><span class="stage-badge connected">Client</span></td>
-                  <td>13-05-2025</td>
-                  <td>11.2</td>
-                  <td><i class="ri-book-read-line" style="cursor: pointer; font-size: 1.1rem; color: var(--primary);" onclick="openAddNoteModal('Prescribed weekly diet chart revision.')"></i></td>
-                  <td>Review Call</td>
-                  <td>Plivo</td>
-                  <td>
-                    <div class="audio-player-compact">
-                      <i class="ri-play-fill" style="cursor: pointer; color: var(--primary);"></i> 0:00 🔊
-                    </div>
-                  </td>
-                </tr>
+                <!-- Dynamically Rendered -->
               </tbody>
             </table>
           </div>
@@ -682,11 +820,11 @@
   <div class="modal-backdrop" id="modal-add-program">
     <div class="modal-card">
       <button class="modal-close-btn" onclick="closeModal('modal-add-program')">&times;</button>
-      <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Dhruthi Wellness Programs</h3>
+      <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Assign Dhruthi Wellness Program</h3>
 
       <form id="form-add-program" onsubmit="handleAddProgramSubmit(event)">
         <div class="form-group">
-          <label class="form-label">Program *</label>
+          <label class="form-label">Program Name *</label>
           <select class="form-select" id="prog-select-name" required>
             <option value="Fertility Nutrition & Preconception Program">Fertility Nutrition & Preconception Program</option>
             <option value="PCOS / PCOD Management Program">PCOS / PCOD Management Program</option>
@@ -734,17 +872,52 @@
 
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 1.5rem;">
           <button type="button" class="btn btn-outline" onclick="closeModal('modal-add-program')">Cancel</button>
-          <button type="submit" class="btn btn-secondary">Select</button>
+          <button type="submit" class="btn btn-secondary">Assign Plan</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Modal 2: Add Note Modal -->
+  <!-- Modal 2: Add Call Note Modal (User Requirement 4) -->
+  <div class="modal-backdrop" id="modal-add-call-note">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeModal('modal-add-call-note')">&times;</button>
+      <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Log Call Note About Client</h3>
+
+      <form id="form-add-call-note" onsubmit="handleAddCallNoteSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Call Category *</label>
+          <select class="form-select" id="cn-category">
+            <option value="First Consultation">First Consultation</option>
+            <option value="Weekly Follow-up">Weekly Follow-up</option>
+            <option value="Diet Chart Review">Diet Chart Review</option>
+            <option value="Routine Check">Routine Check</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Call Duration (mins)</label>
+          <input type="number" class="form-input" id="cn-duration" value="12" placeholder="e.g. 15">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Notes From Call *</label>
+          <textarea class="form-textarea" id="cn-text" rows="4" placeholder="Detailed notes about client call discussion, dietary adjustments requested..." required></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-add-call-note')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Call Note</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 3: Add Note Modal -->
   <div class="modal-backdrop" id="modal-add-note">
     <div class="modal-card">
       <button class="modal-close-btn" onclick="closeModal('modal-add-note')">&times;</button>
-      <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Add Note</h3>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Add Clinical Note</h3>
 
       <form id="form-add-note" onsubmit="handleAddNoteSubmit(event)">
         <div class="form-group">
@@ -753,13 +926,13 @@
 
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 1rem;">
           <button type="button" class="btn btn-outline" onclick="closeModal('modal-add-note')">Cancel</button>
-          <button type="submit" class="btn btn-secondary">Save</button>
+          <button type="submit" class="btn btn-secondary">Save Note</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Modal 3: Create Lead Modal -->
+  <!-- Modal 4: Create Lead Modal (Account Name Dropdown updated to DW- Insta page, DW- Meta, DW- referal, DW- Organic) -->
   <div class="modal-backdrop" id="modal-lead">
     <div class="modal-card">
       <button class="modal-close-btn" onclick="closeModal('modal-lead')">&times;</button>
@@ -778,11 +951,12 @@
           <input type="email" class="form-input" name="email" placeholder="client@gmail.com">
         </div>
         <div class="form-group">
-          <label class="form-label">Account Name</label>
-          <select class="form-select" name="account">
-            <option value="DW Insta Page" selected>DW Insta Page</option>
-            <option value="DW Main Website">DW Main Website</option>
-            <option value="DW Android App">DW Android App</option>
+          <label class="form-label">Account Name *</label>
+          <select class="form-select" name="account" required>
+            <option value="DW- Insta page" selected>DW- Insta page</option>
+            <option value="DW- Meta">DW- Meta</option>
+            <option value="DW- referal">DW- referal</option>
+            <option value="DW- Organic">DW- Organic</option>
           </select>
         </div>
         <div class="form-group">

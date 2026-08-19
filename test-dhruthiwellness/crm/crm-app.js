@@ -13,7 +13,7 @@ let state = {
       planBadge: 'Free',
       phone: '+918111851425',
       email: 'krupa.mathew777@gmail.com',
-      accountName: 'DW Insta Page',
+      accountName: 'DW- Insta page',
       tag: 'Meta Ads',
       age: 28,
       gender: 'Female',
@@ -24,7 +24,6 @@ let state = {
       createdDate: '30-08-2025',
       createdBy: 'System',
       program: 'Fertility Nutrition & Preconception Program',
-      fitnessClub: '-',
       nutritionist: 'Dt. Akhila Konakalla',
       dob: '30 Jan 1997',
       language: 'Malayalam',
@@ -42,7 +41,82 @@ let state = {
       medicalAssessment: 'Mild PCOS, Blood Glucose Normal',
       sleepStress: '7 Hours Sleep, Moderate Stress',
       femaleInfo: '28-day Regular Cycle',
-      otherInfo: 'Prefers Malayalam or English consultation'
+      otherInfo: 'Prefers Malayalam or English consultation',
+      callNotes: [
+        {
+          id: 'CN-101',
+          date: '18/08/2025 14:20',
+          category: 'First Consultation',
+          duration: 15,
+          author: 'Akhila',
+          note: 'Client discussed weight management goals. Requested customized South Indian vegetarian diet plan with high protein.'
+        }
+      ],
+      programsList: [
+        {
+          sNo: 1,
+          name: 'Fertility Nutrition & Preconception Program',
+          duration: '90 days',
+          startDate: '2025-08-25',
+          endDate: '2025-11-23',
+          dealSize: '₹8,500',
+          closeDate: '2025-08-18',
+          status: 'Active',
+          payStatus: 'Paid',
+          remarks: 'Regular clinical consultation assigned'
+        }
+      ],
+      payments: [
+        {
+          sNo: 1,
+          date: '18/08/2025',
+          program: 'Fertility Nutrition & Preconception Program',
+          amount: '₹8,500',
+          mode: 'GPay / UPI',
+          proofUrl: '',
+          status: 'Verified',
+          receiptId: 'REC-DW-1001'
+        }
+      ],
+      dietPlan: {
+        earlyMorning: 'Warm water + 1/2 tsp cumin seeds, soaked almonds (5 pcs)',
+        breakfast: 'Oats Moong Dal Chilla (2 pcs) with Mint Chutney + 1 egg white',
+        midMorning: '1 bowl Guava / Pomegranate + 1 cup Buttermilk',
+        lunch: '1 cup Brown Rice / Jowar Roti (2) + Palak Dal + Cucumber Salad',
+        evening: 'Green Tea + Roasted Makhana (1 small cup)',
+        dinner: 'Grilled Tofu / Vegetable Soup + Sprouts salad'
+      },
+      progress: {
+        status: 'Improving',
+        startWeight: '58 kg',
+        currentWeight: '54 kg',
+        targetWeight: '45 kg',
+        notes: [
+          {
+            date: '15/08/2025',
+            title: 'Week 2 Weight Loss Check-in',
+            text: 'Client lost 1.5 kg in 2 weeks. Energy levels significantly improved.',
+            artifact: 'Progress_Chart_W2.png'
+          }
+        ]
+      },
+      medicalHistory: {
+        diagnoses: 'Diagnosed with mild PCOS in 2023. Insulin sensitivity normal.',
+        medications: 'Folic Acid 5mg (Daily), Vitamin D3 (Weekly 60k IU)',
+        labSummary: 'TSH: 2.1 mIU/L (Normal), HbA1c: 5.4%, Fasting Glucose: 88 mg/dL',
+        familyHistory: 'Mother has Type 2 Diabetes'
+      },
+      labReports: [
+        {
+          sNo: 1,
+          reportName: 'Complete Blood Count & Hormone Panel',
+          labName: 'Vijaya Diagnostic Centre',
+          testDate: '10/08/2025',
+          fileSize: '1.2 MB',
+          status: 'Verified',
+          url: '#'
+        }
+      ]
     },
     {
       id: 'DW-2',
@@ -50,7 +124,7 @@ let state = {
       planBadge: 'Free',
       phone: '9849201948',
       email: 'nbhavani@gmail.com',
-      accountName: 'DW Insta Page',
+      accountName: 'DW- Meta',
       tag: 'Organic',
       age: 32,
       gender: 'Female',
@@ -61,7 +135,6 @@ let state = {
       createdDate: '18-08-2025',
       createdBy: 'Akhila',
       program: 'PCOS / PCOD Management Program',
-      fitnessClub: '-',
       nutritionist: 'Dt. Akhila Konakalla',
       dob: '12 Aug 1993',
       language: 'Telugu',
@@ -79,7 +152,45 @@ let state = {
       medicalAssessment: 'PCOS diagnosed 2023',
       sleepStress: '6 Hours Sleep, High Stress',
       femaleInfo: 'Irregular cycles (35-40 days)',
-      otherInfo: 'Requested evening callback'
+      otherInfo: 'Requested evening callback',
+      callNotes: [],
+      programsList: [
+        {
+          sNo: 1,
+          name: 'PCOS / PCOD Management Program',
+          duration: '90 days',
+          startDate: '2025-08-18',
+          endDate: '2025-11-16',
+          dealSize: '₹11,700',
+          closeDate: '2025-08-18',
+          status: 'Pending',
+          payStatus: 'Pending',
+          remarks: 'Payment link sent'
+        }
+      ],
+      payments: [],
+      dietPlan: {
+        earlyMorning: 'Warm Water + Cinnamon pinch',
+        breakfast: 'Besan Chilla + Mint Chutney',
+        midMorning: 'Coconut Water + 4 Walnuts',
+        lunch: 'Jowar Roti + Mixed Veg Curry + Curd',
+        evening: 'Chamomile Tea + Boiled Chana',
+        dinner: 'Lauki Soup + Steamed Paneer'
+      },
+      progress: {
+        status: 'Maintaining',
+        startWeight: '62 kg',
+        currentWeight: '62 kg',
+        targetWeight: '52 kg',
+        notes: []
+      },
+      medicalHistory: {
+        diagnoses: 'Irregular cycles, PCOS diagnosed 2023',
+        medications: 'Myo-Inositol (Daily)',
+        labSummary: 'LH/FSH ratio elevated (2.8)',
+        familyHistory: 'None'
+      },
+      labReports: []
     },
     {
       id: 'DW-3',
@@ -87,7 +198,7 @@ let state = {
       planBadge: 'Pro',
       phone: '14085858409',
       email: 'shailaja.e@gmail.com',
-      accountName: 'DW Insta Page',
+      accountName: 'DW- referal',
       tag: 'USA Client',
       age: 36,
       gender: 'Female',
@@ -98,7 +209,6 @@ let state = {
       createdDate: '13-05-2025',
       createdBy: 'System',
       program: 'Postpartum Recovery Program',
-      fitnessClub: 'Gold Gym',
       nutritionist: 'Dt. Akhila Konakalla',
       dob: '15 Mar 1989',
       language: 'English',
@@ -116,7 +226,14 @@ let state = {
       medicalAssessment: 'Post-delivery 6 months',
       sleepStress: 'Interrupted Sleep (Lactating)',
       femaleInfo: 'Lactating Mother',
-      otherInfo: 'Prefers US PST Time Zone Calls'
+      otherInfo: 'Prefers US PST Time Zone Calls',
+      callNotes: [],
+      programsList: [],
+      payments: [],
+      dietPlan: {},
+      progress: { status: 'Improving', startWeight: '72 kg', currentWeight: '68 kg', targetWeight: '58 kg', notes: [] },
+      medicalHistory: { diagnoses: 'Postpartum recovery', medications: 'Prenatal Multivitamins', labSummary: 'Normal', familyHistory: '-' },
+      labReports: []
     },
     {
       id: 'DW-4',
@@ -124,7 +241,7 @@ let state = {
       planBadge: 'Gold',
       phone: '919985500568',
       email: 'kalpana.c@gmail.com',
-      accountName: 'DW Insta Page',
+      accountName: 'DW- Organic',
       tag: 'High Priority',
       age: 29,
       gender: 'Female',
@@ -135,7 +252,6 @@ let state = {
       createdDate: '13-05-2025',
       createdBy: 'System',
       program: 'Fertility Nutrition & Preconception Program',
-      fitnessClub: '-',
       nutritionist: 'Dt. Akhila Konakalla',
       dob: '22 Nov 1995',
       language: 'Telugu',
@@ -153,59 +269,14 @@ let state = {
       medicalAssessment: 'Trying to conceive 1 year',
       sleepStress: '8 Hours Sleep',
       femaleInfo: 'Normal Blood Reports',
-      otherInfo: 'Referred by Instagram Reel'
-    },
-    {
-      id: 'DW-5',
-      name: 'Savarni Gangaraju',
-      planBadge: 'Free',
-      phone: '+12819228487',
-      email: 'savarni.g@gmail.com',
-      accountName: 'DW Insta Page',
-      tag: 'NRI Client',
-      age: 31,
-      gender: 'Female',
-      recommendation: 'Thyroid Care',
-      stage: 'Cold',
-      disposition: 'Not Interested',
-      subDisposition: 'Price High',
-      createdDate: '10-05-2025',
-      createdBy: 'Akhila',
-      program: 'Thyroid Care Diet Program',
-      fitnessClub: '-',
-      nutritionist: 'Dt. Akhila Konakalla',
-      dob: '04 Jun 1994',
-      language: 'English',
-      height: '165 cm',
-      weight: '72 kg',
-      bmi: '26.4',
-      targetWeight: '60 kg',
-      goal: 'Thyroid Care Diet',
-      address: 'Houston, TX',
-      state: 'Texas',
-      country: 'USA',
-      pincode: '77001',
-      dietPref: 'Gluten-free, Low Goitrogen Diet',
-      workoutPref: 'Treadmill Walking',
-      medicalAssessment: 'Hypothyroidism (TSH 5.2)',
-      sleepStress: '7 Hours Sleep',
-      femaleInfo: 'Regular Cycle',
-      otherInfo: 'Follow-up in 1 month'
-    }
-  ],
-  programs: [
-    {
-      sNo: 1,
-      name: 'Fertility Nutrition & Preconception Program',
-      duration: '90 days',
-      startDate: '25/08/2025',
-      endDate: '23/11/2025',
-      dealSize: '₹8,500',
-      closeDate: '18/08/2025',
-      status: 'Active',
-      payStatus: 'Paid',
-      seller: 'Akhila',
-      remarks: 'Regular clinical consultation assigned'
+      otherInfo: 'Referred by Instagram Reel',
+      callNotes: [],
+      programsList: [],
+      payments: [],
+      dietPlan: {},
+      progress: { status: 'Maintaining', startWeight: '60 kg', currentWeight: '60 kg', targetWeight: '52 kg', notes: [] },
+      medicalHistory: { diagnoses: 'Preconception evaluation', medications: 'Folic Acid', labSummary: 'AMH: 3.2 ng/mL', familyHistory: '-' },
+      labReports: []
     }
   ],
   notes: [
@@ -217,9 +288,25 @@ let state = {
   ]
 };
 
+const DHRUTHI_PROGRAMS = [
+  'Fertility Nutrition & Preconception Program',
+  'PCOS / PCOD Management Program',
+  'Weight Loss & Metabolic Care Program',
+  'Thyroid Care Diet Program',
+  'Diabetes Management Program',
+  'Postpartum Recovery Program',
+  'General Wellness Program'
+];
+
+const ACCOUNT_NAMES = [
+  'DW- Insta page',
+  'DW- Meta',
+  'DW- referal',
+  'DW- Organic'
+];
+
 // Initialize App
 document.addEventListener('DOMContentLoaded', () => {
-  // Restore saved leads from LocalStorage if available
   const savedLeads = localStorage.getItem('dhruthi_crm_leads');
   if (savedLeads) {
     try {
@@ -233,6 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSubmenuToggles();
   renderLeadsTable();
   renderDashboard();
+  renderCallsLogTable();
   renderClientDetail('DW-1');
 });
 
@@ -260,7 +348,6 @@ function handleCeoLoginSubmit(e) {
   const username = (usernameInput ? usernameInput.value : '').trim();
   const password = (passwordInput ? passwordInput.value : '').trim();
 
-  // Validate credentials
   if (password === 'lakshmi@8129' || password === '2026' || password === 'admin' || password === '1234') {
     localStorage.setItem('crm_logged_in', 'true');
     sessionStorage.setItem('crm_logged_in', 'true');
@@ -284,7 +371,7 @@ function handleLogout() {
   checkAuthStatus();
 }
 
-// Navigation & Accordion Toggles
+// Navigation
 function setupSubmenuToggles() {
   document.querySelectorAll('[data-toggle]').forEach(item => {
     item.addEventListener('click', () => {
@@ -320,7 +407,6 @@ function switchPage(pageId) {
   const activeNav = document.querySelector(`[data-target="${pageId}"]`);
   if (activeNav) activeNav.classList.add('active');
 
-  // Update Breadcrumbs
   const bcParent = document.getElementById('bc-parent');
   const bcCurrent = document.getElementById('bc-current');
   if (bcParent && bcCurrent) {
@@ -346,7 +432,7 @@ function switchPage(pageId) {
   }
 }
 
-// Render Leads Data Table
+// Render Leads Data Table (Fitness Club Completely Removed)
 function renderLeadsTable(leadsList = state.leads) {
   const tbody = document.getElementById('leads-table-body');
   if (!tbody) return;
@@ -366,14 +452,14 @@ function renderLeadsTable(leadsList = state.leads) {
       <td>
         <div style="cursor:pointer; font-weight:700;" onclick="openClientDetail('${lead.id}')" title="Actions">...</div>
       </td>
-      <td>${lead.accountName}</td>
-      <td><span class="stage-badge cold">${lead.tag}</span></td>
-      <td>${lead.age}</td>
-      <td>${lead.gender}</td>
-      <td>${lead.recommendation}</td>
+      <td>${lead.accountName || 'DW- Insta page'}</td>
+      <td><span class="stage-badge cold">${lead.tag || 'Web Lead'}</span></td>
+      <td>${lead.age || 30}</td>
+      <td>${lead.gender || 'Female'}</td>
+      <td>${lead.recommendation || 'Wellness Care'}</td>
       <td><span class="stage-badge ${getStageClass(lead.stage)}">${lead.stage}</span></td>
-      <td>${lead.disposition}</td>
-      <td>${lead.subDisposition}</td>
+      <td>${lead.disposition || 'Pending'}</td>
+      <td>${lead.subDisposition || '-'}</td>
     </tr>
   `).join('');
 }
@@ -425,7 +511,6 @@ function handleBulkAssignSubmit() {
   alert(`Selected leads successfully assigned to ${assignee}`);
 }
 
-// Filter Popover Builder
 function toggleFilterPopover(forceState) {
   const popover = document.getElementById('filter-popover');
   if (!popover) return;
@@ -456,7 +541,7 @@ function addFilterRow() {
   alert('Custom filter rule added.');
 }
 
-// Render & Completely Editable Client 360° Detail View (User Requirement 5)
+// Render Client 360° Detail View
 function openClientDetail(leadId) {
   state.selectedLeadId = leadId;
   state.isEditingProfile = false;
@@ -479,7 +564,6 @@ function renderClientDetail(leadId) {
 
   const isEdit = state.isEditingProfile;
 
-  // Toggle Edit/Save/Cancel Buttons
   const btnEdit = document.getElementById('btn-edit-toggle');
   const btnSave = document.getElementById('btn-save-profile');
   const btnCancel = document.getElementById('btn-cancel-profile');
@@ -512,7 +596,7 @@ function renderClientDetail(leadId) {
     document.getElementById('d-client-id-badge').textContent = lead.id;
   }
 
-  // Meta Grid 2-Column Editable Container
+  // Metadata 2-Column Grid (Fitness Club Completely Removed, Account Names Updated)
   const metaContainer = document.getElementById('meta-grid-container');
   if (metaContainer) {
     if (isEdit) {
@@ -522,9 +606,7 @@ function renderClientDetail(leadId) {
           <div class="detail-meta-item">
             <span class="label">Account Name</span>
             <select class="form-select" id="em-account">
-              <option value="DW Insta Page" ${lead.accountName === 'DW Insta Page' ? 'selected' : ''}>DW Insta Page</option>
-              <option value="DW Main Website" ${lead.accountName === 'DW Main Website' ? 'selected' : ''}>DW Main Website</option>
-              <option value="DW Android App" ${lead.accountName === 'DW Android App' ? 'selected' : ''}>DW Android App</option>
+              ${ACCOUNT_NAMES.map(acc => `<option value="${acc}" ${lead.accountName === acc ? 'selected' : ''}>${acc}</option>`).join('')}
             </select>
           </div>
           <div class="detail-meta-item"><span class="label">Email ID</span><input type="email" class="form-input" id="em-email" value="${lead.email}"></div>
@@ -532,16 +614,9 @@ function renderClientDetail(leadId) {
           <div class="detail-meta-item">
             <span class="label">Program</span>
             <select class="form-select" id="em-program">
-              <option value="Fertility Nutrition & Preconception Program" ${lead.program.includes('Fertility') ? 'selected' : ''}>Fertility Nutrition & Preconception Program</option>
-              <option value="PCOS / PCOD Management Program" ${lead.program.includes('PCOS') ? 'selected' : ''}>PCOS / PCOD Management Program</option>
-              <option value="Weight Loss & Metabolic Care Program" ${lead.program.includes('Weight Loss') ? 'selected' : ''}>Weight Loss & Metabolic Care Program</option>
-              <option value="Thyroid Care Diet Program" ${lead.program.includes('Thyroid') ? 'selected' : ''}>Thyroid Care Diet Program</option>
-              <option value="Diabetes Management Program" ${lead.program.includes('Diabetes') ? 'selected' : ''}>Diabetes Management Program</option>
-              <option value="Postpartum Recovery Program" ${lead.program.includes('Postpartum') ? 'selected' : ''}>Postpartum Recovery Program</option>
-              <option value="General Wellness Program" ${lead.program.includes('General') ? 'selected' : ''}>General Wellness Program</option>
+              ${DHRUTHI_PROGRAMS.map(prog => `<option value="${prog}" ${lead.program === prog ? 'selected' : ''}>${prog}</option>`).join('')}
             </select>
           </div>
-          <div class="detail-meta-item"><span class="label">Fitness Club</span><input type="text" class="form-input" id="em-fitness-club" value="${lead.fitnessClub}"></div>
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 8px;">
@@ -566,11 +641,10 @@ function renderClientDetail(leadId) {
       metaContainer.innerHTML = `
         <div style="display: flex; flex-direction: column; gap: 6px;">
           <div class="detail-meta-item"><span class="label">ID</span><span class="value" id="dm-id">${lead.id}</span></div>
-          <div class="detail-meta-item"><span class="label">Account Name</span><span class="value" id="dm-account">${lead.accountName}</span></div>
+          <div class="detail-meta-item"><span class="label">Account Name</span><span class="value" id="dm-account">${lead.accountName || 'DW- Insta page'}</span></div>
           <div class="detail-meta-item"><span class="label">Email ID</span><span class="value" id="dm-email">${lead.email}</span></div>
           <div class="detail-meta-item"><span class="label">Phone No</span><span class="value" id="dm-phone">${lead.phone}</span></div>
           <div class="detail-meta-item"><span class="label">Program</span><span class="value" id="dm-program">${lead.program}</span></div>
-          <div class="detail-meta-item"><span class="label">Fitness Club</span><span class="value" id="dm-fitness-club">${lead.fitnessClub}</span></div>
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 6px;">
@@ -588,9 +662,15 @@ function renderClientDetail(leadId) {
   // Profile Info Fields Grid Render
   renderProfileInfoTab(state.activeProfileInfoTab, lead, isEdit);
 
-  // Render Programs & Notes
+  // Render Sub-Tabs
+  renderCallNotes();
   renderClientPrograms();
+  renderClientPayments();
   renderClientNotes();
+  renderDietPlanStudio();
+  renderClientProgress();
+  renderMedicalHistory();
+  renderLabReports();
 }
 
 function renderProfileInfoTab(infoTab, lead, isEdit) {
@@ -659,9 +739,8 @@ function renderProfileInfoTab(infoTab, lead, isEdit) {
       `;
     }
   } else {
-    // Custom sub-tabs (Diet, Workout, Medical, Sleep, Female, Other)
     const valKey = `${infoTab}Info`;
-    const textVal = lead[valKey] || `Default ${infoTab} clinical notes for ${lead.name}`;
+    const textVal = lead[valKey] || `Clinical notes regarding ${infoTab} for ${lead.name}`;
     if (isEdit) {
       grid.innerHTML = `
         <div style="grid-column: span 4;">
@@ -684,14 +763,12 @@ function saveClientProfileEdits() {
   const lead = state.leads.find(l => l.id === state.selectedLeadId);
   if (!lead) return;
 
-  // Header & Meta Edits
   if (document.getElementById('edit-name')) lead.name = document.getElementById('edit-name').value;
   if (document.getElementById('edit-plan-badge')) lead.planBadge = document.getElementById('edit-plan-badge').value;
   if (document.getElementById('em-account')) lead.accountName = document.getElementById('em-account').value;
   if (document.getElementById('em-email')) lead.email = document.getElementById('em-email').value;
   if (document.getElementById('em-phone')) lead.phone = document.getElementById('em-phone').value;
   if (document.getElementById('em-program')) lead.program = document.getElementById('em-program').value;
-  if (document.getElementById('em-fitness-club')) lead.fitnessClub = document.getElementById('em-fitness-club').value;
   if (document.getElementById('em-stage')) lead.stage = document.getElementById('em-stage').value;
   if (document.getElementById('em-disposition')) lead.disposition = document.getElementById('em-disposition').value;
   if (document.getElementById('em-sub-disposition')) lead.subDisposition = document.getElementById('em-sub-disposition').value;
@@ -699,7 +776,6 @@ function saveClientProfileEdits() {
   if (document.getElementById('em-created-by')) lead.createdBy = document.getElementById('em-created-by').value;
   if (document.getElementById('em-nutritionist')) lead.nutritionist = document.getElementById('em-nutritionist').value;
 
-  // Profile Tab Basic Info Edits
   if (document.getElementById('ep-name')) lead.name = document.getElementById('ep-name').value;
   if (document.getElementById('ep-email')) lead.email = document.getElementById('ep-email').value;
   if (document.getElementById('ep-mobile')) lead.phone = document.getElementById('ep-mobile').value;
@@ -717,13 +793,11 @@ function saveClientProfileEdits() {
   if (document.getElementById('ep-state')) lead.state = document.getElementById('ep-state').value;
   if (document.getElementById('ep-country')) lead.country = document.getElementById('ep-country').value;
 
-  // Custom tab edit saving
   if (document.getElementById('ep-custom-field')) {
     const valKey = `${state.activeProfileInfoTab}Info`;
     lead[valKey] = document.getElementById('ep-custom-field').value;
   }
 
-  // Save to LocalStorage
   localStorage.setItem('dhruthi_crm_leads', JSON.stringify(state.leads));
 
   state.isEditingProfile = false;
@@ -754,36 +828,157 @@ function switchProfileInfoTab(infoTab) {
   renderProfileInfoTab(infoTab, lead, state.isEditingProfile);
 }
 
-// Action Call & Chat Triggers
-function triggerCall(provider) {
-  alert(`Initiating click-to-call via ${provider} for client...`);
-}
-
-function triggerWhatsAppChat() {
+// 1. Interaction Notes (User Requirement 4)
+function renderCallNotes() {
+  const container = document.getElementById('call-notes-timeline');
+  if (!container) return;
   const lead = state.leads.find(l => l.id === state.selectedLeadId);
-  const phone = lead ? lead.phone.replace(/[^0-9]/g, '') : '';
-  window.open(`https://wa.me/${phone}`, '_blank');
+  const notes = (lead && lead.callNotes) ? lead.callNotes : [];
+
+  if (notes.length === 0) {
+    container.innerHTML = `
+      <div style="background:var(--bg-subtle); padding:1.5rem; border-radius:var(--radius-sm); border:1px solid var(--border-color); text-align:center; color:var(--text-muted);">
+        No call notes logged yet. Click <b>+ Log Call Note</b> to record call notes about this client.
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = notes.map(cn => `
+    <div style="background:var(--bg-subtle); border:1px solid var(--border-color); padding:14px 18px; border-radius:var(--radius-sm);">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <span class="stage-badge connected">${cn.category} (${cn.duration} mins)</span>
+        <span style="font-size:0.78rem; color:var(--text-muted);">${cn.date} • Logged by ${cn.author}</span>
+      </div>
+      <div style="font-size:0.88rem; font-weight:600; color:var(--text-main); line-height:1.4;">
+        ${cn.note}
+      </div>
+    </div>
+  `).join('');
 }
 
-// Programs & Add Program Modal
+function openAddCallNoteModal() {
+  openModal('modal-add-call-note');
+}
+
+function handleAddCallNoteSubmit(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  const lead = state.leads.find(l => l.id === state.selectedLeadId);
+  if (!lead) return;
+
+  if (!lead.callNotes) lead.callNotes = [];
+
+  const category = document.getElementById('cn-category').value;
+  const duration = document.getElementById('cn-duration').value || 10;
+  const text = document.getElementById('cn-text').value.trim();
+  if (!text) return;
+
+  const now = new Date();
+  const dateStr = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()}`;
+
+  lead.callNotes.unshift({
+    id: `CN-${Date.now().toString().slice(-4)}`,
+    date: dateStr,
+    category: category,
+    duration: Number(duration),
+    author: 'Akhila',
+    note: text
+  });
+
+  localStorage.setItem('dhruthi_crm_leads', JSON.stringify(state.leads));
+  renderCallNotes();
+  renderCallsLogTable();
+  closeModal('modal-add-call-note');
+  alert('Call note recorded successfully!');
+}
+
+function renderCallsLogTable() {
+  const tbody = document.getElementById('calls-log-tbody');
+  if (!tbody) return;
+
+  let allNotes = [];
+  state.leads.forEach(l => {
+    if (l.callNotes) {
+      l.callNotes.forEach(cn => {
+        allNotes.push({ ...cn, leadId: l.id, leadName: l.name, phone: l.phone });
+      });
+    }
+  });
+
+  if (allNotes.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding:1.5rem; color:var(--text-muted);">No interaction call notes recorded yet.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = allNotes.map(n => `
+    <tr>
+      <td><b style="color:var(--primary); cursor:pointer;" onclick="openClientDetail('${n.leadId}')">${n.leadId}</b></td>
+      <td>Dt. Akhila Konakalla</td>
+      <td><b>${n.leadName}</b></td>
+      <td>${n.phone}</td>
+      <td><span class="stage-badge connected">${n.category}</span></td>
+      <td>${n.date}</td>
+      <td>${n.duration}</td>
+      <td>${n.note}</td>
+    </tr>
+  `).join('');
+}
+
+// 2. Programs Tab — Editable Dropdown Layout of Dhruthi Plans (User Requirement 5)
 function renderClientPrograms() {
   const tbody = document.getElementById('client-programs-tbody');
   if (!tbody) return;
-  tbody.innerHTML = state.programs.map((p, idx) => `
+  const lead = state.leads.find(l => l.id === state.selectedLeadId);
+  const progs = (lead && lead.programsList) ? lead.programsList : [];
+
+  if (progs.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="11" style="text-align:center; padding:1.5rem; color:var(--text-muted);">No programs assigned yet. Click <b>+ Add Program</b> to assign a Dhruthi plan.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = progs.map((p, idx) => `
     <tr>
       <td>${idx + 1}</td>
-      <td><b>${p.name}</b></td>
-      <td>${p.duration}</td>
-      <td>${p.startDate}</td>
-      <td>${p.endDate || '-'}</td>
-      <td>${p.dealSize}</td>
-      <td>${p.closeDate}</td>
-      <td><span class="stage-badge connected">${p.status}</span></td>
-      <td><span class="stage-badge connected">${p.payStatus}</span></td>
-      <td>${p.seller}</td>
-      <td>${p.remarks}</td>
+      <td>
+        <select class="form-select" style="font-size:0.82rem; font-weight:700; width:220px;" onchange="updateProgramRow(${idx}, 'name', this.value)">
+          ${DHRUTHI_PROGRAMS.map(prog => `<option value="${prog}" ${p.name === prog ? 'selected' : ''}>${prog}</option>`).join('')}
+        </select>
+      </td>
+      <td><input type="text" class="form-input" style="width:80px;" value="${p.duration || '90 days'}" onchange="updateProgramRow(${idx}, 'duration', this.value)"></td>
+      <td><input type="date" class="form-input" style="width:125px;" value="${p.startDate || '2025-08-25'}" onchange="updateProgramRow(${idx}, 'startDate', this.value)"></td>
+      <td><input type="date" class="form-input" style="width:125px;" value="${p.endDate || '2025-11-23'}" onchange="updateProgramRow(${idx}, 'endDate', this.value)"></td>
+      <td><input type="text" class="form-input" style="width:90px;" value="${p.dealSize || '₹8,500'}" onchange="updateProgramRow(${idx}, 'dealSize', this.value)"></td>
+      <td><input type="date" class="form-input" style="width:125px;" value="${p.closeDate || '2025-08-18'}" onchange="updateProgramRow(${idx}, 'closeDate', this.value)"></td>
+      <td>
+        <select class="form-select" style="font-size:0.78rem;" onchange="updateProgramRow(${idx}, 'status', this.value)">
+          <option value="Active" ${p.status === 'Active' ? 'selected' : ''}>Active</option>
+          <option value="Completed" ${p.status === 'Completed' ? 'selected' : ''}>Completed</option>
+          <option value="Pending" ${p.status === 'Pending' ? 'selected' : ''}>Pending</option>
+        </select>
+      </td>
+      <td>
+        <select class="form-select" style="font-size:0.78rem;" onchange="updateProgramRow(${idx}, 'payStatus', this.value)">
+          <option value="Paid" ${p.payStatus === 'Paid' ? 'selected' : ''}>Paid</option>
+          <option value="Pending" ${p.payStatus === 'Pending' ? 'selected' : ''}>Pending</option>
+          <option value="Partial" ${p.payStatus === 'Partial' ? 'selected' : ''}>Partial</option>
+        </select>
+      </td>
+      <td><input type="text" class="form-input" style="width:140px;" value="${p.remarks || 'Regular clinical consultation'}" onchange="updateProgramRow(${idx}, 'remarks', this.value)"></td>
+      <td><button class="btn btn-primary btn-sm" onclick="saveProgramRowChanges(${idx})"><i class="ri-check-line"></i> Save</button></td>
     </tr>
   `).join('');
+}
+
+function updateProgramRow(idx, field, value) {
+  const lead = state.leads.find(l => l.id === state.selectedLeadId);
+  if (lead && lead.programsList && lead.programsList[idx]) {
+    lead.programsList[idx][field] = value;
+  }
+}
+
+function saveProgramRowChanges(idx) {
+  localStorage.setItem('dhruthi_crm_leads', JSON.stringify(state.leads));
+  alert('Program changes saved!');
 }
 
 function openAddProgramModal() {
@@ -792,6 +987,11 @@ function openAddProgramModal() {
 
 function handleAddProgramSubmit(e) {
   if (e && e.preventDefault) e.preventDefault();
+  const lead = state.leads.find(l => l.id === state.selectedLeadId);
+  if (!lead) return;
+
+  if (!lead.programsList) lead.programsList = [];
+
   const name = document.getElementById('prog-select-name').value;
   const duration = document.getElementById('prog-duration').value;
   const startDate = document.getElementById('prog-start-date').value;
@@ -799,25 +999,330 @@ function handleAddProgramSubmit(e) {
   const dealSize = document.getElementById('prog-deal-size').value;
   const currency = document.getElementById('prog-currency').value;
 
-  state.programs.push({
-    sNo: state.programs.length + 1,
+  lead.programsList.push({
+    sNo: lead.programsList.length + 1,
     name: name,
     duration: duration,
     startDate: startDate,
-    endDate: '23/11/2025',
+    endDate: '2025-11-23',
     dealSize: `${currency === 'INR' ? '₹' : '$'}${Number(dealSize).toLocaleString()}`,
     closeDate: closeDate,
     status: 'Active',
     payStatus: 'Paid',
-    seller: 'Akhila',
-    remarks: 'Added via program modal'
+    remarks: 'Assigned via Dhruthi plans studio'
   });
 
+  lead.program = name;
+  localStorage.setItem('dhruthi_crm_leads', JSON.stringify(state.leads));
   renderClientPrograms();
+  renderClientDetail(state.selectedLeadId);
   closeModal('modal-add-program');
+  alert(`Program "${name}" assigned successfully!`);
 }
 
-// Notes & Add Note Modal
+// 3. Payments Tab — Upload Payment Proof & Download Receipts (User Requirement 6)
+function renderClientPayments() {
+  const tbody = document.getElementById('client-payments-history-tbody');
+  const previewBox = document.getElementById('payment-proof-preview-container');
+  if (!tbody) return;
+
+  const lead = state.leads.find(l => l.id === state.selectedLeadId);
+  const payments = (lead && lead.payments) ? lead.payments : [];
+
+  if (payments.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding:1.5rem; color:var(--text-muted);">No payment history recorded yet. Use <b>Upload Payment Proof</b> to attach receipt.</td></tr>`;
+    if (previewBox) previewBox.innerHTML = '';
+    return;
+  }
+
+  tbody.innerHTML = payments.map((p, idx) => `
+    <tr>
+      <td>${idx + 1}</td>
+      <td>${p.date}</td>
+      <td><b>${p.program}</b></td>
+      <td>${p.amount}</td>
+      <td>${p.mode}</td>
+      <td>
+        ${p.proofUrl ? `<button class="btn btn-outline btn-sm" onclick="viewPaymentProof('${p.proofUrl}')"><i class="ri-image-line"></i> View Proof</button>` : `<span style="color:var(--text-muted); font-size:0.78rem;">No Proof</span>`}
+      </td>
+      <td>
+        <button class="btn btn-secondary btn-sm" onclick="downloadClientReceipt('${p.receiptId || 'REC-101'}')"><i class="ri-file-download-line"></i> Receipt</button>
+      </td>
+      <td><span class="stage-badge connected">${p.status || 'Verified'}</span></td>
+    </tr>
+  `).join('');
+
+  if (previewBox && payments[0] && payments[0].proofUrl) {
+    previewBox.innerHTML = `
+      <div style="background:var(--bg-subtle); border:1px solid var(--border-color); padding:1rem; border-radius:var(--radius-sm); display:flex; align-items:center; gap:1rem;">
+        <img src="${payments[0].proofUrl}" style="height:60px; width:60px; object-fit:cover; border-radius:4px; border:1px solid var(--border-color);">
+        <div>
+          <div style="font-weight:700; font-size:0.88rem;">Latest Payment Proof Attachment</div>
+          <div style="font-size:0.78rem; color:var(--text-muted);">Uploaded for ${payments[0].amount} • ${payments[0].date}</div>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function handlePaymentProofUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const lead = state.leads.find(l => l.id === state.selectedLeadId);
+  if (!lead) return;
+
+  if (!lead.payments) lead.payments = [];
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const proofDataUrl = e.target.result;
+    const now = new Date();
+    const dateStr = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`;
+
+    lead.payments.unshift({
+      sNo: lead.payments.length + 1,
+      date: dateStr,
+      program: lead.program || 'Fertility Nutrition & Preconception Program',
+      amount: '₹8,500',
+      mode: 'GPay / UPI',
+      proofUrl: proofDataUrl,
+      status: 'Verified',
+      receiptId: `REC-${Date.now().toString().slice(-4)}`
+    });
+
+    localStorage.setItem('dhruthi_crm_leads', JSON.stringify(state.leads));
+    renderClientPayments();
+    alert(`Payment proof uploaded successfully for ${lead.name}!`);
+  };
+  reader.readAsDataURL(file);
+}
+
+function viewPaymentProof(url) {
+  window.open(url, '_blank');
+}
+
+function downloadClientReceipt(receiptId) {
+  const lead = state.leads.find(l => l.id === state.selectedLeadId);
+  const name = lead ? lead.name : 'Client';
+  const content = `=================================================\nDHRUTHI WELLNESS — OFFICIAL PAYMENT RECEIPT\n=================================================\nReceipt No: ${receiptId || 'REC-1001'}\nDate: ${new Date().toLocaleDateString()}\nClient Name: ${name}\nClient ID: ${lead ? lead.id : 'DW-1'}\nProgram: ${lead ? lead.program : 'Customized Nutrition Therapy'}\nAmount Paid: ₹8,500 (INR)\nMode of Payment: UPI / Bank Transfer\nStatus: VERIFIED & PAID\nClinical Nutritionist: Dt. Akhila Konakalla\nOfficial Address: 4-94, Lunani Nagar, Eluru, Andhra Pradesh, 534005, India.\n=================================================\nThank you for choosing Dhruthi Wellness!\n`;
+  
+  const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = `Dhruthi_Receipt_${name.replace(/\s+/g, '_')}.txt`;
+  link.click();
+}
+
+// 4. Plans Tab — Diet Plan Prep Studio, Save & Download (User Requirement 7)
+function renderDietPlanStudio() {
+  const lead = state.leads.find(l => l.id === state.selectedLeadId);
+  const dp = (lead && lead.dietPlan) ? lead.dietPlan : {};
+
+  if (document.getElementById('dp-early-morning')) document.getElementById('dp-early-morning').value = dp.earlyMorning || 'Warm water + 1/2 tsp cumin seeds, soaked almonds (5 pcs)';
+  if (document.getElementById('dp-breakfast')) document.getElementById('dp-breakfast').value = dp.breakfast || 'Oats Moong Dal Chilla (2 pcs) with Mint Chutney + 1 egg white';
+  if (document.getElementById('dp-mid-morning')) document.getElementById('dp-mid-morning').value = dp.midMorning || '1 bowl Guava / Pomegranate + 1 cup Buttermilk';
+  if (document.getElementById('dp-lunch')) document.getElementById('dp-lunch').value = dp.lunch || '1 cup Brown Rice / Jowar Roti (2) + Palak Dal + Cucumber Salad';
+  if (document.getElementById('dp-evening')) document.getElementById('dp-evening').value = dp.evening || 'Green Tea + Roasted Makhana (1 small cup)';
+  if (document.getElementById('dp-dinner')) document.getElementById('dp-dinner').value = dp.dinner || 'Grilled Tofu / Vegetable Soup + Sprouts salad';
+}
+
+function saveDietPlanStudio() {
+  const lead = state.leads.find(l => l.id === state.selectedLeadId);
+  if (!lead) return;
+
+  lead.dietPlan = {
+    earlyMorning: document.getElementById('dp-early-morning').value,
+    breakfast: document.getElementById('dp-breakfast').value,
+    midMorning: document.getElementById('dp-mid-morning').value,
+    lunch: document.getElementById('dp-lunch').value,
+    evening: document.getElementById('dp-evening').value,
+    dinner: document.getElementById('dp-dinner').value
+  };
+
+  localStorage.setItem('dhruthi_crm_leads', JSON.stringify(state.leads));
+  alert(`Diet Plan saved successfully for ${lead.name}!`);
+}
+
+function downloadDietPlanPDF() {
+  const lead = state.leads.find(l => l.id === state.selectedLeadId);
+  const name = lead ? lead.name : 'Client';
+  const dp = lead ? lead.dietPlan : {};
+
+  const content = `=================================================\nDHRUTHI WELLNESS — CLINICAL DIET THERAPY PLAN\n=================================================\nClient Name: ${name}\nClient ID: ${lead ? lead.id : 'DW-1'}\nProgram: ${lead ? lead.program : 'Fertility Nutrition & Preconception Program'}\nClinical Nutritionist: Dt. Akhila Konakalla, MSc Food Nutrition & Dietetics\nDate: ${new Date().toLocaleDateString()}\n=================================================\n\n1. EARLY MORNING / DETOX DRINK:\n   ${dp.earlyMorning || 'Warm Water + Soaked Nuts'}\n\n2. BREAKFAST (8:30 AM):\n   ${dp.breakfast || 'Moong Dal Chilla / Oats + Egg white'}\n\n3. MID-MORNING SNACK (11:00 AM):\n   ${dp.midMorning || 'Fresh Fruit Bowl + Buttermilk'}\n\n4. LUNCH (1:00 PM):\n   ${dp.lunch || 'Jowar Roti / Brown Rice + Dal + Salad'}\n\n5. EVENING SNACK (4:30 PM):\n   ${dp.evening || 'Green Tea + Roasted Makhana'}\n\n6. DINNER (7:30 PM):\n   ${dp.dinner || 'Grilled Paneer / Soup + Salad'}\n\n=================================================\nGeneral Instructions:\n- Drink 3 Liters of water daily.\n- Avoid processed sugars and refined flour.\n=================================================\n`;
+
+  const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = `Dhruthi_Diet_Plan_${name.replace(/\s+/g, '_')}.txt`;
+  link.click();
+}
+
+// 5. Progress Tab — Client Progress & Required Artifacts (User Requirement 8)
+function renderClientProgress() {
+  const lead = state.leads.find(l => l.id === state.selectedLeadId);
+  const prg = (lead && lead.progress) ? lead.progress : {};
+
+  const badgeEl = document.getElementById('prg-status-badge');
+  const weightValEl = document.getElementById('prg-weight-val');
+  const targetValEl = document.getElementById('prg-target-val');
+
+  if (badgeEl) badgeEl.innerHTML = `<span class="stage-badge ${prg.status === 'Improving' ? 'connected' : 'warm'}">${prg.status || 'Improving'}</span>`;
+  if (weightValEl) weightValEl.textContent = `${prg.startWeight || '58 kg'} ➔ ${lead ? lead.weight : '54 kg'}`;
+  if (targetValEl) targetValEl.textContent = `${lead ? lead.targetWeight : '45 kg'} (Target Active)`;
+
+  const container = document.getElementById('progress-notes-container');
+  if (!container) return;
+
+  const notes = (prg.notes) ? prg.notes : [];
+  if (notes.length === 0) {
+    container.innerHTML = `
+      <div style="background:var(--bg-subtle); padding:1rem; border-radius:var(--radius-sm); border:1px solid var(--border-color); color:var(--text-muted); font-size:0.85rem;">
+        No progress logs added yet. Click <b>+ Log Progress Note</b> to log weight & body measurement milestones.
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = notes.map(n => `
+    <div style="background:var(--bg-subtle); border:1px solid var(--border-color); padding:14px; border-radius:var(--radius-sm);">
+      <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:4px;">${n.date} • Progress Note</div>
+      <div style="font-weight:700; font-size:0.92rem; color:var(--primary);">${n.title}</div>
+      <div style="font-size:0.85rem; margin-top:4px;">${n.text}</div>
+    </div>
+  `).join('');
+}
+
+function openAddProgressNoteModal() {
+  const title = prompt('Enter Progress Milestone Title (e.g. Week 4 Measurement Check-in):');
+  if (!title) return;
+  const text = prompt('Enter Progress Details & Required Artifact notes:');
+  if (!text) return;
+
+  const lead = state.leads.find(l => l.id === state.selectedLeadId);
+  if (!lead) return;
+  if (!lead.progress) lead.progress = { status: 'Improving', notes: [] };
+  if (!lead.progress.notes) lead.progress.notes = [];
+
+  const now = new Date();
+  lead.progress.notes.unshift({
+    date: `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`,
+    title: title,
+    text: text
+  });
+
+  localStorage.setItem('dhruthi_crm_leads', JSON.stringify(state.leads));
+  renderClientProgress();
+}
+
+// 6. History Tab — Medical History & Tabs Taken (User Requirement 9)
+function renderMedicalHistory() {
+  const container = document.getElementById('medical-history-container');
+  if (!container) return;
+
+  const lead = state.leads.find(l => l.id === state.selectedLeadId);
+  const mh = (lead && lead.medicalHistory) ? lead.medicalHistory : {};
+
+  container.innerHTML = `
+    <div style="background:var(--bg-subtle); border:1px solid var(--border-color); padding:1rem; border-radius:var(--radius-sm);">
+      <div style="font-weight:700; color:var(--primary); font-size:0.9rem; margin-bottom:4px;"><i class="ri-hospital-line"></i> Medical Diagnoses & Clinical History</div>
+      <div style="font-size:0.88rem;">${mh.diagnoses || 'No major past medical conditions noted.'}</div>
+    </div>
+
+    <div style="background:var(--bg-subtle); border:1px solid var(--border-color); padding:1rem; border-radius:var(--radius-sm);">
+      <div style="font-weight:700; color:var(--primary); font-size:0.9rem; margin-bottom:4px;"><i class="ri-capsule-line"></i> Tablets & Medications Taken</div>
+      <div style="font-size:0.88rem;">${mh.medications || 'No active prescribed medications.'}</div>
+    </div>
+
+    <div style="background:var(--bg-subtle); border:1px solid var(--border-color); padding:1rem; border-radius:var(--radius-sm);">
+      <div style="font-weight:700; color:var(--primary); font-size:0.9rem; margin-bottom:4px;"><i class="ri-file-list-3-line"></i> Past Diagnostic Lab Summary</div>
+      <div style="font-size:0.88rem;">${mh.labSummary || 'Blood parameters within normal limits.'}</div>
+    </div>
+
+    <div style="background:var(--bg-subtle); border:1px solid var(--border-color); padding:1rem; border-radius:var(--radius-sm);">
+      <div style="font-weight:700; color:var(--primary); font-size:0.9rem; margin-bottom:4px;"><i class="ri-user-heart-line"></i> Family Medical History</div>
+      <div style="font-size:0.88rem;">${mh.familyHistory || 'None noted.'}</div>
+    </div>
+  `;
+}
+
+function openAddMedicalHistoryModal() {
+  const diag = prompt('Update Medical Diagnoses:');
+  if (!diag) return;
+  const meds = prompt('Update Tablets & Medications Taken:');
+
+  const lead = state.leads.find(l => l.id === state.selectedLeadId);
+  if (!lead) return;
+  if (!lead.medicalHistory) lead.medicalHistory = {};
+
+  lead.medicalHistory.diagnoses = diag;
+  if (meds) lead.medicalHistory.medications = meds;
+
+  localStorage.setItem('dhruthi_crm_leads', JSON.stringify(state.leads));
+  renderMedicalHistory();
+  alert('Medical history updated successfully!');
+}
+
+// 7. H&F Report Tab — Download & Upload Lab Reports (User Requirement 10)
+function renderLabReports() {
+  const tbody = document.getElementById('lab-reports-tbody');
+  if (!tbody) return;
+
+  const lead = state.leads.find(l => l.id === state.selectedLeadId);
+  const reports = (lead && lead.labReports) ? lead.labReports : [];
+
+  if (reports.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:1.5rem; color:var(--text-muted);">No lab reports attached. Use <b>Upload Lab Report</b> to attach diagnostic report PDFs.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = reports.map((r, idx) => `
+    <tr>
+      <td>${idx + 1}</td>
+      <td><b>${r.reportName}</b></td>
+      <td>${r.labName}</td>
+      <td>${r.testDate}</td>
+      <td>${r.fileSize}</td>
+      <td><span class="stage-badge connected">${r.status || 'Verified'}</span></td>
+      <td>
+        <button class="btn btn-outline btn-sm" onclick="downloadLabReport('${r.reportName}')"><i class="ri-download-2-line"></i> Download PDF</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function handleLabReportUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const lead = state.leads.find(l => l.id === state.selectedLeadId);
+  if (!lead) return;
+  if (!lead.labReports) lead.labReports = [];
+
+  const now = new Date();
+  const dateStr = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`;
+  const sizeMb = (file.size / (1024 * 1024)).toFixed(1) + ' MB';
+
+  lead.labReports.unshift({
+    sNo: lead.labReports.length + 1,
+    reportName: file.name,
+    labName: 'Uploaded Diagnostic Lab',
+    testDate: dateStr,
+    fileSize: sizeMb,
+    status: 'Verified',
+    url: '#'
+  });
+
+  localStorage.setItem('dhruthi_crm_leads', JSON.stringify(state.leads));
+  renderLabReports();
+  alert(`Lab Report "${file.name}" uploaded successfully for ${lead.name}!`);
+}
+
+function downloadLabReport(reportName) {
+  alert(`Downloading health report file: ${reportName}`);
+}
+
+// Clinical Notes (Sub-tab)
 function renderClientNotes() {
   const container = document.getElementById('client-notes-container');
   if (!container) return;
@@ -868,7 +1373,7 @@ function handleCreateLeadSubmit(e) {
     planBadge: 'Free',
     phone: form.phone.value,
     email: form.email.value || 'lead@gmail.com',
-    accountName: form.account ? form.account.value : 'DW Insta Page',
+    accountName: form.account ? form.account.value : 'DW- Insta page',
     tag: 'Web Lead',
     age: 30,
     gender: 'Female',
@@ -879,7 +1384,6 @@ function handleCreateLeadSubmit(e) {
     createdDate: '18-08-2025',
     createdBy: 'Akhila',
     program: form.program ? form.program.value : 'General Wellness Program',
-    fitnessClub: '-',
     nutritionist: 'Dt. Akhila Konakalla',
     dob: '01 Jan 1995',
     language: 'English',
@@ -891,13 +1395,21 @@ function handleCreateLeadSubmit(e) {
     address: 'Eluru',
     state: 'Andhra Pradesh',
     country: 'India',
-    pincode: '534005'
+    pincode: '534005',
+    callNotes: [],
+    programsList: [],
+    payments: [],
+    dietPlan: {},
+    progress: { status: 'New', startWeight: '65 kg', currentWeight: '65 kg', targetWeight: '55 kg', notes: [] },
+    medicalHistory: { diagnoses: 'New Lead', medications: 'None', labSummary: 'Pending', familyHistory: '-' },
+    labReports: []
   };
 
   state.leads.unshift(newLead);
   localStorage.setItem('dhruthi_crm_leads', JSON.stringify(state.leads));
   renderLeadsTable();
   closeModal('modal-lead');
+  alert(`Lead DW-${nextNum} created!`);
 }
 
 // Dashboard
@@ -909,7 +1421,7 @@ function renderDashboard() {
       <td><b style="color:var(--primary); cursor:pointer;" onclick="openClientDetail('${l.id}')">${l.id}</b></td>
       <td><b style="cursor:pointer;" onclick="openClientDetail('${l.id}')">${l.name}</b></td>
       <td>${l.phone}</td>
-      <td>${l.goal}</td>
+      <td>${l.goal || l.program}</td>
       <td><span class="stage-badge ${getStageClass(l.stage)}">${l.stage}</span></td>
       <td><button class="btn btn-outline btn-sm" onclick="openClientDetail('${l.id}')">View</button></td>
     </tr>
