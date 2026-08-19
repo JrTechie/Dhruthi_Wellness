@@ -429,11 +429,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 2. Prepare WhatsApp direct message link
       const waNumber = '918688963230';
-      const waMsg = `*New Website Inquiry — Dhruthi Wellness*\n\n` +
+      const waMsg = `*New Website Enquiry — Dhruthi Wellness*\n\n` +
         `👤 *Name:* ${name}\n` +
         `✉️ *Email:* ${email}\n` +
         `📝 *Health Concerns / Goals:* ${msg}\n\n` +
-        `_Hi Dt. Akhila, I submitted a quick message inquiry on your website. Please connect with me!_`;
+        `_Hi Dt. Akhila, I submitted a quick message enquiry on your website. Please connect with me!_`;
 
       const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMsg)}`;
 
@@ -445,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify({
             client_name: name,
             client_email: email,
-            subject: 'Quick Message Inquiry',
+            subject: 'Quick Message Enquiry',
             message: msg
           })
         });
@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.warn('Contact API note:', err);
       }
 
-      showToast(`Thank you, ${name}! Opening WhatsApp to send your inquiry directly...`, 'success');
+      showToast(`Thank you, ${name}! Opening WhatsApp to send your enquiry directly...`, 'success');
       contactForm.reset();
 
       setTimeout(() => {

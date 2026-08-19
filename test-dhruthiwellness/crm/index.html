@@ -61,7 +61,7 @@
   <!-- 2. Left Navigation Sidebar (Tree Menu) -->
   <aside class="sidebar">
     <div class="brand-header">
-      <img src="/crm/akcrop.png" alt="Dhruthi Wellness" class="brand-logo-img" onerror="this.src='/crm/dt_akhila.png'">
+      <img src="/Images/Logo_D_bright.png" alt="Dhruthi Wellness Logo" class="brand-logo-img" onerror="this.src='/crm/dt_akhila.png'">
       <div>
         <div class="brand-title">Dhruthi Wellness</div>
         <div class="brand-subtitle">CRM Portal</div>
@@ -159,7 +159,7 @@
         <span class="shortcut-kbd">⌘K</span>
       </div>
 
-      <!-- Right Meta & Profile -->
+      <!-- Right Meta & Profile (Matching User Requirement 2) -->
       <div class="header-right-meta">
         <div class="last-login-info">
           <span>Last Login</span>
@@ -167,10 +167,10 @@
         </div>
 
         <div class="user-profile-badge" onclick="handleLogout()" title="Click to Sign Out">
-          <img src="/crm/akcrop.png" alt="User Avatar" onerror="this.src='/crm/dt_akhila.png'">
+          <img src="/crm/akcrop.png" alt="Konakalla Akhila" onerror="this.src='/crm/dt_akhila.png'">
           <div class="user-profile-info">
-            <div class="name">Konakalla Svsckr Akhila</div>
-            <div class="role">Sales</div>
+            <div class="name">Konakalla Akhila</div>
+            <div class="role">Clinical Nutritionist</div>
           </div>
         </div>
       </div>
@@ -184,7 +184,7 @@
         <div class="page-header">
           <div>
             <h1 class="page-title">Executive Dashboard</h1>
-            <p class="page-description">Real-time leads overview, recent inquiries, and performance metrics.</p>
+            <p class="page-description">Real-time leads overview, recent enquiries, and performance metrics.</p>
           </div>
           <button class="btn btn-primary" onclick="openLeadModal()"><i class="ri-add-line"></i> + New Lead</button>
         </div>
@@ -196,7 +196,7 @@
             <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary);" id="stat-total-leads">24</div>
           </div>
           <div class="table-card" style="padding: 1.25rem; margin: 0;">
-            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 600;">New Inquiries Today</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 600;">New Enquiries Today</div>
             <div style="font-size: 1.8rem; font-weight: 700; color: #0284c7;" id="stat-new-today">8</div>
           </div>
           <div class="table-card" style="padding: 1.25rem; margin: 0;">
@@ -209,10 +209,10 @@
           </div>
         </div>
 
-        <!-- Recent Inquiries Table -->
+        <!-- Recent Enquiries Table -->
         <div class="table-card">
           <div style="padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-color); font-weight: 700;">
-            Recent Inquiries & Contact Requests
+            Recent Enquiries & Contact Requests
           </div>
           <table class="custom-table">
             <thead>
@@ -239,9 +239,9 @@
         <div class="table-card" style="padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
             <div style="display: flex; align-items: center; gap: 10px;">
-              <select class="form-select" id="bulk-assign-select" style="width: 180px;">
+              <select class="form-select" id="bulk-assign-select" style="width: 220px;">
                 <option value="">Assign To</option>
-                <option value="Konakalla Svsckr Akhila">Konakalla Svsckr Akhila</option>
+                <option value="Konakalla Akhila">Konakalla Akhila (Clinical Nutritionist)</option>
                 <option value="Unassigned">Unassigned</option>
               </select>
               <button class="btn btn-secondary" onclick="handleBulkAssignSubmit()">Submit</button>
@@ -345,15 +345,28 @@
         </div>
       </section>
 
-      <!-- ================= PAGE 3: CLIENT / LEAD 360° DETAIL VIEW ================= -->
+      <!-- ================= PAGE 3: CLIENT / LEAD 360° DETAIL VIEW (COMPLETELY EDITABLE - User Requirement 5) ================= -->
       <section id="page-client-detail" class="page-view">
-        <div style="margin-bottom: 1rem;">
+        <div style="margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
           <button class="btn btn-outline btn-sm" onclick="switchPage('leads')">
             ← BACK
           </button>
+          
+          <!-- Editable Toggle Controls -->
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-primary btn-sm" id="btn-edit-toggle" onclick="toggleEditProfileMode()">
+              <i class="ri-edit-box-line"></i> Edit Profile
+            </button>
+            <button class="btn btn-secondary btn-sm" id="btn-save-profile" onclick="saveClientProfileEdits()" style="display: none;">
+              <i class="ri-save-line"></i> Save Profile Changes
+            </button>
+            <button class="btn btn-outline btn-sm" id="btn-cancel-profile" onclick="toggleEditProfileMode(false)" style="display: none;">
+              Cancel
+            </button>
+          </div>
         </div>
 
-        <!-- Detail Header Summary Card (Matching Reference Images 4, 6, 8, 10, 11, 13, 20) -->
+        <!-- Detail Header Summary Card -->
         <div class="detail-header-card">
           <div class="detail-profile-top">
             <div class="detail-avatar-box">
@@ -362,7 +375,7 @@
               </div>
               <div>
                 <h2 class="detail-name-title" id="d-client-name">Krupa Mathew (Free)</h2>
-                <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">ID: <span id="d-client-id-badge">37470</span></div>
+                <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">ID: <span id="d-client-id-badge">DW-1</span></div>
               </div>
             </div>
 
@@ -374,14 +387,14 @@
             </div>
           </div>
 
-          <!-- Metadata 2-Column Grid -->
-          <div class="detail-meta-grid">
+          <!-- Metadata 2-Column Grid (Editable View Container) -->
+          <div class="detail-meta-grid" id="meta-grid-container">
             <div style="display: flex; flex-direction: column; gap: 6px;">
-              <div class="detail-meta-item"><span class="label">ID</span><span class="value" id="dm-id">37470</span></div>
-              <div class="detail-meta-item"><span class="label">Account Name</span><span class="value" id="dm-account">FMC Main Page</span></div>
+              <div class="detail-meta-item"><span class="label">ID</span><span class="value" id="dm-id">DW-1</span></div>
+              <div class="detail-meta-item"><span class="label">Account Name</span><span class="value" id="dm-account">DW Insta Page</span></div>
               <div class="detail-meta-item"><span class="label">Email ID</span><span class="value" id="dm-email">krupa.mathew777@gmail.com</span></div>
               <div class="detail-meta-item"><span class="label">Phone No</span><span class="value" id="dm-phone">+918111851425</span></div>
-              <div class="detail-meta-item"><span class="label">Program</span><span class="value" id="dm-program">FitMom Gold Elite</span></div>
+              <div class="detail-meta-item"><span class="label">Program</span><span class="value" id="dm-program">Fertility Nutrition & Preconception Program</span></div>
               <div class="detail-meta-item"><span class="label">Fitness Club</span><span class="value" id="dm-fitness-club">-</span></div>
             </div>
 
@@ -391,7 +404,7 @@
               <div class="detail-meta-item"><span class="label">Sub Disposition</span><span class="value" id="dm-sub-disposition">Will Decide Later</span></div>
               <div class="detail-meta-item"><span class="label">Created Date</span><span class="value" id="dm-created-date">30-08-2025</span></div>
               <div class="detail-meta-item"><span class="label">Created By</span><span class="value" id="dm-created-by">-</span></div>
-              <div class="detail-meta-item"><span class="label">Nutritionist</span><span class="value" id="dm-nutritionist">Dr. Akhila Konakalla</span></div>
+              <div class="detail-meta-item"><span class="label">Nutritionist</span><span class="value" id="dm-nutritionist">Dt. Akhila Konakalla</span></div>
             </div>
           </div>
         </div>
@@ -427,31 +440,13 @@
                 <div class="profile-tab-item" onclick="switchProfileInfoTab('other')">Other Information</div>
               </div>
 
-              <!-- Basic Information Fields Grid -->
+              <!-- Information Fields Grid (Completely Editable in Edit Mode) -->
               <div class="info-fields-grid" id="profile-info-grid">
-                <div class="info-field-group"><div class="lbl">Name</div><div class="val" id="inf-name">Krupa Mathew</div></div>
-                <div class="info-field-group"><div class="lbl">Email ID</div><div class="val" id="inf-email">krupa.mathew777@gmail.com</div></div>
-                <div class="info-field-group"><div class="lbl">Mobile Number</div><div class="val" id="inf-mobile">+918111851425</div></div>
-                <div class="info-field-group"><div class="lbl">Alternative Number</div><div class="val" id="inf-alt-phone">-</div></div>
-                
-                <div class="info-field-group"><div class="lbl">Gender</div><div class="val" id="inf-gender">Female</div></div>
-                <div class="info-field-group"><div class="lbl">Date of Birth</div><div class="val" id="inf-dob">30 Jan 1997</div></div>
-                <div class="info-field-group"><div class="lbl">Age</div><div class="val" id="inf-age">28 years</div></div>
-                <div class="info-field-group"><div class="lbl">Preferred Language</div><div class="val" id="inf-lang">Malayalam</div></div>
-
-                <div class="info-field-group"><div class="lbl">Height in cm</div><div class="val" id="inf-height">153</div></div>
-                <div class="info-field-group"><div class="lbl">Weight in kgs</div><div class="val" id="inf-weight">54</div></div>
-                <div class="info-field-group"><div class="lbl">BMI</div><div class="val" id="inf-bmi">23.1</div></div>
-                <div class="info-field-group"><div class="lbl">Target Weight</div><div class="val" id="inf-target-wt">45</div></div>
-
-                <div class="info-field-group"><div class="lbl">Goal</div><div class="val" id="inf-goal">Weight Management</div></div>
-                <div class="info-field-group"><div class="lbl">Address</div><div class="val" id="inf-address">kochi</div></div>
-                <div class="info-field-group"><div class="lbl">State</div><div class="val" id="inf-state">kerala</div></div>
-                <div class="info-field-group"><div class="lbl">Country</div><div class="val" id="inf-country">India</div></div>
+                <!-- Dynamically Rendered by crm-app.js -->
               </div>
             </div>
 
-            <!-- SUB-TAB 2: PROGRAMS CONTENT (Matching Reference Images 5, 7, 21) -->
+            <!-- SUB-TAB 2: PROGRAMS CONTENT -->
             <div id="dpan-programs" class="detail-pane-content" style="display: none;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <div style="font-weight: 700; font-size: 1rem;">Client Programs</div>
@@ -476,25 +471,13 @@
                     </tr>
                   </thead>
                   <tbody id="client-programs-tbody">
-                    <tr>
-                      <td>1</td>
-                      <td><b>FitMom Gold Elite</b></td>
-                      <td>90 days</td>
-                      <td>25/08/2025</td>
-                      <td>23/11/2025</td>
-                      <td>₹8,500</td>
-                      <td>18/08/2025</td>
-                      <td><span class="stage-badge connected">Active</span></td>
-                      <td><span class="stage-badge connected">Paid</span></td>
-                      <td>Akhila</td>
-                      <td>Regular consultation assigned</td>
-                    </tr>
+                    <!-- Dynamically Populated -->
                   </tbody>
                 </table>
               </div>
             </div>
 
-            <!-- SUB-TAB 3: NOTES CONTENT (Matching Reference Image 16) -->
+            <!-- SUB-TAB 3: NOTES CONTENT -->
             <div id="dpan-notes" class="detail-pane-content" style="display: none;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <div style="font-weight: 700; font-size: 1rem;">Client Clinical Notes</div>
@@ -502,10 +485,7 @@
               </div>
 
               <div id="client-notes-container" style="display: flex; flex-direction: column; gap: 12px;">
-                <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 14px; border-radius: var(--radius-sm);">
-                  <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 4px;">18/08/2025 14:20 • Added by Akhila</div>
-                  <div style="font-size: 0.88rem; font-weight: 600;">client prefers - english dietician, fitness coach</div>
-                </div>
+                <!-- Dynamically Populated -->
               </div>
             </div>
 
@@ -513,7 +493,7 @@
         </div>
       </section>
 
-      <!-- ================= PAGE 4: INTERACTIONS > CALLS (Matching Reference Image 18) ================= -->
+      <!-- ================= PAGE 4: INTERACTIONS > CALLS ================= -->
       <section id="page-interactions-calls" class="page-view">
         <div class="page-header">
           <div>
@@ -551,7 +531,7 @@
               </thead>
               <tbody id="calls-log-tbody">
                 <tr>
-                  <td>207694</td>
+                  <td>DW-3</td>
                   <td>Akhila</td>
                   <td><b>Shailaja Enugurthi</b></td>
                   <td>14085858409</td>
@@ -568,7 +548,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>207103</td>
+                  <td>DW-4</td>
                   <td>Akhila</td>
                   <td><b>Kalpana Chinta</b></td>
                   <td>919985500568</td>
@@ -590,7 +570,7 @@
         </div>
       </section>
 
-      <!-- ================= PAGE 5: PAYMENTS & FINANCE TRACKER (Matching Reference Image 3) ================= -->
+      <!-- ================= PAGE 5: PAYMENTS & FINANCE TRACKER ================= -->
       <section id="page-payments" class="page-view">
         <div class="page-header">
           <div>
@@ -622,7 +602,7 @@
                   <td>1/8/2025</td>
                   <td><b>sudhira</b></td>
                   <td>8008798282</td>
-                  <td>fitmom gold queen</td>
+                  <td>Fertility Nutrition & Preconception Program</td>
                   <td>₹18,805</td>
                   <td>₹18,805</td>
                   <td>secunderabad</td>
@@ -634,7 +614,7 @@
                   <td>1/8/2025</td>
                   <td><b>indu</b></td>
                   <td>8885728949</td>
-                  <td>fit mom gold elite</td>
+                  <td>PCOS / PCOD Management Program</td>
                   <td>₹11,700</td>
                   <td>₹11,700</td>
                   <td>KR Puram</td>
@@ -646,7 +626,7 @@
                   <td>3/8/2025</td>
                   <td><b>shintu</b></td>
                   <td>9566151660</td>
-                  <td>fit mom gold elite</td>
+                  <td>Weight Loss & Metabolic Care Program</td>
                   <td>₹17,462</td>
                   <td>₹17,462</td>
                   <td>chennai</td>
@@ -658,7 +638,7 @@
                   <td>6/8/2025</td>
                   <td><b>Tharangini</b></td>
                   <td>9902775695</td>
-                  <td>platinum miracle</td>
+                  <td>Thyroid Care Diet Program</td>
                   <td>₹31,145</td>
                   <td>₹31,145</td>
                   <td>USA</td>
@@ -670,7 +650,7 @@
                   <td>6/8/2025</td>
                   <td><b>subhasree</b></td>
                   <td>6590367453</td>
-                  <td>platinum elite</td>
+                  <td>Diabetes Management Program</td>
                   <td>₹23,621</td>
                   <td>₹23,621</td>
                   <td>singapore</td>
@@ -698,21 +678,23 @@
 
   <!-- ================= MODALS & OVERLAYS ================= -->
 
-  <!-- Modal 1: Add Program Modal (Matching Reference Images 5, 21) -->
+  <!-- Modal 1: Add Program Modal -->
   <div class="modal-backdrop" id="modal-add-program">
     <div class="modal-card">
       <button class="modal-close-btn" onclick="closeModal('modal-add-program')">&times;</button>
-      <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Existing Programs</h3>
+      <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Dhruthi Wellness Programs</h3>
 
       <form id="form-add-program" onsubmit="handleAddProgramSubmit(event)">
         <div class="form-group">
           <label class="form-label">Program *</label>
           <select class="form-select" id="prog-select-name" required>
-            <option value="FitMom Gold Queen - Postnatal">FitMom Gold Queen - Postnatal</option>
-            <option value="Fitmom Gold Elite">Fitmom Gold Elite</option>
-            <option value="Platinum Miracle">Platinum Miracle</option>
-            <option value="Gold Diet">Gold Diet</option>
-            <option value="Platinum Elite">Platinum Elite</option>
+            <option value="Fertility Nutrition & Preconception Program">Fertility Nutrition & Preconception Program</option>
+            <option value="PCOS / PCOD Management Program">PCOS / PCOD Management Program</option>
+            <option value="Weight Loss & Metabolic Care Program">Weight Loss & Metabolic Care Program</option>
+            <option value="Thyroid Care Diet Program">Thyroid Care Diet Program</option>
+            <option value="Diabetes Management Program">Diabetes Management Program</option>
+            <option value="Postpartum Recovery Program">Postpartum Recovery Program</option>
+            <option value="General Wellness Program">General Wellness Program</option>
           </select>
         </div>
 
@@ -758,7 +740,7 @@
     </div>
   </div>
 
-  <!-- Modal 2: Add Note Modal (Matching Reference Image 16) -->
+  <!-- Modal 2: Add Note Modal -->
   <div class="modal-backdrop" id="modal-add-note">
     <div class="modal-card">
       <button class="modal-close-btn" onclick="closeModal('modal-add-note')">&times;</button>
@@ -766,7 +748,7 @@
 
       <form id="form-add-note" onsubmit="handleAddNoteSubmit(event)">
         <div class="form-group">
-          <textarea class="form-textarea" id="note-textarea-content" rows="4" placeholder="client prefers - english dietician, fitness coach..." required></textarea>
+          <textarea class="form-textarea" id="note-textarea-content" rows="4" placeholder="Client prefers English dietitian, clinical guidance..." required></textarea>
         </div>
 
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 1rem;">
@@ -798,9 +780,21 @@
         <div class="form-group">
           <label class="form-label">Account Name</label>
           <select class="form-select" name="account">
-            <option value="FMC Main Page">FMC Main Page</option>
-            <option value="FMC.CO">FMC.CO</option>
-            <option value="FMC Android">FMC Android</option>
+            <option value="DW Insta Page" selected>DW Insta Page</option>
+            <option value="DW Main Website">DW Main Website</option>
+            <option value="DW Android App">DW Android App</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Program *</label>
+          <select class="form-select" name="program">
+            <option value="Fertility Nutrition & Preconception Program">Fertility Nutrition & Preconception Program</option>
+            <option value="PCOS / PCOD Management Program">PCOS / PCOD Management Program</option>
+            <option value="Weight Loss & Metabolic Care Program">Weight Loss & Metabolic Care Program</option>
+            <option value="Thyroid Care Diet Program">Thyroid Care Diet Program</option>
+            <option value="Diabetes Management Program">Diabetes Management Program</option>
+            <option value="Postpartum Recovery Program">Postpartum Recovery Program</option>
+            <option value="General Wellness Program">General Wellness Program</option>
           </select>
         </div>
         <div class="form-group">

@@ -1,7 +1,7 @@
-# Dhruthi Wellness Dietitian CRM — Local & Production Setup Guide
+# Dhruthi Wellness CEO's CRM — Local & Production Setup Guide
 
 ## Overview
-This document outlines how to set up, run, configure, and maintain the **Dhruthi Wellness Dietitian CRM & Client OS** built specifically for Dr. Akhila Konakalla and team.
+This document outlines how to set up, run, configure, and maintain **Dhruthi Wellness CEO's CRM** built specifically for Dr. Akhila Konakalla and team.
 
 ---
 
@@ -47,7 +47,7 @@ This document outlines how to set up, run, configure, and maintain the **Dhruthi
 
 5. **Access Application URLs**:
    - **Official Website**: `http://localhost:3000`
-   - **Dietitian CRM**: `http://localhost:3000/crm`
+   - **CEO's CRM**: `http://localhost:3000/crm`
    - **Database Diagnostics**: `http://localhost:3000/api/db-status`
 
 ---

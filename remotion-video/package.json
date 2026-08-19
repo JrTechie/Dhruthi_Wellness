@@ -38,6 +38,12 @@
     "render:breastfeeding": "remotion render src/index.ts BreastfeedingReel \"../Reels finalised/dhruthi_breastfeeding_reel.mp4\"",
     "render:breastfeeding-hydration": "remotion render src/index.ts BreastfeedingWithHydration \"../Reels finalised/breastfeeding_with_hydration_reel.mp4\"",
     "render:flowchart": "remotion render src/index.ts FlowchartReel \"../Reels finalised/flowchart_breastfeeding_reel.mp4\"",
+    "render:website-promo": "remotion render src/index.ts WebsitePromo \"../Reels finalised/dhruthi_website_promo.mp4\"",
+    "render:website-walkthrough": "remotion render src/index.ts WebsiteWalkthrough \"../Reels finalised/dhruthi_website_landscape_walkthrough.mp4\"",
+    "render:mobile-walkthrough": "remotion render src/index.ts MobileContinuousWalkthrough \"../Reels finalised/dhruthi_mobile_continuous_walkthrough.mp4\"",
+    "render:fullscreen-walkthrough": "remotion render src/index.ts MobileFullScreenWalkthrough \"../Reels finalised/dhruthi_mobile_fullscreen_walkthrough.mp4\"",
+    "render:custom-promo": "remotion render src/index.ts CustomPromoWalkthrough \"../Reels finalised/dhruthi_custom_promotional_video.mp4\"",
+    "render:elevated-cover-promo": "remotion render src/index.ts ElevatedCoverPromo \"../Reels finalised/dhruthi_elevated_cover_promotional_video.mp4\"",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc"
   },

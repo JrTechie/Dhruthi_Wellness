@@ -14,9 +14,64 @@ import { BreastfeedingMain } from "./BreastfeedingMain";
 import { BreastfeedingHydrationMain } from "./BreastfeedingHydrationMain";
 import { FlowchartMain } from "./FlowchartMain";
 
+import { WebsitePromoMain } from "./WebsitePromoMain";
+import { WebsiteWalkthroughMain } from "./WebsiteWalkthroughMain";
+import { MobileContinuousWalkthroughMain } from "./MobileContinuousWalkthroughMain";
+import { MobileFullScreenWalkthroughMain } from "./MobileFullScreenWalkthroughMain";
+import { CustomPromoWalkthroughMain } from "./CustomPromoWalkthroughMain";
+import { ElevatedCoverPromoMain } from "./ElevatedCoverPromoMain";
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition
+        id="ElevatedCoverPromo"
+        component={ElevatedCoverPromoMain}
+        durationInFrames={1800} // 30 seconds * 60 fps
+        fps={60}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CustomPromoWalkthrough"
+        component={CustomPromoWalkthroughMain}
+        durationInFrames={2400} // 40 seconds * 60 fps
+        fps={60}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="MobileFullScreenWalkthrough"
+        component={MobileFullScreenWalkthroughMain}
+        durationInFrames={3300} // 55 seconds * 60 fps
+        fps={60}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="MobileContinuousWalkthrough"
+        component={MobileContinuousWalkthroughMain}
+        durationInFrames={1800} // 30 seconds * 60 fps (Ultra Smooth 60 FPS)
+        fps={60}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="WebsiteWalkthrough"
+        component={WebsiteWalkthroughMain}
+        durationInFrames={1230} // 41 seconds * 30 fps
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="WebsitePromo"
+        component={WebsitePromoMain}
+        durationInFrames={1050} // 35 seconds * 30 fps
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="FlowchartReel"
         component={FlowchartMain}

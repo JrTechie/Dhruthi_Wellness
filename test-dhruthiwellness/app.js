@@ -363,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify({
             client_name: name,
             client_email: email,
-            subject: 'New Website Inquiry',
+            subject: 'New Website Enquiry',
             message: msg
           })
         });
@@ -373,11 +373,11 @@ document.addEventListener('DOMContentLoaded', () => {
           throw new Error(result.error || 'Server error');
         }
 
-        showToast(`Thank you, ${name}! Your inquiry has been sent successfully.`, 'success');
+        showToast(`Thank you, ${name}! Your enquiry has been sent successfully.`, 'success');
         contactForm.reset();
       } catch (err) {
         console.error('Contact Error:', err);
-        showToast(`Thank you, ${name}! Inquiry submitted.`, 'success');
+        showToast(`Thank you, ${name}! Enquiry submitted.`, 'success');
         contactForm.reset();
       }
     });
